@@ -13,9 +13,10 @@ let User = new Schema({
     },
 	// userLevel : Number,
 	userImage : {
-        type: String,
+        type: String
+        /* default: xxx */        
     },
-	userEMail : {
+	userEmail : {
         type: String,
         required: true
     },
@@ -31,17 +32,15 @@ let User = new Schema({
 	// logBoard : Board[],
 	reviewNum : {
         type: Number,
-        required: true
+        required: true,
+        default: 0
     },
 	boardNum : {
         type: Number,
-        required: true
-    },
+        required: true,
+        default: 0
+    }
 	// userFav : Review[],
-	userRate : {
-        type: Number,
-        required: true
-    },
 });
 
 User.plugin(passportLocalMongoose);

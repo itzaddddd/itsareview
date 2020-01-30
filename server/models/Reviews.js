@@ -6,7 +6,7 @@ let Review = new Schema({
         type: String,
         required: true
     },
-	rvName : {
+	rvTitle : {
         type: String,
         required: true
     },
@@ -16,7 +16,8 @@ let Review = new Schema({
 	userID : String,
 	rvTime : {
         type: Date,
-        required: true
+        required: true,
+        default: Date.now
     },
 	rvType : [{
         type: String,
@@ -39,7 +40,8 @@ let Review = new Schema({
 	},
 	rvStatus : {
         type: Boolean,
-        required: true
+        required: true,
+        default: false
     },
 	rvNovel : {
 		rvSource : {
@@ -51,11 +53,12 @@ let Review = new Schema({
         },
 	},
 	reviewRate : {
-        type: String,
+        type: Number,
     },
 	rvView_Num : {
         type: Number,
-        required: true
+        required: true,
+        default: 0
     },
 	// rvComment : {
 	// 	rvComment_Num : {
@@ -64,10 +67,10 @@ let Review = new Schema({
     //     },
 	// 	rvComment_Post : Comment[]
 	// },
-	rvFav_Num : {
-        type: Number,
-        required: true
-    },
+	// rvFav_Num : {
+    //     type: Number,
+    //     required: true
+    // },
 });
  
 module.exports = mongoose.model('Review',Review);

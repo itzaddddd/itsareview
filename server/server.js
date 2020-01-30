@@ -49,7 +49,7 @@ app.use(bodyParser.json());
 /* create router */
 app.use('/user',userRoute);
 app.use('/review',reviewRoute);
-app.use('/serach',searchRoute);
+app.use('/search',searchRoute);
 
 app.get('/',(req,res)=>{
     res.send("Hello React");

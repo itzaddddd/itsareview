@@ -1,10 +1,8 @@
 let logoutRoute = require('express').Router();
 
-logoutRoute.route('/').get((req,res)=>{
-    console.log('Log out');
-});
-
 logoutRoute.route('/').post((req,res)=>{
+    req.session.destroy();
+    res.logout();
     console.log('Validate log out');
 });
 
