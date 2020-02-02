@@ -1,7 +1,6 @@
 const reviewRoute = require('express').Router();
 const Review = require('../models/Reviews');
 const Category = require('../models/Categories');
-const User = require('../models/Users');
 
 reviewRoute.route('/').get((req,res)=>{
     Review.find({},(err,result)=>{

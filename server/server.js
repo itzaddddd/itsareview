@@ -15,7 +15,7 @@ connection.once('open', ()=>{
     console.log("MongoDB database connection established successfully");
 });
 /* import model */
-let User = require('./models/Users');
+const User = require('./models/Users');
 
 /* import router */
 const userRoute = require('./routes/userRoute');
@@ -28,6 +28,11 @@ const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 
+/* - */
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+
 app.use(require('express-session')({
     secret: 'itsareview',
     resave: false,
@@ -38,14 +43,32 @@ app.use(passport.initialize());
 app.use(flash());
 app.use(passport.session());
 
-passport.use(new LocalStrategy(User.authenticate()));
+passport.use(new LocalStrategy({
+    usernameField: 'userName',
+    passwordField: 'pass1'
+},(username, password, done) => {
+    console.log('username : '+username);
+    User.findOne({
+        userName: username
+    }, (error, user) => {
+        if (error) {
+            return done(error);
+        }
+        if (!user) {
+            return done(null, false, {
+                message: 'Username or password incorrect'
+            });
+        }
+
+
+        // Do other validation/check if any
+
+        return done(null, user);
+    });
+})
+);
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
-/* - */
-app.use(cors());
-app.use(bodyParser.json());
-
 /* create router */
 app.use('/user',userRoute);
 app.use('/review',reviewRoute);
