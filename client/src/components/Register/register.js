@@ -72,19 +72,29 @@ class Login extends Component{
 
     render(){
         return(
-            <div className="regis">
-                <form method="post" onSubmit={this.onSubmit}>
-                    <h2>Register</h2>
-                    username :
-                    <input type="text" name="userName" autoComplete="username" onChange={this.onChangeUserName}/><br />
-                    password :
-                    <input type="password" name="pass1" autoComplete="new-password" onChange={this.onChangePass1}/><br />
-                    re-password :
-                    <input type="password" name="pass2" autoComplete="new-password" onChange={this.onChangePass2}/><br />
-                    e-mail:
-                    <input type="email" name="userEmail" onChange={this.onChangeUserEmail}/><br /> 
-                    <input type="submit"  />           
-                </form>
+            <div class="container">
+                <h2>ลงทะเบียน</h2>
+                <div class="form-group">
+                    <label for="usr">ID:</label>
+                    <input type="text" class="form-control" id="usr" name="userName" 
+                    autoComplete="username" onChange={this.onChangeUserName}/>
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="pwd" name="pass1" 
+                    autoComplete="username" onChange={this.onChangePass1}/>
+                </div>
+                <div class="form-group">
+                    <label for="cpwd">Comfirm Password:</label>
+                    <input type="text" class="form-control" id="cpwd" name="pass2" 
+                    autoComplete="username" onChange={this.onChangePass2} />
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="password" class="form-control" id="email" name="userEmail" 
+                    autoComplete="username" onChange={this.onChangeUserEmail}/>
+                </div>
+                <button class="btn btn-success">ลงทะเบียน</button>
             </div>
         )
     }
