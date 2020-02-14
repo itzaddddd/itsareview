@@ -1,33 +1,33 @@
 let registerRoute = require('express').Router();
 let User = require('../models/Users');
+let passport = require('passport');
+require('../config/passport');
 
 registerRoute.route('/').get((req,res)=>{
     console.log('Register');
 });
 
 registerRoute.route('/').post((req,res,next)=>{
-    console.log(req.body);
-    let userRegister = new User({
+    let newUser = new User({
         userName: req.body.userName,
         userEmail: req.body.userEmail
     });
-    console.log('userRegister : '+userRegister);
-    User.register(userRegister, req.body.pass1,  
-        (err,user)=>{
-            if(err){
-                console.log(err);
-            }
-            // passport.authenticate('local')(req,res, ()=>{
-            //     req.session.save((err)=>{
-            //         if(err){
-            //             return next(err);
-            //         }
-            //         res.json(user);
-            //     });
-            // });
-        
+    User.register(newUser,req.body.pass1,(err,user)=>{
+        console.log("user : ",user);
+        if(err){
+            console.log(err);
+            return next(err);
+        }
+        passport.authenticate('local')(req,res,()=>{
+            req.session.save(err=>{
+                if(err){
+                    console.log(err)
+                    return next(err);
+                }
+                res.send(user);
+            });
         });
-       
+    }); 
 });
 
 module.exports = registerRoute;

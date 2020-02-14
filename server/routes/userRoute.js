@@ -5,8 +5,6 @@ const logoutRoute = require('./logoutRoute');
 const registerRoute = require('./registerRoute');
 
 const User = require('../models/Users');
-
-
 userRoute.route('/:id').get((req,res)=>{
     User.findById({_id:req.params.id},(err,result)=>{
         if(err){

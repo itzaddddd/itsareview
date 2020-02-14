@@ -1,0 +1,161 @@
+body {
+    font-family: "Maison Neue Book", "Helvetica Neue";
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  
+  .wrapper {
+    padding: 18px;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .comments {
+    border: 1px solid #d1d1d1;
+    background: #f1f1f1;
+  }
+  
+  .comments:empty {
+    border: 0;
+  }
+  
+  .comment {
+    border-bottom: 1px solid #d1d1d1;
+    background: #fff;
+    text-align: left;
+  }
+  
+  .author {
+    overflow: hidden;
+    margin-bottom: 6px;
+    padding: 18px;
+  }
+  
+  .avatar {
+    background: #222;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    float: left;
+  }
+  
+  .meta {
+    float: left;
+    margin-left: 12px;
+    font-size: 13px;
+  }
+  
+  .meta span {
+    display: block;
+    padding: 3px 0;
+  }
+  
+  .meta .timestamp {
+    color: #aaa;
+    text-transform: uppercase;
+  }
+  
+  .content {
+    clear: both;
+    padding: 0 18px;
+  }
+  
+  .content p {
+    margin: 6px 0;
+    line-height: 24px;
+  }
+  
+  .thread {
+    padding-left: 48px;
+    background: #f1f1f1;
+    border-top: 1px solid #d1d1d1;
+    text-align: center;
+  }
+  
+  .thread .reply {
+    display: none;
+  }
+  
+  .thread .comment {
+    border-left: 1px solid #d1d1d1;
+  }
+  
+  .thread .comment:last-child{
+    border-bottom: 0;
+  }
+  
+  .comment-input {
+    border: 1px solid #333;
+    padding: 18px;
+    margin: 24px 0;
+    overflow: hidden;
+    position: relative;
+    background: #fff;
+    text-align: left;
+  }
+  
+  .comment-input .author {
+    float: left;
+    padding: 0;
+  }
+  
+  .comment-input textarea {
+    float: left;
+    margin-left: 12px;
+    border: 0;
+    width: calc(100% - 58px);
+    display: block;
+    border: none;
+    overflow: auto;
+    outline: none;
+    padding: 12px 0;
+    line-height: 24px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    resize: none;
+    background: #fff;
+    font-size: 14px;
+  }
+  
+  .comment-input .button {
+    margin-left: 50px;
+  }
+  
+  .moderate {
+    opacity: 0;
+    float: right;
+  }
+  
+  /* .comment:hover .moderate {
+    opacity: 1;
+  }
+   */
+  .controls {
+    padding: 18px;
+    overflow: hidden;
+  }
+  
+  .top-level {
+  }
+  
+  .button {
+    display: inline-block;
+    background: #fff;
+    padding: 18px 24px;
+    text-align: center;
+    border: 1px solid #d1d1d1;
+  }
+  
+  .thread .button {
+    margin: 18px auto;
+  }
+  
+  .template {
+    display: none;
+  }
+  
+  a {
+    color: green;
+  }
+  

@@ -1,0 +1,19 @@
+body {
+	margin: 0;
+	padding: 0; 
+}
+.header {
+	padding: 10px 0;
+	background-color: #000;
+}
+
+.header, .nav {
+	text-align: left;
+	color: #fff;
+}
+
+.search {
+	text-align: right;
+	color: #9FB444;
+	
+}

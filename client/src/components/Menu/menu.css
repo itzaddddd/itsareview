@@ -37,7 +37,7 @@ nav ul {
 
 nav li {
     display: inline-block;
-    width: calc(100%/5 - 1px - 2*3px);
+    width: calc(100%/2 - 1px - 2*3px);
 
     /* width: calc(100vw / 4.6); */
     padding: 10px;
@@ -52,10 +52,15 @@ nav li:hover {
     transition: 1s;
 }
 
+/* add this css for chang color of icon in menu from green to black*/
+i.menu{
+    color: black;
+}
+
 
 @media (max-width: 782px){
     nav li {
-        width: calc(100%/5 - 1px - 2*3px);
+        width: calc(100%/2 - 1px - 2*3px);
         
     }
 

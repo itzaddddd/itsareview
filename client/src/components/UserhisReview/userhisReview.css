@@ -1,6 +1,6 @@
-body{
-    font-family: 'Kodchasan', sans-serif;
-    font-size: 0.5em;
+/*chage body to clase userHis*/
+.userHis{
+    font-size: 0.75em;
 }
 
 .show-review{

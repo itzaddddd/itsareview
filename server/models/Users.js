@@ -3,32 +3,25 @@ let Schema = mongoose.Schema;
 let passportLocalMongoose = require('passport-local-mongoose');
 
 let User = new Schema({
-    // userID : {
-    //     type: String,
-    //     required: true
-    // },
+  
 	userName : {
-        type: String,
-        required: true
+        default: "xxxxx",
+        type: String
+        // required: true
     },
-	// userLevel : Number,
-	// userImage : {
-    //     type: String,
-    //     default: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'        
-    // },
-	userEmail : {
+	userImage : {
         type: String,
-        required: true
-    }
-	// ,userPassword : {
-    //     type: String,
-    //     required: true
-    // },
-	// userJoin : {
-    //     type: Date,
-    //     default: Date.now
-    // },
-	// // logReview : Review[],
+        default: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'        
+    },
+	userEmail : {
+        default: "xxxx@gmail.com",
+        type: String
+    },
+	userJoin : {
+        type: Date,
+        default: Date.now
+    },
+	// logReview : Review[]
 	// // logBoard : Board[],
 	// reviewNum : {
     //     type: Number,
@@ -43,5 +36,7 @@ let User = new Schema({
 	// userFav : Review[],
 });
 
-User.plugin(passportLocalMongoose);
+User.plugin(passportLocalMongoose,{
+    usernameField:"userName"
+});
 module.exports = mongoose.model('User',User);

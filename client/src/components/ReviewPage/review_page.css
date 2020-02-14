@@ -1,0 +1,71 @@
+h3 {
+  line-height: 5%;
+  margin: 8% 0% ;
+} 
+
+/* body{
+  font-size: 17px;
+    margin: 2% 3% ;
+    
+    color: black;
+
+} */
+hr.new5 {
+  border-top: 1px solid #9FB444;
+  
+  margin: 0% 0%;
+}
+
+hr.new4 {
+  border-top: 1px solid #9FB444;
+  
+  margin: 10% 1% 0% ;
+}
+.view{
+  font-size: 12px;
+    margin: 0% 7% ;
+    
+    color: black;
+}
+
+.type{
+  font-size: 17px;
+    margin: 5% 10% ;
+    border: black;
+    color: black;
+}
+.type2{
+  font-size: 15px;
+    margin: 3% 12% ;
+    border: black;
+    color: black;
+    border:1px solid #9FB444;
+    border-radius: 50px;
+    border-width: auto;
+    
+    
+}
+
+.box{
+  border:1px solid #9FB444;
+  border-radius:3%;
+  width: 85%;
+  height: 40%;
+  margin: 6% 6% 0%;
+}  
+
+.givereview{
+  font-size: 17px;
+  margin: 0% 34.5%;
+    color: black;
+    
+
+}
+
+
+
+
+#score{
+    font-size: 15px;
+    margin: 50px;
+}

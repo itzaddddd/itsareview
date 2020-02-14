@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-class Login extends Component{
+class Register extends Component{
     constructor(props){
         super(props);
     
@@ -44,60 +44,65 @@ class Login extends Component{
 
     onSubmit = e => {
         e.preventDefault();
-
-        let data = {
-            userName: this.state.userName,
-            pass1: this.state.pass1,
-            pass2: this.state.pass2,
-            userEmail: this.state.userEmail,
-        }
-
-        axios.post('http://localhost:4000/user/register',data)
-        .then(data => {
-            console.log(data.data)
-        })
-        .catch(err => {
-            console.log(err.message);
-        });
-
-        console.log("post state");
-
+        
+        console.log(this.state.userName,"\n",this.state.pass1,"\n",this.state.pass2,"\n",this.state.userEmail);
+        
+        axios.post('http://localhost:4000/user/register',{
+                userName: this.state.userName,
+                userEmail: this.state.userEmail,
+                pass1: this.state.pass1,
+                pass2: this.state.pass2
+            })
+        .then(
+            response => {
+                console.log('res : ',response);
+            }
+        )
+        .catch(
+            err => {
+                console.log('err : ',err);
+            }
+        );
+            
         this.setState({
             userName: '',
             pass1: '',
             pass2: '',
             userEmail: '',
         });
+       
     } 
 
     render(){
         return(
-            <div class="container">
-                <h2>ลงทะเบียน</h2>
-                <div class="form-group">
-                    <label for="usr">ID:</label>
-                    <input type="text" class="form-control" id="usr" name="userName" 
-                    autoComplete="username" onChange={this.onChangeUserName}/>
+            <form onSubmit={this.onSubmit}>
+                <div className="container">
+                    <h2>ลงทะเบียน</h2>
+                    <div className="form-group">
+                        <label htmlFor="usr">Username:</label>
+                        <input type="text" className="form-control" id="usr" name="userName" 
+                        autoComplete="username" onChange={this.onChangeUserName}/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="pwd">Password:</label>
+                        <input type="password" className="form-control" id="pwd" name="pass1" 
+                        autoComplete="password" onChange={this.onChangePass1}/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="cpwd">Comfirm Password:</label>
+                        <input type="password" className="form-control" id="cpwd" name="pass2" 
+                        autoComplete="password" onChange={this.onChangePass2} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="email">E-mail:</label>
+                        <input type="text" className="form-control" id="email" name="userEmail" 
+                         onChange={this.onChangeUserEmail}/>
+                    </div>
+                    <button className="btn btn-success">ลงทะเบียน</button>
                 </div>
-                <div class="form-group">
-                    <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" id="pwd" name="pass1" 
-                    autoComplete="username" onChange={this.onChangePass1}/>
-                </div>
-                <div class="form-group">
-                    <label for="cpwd">Comfirm Password:</label>
-                    <input type="text" class="form-control" id="cpwd" name="pass2" 
-                    autoComplete="username" onChange={this.onChangePass2} />
-                </div>
-                <div class="form-group">
-                    <label for="email">E-mail:</label>
-                    <input type="password" class="form-control" id="email" name="userEmail" 
-                    autoComplete="username" onChange={this.onChangeUserEmail}/>
-                </div>
-                <button class="btn btn-success">ลงทะเบียน</button>
-            </div>
+            </form>
         )
     }
 }
 
-export default Login;
+export default Register;

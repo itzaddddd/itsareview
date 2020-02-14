@@ -2,20 +2,12 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const PORT = 4000;
-/* connect mongoDB database */
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/Itsareview', { 
-    useUnifiedTopology: true, 
-    useNewUrlParser: true, 
-    useCreateIndex: true 
-});
-const connection = mongoose.connection;
-connection.once('open', ()=>{
-    console.log("MongoDB database connection established successfully");
-});
-/* import model */
-const User = require('./models/Users');
+const path = require('path');
+const session = require('express-session');
+
+/*set constraint*/
+const PORT = require('./config/PORT').PORT;
+const SECRET = require('./config/secret').secret;
 
 /* import router */
 const userRoute = require('./routes/userRoute');
@@ -23,60 +15,70 @@ const reviewRoute = require('./routes/reviewRoute');
 const searchRoute = require('./routes/searchRoute');
 
 /* passport */
-const LocalStrategy = require('passport-local').Strategy;
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 
-/* - */
-app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
+/* create database connection */
+require('./config/mongoose');
 
-app.use(require('express-session')({
-    secret: 'itsareview',
+/* import models */
+const User = require('./models/Users');
+
+/* connect mongoDB session */
+const MongoDBStore = require('connect-mongodb-session')(session);
+const DB = require('./config/database').url;
+const store = new MongoDBStore({
+    uri: DB,
+    collection: 'session'
+});
+
+store.on('error',error=>{
+    console.log(error)
+});
+
+app.use(cors());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(cookieParser());
+
+app.use(session({
+    secret: SECRET,
+    cookie: {
+        maxAge: 1000*60*60*24*7 // 1 week
+    },
+    store: store,
     resave: false,
     saveUninitialized: false
 }));
 
-app.use(passport.initialize());
 app.use(flash());
+app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(new LocalStrategy({
-    usernameField: 'userName',
-    passwordField: 'pass1'
-},(username, password, done) => {
-    console.log('username : '+username);
-    User.findOne({
-        userName: username
-    }, (error, user) => {
-        if (error) {
-            return done(error);
-        }
-        if (!user) {
-            return done(null, false, {
-                message: 'Username or password incorrect'
-            });
-        }
-
-
-        // Do other validation/check if any
-
-        return done(null, user);
-    });
-})
-);
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
 /* create router */
+
+// Serve the static files from the React app
+// app.use(express.static(path.join(__dirname, '/../client/build')));
+
+app.route('/').get((req,res)=>{
+    res.send("Hello React");
+});
+
+// Handles any requests that don't match the ones above
+// app.get('*', (req,res) =>{
+//     res.sendFile(path.join(__dirname+'/../client/build/index.html'));
+// });
+
 app.use('/user',userRoute);
 app.use('/review',reviewRoute);
 app.use('/search',searchRoute);
 
-app.get('/',(req,res)=>{
-    res.send("Hello React");
-});
 
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);
