@@ -2,7 +2,7 @@
 body{
     font-family: 'Kanit', sans-serif;
 }
-p{
+p.cateP{
     color: #B9D253;
     font-size: 30px;
     font-weight: bold;
@@ -53,6 +53,6 @@ div.typebar a:hover {
     background-color: #777;
 }
 
-i{
+div.typebar i{
     font-size: 40px;
 }

@@ -1,9 +1,4 @@
-body {
-    font-family: "Maison Neue Book", "Helvetica Neue";
-    font-size: 14px;
-    box-sizing: border-box;
-  }
-  
+
   .wrapper {
     padding: 18px;
     max-width: 800px;
@@ -115,7 +110,6 @@ body {
     box-shadow: none;
     resize: none;
     background: #fff;
-    font-size: 14px;
   }
   
   .comment-input .button {
@@ -134,9 +128,6 @@ body {
   .controls {
     padding: 18px;
     overflow: hidden;
-  }
-  
-  .top-level {
   }
   
   .button {
@@ -158,4 +149,3 @@ body {
   a {
     color: green;
   }
-  

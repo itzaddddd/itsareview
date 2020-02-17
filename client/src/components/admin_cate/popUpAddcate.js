@@ -47,7 +47,7 @@ export class PopUp extends Component {
             
             <div>
 
-                <Modal
+                <Modal animation={false}
                     {...this.props}
                     size="md"
                     aria-labelledby="contained-modal-title-vcenter"
@@ -68,8 +68,8 @@ export class PopUp extends Component {
                         </div>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={this.props.onHide}>ยกเลิก</Button>
-                        <Button className='success'>ยืนยัน</Button>
+                        <Button className="modalBtn" variant="secondary" onClick={this.props.onHide}>ยกเลิก</Button>
+                        <Button className='modalBtn success'>ยืนยัน</Button>
                     </Modal.Footer>
                 </Modal>
 

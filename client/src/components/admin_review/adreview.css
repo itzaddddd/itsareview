@@ -28,3 +28,22 @@ div.topicPage > p.topicName {
     color: #B9D253;
 }
 
+div.fade.modal.show {
+    overflow: visible;
+}
+
+.fade.show {
+    height: 100%;
+}
+
+@media (min-width: 768px) {
+    .fade {
+        height: 100%;
+    }
+
+    .modal-backdrop.show {
+    height: 100%;
+    overflow: visible;
+    }
+}
+

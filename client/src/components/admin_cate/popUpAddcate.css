@@ -38,13 +38,17 @@ p.popUpTopic{
 }
 
 @media (min-width: 768px) {
-    .fade.show {
+    .fade {
+        height: 100%;
+    }
+
+    .modal-backdrop.show {
     height: 100%;
     overflow: visible;
     }
 }
 
-.Footer Button {
+.Footer Button.modalBtn {
     margin-left: 1em;
     margin-right: 1em;
     margin-bottom: 2em;

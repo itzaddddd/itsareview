@@ -1,18 +1,19 @@
 
-.header {
+div.navHeader {
 	padding: 5px 0;
 	background-color: #000;
 	line-height:3;
 	
 }
 
-.photo{
+img.photo{
 	width:auto; 
 	height:32;
+	margin-left: 1em;
 }
     
 
-#search {
+div#search {
 	color: #9FB444;
 	float: right;
 	margin-right: 1em ;
@@ -20,12 +21,13 @@
 
 @media(min-width: 768px) {
 
-	.header {
+	div.navHeader {
 		padding: 10px 0;
 		background-color: #000;
 		line-height:3;
 	}
-	.photo {
+	
+	img.photo {
 
 		width:auto; 
 		height:40px;

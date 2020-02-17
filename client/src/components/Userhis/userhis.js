@@ -12,7 +12,7 @@ class Userhis extends Component{
                 <div class="show-review">
                 <table class="in-box">
                     <tr>
-                        <a class="novel-name">ชื่อนิยาย</a>
+                        <a class="novel-name">ชื่อนิยาย</a> 
                         <a class="date">วันที่/เวลา <i class="far fa-heart"></i></a>
                     </tr>
                     <tr>

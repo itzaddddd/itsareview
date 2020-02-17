@@ -5,7 +5,7 @@ import './searchfound.css';
 function Searchfound(){
     return(
         <div>
-            <h1><i class="fas fa-search"></i>ผลการค้นหารีวิวนิยาย</h1>
+            <h1 className="Notice"><i class="fas fa-search"></i>ผลการค้นหารีวิวนิยาย</h1>
         </div>
         )
     }

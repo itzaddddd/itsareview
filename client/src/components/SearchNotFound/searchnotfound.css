@@ -2,14 +2,15 @@
 body{
     font-family: 'Kanit', sans-serif;
 }
-h1 {
+h1.Notice {
     text-align: center;
+    font-size: 4vw;
 }
-p{
+p.Notice{
     text-align: center;
-    font-size: 20px;
+    font-size: 3vw;
   }
-.fas{
+.fas{ 
     color: #B9D253;
     margin: 10px;
 }

@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
 body{
     font-family: 'Kanit', sans-serif;
-    color: #B9D253;
-    font-size: 20px;
+    /* color: #B9D253;
+    font-size: 20px; */
 }
 h1{
     text-align: center;
@@ -13,7 +12,7 @@ h1.head1{
     border-radius: 5px;
     margin: 40px;
 }
-p{
+p.inputP{
     text-indent: 50px;
 }
 .blank{

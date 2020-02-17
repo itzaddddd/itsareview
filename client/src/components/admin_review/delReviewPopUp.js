@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-import {Modal, Button, Row, Col, Form} from 'react-bootstrap';
+import {Modal, Button} from 'react-bootstrap';
 import './adreview.css';
 
 
@@ -14,7 +14,7 @@ export class PopUpDelReview extends Component {
       
       return (
         <div>
-          <Modal
+          <Modal animation={false}
             {...this.props}
             size="md"
             aria-labelledby="contained-modal-title-vcenter"
