@@ -6,13 +6,32 @@ form.RegisterForm {
     position: relative
 }
 
-.btn-submit {
-    background-color: #B9D253;
-    border: none;
-    color:white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 2vw;
+#regis-button {
+        background-color: #B9D253; 
+        width: 50%;
+        margin-left: 25%;
+        margin-right: 25%;
+        border: none;
+        color:black;
+        padding: 5px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+}
+
+#regis-title {
+    font-size: 20px;
+    margin-left: 10%;
+    color: black;
+}
+
+.errorMessage {
+    font-size: 10px;
+    color: red;
+    margin-left: 25px;
+}
+
+input{
+    padding: 12px 20px;
 }

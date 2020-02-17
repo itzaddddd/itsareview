@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-// import './login.css'
+import './login.css'
 import axios from 'axios';
 import Navbar from '../NavBar/NavBar';
 import {useSelector, useDispatch} from 'react-redux';
@@ -107,6 +107,11 @@ class Login extends Component{
             return <Redirect to='/user' />
         }
         return(
+            <div>
+                {/*<div id="logo-black">
+                    <img src="https://sv1.picz.in.th/images/2020/02/18/xUSig2.png" alt="logo" width="70%" height="auto" />
+                </div>  */}  
+            
             <form className="LoginForm" onSubmit={this.onSubmit}>
                 <div className="container">
                     <div id="login-title">เข้าสู่ระบบ</div>
@@ -120,9 +125,9 @@ class Login extends Component{
                             autoComplete="username" onChange={this.handleChange} 
                         />
                     </div>
-                    {/*{formErrors.userName.length > 0 && (
+                    {formErrors.userName.length > 0 && (
                         <span className="errorMessage">{formErrors.userName}</span>
-                    )}*/}
+                    )}
                     <div className="form-group login">
                         <input 
                             type="password" 
@@ -134,15 +139,18 @@ class Login extends Component{
                             onChange={this.handleChange} 
                         />
                     </div>
-                    {/*{formErrors.pass1.length > 0 && (
+                    {formErrors.pass1.length > 0 && (
                         <span className="errorMessage">{formErrors.pass1}</span>
-                    )}*/}
+                    )}
                     <div className="button">
                         <button className="btn btn-success" id="login-button" onSubmit={this.onSubmit}>เข้าสู่ระบบ</button>
                     </div>
-                    <p>ยังไม่มีบัญชี? <a href="/register">สมัคร</a></p>
+                    <div id="account-regis">
+                        <span id="account">ยังไม่มีบัญชี?</span><a href="/register" id="link-regis">สมัคร</a>
+                    </div>
                 </div>
             </form>
+            </div>
         
         )
     }

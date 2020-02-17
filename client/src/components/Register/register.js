@@ -127,41 +127,57 @@ class Register extends Component{
         return(
             <form className="RegisterForm" onSubmit={this.onSubmit}>
                 <div className="container">
-                    <h2>ลงทะเบียน</h2>
+                    <div id="regis-title">ลงทะเบียน</div>
                     <div className="form-group">
-                        <label htmlFor="usr">Username:</label>
-                        <input type="text" className="form-control" id="usr" name="userName" 
-                        autoComplete="username" onChange={this.handleChange}/>
+                        <input 
+                            type="text" 
+                            className="form-control" 
+                            id="usr" name="userName"
+                            placeholder="ชื่อผู้ใช้" 
+                            autoComplete="username" 
+                            onChange={this.handleChange}/>
                     </div>
                     {formErrors.userName.length > 0 && (
                         <span className="errorMessage">{formErrors.userName}</span>
                     )}
                     <div className="form-group">
-                        <label htmlFor="pwd">Password:</label>
-                        <input type="password" className="form-control" id="pwd" name="pass1" 
-                        autoComplete="password" onChange={this.handleChange}/>
+                        <input 
+                            type="password" 
+                            className="form-control" 
+                            id="pwd" name="pass1"
+                            placeholder="รหัสผ่าน" 
+                            autoComplete="password" 
+                            onChange={this.handleChange}/>
                     </div>
                     {formErrors.pass1.length > 0 && (
                         <span className="errorMessage">{formErrors.pass1}</span>
                     )}
                     <div className="form-group">
-                        <label htmlFor="cpwd">Comfirm Password:</label>
-                        <input type="password" className="form-control" id="cpwd" name="pass2" 
-                        autoComplete="password" onChange={this.handleChange} />
+                        <input 
+                            type="password" 
+                            className="form-control" 
+                            id="cpwd"
+                            placeholder="ยืนยันรหัสผ่าน" 
+                            name="pass2" 
+                            autoComplete="password" onChange={this.handleChange} />
                     </div>
                     {formErrors.pass2.length > 0 && (
                         <span className="errorMessage">{formErrors.pass2}</span>
                     )}
                     <div className="form-group">
-                        <label htmlFor="email">E-mail:</label>
-                        <input type="text" className="form-control" id="email" name="userEmail" 
-                         onChange={this.handleChange}/>
+                        <input 
+                            type="text" 
+                            className="form-control" 
+                            id="email"
+                            placeholder="อีเมล" 
+                            name="userEmail" 
+                            onChange={this.handleChange}/>
                     </div>
                     {formErrors.userEmail.length > 0 && (
                         <span className="errorMessage">{formErrors.userEmail}</span>
                     )}
                     <div className="button">
-                        <button className="btn btn-success">ลงทะเบียน</button>
+                        <button className="btn btn-success" id="regis-button">ลงทะเบียน</button>
                     </div>
                 </div>
             </form>
