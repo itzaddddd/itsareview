@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import "./register.css";
 class Register extends Component{
     constructor(props){
         super(props);
@@ -75,7 +76,7 @@ class Register extends Component{
 
     render(){
         return(
-            <form onSubmit={this.onSubmit}>
+            <form className="RegisterForm" onSubmit={this.onSubmit}>
                 <div className="container">
                     <h2>ลงทะเบียน</h2>
                     <div className="form-group">

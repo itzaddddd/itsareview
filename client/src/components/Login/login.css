@@ -1,0 +1,15 @@
+form.LoginForm {
+    background: rgb(89,88,106);
+    background: linear-gradient(0deg, rgba(89,88,106,1) 0%, rgba(185,210,83,1) 62%);
+}
+
+.btnsuccess {
+        background-color: #B9D253; 
+        border: none;
+        color:black;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 2vw;
+}

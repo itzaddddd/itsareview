@@ -1,17 +1,14 @@
-import React, { Component } from 'react';
-class SearchNotFound extends Component{
-    constructor(props){
+import React from 'react';
+import './searchnotfound.css';
 
-    }
-
-    render(){
-        return(
-            <div>
-                <h1>ผลการค้นหารีวิวนิยาย</h1>
-                <p>ไม่พบข้อมูล</p>
-            </div>
-            )
-        }
+function Searchnotfound(){
+    return(
+        <div>
+            <h1><i class="fas fa-search"></i>ผลการค้นหารีวิวนิยาย</h1>
+            <p>ไม่พบข้อมูลที่ค้นหา</p>
+            <center><i class="far fa-times-circle"></i></center>
+        </div>
+        )
     }
     
-export default SearchNotFound;
+    export default Searchnotfound;

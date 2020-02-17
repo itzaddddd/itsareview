@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
+body{
+    font-family: 'Kanit', sans-serif;
+}
+h1{
+    text-align: center;
+    color: black;
+}
+.fas{
+    color: #B9D253;
+    margin: 10px;
+}

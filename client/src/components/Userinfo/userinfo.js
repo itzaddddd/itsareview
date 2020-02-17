@@ -34,7 +34,7 @@ class UserInfo extends Component{
             <div>
                 <div className="header">
                     <div className="avatar">
-                        <img src={img} alt="avatar" />
+                        <img className="avatar" src={img} alt="avatar" />
                     </div>    
                 </div>
                 

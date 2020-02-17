@@ -1,9 +1,9 @@
 body{
-    font-family: 'Kodchasan', sans-serif;
+    font-family: 'Kanit', sans-serif;
     font-size: 1em;  
     color: #242424;  
 }
-.header{
+div.header{
     width:100%; 
     height: 150px;
     box-shadow: 0 2px 10px 0 rgba(25,25,25,0.5), 0 4px 13px 0 rgba(25,25,25,0.2);
@@ -18,11 +18,11 @@ body{
  
  }
 
- .avatar{
+div.avatar{
     text-align: center;
     height: 100px;
  }
- img {
+img.avatar {
     width: 110px;
     height: 110px;
     position: relative;
@@ -36,16 +36,16 @@ body{
     padding-top: 70px;
 }
 
-.col-sm-12{
+div.col-sm-12{
     padding-top: 25px;
     text-align: center;
 }
 
-.far, .fas{
+i.far, i.fas{
     color: #B9D253;
 }
 
-.button-edit{
+button.button-edit{
     background-color: #B9D253;
     color: #242424;
     border: none;
@@ -58,7 +58,7 @@ body{
     padding-top: 30px;
 }
 
-.history{
+div.history{
     width: 80%;
     color: #242424;
     margin: auto;
@@ -67,13 +67,13 @@ body{
 hr{
     background-color: #707070;
 }
-.review, .board{
+div.review, div.board{
     color: #707070;
 }
-.more{
+a.more{
     float: right;
 }
-.show{
+div.show{
     /* background-color: #e6e6e6; */
     text-align: center;
     height: 110px;
@@ -90,7 +90,7 @@ hr{
     body {
         font-size: 1.5em;
     }
-    .show{
+    div.show{
         height: 200px;
     }
 }

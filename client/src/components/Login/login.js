@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import "./login.css";
 class Login extends Component{
     constructor(props){
         super(props);
@@ -53,7 +54,7 @@ class Login extends Component{
 
     render(){
         return(
-            <form onSubmit={this.onSubmit}>
+            <form class="LoginForm" onSubmit={this.onSubmit}>
                 <div className="container">
                     <h2>เข้าสู่ระบบ</h2>
                     <div className="form-group">

@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
+body{
+    font-family: 'Kanit', sans-serif;
+}
+p{
+    color: #B9D253;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 50px;
+}
+p.poppularboardhead{
+    color: #B9D253;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 80px;
+}
+button#writereview{
+    font-family: 'Kanit', sans-serif;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 900px;
+    cursor: pointer;
+    border-radius:15px;
+}
+.line{
+    border-top: 1px solid ;
+    margin: 40px;
+}
+div.typebar{
+    background-color:  #B9D253;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+div.typebar a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 40px;
+    margin: 10px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+div.typebar a:hover {
+    background-color: #777;
+}
+
+i{
+    font-size: 40px;
+}
