@@ -5,7 +5,6 @@
 
 div.show-review{
     width: 80%;
-    height: 125px;
     color: #242424;
     margin: auto;
     background-color: #e6e6e6;
@@ -23,9 +22,9 @@ table.in-box{
     width: 85%;
     margin: auto;
 }
-i.far, i.fas{
+/* i.far, i.fas{
     color: #B9D253;
-}
+} */
 #icon-b{
     color: black;
 }
@@ -49,13 +48,13 @@ div.story{
 
 
 @media(min-width: 768px) {
-    body {
+    /* body {
         font-size: 1.00em;
-    }
-    div.show-review{
+    } */
+    /* div.show-review{
         height: 200px;
         padding-top: 15px;
-    }
+    } */
     div.show-board{
         height: 150px;
         padding-top: 15px;

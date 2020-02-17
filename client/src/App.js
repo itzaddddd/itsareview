@@ -2,9 +2,8 @@ import React , {Component} from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Route, Switch} from 'react-router-dom'
-// import {Route, Link} from 'react-router-dom';
 
-// import Menu from './components/Menu/menu';
+
 import adHome from './components/admin_home/adhome';
 import adUser from './components/admin_user/aduser';
 import adReview from  './components/admin_review/adreview';
@@ -19,16 +18,19 @@ import ReviewPage from './components/ReviewPage/review_page';
 import ReviewForm from './components/ReviewFormPage/ReviewFormPage'; 
 import UserHis from './components/Userhis/userhis';
 import UserHisReview from './components/UserhisReview/userhisReview';
+import Dashboard from './components/dashboardReview/dashboard';
 // import Search from './components/Search/search';
 function App() {
   return (
     <div>
       <Switch>
+        {/* <Dashboard/> */}
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/user" component={UserInfo} />
         <Route exact path="/review" component={ReviewPage} />
         <Route exact path="/review/create" component={ReviewForm} />
+        <Route exact path="/" component={Dashboard}/>
 
 
         {/* admin */}

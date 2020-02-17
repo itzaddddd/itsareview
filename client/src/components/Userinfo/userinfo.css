@@ -1,7 +1,7 @@
 body{
     font-family: 'Kanit', sans-serif;
-    font-size: 1em;  
-    color: #242424;  
+    /* font-size: 1em;  
+    color: #242424;   */
 }
 div.header{
     width:100%; 
@@ -41,9 +41,9 @@ div.col-sm-12{
     text-align: center;
 }
 
-i.far, i.fas{
+/* i.far, i.fas{
     color: #B9D253;
-}
+} */
 
 button.button-edit{
     background-color: #B9D253;
@@ -87,9 +87,9 @@ div.show{
 
 
 @media(min-width: 768px) {
-    body {
+    /* body {
         font-size: 1.5em;
-    }
+    } */
     div.show{
         height: 200px;
     }

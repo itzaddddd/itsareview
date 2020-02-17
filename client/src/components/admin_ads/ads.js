@@ -2,7 +2,7 @@ import React , {Component} from 'react';
 import './ads.css';
 
 import Table from 'react-bootstrap/Table';
-import Navbar from "D:/SE/itsareview/client/src/components/admin_navbar/navbar.js";
+import Navbar from "../admin_navbar/navbar.js";
 // import Pops from './addbanner';
 
 

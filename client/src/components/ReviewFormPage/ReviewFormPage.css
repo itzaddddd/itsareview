@@ -97,7 +97,7 @@ input[type='text']:focus, input[type='password']:focus, input[type='email']:focu
     margin: 6% 6% 0%;
 }
 
-label,h1,p {
+label.label,h1 {
   
     font-size: 80%;
     margin-top: 20% 10% 0%;

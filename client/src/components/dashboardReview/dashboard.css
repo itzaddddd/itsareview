@@ -1,0 +1,146 @@
+.carousel-indicators{
+    height: 6px;
+    width:6px;
+    margin: center;
+    background-color: #bbb;
+    border-radius: 50%;
+}
+
+div.inlineReviewDashboard {
+    overflow: auto;
+    white-space: nowrap;
+    width: 100%;
+    display: inline-block;
+    margin-left: 5em;
+    -ms-overflow-style: none;
+}
+
+div.inlineReviewDashboard::-webkit-scrollbar {
+    display: none;
+}
+
+div.inlineReview {
+    margin:0 2em 0 2em;
+    display: inline-block;
+    width: 40%;
+    overflow: hidden;
+}
+
+div.inlineBoardDashboard {
+    
+}
+
+div.inlineBoard {
+    display: block;
+    margin-bottom: 2em;
+    text-align: left;
+}
+
+div.col-sm {
+    padding: 0;
+}
+
+
+h3.mareview{
+    color: black;
+    transform: translate(+30%, -40%);
+}
+
+p.mareview{
+    color:black;
+    font-size: 13px;
+    inline-size: auto;
+    transform: translate(+40%, -60%);
+}
+
+button.dark{
+    background-color: #272525;
+    border-color: #272525;
+    color: #B9D253;
+    border-radius: 30px;
+    width: 70%;
+    font-size: 120%;
+    transform: translate(+2%, +100%);
+    margin: auto;
+    
+}
+
+#icona{
+    color: #B9D253;
+    margin: 3% 3%;
+    font-size: 5vmin;
+    
+}
+
+div.re{
+    
+    margin: 2% 5%;
+    text-align: left;
+    font-size: 4.5vmin;
+    font-weight: bolder;
+    
+       
+}
+center.more{
+    padding: 5px;
+}
+
+button.btn{
+    font-size: 10px;
+ }
+
+@media(min-width: 768px) {
+    div.show-review {
+        max-height: 12em ;
+    }
+}
+
+@media(min-width: 375px) {
+    div.show-review {
+        width: 100%;
+    }
+}
+/* 
+@media(min-width: 768px) {
+    
+    
+       div.item{
+            
+            height: 400px;
+       }  
+    
+       button.dark{
+        width: 23%;
+        font-size: 200%;
+        transform: translate(+150%, -100%);
+        
+        
+        
+    }
+
+    p.mareview{
+        color:black;
+        font-size: 40px;
+        inline-size: auto;
+        transform: translate(+30%, -160%);
+    }
+    h3.mareview{
+
+        font-size: 40px;
+        transform: translate(+35%, -260%);
+    }
+    
+    #icona{
+        color: #B9D253;
+        margin: 3% 1%;
+        font-size: 40px;
+        
+    }
+    center.add{
+        padding: 30px;
+    }
+     button.btn{
+        font-size: 20px;
+     }
+    
+} */

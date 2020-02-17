@@ -14,7 +14,7 @@ export class PopUpDelUser extends Component {
 
       return (
         <div>
-          <Modal
+          <Modal animation={false}
             {...this.props}
             size="md"
             aria-labelledby="contained-modal-title-vcenter"

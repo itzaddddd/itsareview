@@ -2,7 +2,7 @@ import React , {Component} from 'react';
 import './adcate.css';
 import Table from 'react-bootstrap/Table';
 import {PopUp} from './popUpAddcate';
-import Navbar from "D:/SE/itsareview/client/src/components/admin_navbar/navbar.js";
+import Navbar from "../admin_navbar/navbar.js";
 
 class Admin_cate extends Component {
 

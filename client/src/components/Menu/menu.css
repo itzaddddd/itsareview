@@ -2,15 +2,7 @@
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    font-family: 'Kanit', sans-serif;
-    line-height: 1.5;
-    font-size: 1em;
-}
-
-
-a {
+a.menuButton {
     text-decoration: none;
     color: inherit;
     margin: 0;
@@ -21,7 +13,7 @@ a {
     padding: 25px;
 }
 
-.main-navigation {
+.foot-main-navigation {
     width: 100%;
     background: #B9D253;
     text-align: center;
@@ -29,13 +21,13 @@ a {
     bottom: 0;
 }
 
-nav ul {
+nav ul.foot {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-nav li {
+nav.fooot li {
     display: inline-block;
     width: calc(100%/2 - 1px - 2*3px);
 
@@ -43,11 +35,11 @@ nav li {
     padding: 10px;
 }
 
-nav p {
+nav.fooot p {
     font-size: .9em;
 }
 
-nav li:hover {
+nav.fooot li:hover {
     transform: scale(1.2);
     transition: 1s;
 }
@@ -67,7 +59,7 @@ i.menu{
     .fa-2x {
         font-size: 1.8em;
     }
-    nav p{
+    nav.fooot p{
         display: none;
     }
 }

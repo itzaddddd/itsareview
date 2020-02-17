@@ -1,7 +1,7 @@
 import React , {Component} from 'react';
 import './aduser.css';
 import Table from 'react-bootstrap/Table';
-import Navbar from "D:/SE/itsareview/client/src/components/admin_navbar/navbar.js";
+import Navbar from "../admin_navbar/navbar.js";
 import {PopUpDelUser} from "./delUserPopUp";
 
 class Aduser extends Component {
