@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-// import './register.css';
+import './register.css';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 
@@ -112,6 +112,11 @@ class Register extends Component{
             console.error('FORM INVALID - DISPLAY ERROR');
         }   
     } 
+
+    // componentDidMount(){
+    //     document.body.style.backgroundColor = "rgb(89,88,106)";
+    //     document.body.style.backgroundColor = "linear-gradient(0deg, rgba(89,88,106,1) 0%, rgba(185,210,83,1) 62%)";
+    // }
 
     render(){
         const { formErrors } = this.state;

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 // import './login.css'
 import axios from 'axios';
+import Navbar from '../NavBar/NavBar';
 import {useSelector, useDispatch} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {GetUser} from '../../Redux/Actions';
@@ -85,16 +86,17 @@ class Login extends Component{
 
     onSubmit = e => {
         e.preventDefault();
+        postLogin();
 
-        if(formValid(this.state.formErrors)){
-            console.log(`
-                ---SUBMITTING---
-                Username: ${this.state.userName}
-                Password: ${this.state.pass1}
-            `);
-        }else{
-            console.error('FORM INVALID - DISPLAY ERROR');
-        }   
+        // if(formValid(this.state.formErrors)){
+        //     console.log(`
+        //         ---SUBMITTING---
+        //         Username: ${this.state.userName}
+        //         Password: ${this.state.pass1}
+        //     `);
+        // }else{
+        //     console.error('FORM INVALID - DISPLAY ERROR');
+        // }   
         // console.log(formValid(this.state.formErrors));
     }
 
@@ -105,34 +107,43 @@ class Login extends Component{
             return <Redirect to='/user' />
         }
         return(
-            <div className="login">
-                <form onSubmit={this.onSubmit}>
-                    <div className="container">
-                        <h2>เข้าสู่ระบบ</h2>
-                        <div className="form-group">
-                            <label htmlFor="usr">ชื่อผู้ใช้</label>
-                            <input type="text" className="form-control" id="usr" name="userName" 
-                            autoComplete="username" onChange={this.handleChange} />
-                        </div>
-                        {formErrors.userName.length > 0 && (
-                            <span className="errorMessage">{formErrors.userName}</span>
-                        )}
-                        <div className="form-group">
-                            <label htmlFor="pwd">รหัสผ่าน</label>
-                            <input type="password" className="form-control" id="pwd" name="pass1" 
-                            autoComplete="current-password" onChange={this.handleChange} />
-                        </div>
-                        {formErrors.pass1.length > 0 && (
-                            <span className="errorMessage">{formErrors.pass1}</span>
-                        )}
-                        <div className="button">
-                            <button className="btn btn-success" onSubmit={this.onSubmit}>เข้าสู่ระบบ</button>
-                        </div>
-                        <p>ยังไม่มีบัญชี? <a href="/register">สมัคร</a></p>
+            <form className="LoginForm" onSubmit={this.onSubmit}>
+                <div className="container">
+                    <div id="login-title">เข้าสู่ระบบ</div>
+                    <div className="form-group login">
+                        <input 
+                            type="text" 
+                            className="form-control" 
+                            id="usr"
+                            placeholder="ชื่อผู้ใช้" 
+                            name="userName" 
+                            autoComplete="username" onChange={this.handleChange} 
+                        />
                     </div>
-                </form>
-            </div>
-            
+                    {/*{formErrors.userName.length > 0 && (
+                        <span className="errorMessage">{formErrors.userName}</span>
+                    )}*/}
+                    <div className="form-group login">
+                        <input 
+                            type="password" 
+                            className="form-control" 
+                            id="pwd"
+                            placeholder="รหัสผ่าน" 
+                            name="pass1" 
+                            autoComplete="current-password" 
+                            onChange={this.handleChange} 
+                        />
+                    </div>
+                    {/*{formErrors.pass1.length > 0 && (
+                        <span className="errorMessage">{formErrors.pass1}</span>
+                    )}*/}
+                    <div className="button">
+                        <button className="btn btn-success" id="login-button" onSubmit={this.onSubmit}>เข้าสู่ระบบ</button>
+                    </div>
+                    <p>ยังไม่มีบัญชี? <a href="/register">สมัคร</a></p>
+                </div>
+            </form>
+        
         )
     }
 }

@@ -1,6 +1,6 @@
 import React , {Component} from 'react';
-import 'D:/se/itsareview/client/src/components/admin_navbar/navbar.css';
-import Navbar from "D:/SE/itsareview/client/src/components/admin_navbar/navbar.js";
+import '../admin_navbar/navbar.css';
+import Navbar from "../admin_navbar/navbar";
 
 class Home extends Component {
     render() {
