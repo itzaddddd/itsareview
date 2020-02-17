@@ -1,4 +1,8 @@
 import React , {Component} from 'react';
+<<<<<<< HEAD
+=======
+import '../admin_navbar/navbar.css';
+>>>>>>> 439ced71b61426153f0e66035b04e58158ab3094
 import Navbar from "../admin_navbar/navbar";
 
 class Home extends Component {

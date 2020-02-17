@@ -61,6 +61,13 @@ app.use(passport.session());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.use(function(req,res,next){
+	// res.locals.login = req.isAuthenticated();
+	res.locals.user = req.user;
+	res.locals.session = req.session;
+	next();
+});
+
 /* create router */
 
 // Serve the static files from the React app

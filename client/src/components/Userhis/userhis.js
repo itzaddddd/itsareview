@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './userhis.css';
 
-class UserHis extends Component{
+class Userhis extends Component{
     constructor(props){
         super(props);
     }
@@ -63,4 +63,4 @@ class UserHis extends Component{
         )
     }
 }
-export default UserHis;
+export default Userhis;
