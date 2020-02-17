@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
+
+
+.table {
+    margin: 0em 5em 5em 0em;
+    width: 90%;
+    text-align: center;
+    align-content: center;
+}
+
+table {
+    border-collapse: collapse;
+    border-bottom: 1px solid #ddd;
+}
+
+tr th {
+    line-height: initial;
+}
+
+div.topicPage {
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 5em;
+}
+
+div.topicPage > p.topicName { 
+    font-size: 2.5vw;
+    color: #B9D253;
+}
+

@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
+
+
+input {
+    padding-left: 1em;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: 0 4px 2px -2px none;
+    border-color: #B9D253;
+    width: 18em;
+}
+
+.iconCate {
+    width:10em;
+    margin-top:10px;
+    text-align: center;
+}
+
+input:focus {
+    outline: none;
+}
+
+p.inputName {
+    font-size: 1.5vw;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+p.inputIcon {
+    text-align: center;
+    margin-top: 20px;
+}
+
+p.popUpTopic{
+    font-size: 3vw;
+    font-size: 100%;
+    margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+    .fade.show {
+    height: 100%;
+    overflow: visible;
+    }
+}
+
+.Footer Button {
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-bottom: 2em;
+    width: 5em;
+}
+
+div.fade.modal.show {
+    overflow: visible;
+}
+
+Button.success {
+    background-color: #B9D253;
+}
+
+Button.success:hover {
+    background-color: rgb(142, 167, 42);
+}
+
+
+
+
+
+/* 
+
+.modalHeader p.popUpTopic {
+    margin: 5px;
+    padding: 0px;
+    line-height: auto;
+    color: rgb(113,127,50);
+}
+
+
+.modalCont p.popUpTopic {
+    font-size: 1.5vw;
+    font-weight: normal;
+    color: #B9D253;
+    text-align: left;
+}
+
+.modal-content {
+    background-color: white;
+    
+} */

@@ -1,4 +1,4 @@
-.login {
+form.LoginForm {
     background: rgb(89,88,106);
     background: linear-gradient(0deg, rgba(89,88,106,1) 0%, rgba(185,210,83,1) 62%);
 }

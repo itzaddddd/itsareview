@@ -1,32 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
+import './noveltype.css';
 
-class Noveltype extends Component{
-    render(){
-        return(
-            <div>
-                <h1>หมวดหมู่กระทู้</h1>
-                <select name="group" id="group">
-                  <option value="0">โรแมนติก</option>
-                  <option value="1">ดราม่า</option>
-                  <option value="2">คอมเมดี้</option>
-                  <option value="3">ฟีลกู๊ด</option>
-                  <option value="4">วาย</option>
-                  <option value="5">ยูริ</option>
-                  <option value="6">แฟนฟิค</option>
-                  <option value="7">แฟนตาซี</option>
-                  <option value="8">ผจญภัย</option>
-                  <option value="9">กาลเวลา</option>
-                  <option value="10">เกมออนไลน์</option>
-                  <option value="11">จีนโบราณ</option>
-                  <option value="12">แอ็คชั่น</option>
-                  <option value="13">สงคราม</option>
-                  <option value="14">สืบสวน</option>
-                  <option value="15">ฆาตกรรม</option>
-                  <option value="16">สยอง/ระทึกขวัญ</option>
-                  </select>
-                
-            </div>
-        )        
+
+function Noveltype(){
+    return(
+        <div>
+            <p>หมวดหมู่กระทู้ <button id="writereview">เขียนรีวิวนิยาย</button></p>
+            <hr className="line"></hr>
+            <center><div className="typebar">
+            <a href="#romatic"><i class="far fa-heart"></i><br></br>โรแมนติก</a>
+            <a href="#drama"><i class="far fa-sad-tear"></i><br></br>ดราม่า</a>
+            <a href="#comedy"><i class="far fa-laugh-squint"></i><br></br>คอมเมดี้</a>
+            <a href="#feelgood"><i class="far fa-grin-tongue-wink"></i><br></br>ฟิลกู๊ด</a>
+            <a href="#yaoi"><i class="fas fa-mars-double"></i><br></br>วาย</a>
+            <a href="#yuri"><i class="fas fa-venus-double"></i><br></br>ยูริ</a>
+            <a href="#ect"><i class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i> เพิ่มเติม</a>
+            </div></center>
+            
+            <p className ="poppularboardhead">กระทู้ยอดนิยม</p>
+        </div>
+        )
     }
-}
-export default Noveltype;
+    export default Noveltype;

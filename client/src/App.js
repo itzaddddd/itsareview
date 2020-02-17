@@ -1,9 +1,16 @@
-import React from 'react';
+import React , {Component} from 'react';
+import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Route, Switch} from 'react-router-dom';
 // import {Route, Link} from 'react-router-dom';
 
 // import Menu from './components/Menu/menu';
+import adHome from './components/admin_home/adhome';
+import adUser from './components/admin_user/aduser';
+import adReview from  './components/admin_review/adreview';
+import adBoard from './components/admin_board/adboard';
+import adCategory from './components/admin_cate/adcate';
+import adAdvertise from './components/admin_ads/ads';
 import Register from './components/Register/register';
 import Login from './components/Login/login';
 import Menu from './components/Menu/menu';
@@ -16,14 +23,22 @@ import UserHisReview from './components/UserhisReview/userhisReview';
 function App() {
   return (
     <div>
-        <Switch>
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/user" component={UserInfo} />
-            <Route exact path="/review" component={ReviewPage} />
-            <Route exact path="/review/create" component={ReviewForm} />
-        </Switch>
-      <Menu />
+      <Switch>
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/user" component={UserInfo} />
+        <Route exact path="/review" component={ReviewPage} />
+        <Route exact path="/review/create" component={ReviewForm} />
+
+
+        {/* admin */}
+        <Route exact path="/admin" component={adHome} />
+        <Route exact path="/admin/banner" component={adAdvertise} />
+        <Route exact path="/admin/user" component={adUser} />          
+        <Route exact path="/admin/review" component={adReview} />
+        <Route exact path="/admin/board" component={adBoard} />
+        <Route exact path="/admin/category" component={adCategory} />
+      </Switch>
     </div>
   );
 }

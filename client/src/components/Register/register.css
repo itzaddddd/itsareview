@@ -1,4 +1,4 @@
-.register {
+form.RegisterForm {
     background: rgb(89,88,106);
     background: linear-gradient(0deg, rgba(89,88,106,1) 0%, rgba(185,210,83,1) 62%);
 }
@@ -11,5 +11,5 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 2vw;
 }

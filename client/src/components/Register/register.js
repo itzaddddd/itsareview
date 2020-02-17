@@ -120,8 +120,7 @@ class Register extends Component{
             return <Redirect to='/login' />
         }
         return(
-            <div className="register">
-            <form onSubmit={this.onSubmit}>
+            <form className="RegisterForm" onSubmit={this.onSubmit}>
                 <div className="container">
                     <h2>ลงทะเบียน</h2>
                     <div className="form-group">
@@ -161,7 +160,6 @@ class Register extends Component{
                     </div>
                 </div>
             </form>
-            </div>
         )
     }
 }

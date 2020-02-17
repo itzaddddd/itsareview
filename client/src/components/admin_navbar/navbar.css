@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
+
+*{
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+}
+
+p.admin_welcome {
+    font-size: 3vw;
+    color: black;
+}
+
+ul {
+    display: inline;
+    vertical-align: middle;
+}
+
+ul.container1 {
+    float: left;
+    margin-left: 1em;
+}
+
+ul.container2 {
+    float: right;
+    margin-right: 1em;
+}
+
+img.Logo {
+    width: 6em;
+    height: auto;
+    margin-right: 1.75em;
+    bottom: 0;
+}
+
+img.mascot {
+    width: 15em;
+    height: auto;
+    box-shadow: none;
+}
+
+a.ad {
+    color: inherit;
+    margin: 0;
+}
+
+a.ad:hover {
+    color: inherit;
+    transform: scale(2);
+    transition: 1s;
+    text-decoration: none; 
+}
+
+ul.container1 li {
+    margin: 0.7em;
+    display: inline;
+    vertical-align: middle;
+}
+
+ul.container2 li {
+    margin: 0.7em;
+    display: inline;
+    vertical-align: middle;
+}
+
+
+div.main-navigation {
+    margin: 0;
+    font-family: 'Kanit', sans-serif;
+    font-size: 1.2vw;
+    font-weight: initial;
+    width: 100%;
+    height: 3em;
+    background : black;
+    text-align: left;
+    position: fixed;
+    top: 0;
+    line-height: 3;
+    color: #B9D253;
+}
+
+nav.adNav ul.container1 {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav.adNav ul.container2 {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav.adNav li {
+    display: inline;
+    /* width: calc(100vw / 4.6); */
+    padding: 0px;
+}
+
+/* nav.adNav p {
+    font-size: .9em;
+} */

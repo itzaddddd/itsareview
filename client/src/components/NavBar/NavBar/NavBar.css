@@ -1,19 +1,37 @@
-body {
-	margin: 0;
-	padding: 0; 
-}
+
 .header {
-	padding: 10px 0;
+	padding: 5px 0;
 	background-color: #000;
-}
-
-.header, .nav {
-	text-align: left;
-	color: #fff;
-}
-
-.search {
-	text-align: right;
-	color: #9FB444;
+	line-height:3;
 	
+}
+
+.photo{
+	width:auto; 
+	height:32;
+}
+    
+
+#search {
+	color: #9FB444;
+	float: right;
+	margin-right: 1em ;
+}
+
+@media(min-width: 768px) {
+
+	.header {
+		padding: 10px 0;
+		background-color: #000;
+		line-height:3;
+	}
+	.photo {
+
+		width:auto; 
+		height:40px;
+		margin: 0px 20px;
+	}
+	
+	
+
 }
