@@ -1,25 +1,17 @@
-*{
+/*{
     box-sizing: border-box;
 }
 
-<<<<<<< HEAD
-a.menuButton {
-=======
-/* body {
-    margin: 0;
-    font-family: 'Kanit', sans-serif;
     line-height: 1.5;
     font-size: 1em;
 } */
 
 
 a {
->>>>>>> 439ced71b61426153f0e66035b04e58158ab3094
     text-decoration: none;
     color: inherit;
     margin: 0;
 }
-
 
 .container {
     padding: 25px;
