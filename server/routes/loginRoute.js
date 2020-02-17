@@ -8,21 +8,19 @@ passport.deserializeUser(User.deserializeUser());
 
 // require('../config/passport');
 
-loginRouter.route('/').get((req,res)=>{
-    console.log('Login');
-});
+// loginRouter.route('/').get((req,res)=>{
+    
+// });
 
 loginRouter.route('/').post(passport.authenticate('local',{
-    successRedirect: '/user/:id',
     failureRedireact: '/',
-    failureFlash: true
 }),(req,res,next)=>{
     console.log('session : ',req.session);
     req.session.save(err=>{
         if(err){
             return(next(err));
         }
-        res.redirect("/");
+        return res.json(req.session);
     });
 });
 

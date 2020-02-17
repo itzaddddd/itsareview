@@ -1,0 +1,22 @@
+.login {
+    background: rgb(89,88,106);
+    background: linear-gradient(0deg, rgba(89,88,106,1) 0%, rgba(185,210,83,1) 62%);
+}
+
+.btn-success {
+        background-color: #B9D253; 
+        border: none;
+        color:black;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+}
+
+/*add errorMessage css*/
+span .errorMessage {
+    color:red;
+    font-size: 10px;
+}
+    

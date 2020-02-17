@@ -8,7 +8,7 @@ class UserInfo extends Component{
     }
 
     getUser = () => {
-        axios.get('http://localhost:4000/user/:id')
+        axios.get('http://localhost:4000/user/')
         .then(
             
         )

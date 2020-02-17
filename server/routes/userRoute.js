@@ -1,12 +1,14 @@
 const userRoute = require('express').Router();
-
+const mongoose = require('mongoose');
 const loginRoute = require('./loginRoute');
 const logoutRoute = require('./logoutRoute');
 const registerRoute = require('./registerRoute');
 
 const User = require('../models/Users');
 userRoute.route('/:id').get((req,res)=>{
-    User.findById({_id:req.params.id},(err,result)=>{
+    console.log(req.params.id);
+    User.findById(mongoose.Types.ObjectId(req.params.id),(err,result)=>{
+        
         if(err){
             console.log(err);
         }else{
