@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './register.css';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
-
+import Navbar from '../NavBar/NavBar';
 const formValid = ({formErrors, ...rest}) => {
     let valid = true;
 
@@ -125,9 +125,11 @@ class Register extends Component{
             return <Redirect to='/login' />
         }
         return(
+            <div>
+            <Navbar />
             <form className="RegisterForm" onSubmit={this.onSubmit}>
                 <div className="container">
-                    <div id="regis-title">ลงทะเบียน</div>
+                    <a href="/user"><div id="regis-title">ลงทะเบียน</div></a>
                     <div className="form-group">
                         <input 
                             type="text" 
@@ -181,6 +183,7 @@ class Register extends Component{
                     </div>
                 </div>
             </form>
+            </div>
         )
     }
 }

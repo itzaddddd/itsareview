@@ -3,7 +3,7 @@ form.RegisterForm {
     background: linear-gradient(0deg, rgba(89,88,106,1) 0%, rgba(185,210,83,1) 62%); */
     width:100%;
     height: 100%;
-    position: relative
+    position: relative;
 }
 
 #regis-button {
@@ -24,6 +24,7 @@ form.RegisterForm {
     font-size: 20px;
     margin-left: 10%;
     color: black;
+    margin-top:20px;
 }
 
 .errorMessage {
