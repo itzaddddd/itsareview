@@ -5,17 +5,12 @@ div.choosetypepopup{
     line-height: 1;
     width: 3px 3px;
     height: 1%;
-<<<<<<< HEAD
     font-size: 2.5vmin;
     -ms-overflow-style: none;
 }
 
 div.choosetypepopup::-webkit-scrollbar {
     display: none;
-=======
-    font-size: 12px;
-
->>>>>>> 439ced71b61426153f0e66035b04e58158ab3094
 }
 
 div.choosetypepopup a {
@@ -24,35 +19,21 @@ div.choosetypepopup a {
     text-align: center;
     margin: 10px 5% ;
     text-decoration: none;
-<<<<<<< HEAD
     font-size: 4vmin;
-=======
-    font-size: 12px;
->>>>>>> 439ced71b61426153f0e66035b04e58158ab3094
 }
 
 div.choosetypepopup a:hover {
     background-color: #777;
 }
 
-<<<<<<< HEAD
 /* i.fas.iconTypeBar {
     font-size: 20px;
 } */
-=======
-#icon{
-    font-size: 20px;
-}
-
->>>>>>> 439ced71b61426153f0e66035b04e58158ab3094
 
 
 
 
-<<<<<<< HEAD
 /* small device */
-=======
->>>>>>> 439ced71b61426153f0e66035b04e58158ab3094
 @media(min-width: 768px) {
 
     div.choosetypepopup{
@@ -61,23 +42,12 @@ div.choosetypepopup a:hover {
         line-height: 1;
         width: 10px 10px;
         height: 1%;
-<<<<<<< HEAD
         font-size: 2vmin;
     }
     
     div.choosetypepopup  a > i.fas.iconTypeBar > i.far.iconTypeBar {
         display: inline-block;
         color: black;
-=======
-        font-size: 20px;
-        
-    
-    }
-    
-    div.choosetypepopup a {
-        display: inline-block;
-       
->>>>>>> 439ced71b61426153f0e66035b04e58158ab3094
         text-align: center;
         margin: 10px 5% ;
         text-decoration: none;
@@ -87,28 +57,9 @@ div.choosetypepopup a:hover {
         background-color: #777;
     }
     
-<<<<<<< HEAD
     i.fas.iconTypeBar , i.far.iconTypeBar {
         font-size: 4vw;
         color: black;
     }
 
 }
-=======
-    #icon{
-        font-size: 50px;
-    }
-    
-    #icon{
-        font-size: 50px;
-    }
-    
-
-}
-@import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
-
-    body {
-        font-family: 'Kanit', sans-serif;
-        
-    }
->>>>>>> 439ced71b61426153f0e66035b04e58158ab3094

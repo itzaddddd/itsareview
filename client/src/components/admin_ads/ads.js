@@ -2,11 +2,7 @@ import React , {Component} from 'react';
 import './ads.css';
 
 import Table from 'react-bootstrap/Table';
-<<<<<<< HEAD
 import Navbar from "../admin_navbar/navbar.js";
-=======
-import Navbar from "../admin_navbar/navbar";
->>>>>>> 439ced71b61426153f0e66035b04e58158ab3094
 // import Pops from './addbanner';
 
 

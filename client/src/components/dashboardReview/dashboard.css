@@ -11,6 +11,7 @@ div.inlineReviewDashboard {
     white-space: nowrap;
     width: 100%;
     display: inline-block;
+    margin-left: 5em;
     -ms-overflow-style: none;
 }
 
@@ -23,6 +24,10 @@ div.inlineReview {
     display: inline-block;
     width: 40%;
     overflow: hidden;
+}
+
+div.inlineBoardDashboard {
+    
 }
 
 div.inlineBoard {
