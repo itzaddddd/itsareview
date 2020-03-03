@@ -1,39 +1,16 @@
 const registerRoute = require('express').Router();
 const User = require('../models/Users');
-//const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const config = require('config');
 const jwt = require('jsonwebtoken');
-
-require('../config/passport');
 
 registerRoute.route('/').get((req,res)=>{
     console.log('Register');
 });
 
-// registerRoute.route('/').post((req,res,next)=>{
-//     let newUser = new User({
-//         userName: req.body.userName,
-//         userEmail: req.body.userEmail
-//     });
-//     User.register(newUser,req.body.pass1,(err,user)=>{
-//         console.log("user : ",user);
-//         if(err){
-//             console.log(err);
-//             return next(err);
-//         }
-//         passport.authenticate('local')(req,res,()=>{
-//             req.session.save(err=>{
-//                 if(err){
-//                     console.log(err)
-//                     return next(err);
-//                 }
-//                 res.send(user);
-//             });
-//         });
-//     }); 
-// });
-
+// @route   POST register
+// @desc    Register 
+// @access  Public
 registerRoute.route('/').post((req,res)=>{
     const {userName, pass1, /*pass2,*/ userEmail} = req.body;
 
