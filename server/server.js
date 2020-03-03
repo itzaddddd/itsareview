@@ -25,31 +25,23 @@ require('./config/mongoose');
 /* import models */
 const User = require('./models/Users');
 
-/* connect mongoDB session */
+/* connect mongoDB session
 const MongoDBStore = require('connect-mongodb-session')(session);
 const DB = require('./config/database').url;
 const store = new MongoDBStore({
     uri: DB,
     collection: 'session'
-});
-
-store.on('error',error=>{
-    console.log(error)
-});
+}); */
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
-app.use(cookieParser());
+// app.use(cookieParser());
 
 app.use(session({
     secret: SECRET,
-    cookie: {
-        maxAge: 1000*60*60*24*7 // 1 week
-    },
-    store: store,
     resave: false,
     saveUninitialized: false
 }));
@@ -60,13 +52,6 @@ app.use(passport.session());
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
-app.use(function(req,res,next){
-	// res.locals.login = req.isAuthenticated();
-	res.locals.user = req.user;
-	res.locals.session = req.session;
-	next();
-});
 
 /* create router */
 

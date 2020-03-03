@@ -2,7 +2,7 @@ import React , {Component} from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, Redirect} from 'react-router-dom';
 
 // import adUser from './components/admin_user/aduser';
 import adHome from './components/admin_home/adhome';
@@ -23,27 +23,58 @@ import ReviewForm from './components/ReviewFormPage/ReviewFormPage';
 import Navbar from './components/NavBar/NavBar';
 import Dashboard from './components/dashboardReview/dashboard';
 import { Nav } from 'react-bootstrap';
-function App() {
-  return (
-    <div> 
-      <Switch>
-        {/* User */}
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/user" component={UserInfo} />
-        <Route exact path="/review/id" component={ReviewPage} />
-        <Route exact path="/review/create" component={ReviewForm} />
-        <Route exact path="/" component={Dashboard}/>
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute' // show user info only authenticated
 
-        {/* admin */}
-        <Route exact path="/admin" component={adHome} />
-        {/*<Route exact path="/admin/banner" component={adAdvertise} />
-  <Route exact path="/admin/user" component={adUser} />*/}          
-        <Route exact path="/admin/review" component={adReview} />
-        {/*<Route exact path="/admin/board" component={adBoard} />*/}
-        {/*<Route exact path="/admin/category" component={adCategory} />*/}
-      </Switch>
-    </div>
-  );
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux'
+import store from './redux/store'
+import { loadUser } from './redux/actions/userAction'
+
+// const PrivateRoute = ({component: Component, ...rest}) => {
+//   <Route {...rest} render={ (props) => (
+//     store.getState().user.isAuthenticated === true
+//     ? <Component {...props}/>
+//     : <Redirect to="/" />
+//   )}/>
+// }
+class App extends Component{
+
+  // load user
+  componentDidMount(){
+    store.dispatch(loadUser());
+  }
+  
+  render(){
+    return (
+      /* set redux store */
+      <Provider store={store}>
+        {/* set router*/}
+        <Router> 
+          <Switch>
+
+            {/* User */}
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/review/:id" component={ReviewPage} />
+            <Route exact path="/review/create" component={ReviewForm} />
+            <Route exact path="/" component={Dashboard}/>
+            <ProtectedRoute exact path="/user" component={UserInfo} />
+            
+
+            {/* admin */}
+            <Route exact path="/admin" component={adHome} />
+            {/*<Route exact path="/admin/banner" component={adAdvertise} />
+            <Route exact path="/admin/user" component={adUser} />*/}          
+            <Route exact path="/admin/review" component={adReview} />
+            {/*<Route exact path="/admin/board" component={adBoard} />*/}
+            {/*<Route exact path="/admin/category" component={adCategory} />*/}
+
+            
+          </Switch>
+        </Router>
+      </Provider>
+    );
+  }
 }
+
 export default App;

@@ -3,189 +3,191 @@ import './register.css';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../NavBar/NavBar';
-const formValid = ({formErrors, ...rest}) => {
-    let valid = true;
+import { Formik, Form, Field, ErrorMessage} from 'formik'
+import * as yup from 'yup'
+import PropTypes from 'prop-types'
+import { register } from '../../redux/actions/userAction'
+import { clearErrors } from '../../redux/actions/errorAction'
+import { connect } from 'react-redux'
 
-    Object.values(formErrors).forEach(val => (val.length > 0) && (valid == false));
-    return valid;
+const RegisterSchema = yup.object().shape({
+    userName: yup.string()
+        .required("กรุณาใส่ชื่อผู้ใช้")
+        // .min(8,"ชื่อผู้ใช้ต้องยาวอย่างน้อย 6 ตัวอักษร")
+        .max(16,"ชื่อผู้ใช้ต้องยาวไม่เกิน 12 ตัวอักษร")
+        .matches(/^[a-z0-9_-]{3,16}$/,"กรุณาใช้ตัวอักษรภาษาอังกฤษ ตัวเลข และอักขระพิเศษ _ หรือ -"),
+    pass1: yup.string()
+        // .min(8,"รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัวอักษร")
+        .max(16,"รหัสผ่านต้องยาวไม่เกิน 16 ตัวอักษร")
+        .required("กรุณาใส่รหัสผ่าน"),
+    // pass2: yup.string()
+    //     // .min(8,"รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัวอักษร")
+    //     .max(16,"รหัสผ่านต้องยาวไม่เกิน 16 ตัวอักษร")
+    //     .required("กรุณาใส่รหัสผ่าน"),
+    userEmail: yup.string()
+        .email('รูปแบบอีเมลไม่ถูกต้อง')
+        .required('กรุุณาใส่อีเมล')
+})
 
-    // Object.values(rest).forEach(val => {
-    //     val == null && (valid == false);
-    // });
-}
-
-const emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
-
-const postRegister = () => {
-    axios.post('http://localhost:4000/user/register',{
-                userName: this.state.userName,
-                userEmail: this.state.userEmail,
-                pass1: this.state.pass1,
-                pass2: this.state.pass2
-            })
-        .then(
-            response => {
-                console.log('res : ',response);
-                this.setRedirect();
-            }
-        )
-        .catch(
-            err => {
-                console.log('err : ',err);
-            }
-        );
-            
-        this.setState({
-            userName: '',
-            pass1: '',
-            pass2: '',
-            userEmail: '',
-        });
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.user.isAuthenticated,
+        error: state.error
+    }
 }
 
 class Register extends Component{
-    constructor(props){
-        super(props);
+    state = {
+        modal: false,
+        msg: null,
+        redirect: false
+    };
     
-        this.state = {
-            userName: '',
-            pass1: '',
-            pass2: '',
-            userEmail: '',
-            formErrors: {
-                userName: '',
-                pass1: '',
-                pass2: '',
-                userEmail: ''
-            }
-        };
-
-        this.onSubmit = this.onSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.setRedirect = this.setRedirect.bind(this);
+    static propTypes = {
+        isAuthenticated: PropTypes.bool,
+        error: PropTypes.object.isRequired,
+        register: PropTypes.func.isRequired,
+        clearErrors: PropTypes.func.isRequired
     }
 
-    setRedirect = () => {
+    toggle = () => {
+        // Clear errors
+        this.props.clearErrors();
         this.setState({
-            redirect: true
+            modal: !this.state.modal
         });
     }
-    handleChange = e => {
-        const {name, value} = e.target;
-        let formErrors = this.state.formErrors;
 
-        switch(name){
-            case 'userName':
-                formErrors.userName = value.length < 5 ? "ชื่อผู้ใช้ต้องยาวกว่า 5 ตัวอักษร": "";
-                break; 
-            case 'pass1':
-                formErrors.pass1 = value.length < 7 ? "รหัสผ่านต้องยาวกว่า 7 ตัวอักษร": "";
-                break;
-            case 'pass2':
-                formErrors.pass2 = value.length < 7 ? "รหัสผ่านต้องยาวกว่า 7 ตัวอักษร": "";
-                break;
-            case 'userEmail':
-                formErrors.userEmail = emailRegex.test(value) ? "": "รูปแบบผิดพลาด";
-                break;  
-            default:
-                break;
+    componentDidUpdate(prevProps){
+        const { error, isAuthenticated } = this.props;
+        if(error !== prevProps.error){
+            // Check for register error
+            if(error.id === 'REGISTER_FAIL'){
+                this.setState({msg: error.msg.msg})
+            }else{
+                this.setState({msg: null})
+            }
         }
 
-        this.setState({formErrors, [name]:value},
-                () => console.log(this.state)
-            );
-        
+        // If authenticated, close modal
+        if(this.state.modal){
+            if(isAuthenticated){
+                this.toggle();
+            }
+        }
     }
-
-    onSubmit = e => {
-        e.preventDefault();
-
-        if(formValid(this.state.formErrors)){
-            console.log(`
-                ---SUBMITTING---
-                Username: ${this.state.userName}
-                Password1: ${this.state.pass1}
-                Password2: ${this.state.pass2}
-                Email: ${this.state.userEmail}
-            `);
-        }else{
-            console.error('FORM INVALID - DISPLAY ERROR');
-        }   
-    } 
-
-    // componentDidMount(){
-    //     document.body.style.backgroundColor = "rgb(89,88,106)";
-    //     document.body.style.backgroundColor = "linear-gradient(0deg, rgba(89,88,106,1) 0%, rgba(185,210,83,1) 62%)";
-    // }
-
+    
     render(){
-        const { formErrors } = this.state;
-
-        if(this.state.redirect){
-            return <Redirect to='/login' />
+        
+        if(this.props.isAuthenticated){
+            return <Redirect to="/" />
         }
+        
         return(
             <div>
             <Navbar />
-            <form className="RegisterForm" onSubmit={this.onSubmit}>
-                <div className="container">
-                    <a href="/user"><div id="regis-title">ลงทะเบียน</div></a>
-                    <div className="form-group">
-                        <input 
-                            type="text" 
-                            className="form-control" 
-                            id="usr" name="userName"
-                            placeholder="ชื่อผู้ใช้" 
-                            autoComplete="username" 
-                            onChange={this.handleChange}/>
-                    </div>
-                    {formErrors.userName.length > 0 && (
-                        <span className="errorMessage">{formErrors.userName}</span>
+                <Formik
+                    initialValues = {{
+                        userName: "",
+                        pass1: "",
+                        // pass2: "",
+                        userEmail: "" 
+                    }}
+                    validationSchema = {RegisterSchema}
+                    onSubmit = { (values, {setSubmitting}) => {
+                        const {userName, pass1, /*pass2,*/ userEmail} = values;
+                        const newUser = {
+                            userName,
+                            pass1,
+                            // pass2,
+                            userEmail
+                        }
+                        // Attemp to register
+                        this.props.register(newUser);
+                        setSubmitting(false);
+                        this.toggle();
+                    }}
+                > 
+                    {({touched, errors, isSubmitting}) => (
+                        
+                        <Form className="RegisterForm" >
+                        <div className="container">
+                            <a href="/user"><div id="regis-title">ลงทะเบียน</div></a>
+                            {this.state.msg ? <div className="alert-danger">{this.state.msg}</div> : null}
+                            <div className="form-group">
+                                <Field 
+                                    type="text" 
+                                    className={`form-control ${touched.userName && errors.userName ? "is-invalid":""}`} 
+                                    id="usr" name="userName"
+                                    placeholder="ชื่อผู้ใช้" 
+                                    autoComplete="username" 
+                                />
+                                <ErrorMessage 
+                                    componet="div"
+                                    name="userName"
+                                    className="invalid-feedback"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <Field 
+                                    type="password" 
+                                    className={`form-control ${touched.pass1 && errors.pass1 ? "is-invalid":""}`} 
+                                    id="pwd" name="pass1"
+                                    placeholder="รหัสผ่าน" 
+                                    autoComplete="password" 
+                                />
+                                <ErrorMessage 
+                                    componet="div"
+                                    name="pass1"
+                                    className="invalid-feedback"
+                                />
+                            </div>
+                            {/*<div className="form-group">
+                                <Field 
+                                    type="password" 
+                                    className={`form-control ${touched.pass2 && errors.pass2 ? "is-invalid":""}`} 
+                                    id="cpwd"
+                                    placeholder="ยืนยันรหัสผ่าน" 
+                                    name="pass2" 
+                                    autoComplete="password"
+                                />
+                                <ErrorMessage 
+                                    componet="div"
+                                    name="pass2"
+                                    className="invalid-feedback"
+                                />
+                            </div>*/}
+                            <div className="form-group">
+                                <Field 
+                                    type="text" 
+                                    className={`form-control ${touched.userEmail && errors.userEmail ? "is-invalid":""}`}
+                                    id="email"
+                                    placeholder="อีเมล" 
+                                    name="userEmail" 
+                                />
+                                <ErrorMessage 
+                                    componet="div"
+                                    name="userEmail"
+                                    className="invalid-feedback"
+                                />
+                            </div>
+                            <div className="button">
+                                <button 
+                                    className="btn btn-success" 
+                                    id="regis-button"
+                                    disabled={isSubmitting}
+                                >
+                                    ลงทะเบียน
+                                </button>
+                            </div>
+                        </div>
+                    </Form>
                     )}
-                    <div className="form-group">
-                        <input 
-                            type="password" 
-                            className="form-control" 
-                            id="pwd" name="pass1"
-                            placeholder="รหัสผ่าน" 
-                            autoComplete="password" 
-                            onChange={this.handleChange}/>
-                    </div>
-                    {formErrors.pass1.length > 0 && (
-                        <span className="errorMessage">{formErrors.pass1}</span>
-                    )}
-                    <div className="form-group">
-                        <input 
-                            type="password" 
-                            className="form-control" 
-                            id="cpwd"
-                            placeholder="ยืนยันรหัสผ่าน" 
-                            name="pass2" 
-                            autoComplete="password" onChange={this.handleChange} />
-                    </div>
-                    {formErrors.pass2.length > 0 && (
-                        <span className="errorMessage">{formErrors.pass2}</span>
-                    )}
-                    <div className="form-group">
-                        <input 
-                            type="text" 
-                            className="form-control" 
-                            id="email"
-                            placeholder="อีเมล" 
-                            name="userEmail" 
-                            onChange={this.handleChange}/>
-                    </div>
-                    {formErrors.userEmail.length > 0 && (
-                        <span className="errorMessage">{formErrors.userEmail}</span>
-                    )}
-                    <div className="button">
-                        <button className="btn btn-success" id="regis-button">ลงทะเบียน</button>
-                    </div>
-                </div>
-            </form>
+                </Formik> 
             </div>
         )
     }
 }
 
-export default Register;
+const RegisterConnect = connect(mapStateToProps,{ register, clearErrors })(Register);
+export default RegisterConnect;

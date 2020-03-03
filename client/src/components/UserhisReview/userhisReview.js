@@ -14,36 +14,36 @@ class UserHisReview extends Component{
         let story = this.props.story;
         let date = this.props.date;
         return(
-            <div class="show-box userHis">
-                <div class="show-review">
-                    <div class="in-box">
+            <div className="show-box userHis">
+                <div className="show-review">
+                    <div className="in-box">
                         <div>
-                            <a class="novel-name" id="bold">{novelName}</a>
-                            <a class="date">{date} <i class="far fa-heart love"></i></a>
+                            <div className="novel-name" id="bold">{novelName}</div>
+                            <div className="date">{date} <i className="far fa-heart love"></i></div>
                         </div>
                         <div>
-                            <a class="review-name" id="bold">ชื่อคนรีวิว</a>
-                            <a class="review-name">{reviewName}</a>
+                            <div className="review-name" id="bold">ชื่อคนรีวิว</div>
+                            <div className="review-name">{reviewName}</div>
                         </div>
                         <div>
-                            <a class="type" id="bold">หมวดหมู่</a>
-                            <a class="type">{type}</a>
+                            <div className="type" id="bold">หมวดหมู่</div>
+                            <div className="type">{type}</div>
                         </div>
                         <div>
-                            <a class="tag" id="bold">แท็ก</a>
-                            <a class="tag">{tag}</a>
+                            <div className="tag" id="bold">แท็ก</div>
+                            <div className="tag">{tag}</div>
                         </div>
                         <div>
-                            <a>
-                                <div class="story">{story}</div>
-                            </a>
+                            <div>
+                                <div className="story">{story}</div>
+                            </div>
                         </div>
                         <div>
-                            <a class="rating">เรตติ้ง</a>
-                            <a class="num-com">
-                            <a class="num-of-read"><i id="icon-b" class="fas fa-eye"></i></a>
-                            <a class="comment"><i id="icon-b" class="far fa-comment-dots"></i>คอมเม้นต์</a>
-                            </a>
+                            <div className="rating">เรตติ้ง</div>
+                            <div className="num-com">
+                            <div className="num-of-read"><i id="icon-b" className="fas fa-eye"></i></div>
+                            <div className="comment"><i id="icon-b" className="far fa-comment-dots"></i>คอมเม้นต์</div>
+                            </div>
                         </div>
 
                         

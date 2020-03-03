@@ -13,28 +13,36 @@ class UserHisBoard extends Component{
         let date = this.props.date;
         return(
             <div>
-                <div class="show-box">
-                    <div class="show-board">
-                        <table class="in-box">
+                <div className="show-box">
+                    <div className="show-board">
+                        <table className="in-box">
+                            <tbody>
                             <tr>
-                                <a class="board-name" id="bold">{boardName}</a>
-                                <a class="date">{date} <i class="far fa-heart"></i></a>
+                                <td>
+                                    <a className="board-name" id="bold">{boardName}</a>
+                                    <a className="date">{date} <i className="far fa-heart"></i></a>
+                                </td>
                             </tr>
                             <tr>
-                                <a class="board-name" id="bold">ชื่อคนตั้งกระทู้</a>
-                                <a class="board-name">{reviewName}</a>
-
+                                <td>
+                                    <a className="board-name" id="bold">ชื่อคนตั้งกระทู้</a>
+                                    <a className="board-name">{reviewName}</a>
+                                </td>
                             </tr>
                             <tr>
-                                <a class="type" id="bold">หมวดหมู่</a>
-                                <a class="type">{type}</a>
+                                <td>
+                                    <a className="type" id="bold">หมวดหมู่</a>
+                                    <a className="type">{type}</a>
+                                </td>
                             </tr>
                             <tr className="trFoot">
-                                <a class="num-com">
-                                <a class="num-of-read"><i id="icon-b" class="fas fa-eye"></i></a>
-                                <a class="comment"><i id="icon-b" class="far fa-comment-dots"></i> คอมเม้นต์</a>
-                                </a>
+                                <td>
+                                    <a className="num-com"></a>
+                                    <a className="num-of-read"><i id="icon-b" className="fas fa-eye"></i></a>
+                                    <a className="comment"><i id="icon-b" className="far fa-comment-dots"></i> คอมเม้นต์</a>
+                                </td>
                             </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>

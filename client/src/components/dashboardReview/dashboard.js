@@ -12,8 +12,8 @@ export default class Dashboard extends Component {
 
         return (
             <div className = "Nav"> <NavBar/>                        
-                <div classNameNameName="row">
-                    <div classNameName="col-sm">
+                <div className="row">
+                    <div className="col-sm">
                         <div id="myCarousel" className="carousel slide" data-ride="carousel">
 
                             <ol className="carousel-indicators">
@@ -60,26 +60,26 @@ export default class Dashboard extends Component {
                             <i className="fas fa-star" id="icona"></i>รีวิวยอดนิยม
                         </div>
 
-                        <div classNameName="inlineReviewDashboard flex-container">
-                            <a href="/review/id"><div classNameName="inlineReview"><UserhisReview/></div></a>
-                            <a href="/review/id"><div classNameName="inlineReview"><UserhisReview/></div></a>
-                            <a href="/review/id"><div classNameName="inlineReview"><UserhisReview/></div></a>
-                            <a href="/review/id"><div classNameName="inlineReview"><UserhisReview/></div></a>
-                            <a href="/review/id"><div classNameName="inlineReview"><UserhisReview/></div></a>
+                        <div className="inlineReviewDashboard flex-container">
+                            <a href="/review/id"><div className="inlineReview"><UserhisReview/></div></a>
+                            <a href="/review/id"><div className="inlineReview"><UserhisReview/></div></a>
+                            <a href="/review/id"><div className="inlineReview"><UserhisReview/></div></a>
+                            <a href="/review/id"><div className="inlineReview"><UserhisReview/></div></a>
+                            <a href="/review/id"><div className="inlineReview"><UserhisReview/></div></a>
                         </div>
 
                        <div className = "re">
                             <i className="fas fa-star" id="icona"></i>กระทู้ยอดนิยม
                         </div>
 
-                        <div classNameName="inlineBoardDashboard ">
-                            <div classNameName="inlineBoard"><UserHisBoard/></div>
-                            <div classNameName="inlineBoard"><UserHisBoard/></div>
-                            <div classNameName="inlineBoard"><UserHisBoard/></div>
-                            <div classNameName="inlineBoard"><UserHisBoard/></div>
-                            <div classNameName="inlineBoard"><UserHisBoard/></div>
-                            <div classNameName="inlineBoard"><UserHisBoard/></div>
-                            <div classNameName="inlineBoard"><UserHisBoard/></div>
+                        <div className="inlineBoardDashboard ">
+                            <div className="inlineBoard"><UserHisBoard/></div>
+                            <div className="inlineBoard"><UserHisBoard/></div>
+                            <div className="inlineBoard"><UserHisBoard/></div>
+                            <div className="inlineBoard"><UserHisBoard/></div>
+                            <div className="inlineBoard"><UserHisBoard/></div>
+                            <div className="inlineBoard"><UserHisBoard/></div>
+                            <div className="inlineBoard"><UserHisBoard/></div>
                             
         </div>
 
