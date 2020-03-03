@@ -1,13 +1,13 @@
 import React, {Component, Fragment} from 'react' // react and component
 import {Redirect} from 'react-router-dom' // redirect
 import './login.css' // css file
-import Navbar from '../NavBar/NavBar' // Navbar component
+import Navbar from '../../Bar/NavBar/NavBar' // Navbar component
 import { connect } from 'react-redux' // redux hook function for use global state (user data)
 import { Formik, Form, Field, ErrorMessage } from 'formik' // lib for creating form
 import * as yup from 'yup' // lib for validation
 import PropTypes from 'prop-types' // prop type
-import { login } from '../../redux/actions/userAction' // login action (like a function)
-import { clearErrors } from '../../redux/actions/errorAction' // clear error action
+import { login } from '../../../redux/actions/userAction' // login action (like a function)
+import { clearErrors } from '../../../redux/actions/errorAction' // clear error action
 
 /* define form validaqtion */
 const LoginSchema = yup.object().shape({

@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import './NavBar.css';
 
-import Logout from '../Logout/logout';
+import Logout from '../../Auth/Logout/logout';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 

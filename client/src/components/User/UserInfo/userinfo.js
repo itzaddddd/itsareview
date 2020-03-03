@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './userinfo.css';
-import Navbar from '../NavBar/NavBar';
+import Navbar from '../../Bar/NavBar/NavBar';
 // import UserHisReview from '../UserhisReview/userhisReview';
 
 import { connect } from 'react-redux' // redux hook function for use global state (user data)

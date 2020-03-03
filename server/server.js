@@ -3,9 +3,10 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
+const config = require('config');
 
 /*set constraint*/
-const PORT = require('./config/PORT').PORT;
+const PORT = config.get('PORT');
 
 /* import router */
 const userRoute = require('./routes/userRoute');

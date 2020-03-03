@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import NavBar from '../NavBar/NavBar'
+import NavBar from '../../Bar/NavBar/NavBar'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './dashboard.css';
-import Typebar from '../Typebar/Typebar'
-import UserhisReview from '../UserhisReview/userhisReview';
-import UserHisBoard from '../UserhisBoard/userhisBoard';
+import Typebar from '../../Bar/Typebar/Typebar'
+import UserhisReview from '../Review/userhisReview';
+import UserHisBoard from '../../Board/Board/userhisBoard';
     
 export default class Dashboard extends Component {
 

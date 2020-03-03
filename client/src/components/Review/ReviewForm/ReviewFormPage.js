@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './ReviewFormPage.css';
 import Tag from '../Tag/Tag';
-import NavBar from '../NavBar/NavBar';
+import NavBar from '../../Bar/NavBar/NavBar';
 import {Redirect} from 'react-router-dom';
 
 class ReviewFormPage extends Component {

@@ -3,7 +3,7 @@ import './review_page.css';
 import Rating from '../Rating/rating';
 //import './Tag.css';
 //import Tag from '../Tag/Tag'
-import NavBar from '../NavBar/NavBar';
+import NavBar from '../../Bar/NavBar/NavBar'
 
 class ReviewPage extends Component{
 

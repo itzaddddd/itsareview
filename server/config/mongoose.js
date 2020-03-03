@@ -1,4 +1,5 @@
-const DB = require('./database').url;
+const config = require('config')
+const DB = config.get('url');
 const mongoose = require('mongoose');
 
 mongoose.connect(DB, { 

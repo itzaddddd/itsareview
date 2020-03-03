@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import './register.css';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
-import Navbar from '../NavBar/NavBar';
+import Navbar from '../../Bar/NavBar/NavBar';
 import { Formik, Form, Field, ErrorMessage} from 'formik'
 import * as yup from 'yup'
 import PropTypes from 'prop-types'
-import { register } from '../../redux/actions/userAction'
-import { clearErrors } from '../../redux/actions/errorAction'
+import { register } from '../../../redux/actions/userAction'
+import { clearErrors } from '../../../redux/actions/errorAction'
 import { connect } from 'react-redux'
 
 const RegisterSchema = yup.object().shape({
