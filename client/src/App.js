@@ -8,7 +8,7 @@ import {Route, Switch, Redirect} from 'react-router-dom';
 import adHome from './components/admin/admin_home/adhome';
 import adReview from  './components/admin/admin_review/adreview';
 //import adBoard from './components/admin_board/adboard';
-//import adCategory from './components/admin_cate/adcate';
+import adCategory from './components/admin/admin_cate/adcate';
 //import adAdvertise from './components/admin_ads/ads';
 import Register from './components/Auth/Register/register';
 import Login from './components/Auth/Login/login';
@@ -55,7 +55,7 @@ class App extends Component{
             {/* User */}
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/review/:id" component={ReviewPage} />
+            <Route exact path="/review" component={ReviewPage} />
             <Route exact path="/review/create" component={ReviewForm} />
             <Route exact path="/" component={Dashboard}/>
             <ProtectedRoute exact path="/user" component={UserInfo} />
@@ -67,7 +67,7 @@ class App extends Component{
             <Route exact path="/admin/user" component={adUser} />*/}          
             <Route exact path="/admin/review" component={adReview} />
             {/*<Route exact path="/admin/board" component={adBoard} />*/}
-            {/*<Route exact path="/admin/category" component={adCategory} />*/}
+            <Route exact path="/admin/category" component={adCategory} />
 
             
           </Switch>

@@ -127,7 +127,7 @@ class Login extends Component{
                                     name="userName"  
                                 />
                                 <ErrorMessage 
-                                    componet="div"
+                                    component="div"
                                     name="userName"
                                     className="invalid-feedback"
                                 />
@@ -142,7 +142,7 @@ class Login extends Component{
                                     name="pass1" 
                                 />
                                 <ErrorMessage 
-                                    componet="div"
+                                    component="div"
                                     name="pass1"
                                     className="invalid-feedback"
                                 />

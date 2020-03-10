@@ -54,26 +54,3 @@ export default function(state = initialState, action){
             return state;
     }
 }
-// const handleLogin = (
-//     state= {
-//         isLogin:false,
-//         data:''
-//     },
-//     action
-//     ) => {
-//     switch(action.type){
-//         case 'SUCCESS':
-//             return {
-//                 isLogin: true,
-//                 data: action.data
-//             };
-//         case 'FAIL':
-//             return {
-//                 isLogin: false,
-//             }
-//         default:
-//             return state;
-//     }
-// }
-
-// export default handleLogin;

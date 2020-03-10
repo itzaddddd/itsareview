@@ -23,8 +23,8 @@ class ReviewPage extends Component{
                         <div className="reviewName">รักโคตรๆ โหดอย่างมึง</div>
                         <hr className="new5"></hr>
                         <div className="reviewBy">รีวิวโดย<p className="reviewer">คนเขียนสุดสวย</p></div>
-                        <div className = "view"><i style={{color:"9FB444"}} class="far fa-clock"></i>  วัน/เดือน/ปี</div>
-                        <div className = "view"><i style={{color:"9FB444"}} class="fas fa-eye"></i>  จำนวนคนดู</div>
+                        <div className = "view"><i style={{color:"9FB444"}} className="far fa-clock"></i>  วัน/เดือน/ปี</div>
+                        <div className = "view"><i style={{color:"9FB444"}} className="fas fa-eye"></i>  จำนวนคนดู</div>
                         <div className="reviewBy">คะแนนนิยาย</div>
 
                         <div className = "reviewBy2">หมวดหมู่นิยาย</div>

@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
 mongoose.connect(DB, { 
     useUnifiedTopology: true, 
     useNewUrlParser: true, 
-    useCreateIndex: true 
+    useCreateIndex: true,
+    useFindAndModify: false 
 });
 const connection = mongoose.connection;
 connection.once('open', ()=>{
