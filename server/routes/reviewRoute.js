@@ -1,5 +1,6 @@
 const reviewRoute = require('express').Router();
 const Review = require('../models/Reviews');
+const User = require('../models/Users');
 const Category = require('../models/Categories');
 
 reviewRoute.route('/').get((req,res)=>{
@@ -18,33 +19,66 @@ reviewRoute.route('/create').get((req,res)=>{
     console.log('Show form for creating a review');
 });
 
+// @route   POST /review/create
+// @desc    Create a review 
+// @access  Public
 reviewRoute.route('/create').post((req,res)=>{
-    let review = new Review({
-        rvTitle: req.body.rvTitle,
-        rvAuthor: req.body.rvAuthor,
-        userID: req.session._id,
-        rvType: req.body.rvType,
-        rvTag: req.body.rvTag,
-        rvChar: req.body.rvChar,
-        rvContent: {
-            rvStory: req.body.rvStory,
-            rvImage: req.body.rvImage
-        },
-        rvStatus: req.body.rvStatus,
-        rvNovel: {
-            rvSource: req.body.rvSource,
-            rvLink: req.body.rvLink
-        },
-        rvRate: req.body.rvRate,
-    });
-
-    review.save((err, result)=>{
-        if(err){
-            console.log(err)
-        }else{
-            res.json(result);
-        }
-    });
+    const {userName,rvTitle, rvChar, rvContent, rvType, rvTag, rvStatus, rvSource} = req.body;
+    // find user_id by userName
+    if(userName == 'Guest'){
+        const review = new Review({
+            user_id: 'guest_review',
+            rvTitle: rvTitle,
+            rvChar: rvChar,
+            rvContent: rvContent,
+            rvType: rvType,
+            rvTag: rvTag,
+            rvStatus: rvStatus,
+            rvSource: rvSource
+        });
+        // save review
+        review.save((err, result)=>{
+            if(err){
+                console.log('Error : ',err)
+            }else{
+                res.json(result);
+            }
+        });
+    }else{
+        User.findOne({userName: userName}, (err,result)=>{
+            if(err) console.log(err);
+            let user_id = result._id
+            // define new review
+            const review = new Review({
+                user_id: user_id,
+                rvTitle: rvTitle,
+                rvChar: rvChar,
+                rvContent: rvContent,
+                rvType: rvType,
+                rvTag: rvTag,
+                rvStatus: rvStatus,
+                rvSource: rvSource
+            });
+            // save review
+            review.save((err, result)=>{
+                if(err){
+                    console.log('Error : ',err)
+                }else{
+                    // update logReview
+                    User.findOneAndUpdate(
+                        {userName: userName},
+                        {$push: {
+                            logReview: result
+                            }
+                        }
+                    )
+                    .then(res => console.log(res))
+                    .catch(err => console.log(err));
+                    res.json(result);
+                }
+            });
+        });
+    }
     console.log('Create a review');
 });
 

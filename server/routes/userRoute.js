@@ -4,18 +4,17 @@ const loginRoute = require('./loginRoute');
 const logoutRoute = require('./logoutRoute');
 const registerRoute = require('./registerRoute');
 
+const auth = require('../middleware/auth');
+
 const User = require('../models/Users');
-userRoute.route('/:id').get((req,res)=>{
-    console.log(req.params.id);
-    User.findById(mongoose.Types.ObjectId(req.params.id),(err,result)=>{
-        
-        if(err){
-            console.log(err);
-        }else{
-            res.json(result);
-        }
-    });
-    console.log('Profile');
+
+// @route   GET user
+// @desc    Get user data
+// @access  Private
+userRoute.route('/').get(auth,(req,res)=>{
+    User.findById(req.user.id)
+        .select('-password')
+        .then(user => res.json(user));
 });
 
 userRoute.route('/:id/edit').get((req,res)=>{
