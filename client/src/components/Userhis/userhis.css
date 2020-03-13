@@ -1,0 +1,62 @@
+/* body{
+    font-family: 'Kanit', sans-serif;
+    font-size: 0.5em;
+} */
+
+div.show-review{
+    width: 80%;
+    color: #242424;
+    margin: auto;
+    background-color: #e6e6e6;
+    padding-top: 15px;
+}
+div.show-board{
+    width: 80%;
+    height: 80px;
+    color: #242424;
+    margin: auto;
+    background-color: antiquewhite;
+    padding-top: 15px;
+}
+table.in-box{
+    width: 85%;
+    margin: auto;
+}
+/* i.far, i.fas{
+    color: #B9D253;
+} */
+#icon-b{
+    color: black;
+}
+a.novel-name, a.board-name{
+    font-size: 1.5em;
+}
+
+a.date, a.num-com{
+    float: right;
+}
+a.review-name, a.type, a.tag, a.comment{
+    padding-left: 1.5em;
+}
+div.story{
+    line-height:14pt;
+    height:28pt;
+    overflow:hidden;
+    text-indent: 20px;
+    color: gray;
+}
+
+
+@media(min-width: 768px) {
+    /* body {
+        font-size: 1.00em;
+    } */
+    /* div.show-review{
+        height: 200px;
+        padding-top: 15px;
+    } */
+    div.show-board{
+        height: 150px;
+        padding-top: 15px;
+    }
+}

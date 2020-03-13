@@ -1,0 +1,158 @@
+h3 {
+    padding:5% 2% 0%;
+    color: black;
+}
+
+h6 {
+    padding: 0.3% 4% 0%;
+    color: black;
+}
+
+/*change body to title*/
+.title{
+
+    font-size: 20px;
+    padding:30px 20px 0px;
+    line-height: 0%;
+    color: #9FB444;
+}
+
+/*limit 3 object of type and tag*/
+span.limit{
+  font-size: 10px;
+  color: black;
+}
+
+/*status white space from radio botton*/
+span.status{
+  padding-left: 5px;
+  font-size:11px;
+}
+
+input[type='text'], input[type='password'], input[type='email']{
+    
+    color:black;
+    width: 87%;
+    height: 30px;
+    margin: 6% 6% 0%;
+    
+    transition: box-shadow 100ms;
+    border-radius: 3px;
+
+    border: 0px;
+    box-shadow: 0px 0px 1px 1px #9FB444;
+    border-radius: 3px;
+    font-size: 13px;
+    border: 0px;
+    
+}
+
+#story{
+    color:black;
+    width: 87%;
+    height: 150px;
+    margin: 6% 6% 0%;
+    
+    transition: box-shadow 100ms;
+    border-radius: 3px;
+
+    border: 0px;
+    box-shadow: 0px 0px 1px 1px #9FB444;
+    border-radius: 3px;
+    font-size: 13px;
+    border: 0px;  
+}
+
+input[type='text']:focus, input[type='password']:focus, input[type='email']:focus {
+
+    outline: 0px;
+    outline-offset: 0px;
+    box-shadow: 0px 0px 1px 2px #9FB444;
+}
+
+
+.story[type='text']{
+    
+    color:black;
+    width: 87%;
+    height: 55%;
+    margin: 6% 6% 0%;
+    
+    transition: box-shadow 100ms;
+    border-radius: 3%;
+
+    border: 0%;
+    box-shadow: 0% 0% 1% 1% #9FB444;
+    border-radius: 3%;
+    font-size: 13px;
+    border: 0px;
+    
+}
+
+.box{
+    border:1px solid #9FB444;
+    border-radius:3%;
+    width: 87%;
+    height: 10%;
+    margin: 6% 6% 0%;
+}
+
+label.label,h1 {
+  
+    font-size: 80%;
+    margin-top: 20% 10% 0%;
+  }
+  
+  
+  
+  
+  
+  .wrap {
+    width: 80%;
+    margin: 0 auto;
+    
+  }
+  
+  label {
+    
+    width: 20%;
+    margin: 10% 0% 3%;
+  }
+  
+
+  
+  .wrapper {
+    border: 1px dashed #95a5a6;
+    height: 56px;
+    margin-top: 16px;
+    border-radius: 4px;
+    font-size: 6px;
+  }
+  .dropbox[type=text], select {
+    width: 50%;
+    font-size: 15px;
+    margin: 5% 10%;
+    display: inline-block;
+    border: 1px solid #9FB444;
+    border-radius: 1px;
+    box-sizing: border-box;
+  }
+  input[type=submit] {
+    width: 50%;
+    background-color: #9FB444;
+    color: black;
+    padding: 14px 20px;
+    margin: 10% 20%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  
+  
+  
+
+#score{
+    font-size: 15px;
+    margin: 50px;
+}
