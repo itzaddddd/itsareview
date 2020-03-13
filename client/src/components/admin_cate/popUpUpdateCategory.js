@@ -5,7 +5,7 @@ import axios from 'axios';
  
 
 
-export default class PopUpAddCategory extends Component {
+export default class PopUp extends Component {
 
      constructor(props) {
         super(props);
@@ -66,13 +66,8 @@ export default class PopUpAddCategory extends Component {
             console.log(error);
         })
         
-        this.setState({
-            categoryName: '',
-            categoryIcon: ''
-        })
-
-        window.location = '/admin/categories';
-            
+        // window.location = '/admin/categories';
+        
     }
 
        
@@ -81,12 +76,13 @@ export default class PopUpAddCategory extends Component {
         return (
             
             <div>
-                <Form action="/add" method="post" >
+                <Form action="/add" method="post" onSubmit={this.onSubmit}>
                     <Modal animation={false}
                         {...this.props}
                         size="md"
                         aria-labelledby="contained-modal-title-vcenter"
-                        centered >
+                        centered
+                        >
                         <Modal.Header closeButton>
                             <Modal.Title id="contained-modal-title-vcenter">
                             <p className="popUpTopic"><i className='fas fa-plus-circle' />  เพิ่มหมวดหมู่</p>

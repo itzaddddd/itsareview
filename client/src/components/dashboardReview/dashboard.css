@@ -95,12 +95,12 @@ button.btn{
     }
 }
 
-@media(min-width: 375px) {
+/* @media(min-width: 375px) {
     div.show-review {
         width: 100%;
     }
-}
-/* 
+} */
+
 @media(min-width: 768px) {
     
     
@@ -127,7 +127,7 @@ button.btn{
     h3.mareview{
 
         font-size: 40px;
-        transform: translate(+35%, -260%);
+         transform: translate(+30%, -100%); 
     }
     
     #icona{
@@ -143,4 +143,4 @@ button.btn{
         font-size: 20px;
      }
     
-} */
+}

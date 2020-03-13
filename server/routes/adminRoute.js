@@ -1,48 +1,107 @@
-let adminRouter = require('express').Router();
+const adminRoute = require('express').Router();
 const Review = require('../models/Reviews');
 const Category = require('../models/Categories');
+const User = require('../models/Users');
 
 
 
-adminRouter.route('/admin').get((req,res)=>{
-    console.log('Home admin');
+// *****************************user***************************************
+
+adminRoute.route('/users').get((req,res)=>{
+    User.find()
+    .then(users => res.json(users))
+    .catch(err => res.status(400).json('Error: ' + err));
+    console.log('Show User from Database');
+});
+
+adminRoute.route('/users/:id').delete((req, res) => {
+  User.findByIdAndDelete(req.params.id)
+    .then(() => res.json('User deleted.'))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+// *****************************review***************************************
+
+adminRoute.route('/reviews').get((req,res)=>{
+  Review.find()
+    .then(reviews => res.json(reviews))
+    .catch(err => res.status(400).json('Error: ' + err));
+  console.log('Show Review from Database');
+});
+
+adminRoute.route('/reviews/:id').delete((req, res) => {
+  Review.findByIdAndDelete(req.params.id)
+    .then(() => res.json('Review deleted.'))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+// ***************************category***************************************
+
+adminRoute.route('/categories').get((req,res)=>{
+  Category.find()
+    .then(categories => res.json(categories))
+    .catch(err => res.status(400).json('Error: ' + err));
+  console.log('Show Category from Database');
+});
+
+adminRoute.route('/categories/add').post((req, res) => {
+
+    // const categoryID = req.body.categoryIcon;
+  const categoryName = req.body.categoryName;
+  const categoryIcon = req.body.categoryIcon;
+
+  const newCategory = new Category({
+      categoryName,
+      categoryIcon
+  });
+
+  newCategory.save()
+    .then(() => res.json('Category added!'))
+    .catch(err => res.status(400).json('Error: ' + err));
+
+  console.log('Add Category to Database');
+});
+
+adminRoute.route('/categories/update/:id').post((req, res) => {
+  Category.findById(req.params.id)
+    .then(categories => {
+      categories.categoryName = req.body.categoryName;
+      categories.categoryIcon = req.body.categoryIcon;
+
+      categories.save()
+        .then(() => res.json('Category updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+adminRoute.route('/categories/:id').delete((req, res) => {
+  Category.findByIdAndDelete(req.params.id)
+    .then(() => res.json('Category deleted.'))
+    .catch(err => res.status(400).json('Error: ' + err));
+
+  console.log('Deleted Category from Database');
 });
 
 
-// ***************************user***************************************
+// adminRoute.get('/admin/category', function(req, res, next) {
+//     var resultArray = [];
+//     MongoClient.connect(url, function(err, client){
+//     assert.equal(null, err);
+//     const db = client.db(dbName);
+//     var cursor = db.collection('categories').find();
+//     cursor.forEach(function(doc, err) {
+//         assert.equal(null, err);
+//         resultArray.push(doc);
+//     }, function(){
+//       client.close();
+//       res.render('/admin/category', {items: resultArray});
+//     });
+//     });
+//   });
 
-adminRouter.route('/admin/user').get((req,res)=> {
-    console.log('All user data');
-});
-
-// ***************************review***************************************
-
-
-adminRouter.route('/admin/review').get((req,res)=> {
-    console.log('All review data');
-});
-
-// ***************************board***************************************
-
-
-// adminRouter.route('/admin/board').get((req,res)=> {
-//     console.log('All board data');
-// });
 
 // ***************************banner***************************************
 
 
-// adminRouter.route('/admin/banner').get((req,res)=> {
-//     console.log('All banner data');
-// });
-
-// ***************************category***************************************
-
-
-// adminRouter.route('/admin/category').get((req,res)=> {
-//     console.log('All category');
-// });
-
-
-
-module.exports = adminRouter;
+module.exports = adminRoute;

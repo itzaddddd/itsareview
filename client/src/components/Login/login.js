@@ -1,43 +1,34 @@
-import React, {Component} from 'react';
-import axios from 'axios';
-import "./login.css";
-class Login extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            userName: '',
-            pass1: ''
-        }
+import React, {Component} from 'react'              // react and component
+import {Redirect} from 'react-router-dom'           // redirect
+import './login.css'                                // css file
+import axios from 'axios'                           // send and get data with back-end
+import Navbar from '../NavBar/NavBar'               // Navbar component
+import {useSelector, useDispatch} from 'react-redux'// redux hook function for use global state (user data)
+import {GetUser} from '../../Redux/Actions'         // redux action
+import { Formik, Form, Field, ErrorMessage } from 'formik'        // lib for creating form
+import * as yup from 'yup'                          // lib for validation
 
-        this.onChangeUsername = this.onChangeUsername.bind(this);
-        this.onChangePassword = this.onChangePassword.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
+const LoginSchema = yup.object().shape({
+    userName: yup.string()
+        .required("กรุณาใส่ชื่อผู้ใช้")
+        .matches(/^[a-z0-9_-]{3,16}$/,"กรุณาใช้ตัวอักษรภาษาอังกฤษ ตัวเลข และอักขระพิเศษ _ หรือ -"),
+    pass1: yup.string()
+        // .min(8,"รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัวอักษร")
+        .max(16,"รหัสผ่านต้องยาวไม่เกิน 16 ตัวอักษร")
+        .required("กรุณาใส่รหัสผ่าน")
+})
+
+const postLogin = (username, password) => {
+    let data = {
+        userName: username,
+        pass1: password
+        
     }
-
-    onChangeUsername = e => {
-        this.setState({
-            userName: e.target.value
-        });
-    }
-
-    onChangePassword = e => {
-        this.setState({
-            pass1: e.target.value
-        });
-    }
-
-    onSubmit = e => {
-        e.preventDefault();
-
-        let data = {
-            userName: this.state.userName,
-            pass1: this.state.pass1
-        }
-
-        axios.post('http://localhost:4000/user/login',data)
+    console.log(data)
+    axios.post('http://localhost:4000/user/login',data)
         .then(
             response => {
-                console.log(response);
+                console.log(response.data);
             }
         )
         .catch(
@@ -45,32 +36,77 @@ class Login extends Component{
                 console.log(error);
             }
         )
-
-        this.setState({
-            userName: '',
-            pass1: ''
-        });
     }
 
+class Login extends Component{
+    constructor(props){
+        super(props);  
+    }
     render(){
         return(
-            <form class="LoginForm" onSubmit={this.onSubmit}>
-                <div className="container">
-                    <h2>เข้าสู่ระบบ</h2>
-                    <div className="form-group">
-                        <label htmlFor="usr">ชื่อผู้ใช้</label>
-                        <input type="text" className="form-control" id="usr" name="userName" 
-                        autoComplete="username" onChange={this.onChangeUsername} />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="pwd">รหัสผ่าน</label>
-                        <input type="password" className="form-control" id="pwd" name="pass1" 
-                        autoComplete="current-password" onChange={this.onChangePassword} />
-                    </div>
-                    <button className="btn btn-success" onSubmit={this.onSubmit}>เข้าสู่ระบบ</button>
-                    <p>ยังไม่มีบัญชี? <a href="/register">สมัคร</a></p>
-                </div>
-            </form>
+            <div>
+                <Navbar />
+                    {/*<div id="logo-black">
+                        <img src="https://sv1.picz.in.th/images/2020/02/18/xUSig2.png" alt="logo" width="70%" height="auto" />
+                    </div>  */}  
+                <Formik
+                    initialValues = {{ userName: "", pass1: "" }}
+                    validationSchema = {LoginSchema}
+                    onSubmit = { (values,{setSubmitting}) => {
+                        postLogin(values.userName, values.pass1);
+                        setSubmitting(false);
+                    }}
+                >
+                    {({ touched, errors, isSubmitting}) => (
+                    <Form className="LoginForm">
+                        <div className="container">
+                            <a href="/user"><div id="login-title">เข้าสู่ระบบ</div></a>
+                            <div className="form-group login">
+                                <Field 
+                                    type="text" 
+                                    className={`form-control ${touched.email && errors.email ? "is-invalid":""}`} 
+                                    placeholder="ชื่อผู้ใช้" 
+                                    name="userName"  
+                                />
+                                <ErrorMessage 
+                                    componet="div"
+                                    name="userName"
+                                    className="invalid-feedback"
+                                />
+                            </div>
+                            
+                            <div className="form-group login">
+                                <Field
+                                    type="password" 
+                                    className="form-control" 
+                                    id="pwd"
+                                    placeholder="รหัสผ่าน" 
+                                    name="pass1" 
+                                />
+                                <ErrorMessage 
+                                    componet="div"
+                                    name="pass1"
+                                    className="invalid-feedback"
+                                />
+                            </div>
+                            <div className="button">
+                                <button 
+                                    className="btn btn-success" 
+                                    id="login-button" 
+                                    onSubmit={this.onSubmit}
+                                    disabled={isSubmitting}
+                                >
+                                เข้าสู่ระบบ
+                                </button>
+                            </div>
+                            <div id="account-regis">
+                                <span id="account">ยังไม่มีบัญชี?</span><a href="/register" id="link-regis">สมัคร</a>
+                            </div>
+                        </div>
+                    </Form>
+                    )}
+                </Formik>
+            </div>
         )
     }
 }

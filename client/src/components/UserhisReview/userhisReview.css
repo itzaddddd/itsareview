@@ -1,6 +1,6 @@
 /*chage body to clase userHis*/
 div.userHis{
-    font-size: 3vmin;
+    font-size: 0.75em;
 }
 
 div.show-review{
@@ -10,26 +10,25 @@ div.show-review{
     border-style: solid;
     border-width: thin;
     border-color: #e6e6e6;
-    font-size: 3vmin;
-    overflow: auto;
+    font-size: 1.00em;
+     overflow: auto;
     line-height: 2em;
-    padding-bottom: 1em;
 }
 
 div.in-box{
-    
+    width: 70%;
     margin: auto;
     white-space: nowrap;
+   
+    
 }
+
+
 
 #icon-b{
     color: black;
     width: 20px;
 }
-/* 
-a.comment {
-    float: right;
-} */
 
 a.novel-name{
     font-size: 4vmin;
@@ -48,7 +47,7 @@ div.story{
     overflow:hidden;
     text-indent: 20px;
     color: gray;
-    font-size: 3vmin;
+    font-size: 1.00em;
 }
 #bold{
     font-weight: bold;
@@ -74,48 +73,43 @@ div.story{
 
 @media(min-width: 768px) {
     
-    div.in-box{
-        /* height: 100%; */
-        /* padding-top: 50px; */
-        margin: 0;
-        
+    div.show-review{
+        height: 100%;
+        padding-top: 50px;
     }
 
     div.userHis{
-        font-size: 3vmin;
+        font-size: 1.75em;
     }
     
     div.show-review{
-        width: 70%;
+        width: 60%;
         color: #242424;
+        margin: 0% 20%;
         border-style: solid;
         border-width: thin;
         border-color: #e6e6e6;
-        font-size: 3vmin;
-        overflow: auto;
+        font-size: 1.00em;
+         overflow: auto;
+        line-height: 2em;
     }
     
     div.in-box{
-        
-        /* margin: auto; */
+        width: 70%;
+        margin: auto;
         white-space: nowrap;
-    }
-    a#bold.review-name, a#bold.type, a#bold.tag {
-        margin: 10em 0 10em 0 ;
+       
+        
     }
     
     a.novel-name{
-        font-size: 3vmin;
-        margin: 1em 0 0 1em;
-    }
+        font-size: 1.5em;}
     
     a.date, .num-com{
         float: right;
-        margin-right: 1em;
     }
-    a.review-name, .type, .tag, .comment, a.rating{
+    a.review-name, .type, .tag, .comment{
         padding-left: 1.5em;
-        
     }
     div.story{
         line-height:14pt;
@@ -123,6 +117,6 @@ div.story{
         overflow:hidden;
         text-indent: 20px;
         color: gray;
-        font-size: 1.8vmin;
+        font-size: 1.00em;
     }
 }

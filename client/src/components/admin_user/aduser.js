@@ -1,7 +1,7 @@
 import React , {Component} from 'react';
 import './aduser.css';
 import Table from 'react-bootstrap/Table';
-import Navbar from "../admin_navbar/navbar.js";
+import Navbar from "../admin_navbar/navbar";
 import {PopUpDelUser} from "./delUserPopUp";
 
 class Aduser extends Component {
@@ -26,8 +26,8 @@ class Aduser extends Component {
                     <p className="topicName">ข้อมูลผู้ใช้งาน</p>
                 </div>
 
-                <div className ="table">
-                    <Table>
+                <div className ="adminTable">
+                    <Table className ="adminTable">
                         <thead>
                             <tr>
                             <th>user ID</th>
@@ -52,17 +52,17 @@ class Aduser extends Component {
                             <td style={{textDecoration: 'underline'}}><a>ลบ</a></td>
                             </tr> */}
                             <tr>
-                            <td>1</td>
-                            <td>eizthaymu</td>
-                            <td>none</td>
-                            <td>eizza@kmutt.ac.th</td>
-                            <td>วันนี้</td>
-                            <td>none</td>
-                            <td>none</td>
-                            <td className='del'>
-                                <a className="addCate" onClick={()=> this.setState({PopUpDelUser: true})}>ลบ</a>
-                                <PopUpDelUser show={this.state.PopUpDelUser} onHide={PopUpClose} />
-                            </td>
+                                <td>1</td>
+                                <td>eizthaymu</td>
+                                <td>none</td>
+                                <td>eizza@kmutt.ac.th</td>
+                                <td>วันนี้</td>
+                                <td>none</td>
+                                <td>none</td>
+                                <td className='del'>
+                                    <a className="addCate" onClick={()=> this.setState({PopUpDelUser: true})}>ลบ</a>
+                                    <PopUpDelUser show={this.state.PopUpDelUser} onHide={PopUpClose} />
+                                </td>
                             </tr>
                         </tbody>
                     </Table>

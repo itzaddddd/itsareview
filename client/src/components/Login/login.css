@@ -1,15 +1,66 @@
 form.LoginForm {
-    background: rgb(89,88,106);
-    background: linear-gradient(0deg, rgba(89,88,106,1) 0%, rgba(185,210,83,1) 62%);
+    /* background: rgb(89,88,106);
+    background: linear-gradient(0deg, rgba(89,88,106,1) 0%, rgba(185,210,83,1) 62%); */
+
+    margin: 10px;
+    margin-top: 20px;
+    position: relative;
 }
 
 .btnsuccess {
         background-color: #B9D253; 
+        width: 50%;
+        margin-left: 25%;
+        margin-right: 25%;
         border: none;
         color:black;
-        padding: 15px 32px;
+        padding: 5px 15px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
-        font-size: 2vw;
+        font-size: 15px;
 }
+
+
+#login-title {
+    font-size: 20px;
+    margin-left: 10%;
+    color: black;
+}
+
+#account-regis {
+    font-size: 15px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#accoutn-regis a{
+    color: black;
+}
+
+#link-regis {
+    margin-left: 5px;
+    color:#B9D253;
+}
+
+#account {
+    color: gray;
+}
+
+input{
+    padding: 12px 20px;
+}
+
+#logo-black {
+    margin-left: 20px;
+    margin-right: 20px;
+    
+}
+
+.errorMessage {
+    font-size: 10px;
+    color: red;
+    margin-left: 25px;
+}
+
+

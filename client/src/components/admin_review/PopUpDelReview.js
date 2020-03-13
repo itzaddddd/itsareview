@@ -20,7 +20,7 @@ export class PopUpDelReview extends Component {
             aria-labelledby="contained-modal-title-vcenter"
             centered
             >
-            <Modal.Body style={{height:"10em", textAlign:"center"}}>
+            <Modal.Body style={{height:"15em", textAlign:"center"}}>
                 <p className="message">ต้องการลบรีวิว xxxxx ?</p>
             </Modal.Body>
             <Modal.Footer>
@@ -32,3 +32,4 @@ export class PopUpDelReview extends Component {
       );
     }
 }
+

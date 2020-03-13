@@ -2,7 +2,7 @@ import React from 'react';
 import './adboard.css';
 
 import Table from 'react-bootstrap/Table';
-import Navbar from "../admin_navbar/navbar.js";
+import Navbar from "../admin_navbar/navbar";
 
 
 

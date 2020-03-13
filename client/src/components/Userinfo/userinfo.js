@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './userinfo.css';
 import axios from 'axios';
+import Navbar from '../NavBar/NavBar';
+import userhisReview from '../UserhisReview/userhisReview';
+import UserHisReview from '../UserhisReview/userhisReview';
 
 class UserInfo extends Component{
     constructor(props){
@@ -32,6 +35,7 @@ class UserInfo extends Component{
         // props.email;
         return(
             <div>
+                <Navbar />
                 <div className="header">
                     <div className="avatar">
                         <img className="avatar" src={img} alt="avatar" />
@@ -44,9 +48,9 @@ class UserInfo extends Component{
                     <div className="col-sm-12"><i className="far fa-envelope fa-2x"></i>  {email}</div>
                 </div>
                 
-                <div id="edit">
+                {/*<div id="edit">
                     <button className="button-edit">แก้ไข</button>
-                </div>
+                </div>*/}
 
                 <div className="history" >
                     <h3>ประวัติ</h3>
@@ -54,7 +58,8 @@ class UserInfo extends Component{
                     <div className="review">
                         <i className="fas fa-star fa-2x"></i>  นิยายที่รีวิว
                         <a className="more">ดูเพิ่มเติม  <i className="fas fa-angle-double-right"></i></a>
-                        <div className="show"></div>
+                        {/*<div className="show"></div>*/}
+                        <UserHisReview />
                     </div>
                     {/*<div className="board">
                         <a href="#"><i className="fas fa-comments fa-2x"></i>  กระทู้ที่คยเขียน</a>

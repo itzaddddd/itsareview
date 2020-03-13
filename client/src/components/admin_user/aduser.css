@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
 
-div.table {
+div.adminTable {
     margin: 0em 5em 5em 5em;
     width: 90%;
     text-align: center;
     align-content: center;
 }
 
-table {
+Table.adminTable {
     border-collapse: collapse;
     border-bottom: 1px solid #ddd;
 }
@@ -23,7 +23,7 @@ div.table th {
 div.topicPage {
     text-align: center;
     vertical-align: middle;
-    margin-top: 5em;
+    margin-top: 20em;
 }
 
 div.topicPage > p.topicName { 

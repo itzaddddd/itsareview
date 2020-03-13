@@ -1,13 +1,17 @@
-*{
+/*{
     box-sizing: border-box;
 }
 
-a.menuButton {
+    line-height: 1.5;
+    font-size: 1em;
+} */
+
+
+a {
     text-decoration: none;
     color: inherit;
     margin: 0;
 }
-
 
 .container {
     padding: 25px;

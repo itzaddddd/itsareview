@@ -18,7 +18,6 @@ class UserHisReview extends Component{
                 <div class="show-review">
                     <div class="in-box">
                         <div>
-                            <a class="review-name" id="bold">ชื่อนิยาย</a>
                             <a class="novel-name" id="bold">{novelName}</a>
                             <a class="date">{date} <i class="far fa-heart love"></i></a>
                         </div>
@@ -39,17 +38,24 @@ class UserHisReview extends Component{
                                 <div class="story">{story}</div>
                             </a>
                         </div>
-                        <div style={{width:"100%"}}>
+                        <div>
                             <a class="rating">เรตติ้ง</a>
                             <a class="num-com">
-                                <a class="num-of-read"><i id="icon-b" class="fas fa-eye"></i></a>
-                                <a class="comment"><i id="icon-b" class="far fa-comment-dots"></i>คอมเมนต์</a>
+                            <a class="num-of-read"><i id="icon-b" class="fas fa-eye"></i></a>
+                            <a class="comment"><i id="icon-b" class="far fa-comment-dots"></i>คอมเม้นต์</a>
                             </a>
-                        </div>                      
+                        </div>
+
                         
-                    </div>               
-                </div>
+                        
+                </div>               
             </div>
+
+            
+            
+</div>
+
+
         )
     }
 }

@@ -2,12 +2,36 @@ import React, {Component} from 'react';
 import './ReviewFormPage.css';
 import Tag from '../Tag/Tag';
 import NavBar from '../NavBar/NavBar';
+import {Redirect} from 'react-router-dom';
 
 class ReviewFormPage extends Component {
     constructor(props){
         super(props);
+
+        this.state = {
+            redirect : false
+        };
+
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    setRedirect = () => {
+        this.setState({
+            redirect: true
+        });
+    }
+
+    onSubmit = e => {
+        e.preventDefault();
+        this.setRedirect();
+
+
     }
     render(){
+        if(this.state.redirect){
+            return <Redirect to='/review/id' />
+        }
+
         return(
             <div>
                 <NavBar/>
@@ -15,7 +39,7 @@ class ReviewFormPage extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-sm">
-                                <h3>เขียนรีวิวนิยาย</h3>
+                                <h3><a href="/review/id">เขียนรีวิวนิยาย</a></h3>
                                 <h6>มาเขียนรีวิวนิยายที่คุณชอบกันเถอะ</h6>
                                 <div className="title">ชื่อเรื่อง</div>
                                 <input  type="text" name="rvName" placeholder=" กรอกชื่อเรื่องมาเลยจ้า"/>
@@ -50,7 +74,7 @@ class ReviewFormPage extends Component {
                                         <option value="หนังสือ">หนังสือ</option>
                                         <option value="อื่นๆ">อื่นๆ</option>  
                                         </select>
-                                <input type="submit" value= "ยืนยัน"></input>
+                                <input type="submit" value= "ยืนยัน" onSubmit={this.onSubmit} />
                                 </div>
                             </div>
                         </div>
