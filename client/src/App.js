@@ -29,7 +29,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux'
 import store from './redux/store'
 import { loadUser } from './redux/actions/userAction'
-
+import firebase from 'firebase'
+import axios from 'axios'
 // const PrivateRoute = ({component: Component, ...rest}) => {
 //   <Route {...rest} render={ (props) => (
 //     store.getState().user.isAuthenticated === true
@@ -45,6 +46,8 @@ class App extends Component{
   }
   
   render(){
+
+
     return (
       /* set redux store */
       <Provider store={store}>
@@ -55,8 +58,8 @@ class App extends Component{
             {/* User */}
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/review" component={ReviewPage} />
             <Route exact path="/review/create" component={ReviewForm} />
+            <Route path="/review/:id" component={ReviewPage} />
             <Route exact path="/" component={Dashboard}/>
             <ProtectedRoute exact path="/user" component={UserInfo} />
             

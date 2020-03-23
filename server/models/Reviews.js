@@ -19,8 +19,9 @@ let Review = new Schema({
     },
 	rvTime : {
         type: Date,
+        default: Date.now(),
         required: true,
-        default: Date.now
+        
     },
 	rvType : {
         type: [String],
@@ -37,9 +38,10 @@ let Review = new Schema({
             type: String,
             required: true
         },
-	// 	rvImage : [{
-    //         type: String,
-    //     },]
+		rvImage : {
+            type: String,
+            default: "xxx"
+        },
 	// },
 	rvStatus : {
         type: Boolean,

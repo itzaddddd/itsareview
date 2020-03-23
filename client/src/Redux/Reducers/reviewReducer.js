@@ -12,12 +12,13 @@ export default function(state=initialState, action){
     switch(action.type){
         case GET_REVIEW:
             return {
-                ...state
+                ...state,
+                review: action.payload
             }
         case ADD_REVIEW:
             return {
                 ...state,
-                review: action.payload
+                review: action.payload,
             }
         default:
             return state;

@@ -1,7 +1,7 @@
 const reviewRoute = require('express').Router();
 const Review = require('../models/Reviews');
 const User = require('../models/Users');
-const Category = require('../models/Categories');
+const Category = require('../models/Categories')
 
 reviewRoute.route('/').get((req,res)=>{
     Review.find({},(err,result)=>{
@@ -23,7 +23,8 @@ reviewRoute.route('/create').get((req,res)=>{
 // @desc    Create a review 
 // @access  Public
 reviewRoute.route('/create').post((req,res)=>{
-    const {userName,rvTitle, rvChar, rvContent, rvType, rvTag, rvStatus, rvSource} = req.body;
+    const {userName,rvTitle, rvChar, rvContent, rvImageUrl, rvType, rvTag, rvStatus, rvSource} = req.body;
+    
     // find user_id by userName
     if(userName == 'Guest'){
         const review = new Review({
@@ -31,6 +32,7 @@ reviewRoute.route('/create').post((req,res)=>{
             rvTitle: rvTitle,
             rvChar: rvChar,
             rvContent: rvContent,
+            rvImage: rvImageUrl,
             rvType: rvType,
             rvTag: rvTag,
             rvStatus: rvStatus,
@@ -54,6 +56,7 @@ reviewRoute.route('/create').post((req,res)=>{
                 rvTitle: rvTitle,
                 rvChar: rvChar,
                 rvContent: rvContent,
+                rvImage: rvImageUrl,
                 rvType: rvType,
                 rvTag: rvTag,
                 rvStatus: rvStatus,
@@ -93,15 +96,19 @@ reviewRoute.route('/category/:id').get((req,res)=>{
     console.log('Show reviews in the category by id');
 });
 
+// @route   GET /review/:id
+// @desc    Get a review by id
+// @access  Public
 reviewRoute.route('/:id').get((req,res)=>{
     Review.findById({_id:req.params.id},(err,result)=>{
         if(err){
             console.log(err);
         }else{
+            console.log(result)
             res.json(result);
         }
     });
-    console.log('Show a review');
+    console.log('Get a review');
 });
 
 reviewRoute.route('/:id/edit').get((req,res)=>{
