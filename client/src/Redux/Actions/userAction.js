@@ -9,7 +9,7 @@ import {
     REGISTER_FAIL
 } from '../constants'
 import axios from 'axios'
-import { returnErrors } from '../actions/errorAction'
+import { returnErrors } from '../Actions/errorAction'
 
 // Check token and load user
 export const loadUser = () => (dispatch, getState) => {

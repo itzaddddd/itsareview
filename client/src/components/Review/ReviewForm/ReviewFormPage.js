@@ -12,7 +12,7 @@ import * as yup from 'yup' // lib for validation
 
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { addReview } from '../../../redux/actions/reviewAction'
+import { addReview } from '../../../Redux/Actions/reviewAction'
 
 import firebase, { storage } from 'firebase'
 

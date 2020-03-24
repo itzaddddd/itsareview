@@ -6,8 +6,8 @@ import { connect } from 'react-redux' // redux hook function for use global stat
 import { Formik, Form, Field, ErrorMessage } from 'formik' // lib for creating form
 import * as yup from 'yup' // lib for validation
 import PropTypes from 'prop-types' // prop type
-import { login } from '../../../redux/actions/userAction' // login action (like a function)
-import { clearErrors } from '../../../redux/actions/errorAction' // clear error action
+import { login } from '../../../Redux/Actions/userAction' // login action (like a function)
+import { clearErrors } from '../../../Redux/Actions/errorAction' // clear error action
 
 /* define form validaqtion */
 const LoginSchema = yup.object().shape({

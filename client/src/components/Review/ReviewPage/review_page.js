@@ -6,7 +6,7 @@ import Rating from '../Rating/rating';
 import NavBar from '../../Bar/NavBar/NavBar'
 import {connect} from 'react-redux'
 
-import {getReview} from '../../../redux/actions/reviewAction'
+import {getReview} from '../../../Redux/Actions/reviewAction'
 
 
 const mapStateToProps = state =>{

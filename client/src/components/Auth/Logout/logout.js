@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { logout } from '../../../redux/actions/userAction'
+import { logout } from '../../../Redux/Actions/userAction'
 import PropTypes from 'prop-types'
 class Logout extends Component {
     static propTypes = {

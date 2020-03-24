@@ -1,9 +1,10 @@
 
 div.navHeader {
 	padding: 5px 0;
-	background-color:/* #000*/ white;
+	background-color: #000;
 	line-height:3;
 	
+	box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
 }
 
 img.photo{
@@ -19,11 +20,32 @@ div#search {
 	margin-right: 1em ;
 }
 
+a#home, a#review, a#broad, a#saved{
+	color: #9FB444;
+	margin: 1%;
+	font-size: 1.5vw;
+}
+
+a#login{
+	color: #9FB444;
+	font-size: 1vw;
+	margin-left: 23%;
+}
+span.search{
+	background-color: #9FB444;
+	font-size: 1vw;
+	border-radius: 10px;
+	text-align: center;
+	margin: 1%;
+}
+
+
+
 @media(min-width: 768px) {
 
 	div.navHeader {
 		padding: 10px 0;
-		background-color:/* #000*/ white;
+		background-color: #000;
 		line-height:3;
 	}
 	
@@ -38,6 +60,26 @@ div#search {
 		color: #9FB444;
 		float: right;
 		margin-right: 2em ;
+	}
+
+	a#home, a#review, a#broad, a#saved{
+		color: #9FB444;
+		margin: 1%;
+		font-size: 1vw;
+	}
+
+	a#login{
+		color: #9FB444;
+		font-size: 1vw;
+		margin-left: 35%;
+	}
+	span.search{
+		background-color: #9FB444;
+		font-size: 1vw;
+		border-radius: 10px;
+		text-align: center;
+		margin: 1%;
+
 	}
 	
 	

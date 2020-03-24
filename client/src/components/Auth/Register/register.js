@@ -6,8 +6,8 @@ import Navbar from '../../Bar/NavBar/NavBar';
 import { Formik, Form, Field, ErrorMessage} from 'formik'
 import * as yup from 'yup'
 import PropTypes from 'prop-types'
-import { register } from '../../../redux/actions/userAction'
-import { clearErrors } from '../../../redux/actions/errorAction'
+import { register } from '../../../Redux/Actions/userAction'
+import { clearErrors } from '../../../Redux/Actions/errorAction'
 import { connect } from 'react-redux'
 
 const RegisterSchema = yup.object().shape({
@@ -112,7 +112,7 @@ class Register extends Component{
                         
                         <Form className="RegisterForm" >
                         <div className="container">
-                            <a href="/user"><div id="regis-title">ลงทะเบียน</div></a>
+                            <a href="/user"><div id="regis-title">สมัครสมาชิก</div></a>
                             {this.state.msg ? <div className="alert-danger">{this.state.msg}</div> : null}
                             <div className="form-group">
                                 <Field 
@@ -177,7 +177,7 @@ class Register extends Component{
                                     id="regis-button"
                                     disabled={isSubmitting}
                                 >
-                                    ลงทะเบียน
+                                    สมัครสมาชิก
                                 </button>
                             </div>
                         </div>
