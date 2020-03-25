@@ -31,12 +31,19 @@ a#login{
 	font-size: 1vw;
 	margin-left: 23%;
 }
+a#username{
+	color: #9FB444;
+	font-size: 1vw;
+	margin-left: 23%;
+	margin-right: 1%;
+}
 span.search{
 	background-color: #9FB444;
 	font-size: 1vw;
 	border-radius: 10px;
 	text-align: center;
 	margin: 1%;
+	margin-right:0px;
 }
 
 

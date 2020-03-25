@@ -28,7 +28,7 @@ reviewRoute.route('/create').post((req,res)=>{
     // find user_id by userName
     if(userName == 'Guest'){
         const review = new Review({
-            user_id: 'guest_review',
+            user_id: 'บุคคลทั่วไป',
             rvTitle: rvTitle,
             rvChar: rvChar,
             rvContent: rvContent,

@@ -40,7 +40,7 @@ const ReviewSchema = yup.object().shape({
 const mapStateToProps = state => {
     return {
         user: state.user,
-        review: state.review
+        review: state.review,
     }
 }
 
@@ -106,19 +106,23 @@ class ReviewFormPage extends Component {
     
     addNewReview = async (newReview) => {
         await this.setUsername()
-        this.props.addReview(newReview, this.state.username,()=>{
-            this.setState({des:`/review/${this.props.review.review._id}`},()=>{
-                console.log('des ',this.state.des)
-                this.setState({redirect:true})
-            })
-        });
-        
+        await this.props.addReview(newReview, this.state.username)
+        //await console.log(this.props.review);
+        //await this.setState({des:`/review/${this.props.review.review._id}`})
+        //await console.log('des ',this.state.des)
+        //await this.setState({redirect:true})        
     }
 
     static propTypes = {
         review: PropTypes.object.isRequired,
         user: PropTypes.object.isRequired,
         addReview: PropTypes.func.isRequired
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps.review != this.props.review){
+            this.props.history.push(`/review/${nextProps.review.review._id}`)
+        }
     }
 
     render(){
@@ -174,8 +178,7 @@ class ReviewFormPage extends Component {
                                     rvSource
                                     
                                 }
-                                await this.addNewReview(newReview) 
-                                                               
+                                await this.addNewReview(newReview)                       
                             })
                             .catch(err=>console.log(err))
                     }}
