@@ -5,6 +5,13 @@ import Navbar from '../../Bar/NavBar/NavBar';
 
 import { connect } from 'react-redux' // redux hook function for use global state (user data)
 import PropTypes from 'prop-types'
+import Review from '../../Review/Review/userhisReview'
+
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+}
 class UserInfo extends Component{
 
     static propTypes = {
@@ -49,15 +56,11 @@ class UserInfo extends Component{
                         <a className="more" href="#">ดูเพิ่มเติม  <i className="fas fa-angle-double-right"></i></a>
                         <div className="show"></div>
                     </div>*/}
+
+                    <Review />
                 </div>
             </div>
         )
-    }
-}
-
-const mapStateToProps = state => {
-    return {
-        user: state.user
     }
 }
 

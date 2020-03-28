@@ -6,7 +6,7 @@ import Rating from '../Rating/rating';
 import NavBar from '../../Bar/NavBar/NavBar'
 import {connect} from 'react-redux'
 
-import {getReview} from '../../../Redux/Actions/reviewAction'
+import { getReview } from '../../../Redux/Actions/reviewAction'
 
 
 const mapStateToProps = state =>{
@@ -27,11 +27,13 @@ class ReviewPage extends Component{
     //     })
     // }
 
-    render(){
-        
-        let {user, review} = this.props;
-        console.log(review)
+    componentDidMount(){
+        let review_id = this.props.match.params.id
+        this.props.getReview(review_id)
+    }
 
+    render(){
+        let review = this.props.review
         return(
             <div>
                 <NavBar/>
@@ -67,4 +69,4 @@ class ReviewPage extends Component{
         )}
 }
 
-export default connect(mapStateToProps,{getReview})(ReviewPage);
+export default connect(mapStateToProps,{ getReview })(ReviewPage);

@@ -2,7 +2,8 @@ import {
     GET_REVIEW,
     ADD_REVIEW,
     DELETE_REVIEW,
-    EDIT_REVIEW
+    EDIT_REVIEW,
+    GET_REVIEW_USER
 } from '../constants'
 import axios from 'axios'
 

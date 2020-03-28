@@ -39,8 +39,7 @@ let Review = new Schema({
             required: true
         },
 		rvImage : {
-            type: String,
-            default: "xxx"
+            type: String
         },
 	// },
 	rvStatus : {

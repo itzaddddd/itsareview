@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import './logout.css'
 import { connect } from 'react-redux'
 import { logout } from '../../../Redux/Actions/userAction'
 import PropTypes from 'prop-types'
@@ -12,7 +13,7 @@ class Logout extends Component {
                 {/*<div className="nav-link" onClick={this.props.logout} href="#">
                     Logout
                 </div>*/}
-                <a href="#" onClick={this.props.logout}>Logout</a>
+                <a href="#" id="logout" onClick={this.props.logout}>ออกจากระบบ</a>
             </Fragment>
         )
     }
