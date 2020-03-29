@@ -1,35 +1,44 @@
-
 div.navHeader {
-	padding: 5px 0;
+	width: 100%;
+	padding: 10px 0;
 	background-color: #000;
 	line-height:3;
-	
-	box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
 }
 
-img.photo{
+
+
+img.photo {
+
 	width:auto; 
-	height:32;
-	margin-left: 1em;
+	height:40px;
+	margin: 0px 20px;
 }
     
-
 div#search {
 	color: #9FB444;
 	float: right;
-	margin-right: 1em ;
+	margin-right: 2em ;
 }
 
 a#home, a#review, a#broad, a#saved{
 	color: #9FB444;
 	margin: 1%;
-	font-size: 1.5vw;
+	font-size: 1vw;
+}
+
+a#box{
+	position:absolute;
+	display:block;
+	height: 100%;
+	width: 15%;
+	top: 10px;
+	right:0px;
 }
 
 a#login{
-	color: #9FB444;
-	font-size: 1vw;
-	margin-left: 23%;
+		color: #9FB444;
+		font-size: 1vw;
+		margin: 1%;
 }
 a#username{
 	color: #9FB444;
@@ -48,37 +57,43 @@ span.search{
 
 
 
-@media(min-width: 768px) {
 
+@media(max-width: 900px) {
 	div.navHeader {
-		padding: 10px 0;
+		width: 100%;
+		padding: 5px 0;
 		background-color: #000;
 		line-height:3;
 	}
-	
-	img.photo {
 
+	img.photo{
 		width:auto; 
-		height:40px;
-		margin: 0px 20px;
+		height:30px;
+		margin-left: 1em;
 	}
 
 	div#search {
 		color: #9FB444;
 		float: right;
-		margin-right: 2em ;
+		margin-right: 1em ;
 	}
-
 	a#home, a#review, a#broad, a#saved{
 		color: #9FB444;
 		margin: 1%;
-		font-size: 1vw;
+		font-size: 1.5vw;
 	}
 
+	a#box{
+		position:absolute;
+		display:block;
+		height: 100%;
+		width: 15%;
+		top: 5px;
+		right:0px;
+	}
 	a#login{
 		color: #9FB444;
 		font-size: 1vw;
-		margin-left: 35%;
 	}
 	span.search{
 		background-color: #9FB444;
@@ -86,9 +101,6 @@ span.search{
 		border-radius: 10px;
 		text-align: center;
 		margin: 1%;
-
 	}
-	
-	
 
 }

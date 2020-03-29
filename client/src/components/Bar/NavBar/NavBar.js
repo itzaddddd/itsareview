@@ -39,6 +39,7 @@ class NavBar extends Component {
 
         return (
             <div>
+                <nav class="navbar navbar-default navbar-fixed-top">
                 <div className="navHeader">
                     <a href="/"><img className="photo" src="https://sv1.picz.in.th/images/2020/02/14/xK1HvZ.png" alt="xK1HvZ.png" border="0" width="auto" height="32" /></a>
                     <a href="/" id="home">หน้าหลัก <i className="fas fa-home"></i></a>
@@ -48,11 +49,11 @@ class NavBar extends Component {
                     { Link }
                     <span className="search">  <i className="fas fa-search"></i> ค้นหารีวิวนิยาย  </span> 
                 </div>
+                </nav>
             </div>   
         );
     }
 }
-
 const mapStateToProps = state => {
     return {
         user: state.user
