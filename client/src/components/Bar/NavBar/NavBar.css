@@ -4,9 +4,6 @@ div.navHeader {
 	background-color: #000;
 	line-height:3;
 }
-
-
-
 img.photo {
 
 	width:auto; 
@@ -25,8 +22,7 @@ a#home, a#review, a#broad, a#saved{
 	margin: 1%;
 	font-size: 1vw;
 }
-
-a#box{
+a.back-navbar{
 	position:absolute;
 	display:block;
 	height: 100%;
@@ -83,7 +79,7 @@ span.search{
 		font-size: 1.5vw;
 	}
 
-	a#box{
+	a.back-navbar{
 		position:absolute;
 		display:block;
 		height: 100%;
