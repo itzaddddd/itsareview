@@ -25,9 +25,9 @@ let User = new Schema({
         type: String,
         required: true
     },
-	logReview : [ReviewSchema]
-	// // logBoard : Board[],
-	// userFav : Review[],
+	logReview : [ReviewSchema],
+	// logBoard : Board[],
+	readLater : [ReviewSchema]
 });
 
 module.exports = mongoose.model('User',User);

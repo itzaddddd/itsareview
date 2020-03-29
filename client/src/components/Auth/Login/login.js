@@ -117,7 +117,7 @@ class Login extends Component{
                     
                     <Form className="LoginForm">
                         <div className="container">
-                            <a href="/user"><div id="login-title">เข้าสู่ระบบ</div></a>
+                            <div id="login-title">เข้าสู่ระบบ</div>
                             {this.state.msg ? <div className="alert-danger">{this.state.msg}</div> : null}
                             <div className="form-group login">
                                 <Field 

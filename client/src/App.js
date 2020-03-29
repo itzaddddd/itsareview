@@ -22,6 +22,9 @@ import ReviewForm from './components/Review/ReviewForm/ReviewFormPage';
 // import Search from './components/Search/search';
 import Navbar from './components/Bar/NavBar/NavBar';
 import Dashboard from './components/Review/DashboardReview/dashboard';
+import TypeReview from './components/Review/TypeReview/TypeReview'
+// import TagReview from './components/Review/TagReview/TagReview'
+import ReadLater from './components/ReadLater/ReadLater/ReadLater'
 
 import ProtectedRoute from './components/ExtraRoute/ProtectedRoute/ProtectedRoute' // show user info only authenticated
 
@@ -29,15 +32,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux'
 import store from './Redux/store'
 import { loadUser } from './Redux/Actions/userAction'
-import firebase from 'firebase'
-import axios from 'axios'
-// const PrivateRoute = ({component: Component, ...rest}) => {
-//   <Route {...rest} render={ (props) => (
-//     store.getState().user.isAuthenticated === true
-//     ? <Component {...props}/>
-//     : <Redirect to="/" />
-//   )}/>
-// }
 class App extends Component{
 
   // load user
@@ -59,9 +53,12 @@ class App extends Component{
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/review/create" component={ReviewForm} />
-            <Route path="/review/:id" component={ReviewPage} />
+            {/*<Route exact path="/review/tag/:id" component={TagReview} />*/}
+            <Route exact path="/review/category/:id" component={TypeReview} />
+            <Route exact path="/review/:id" component={ReviewPage} />
             <Route exact path="/" component={Dashboard}/>
-            <ProtectedRoute exact path="/user" component={UserInfo} />
+            <ProtectedRoute exact path="/user/:id" component={UserInfo} />
+            <Route exact path="/user/:id/readlater" component={ReadLater} />
             
 
             {/* admin */}
@@ -71,7 +68,6 @@ class App extends Component{
             <Route exact path="/admin/review" component={adReview} />
             {/*<Route exact path="/admin/board" component={adBoard} />*/}
             <Route exact path="/admin/category" component={adCategory} />
-
             
           </Switch>
         </Router>
