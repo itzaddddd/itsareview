@@ -1,78 +1,121 @@
 import React, {Component} from 'react';
-import {Modal, Button, Row, Col, Form} from 'react-bootstrap';
-import './popUpAddcate.css';
+import {Modal, Button, Form} from 'react-bootstrap';
+import './popUpCategory.css';
+import axios from 'axios';
  
 
 
-export class PopUp extends Component {
+export default class PopUpAddCategory extends Component {
 
-    constructor(props) {
+     constructor(props) {
         super(props);
+
+        this.onChangeCategoryName = this.onChangeCategoryName.bind(this);
+        this.onChangeCategoryIcon = this.onChangeCategoryIcon.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+
+        this.state = {
+        categoryName: '',
+        categoryIcon: '',
+        categories: [{}]
+        }
     }
 
-
-    state =  {
-        selectedFile: null,
-        imagePreviewUrl: null
-      };
-     
-      fileChangedHandler = event => {
-        this.setState({
-          selectedFile: event.target.files[0]
+    componentDidMount() {
+        axios.get('http://localhost:4000/admin/categories/')
+        .then(response => {
+            if (response.data.length > 0) {
+            this.setState({
+                categories: response.data.map(category => category.categoryName),
+                categoryName: response.data.categoryName
+            })
+            }
         })
-     
-        let reader = new FileReader();
-         
-        reader.onloadend = () => {
-          this.setState({
-            imagePreviewUrl: reader.result
-          });
+        .catch((error) => {
+            console.log(error);
+        })
+
+    }
+
+    onChangeCategoryName(e) {
+        this.setState({
+        categoryName: e.target.value
+        })
+    }
+
+    onChangeCategoryIcon(e) {
+        this.setState({
+        categoryIcon: e.target.value
+        })
+    }
+
+    onSubmit(e) {
+        e.preventDefault();
+
+        const category = {
+        categoryName: this.state.categoryName,
+        categoryIcon: this.state.categoryIcon
         }
-     
-        reader.readAsDataURL(event.target.files[0])
-     
-      }
 
+        console.log(category);
+
+        axios.post('http://localhost:4000/admin/categories/add', category)
+        .then(res => 
+            console.log(res.data))
+        .catch((error) => {
+            console.log(error);
+        })
         
-    render() {
+        this.setState({
+            categoryName: '',
+            categoryIcon: ''
+        })
 
-        let $imagePreview = (<div className="previewText image-container"></div>);
-            if (this.state.imagePreviewUrl) {
-                $imagePreview = (<div className="image-container" style={{textAlign: 'center'}} >
-                    <img className="iconCate" src={this.state.imagePreviewUrl} alt="icon"  /> 
-                    </div>);
-                }
+        // window.location = '/admin/categories';
+            
+    }
+
+       
+    render() {
 
         return (
             
             <div>
-
-                <Modal animation={false}
-                    {...this.props}
-                    size="md"
-                    aria-labelledby="contained-modal-title-vcenter"
-                    centered
-                    >
-                    <Modal.Header closeButton>
-                        <Modal.Title id="contained-modal-title-vcenter">
-                        <p className="popUpTopic"><i class='fas fa-plus-circle' style={{color:'Black'}}/>  เพิ่มหมวดหมู่</p>
-                        </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <p className="inputName">ชื่อหมวดหมู่</p>
-                        <input Name='categoryName' type='text' placeholder='ชื่อหมวดหมู่' style={{marginBottom:'10px', marginTop:'5px'}}/>
-                        <p className="inputName">เพิ่มไอคอน</p>
-                        <div style={{width:'18em'}}>
-                            <input className='inputIcon' type="file" accept="image/*" alt="Submit" onChange={this.fileChangedHandler} style={{marginLeft:'10px'}}/>
-                            { $imagePreview }
-                        </div>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button className="modalBtn" variant="secondary" onClick={this.props.onHide}>ยกเลิก</Button>
-                        <Button className='modalBtn success'>ยืนยัน</Button>
-                    </Modal.Footer>
-                </Modal>
-
+                <Form action="/add" method="post" >
+                    <Modal animation={false}
+                        {...this.props}
+                        size="md"
+                        aria-labelledby="contained-modal-title-vcenter"
+                        centered >
+                        <Modal.Header closeButton>
+                            <Modal.Title id="contained-modal-title-vcenter">
+                            <p className="popUpTopic"><i className='fas fa-plus-circle' />  เพิ่มหมวดหมู่</p>
+                            </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body >
+                            <label className="inputName">ชื่อหมวดหมู่</label>
+                            <input required
+                            type="text"
+                            className="inputName"
+                            value={this.state.categoryName || ''}  
+                            placeholder='ชื่อหมวดหมู่' 
+                            onChange={this.onChangeCategoryName} />
+                            <label className="inputName">เพิ่มไอคอน</label>
+                            <div style={{width:'18em'}}>
+                                <input required
+                                type="file" 
+                                className='inputIcon'
+                                value={this.state.categoryIcon || ''}
+                                accept="image/*" 
+                                onChange={this.onChangeCategoryIcon} 
+                                style={{marginLeft:'10px'}}/>
+                            </div>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button className='modalBtn success' type="submit" onClick={this.onSubmit} >ยืนยัน</Button>
+                        </Modal.Footer>
+                    </Modal>
+                </Form>
             </div>
         )
     }
