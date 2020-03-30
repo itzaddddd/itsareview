@@ -46,8 +46,10 @@ class NavBar extends Component {
                     <a id="review">รีวิวนิยาย <i className="fas fa-edit"></i></a>
                     <a id="broad">กระทู้ <i className="fas fa-comments"></i></a>
                     <a href={`/user/${user?user._id:''}/readlater`} id="saved">เก็บไว้อ่าน <i className="fas fa-heart"></i></a>
+                    <a className="back-navbar">
                     { Link }
                     <span className="search">  <i className="fas fa-search"></i> ค้นหารีวิวนิยาย  </span> 
+                    </a>
                 </div>
                 </nav>
             </div>   
