@@ -61,14 +61,13 @@ export default class Dashboard extends Component {
                         </div>
 
                         <div className="inlineReviewDashboard flex-container">
-                            <a href="/review/id"><div className="inlineReview"><UserhisReview/></div></a>
-                            <a href="/review/id"><div className="inlineReview"><UserhisReview/></div></a>
-                            <a href="/review/id"><div className="inlineReview"><UserhisReview/></div></a>
-                            <a href="/review/id"><div className="inlineReview"><UserhisReview/></div></a>
-                            <a href="/review/id"><div className="inlineReview"><UserhisReview/></div></a>
+                            <div className="inlineReview"><UserhisReview/></div>
+                            <div className="inlineReview"><UserhisReview/></div>
+                            <div className="inlineReview"><UserhisReview/></div>
+                            
                         </div>
 
-                       <div className = "re">
+                       {/*<div className = "re">
                             <i className="fas fa-star" id="icona"></i>กระทู้ยอดนิยม
                         </div>
 
@@ -81,13 +80,13 @@ export default class Dashboard extends Component {
                             <div className="inlineBoard"><UserHisBoard/></div>
                             <div className="inlineBoard"><UserHisBoard/></div>
                             
-        </div>
+                        </div>
 
                         
 
                         <center className = "more">
                             <button className="btn">เพิ่มเติม<br></br><i className="fas fa-arrow-down"></i></button>
-                        </center>
+                        </center>*/}
 
 
 

@@ -28,7 +28,7 @@ let Review = new Schema({
         required: true
     },
 	rvTag : {
-        type: [String],
+        type: [String]
     },
 	rvChar : {
         type: String,

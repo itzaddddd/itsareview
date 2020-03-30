@@ -17,6 +17,24 @@ userRoute.route('/').get(auth,(req,res)=>{
         .then(user => res.json(user));
 });
 
+userRoute.route('/:id').get((req,res)=>{
+    User.findById(req.params.id)
+        .select('-password')
+        .then(user => res.json(user));
+});
+
+userRoute.route('/:id/readlater').post((req,res)=>{
+    User.findByIdAndUpdate(
+        req.params.id,
+        {$push:{
+            readLater: req.body.new_added
+        }}
+    ).then((result,err)=>{
+        if(err)console.log(err)
+        res.json(result)
+    })
+})
+
 userRoute.route('/:id/edit').get((req,res)=>{
     User.findById({_id:req.params.id},(err,result)=>{
         if(err){

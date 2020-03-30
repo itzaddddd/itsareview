@@ -12,12 +12,12 @@ class NavBar extends Component {
     }
 
     render(){
-        const {isAuthenticated, user} = this.props.user;
-
+        const { user } = this.props.user; /*error with isAuthenticated (get html code instead of user data)*/
+        let Link
         const memberLinks = (
             <Fragment>
                 <span>
-                    <a href="/user" id="username"><strong>{ user ? user.userName : ''}</strong></a>
+                    <a href={`/user/${user ? user._id:null}`} id="username"><strong>{ user ? user.userName : ''}</strong></a>
                 </span>
                 <Logout />
             </Fragment>
@@ -29,6 +29,14 @@ class NavBar extends Component {
             </Fragment>
         );
 
+        if(user || this.props.user.isLoading){
+            Link = memberLinks
+        }
+
+        else{
+            Link = guestLinks
+        }
+
         return (
             <div>
                 <nav class="navbar navbar-default navbar-fixed-top">
@@ -37,9 +45,9 @@ class NavBar extends Component {
                     <a href="/" id="home">หน้าหลัก <i className="fas fa-home"></i></a>
                     <a id="review">รีวิวนิยาย <i className="fas fa-edit"></i></a>
                     <a id="broad">กระทู้ <i className="fas fa-comments"></i></a>
-                    <a id="saved">เก็บไว้อ่าน <i className="fas fa-heart"></i></a>
-                    <a  className="back-navbar">
-                    { isAuthenticated ? memberLinks : guestLinks }
+                    <a href={`/user/${user?user._id:''}/readlater`} id="saved">เก็บไว้อ่าน <i className="fas fa-heart"></i></a>
+                    <a className="back-navbar">
+                    { Link }
                     <span className="search">  <i className="fas fa-search"></i> ค้นหารีวิวนิยาย  </span> 
                     </a>
                 </div>

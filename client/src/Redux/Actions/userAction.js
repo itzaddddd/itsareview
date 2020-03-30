@@ -16,7 +16,7 @@ export const loadUser = () => (dispatch, getState) => {
     // User loading
     dispatch({type: USER_LOADING});
 
-    axios.get('/user', tokenConfig(getState))
+    axios.get(`/user`, tokenConfig(getState))
         .then( res => {
             dispatch({
                 type: USER_LOADED,

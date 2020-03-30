@@ -16,14 +16,10 @@ div.show-review{
 }
 
 div.in-box{
-    width: 70%;
+    width: 80%;
     margin: auto;
-    white-space: nowrap;
-   
-    
+    white-space: nowrap; 
 }
-
-
 
 #icon-b{
     color: black;
@@ -49,8 +45,18 @@ div.story{
     color: gray;
     font-size: 1.00em;
 }
-#bold{
+.bold{
     font-weight: bold;
+}
+
+span.subtype{
+    font-weight: normal;
+    margin: 1%;
+}
+
+span.subtag{
+    font-weight: normal;
+    margin: 1%;
 }
 
 @media(min-width: 375px) {

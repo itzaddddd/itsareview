@@ -26,7 +26,7 @@ a.back-navbar{
 	position:absolute;
 	display:block;
 	height: 100%;
-	width: 15%;
+	width: 25%;
 	top: 10px;
 	right:0px;
 }
@@ -83,7 +83,7 @@ span.search{
 		position:absolute;
 		display:block;
 		height: 100%;
-		width: 15%;
+		width: 25%;
 		top: 5px;
 		right:0px;
 	}

@@ -14,7 +14,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { addReview } from '../../../Redux/Actions/reviewAction'
 
-import firebase, { storage } from 'firebase'
+import firebase from 'firebase'
 
 /* define form validation */
 const ReviewSchema = yup.object().shape({

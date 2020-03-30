@@ -2,6 +2,7 @@ const reviewRoute = require('express').Router();
 const Review = require('../models/Reviews');
 const User = require('../models/Users');
 const Category = require('../models/Categories')
+const RegexEscape = require('escape-regexp')
 
 reviewRoute.route('/').get((req,res)=>{
     Review.find({},(err,result)=>{
@@ -85,8 +86,11 @@ reviewRoute.route('/create').post((req,res)=>{
     console.log('Create a review');
 });
 
+// @route   GET /review/category/:id
+// @desc    Get a type of review by id
+// @access  Public
 reviewRoute.route('/category/:id').get((req,res)=>{
-    Category.findById({_id:req.params.id},(err,result)=>{
+    Review.find({rvType:req.params.id},(err,result)=>{
         if(err){
             console.log(err);
         }else{
@@ -94,6 +98,21 @@ reviewRoute.route('/category/:id').get((req,res)=>{
         }
     });
     console.log('Show reviews in the category by id');
+});
+
+// @route   GET /review/tag/:id
+// @desc    Get a tag of review by id
+// @access  Public
+reviewRoute.route('/tag/:tag').get((req,res)=>{
+    Review.find({rvTag:{$regex:"#"}},(err,result)=>{
+        console.log('tag : ',req.params.tag)
+        if(err){
+            console.log(err);
+        }else{
+            res.json(result);
+        }
+    });
+    console.log('Show reviews in the tag by id');
 });
 
 // @route   GET /review/:id
