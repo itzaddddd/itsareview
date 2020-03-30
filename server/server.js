@@ -12,6 +12,7 @@ const PORT = config.get('PORT');
 const userRoute = require('./routes/userRoute');
 const reviewRoute = require('./routes/reviewRoute');
 const searchRoute = require('./routes/searchRoute');
+const adminRoute = require('./routes/adminRoute');
 
 /* create database connection */
 require('./config/mongoose');
@@ -30,7 +31,7 @@ app.route('/').get((req,res)=>{
 app.use('/user',userRoute);
 app.use('/review',reviewRoute);
 app.use('/search',searchRoute);
-
+app.use('/admin',adminRoute);
 
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);
