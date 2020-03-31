@@ -10,6 +10,7 @@ import { register } from '../../../Redux/Actions/userAction'
 import { clearErrors } from '../../../Redux/Actions/errorAction'
 import { connect } from 'react-redux'
 
+
 const RegisterSchema = yup.object().shape({
     userName: yup.string()
         .required("กรุณาใส่ชื่อผู้ใช้")
@@ -111,9 +112,9 @@ class Register extends Component{
                     {({touched, errors, isSubmitting}) => (
                         
                         <Form className="RegisterForm" >
-                        <div className="container">
+                        <div className="container" id="regis-form">
                             <a href="/user"><div id="regis-title">สมัครสมาชิก</div></a>
-                            {this.state.msg ? <div className="alert-danger">{this.state.msg}</div> : null}
+                            {this.state.msg ? <div className="alert-box">{this.state.msg}</div> : null}
                             <div className="form-group">
                                 <Field 
                                     type="text" 
@@ -126,6 +127,9 @@ class Register extends Component{
                                     componet="div"
                                     name="userName"
                                     className="invalid-feedback"
+                                    render={
+                                        msg => <div className="error-message">{msg}</div>
+                                    }
                                 />
                             </div>
                             <div className="form-group">
@@ -140,6 +144,9 @@ class Register extends Component{
                                     componet="div"
                                     name="pass1"
                                     className="invalid-feedback"
+                                    render={
+                                        msg => <div className="error-message">{msg}</div>
+                                    }
                                 />
                             </div>
                             {/*<div className="form-group">
@@ -155,6 +162,9 @@ class Register extends Component{
                                     componet="div"
                                     name="pass2"
                                     className="invalid-feedback"
+                                    render={
+                                        msg => <div className="error-message">{msg}</div>
+                                    }
                                 />
                             </div>*/}
                             <div className="form-group">
@@ -169,6 +179,9 @@ class Register extends Component{
                                     componet="div"
                                     name="userEmail"
                                     className="invalid-feedback"
+                                    render={
+                                        msg => <div className="error-message">{msg}</div>
+                                    }
                                 />
                             </div>
                             <div className="button">
