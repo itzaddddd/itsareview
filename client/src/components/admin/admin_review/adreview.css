@@ -1,31 +1,35 @@
 @import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
 
-
-.table {
-    margin: 0em 5em 5em 0em;
+div.adminTable {
+    margin: 0em 5em 5em 5em;
     width: 90%;
     text-align: center;
     align-content: center;
-}
-
-table {
     border-collapse: collapse;
     border-bottom: 1px solid #ddd;
+    font-size: 1.2vw;
 }
 
-tr th {
+.adminTable tr th {
     line-height: initial;
+    align-items: center;
+}
+
+div.adminTable th {
+    color: #B9D253;
 }
 
 div.topicPage {
     text-align: center;
     vertical-align: middle;
-    margin-top: 5em;
+    margin-top: 10em;
+    margin-bottom: 3em;
 }
 
 div.topicPage > p.topicName { 
     font-size: 2.5vw;
     color: #B9D253;
+    font-weight: bolder;
 }
 
 div.fade.modal.show {
@@ -36,6 +40,28 @@ div.fade.modal.show {
     height: 100%;
 }
 
+a.delReview {
+    text-decoration : underline;
+    cursor : pointer;
+    color : Red;
+}
+
+a.delReview:hover {
+    font-weight: bolder;
+    text-decoration : underline;
+    color : Red;
+}
+
+p.message {
+    font-size: 1.4vw;
+    position: relative;
+    vertical-align: middle;
+}
+
+div.modal-footer button {
+    font-size: 1vw;
+    margin: 0;
+}
 @media (min-width: 768px) {
     .fade {
         height: 100%;

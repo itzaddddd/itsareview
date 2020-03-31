@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import './adreview.css';
 import Table from 'react-bootstrap/Table';
 import Navbar from "../admin_navbar/navbar";
-import {PopUpDelReview} from "./delReviewPopUp";
+import {PopUpDelReview} from "./PopUpDelReview";
+
 
 
 export default class Adreview extends Component {
+
+    
     // let {userID} = this.props;
     // let {name} = this.props;
     // let {pic} = this.props;
@@ -34,8 +37,8 @@ export default class Adreview extends Component {
                     <p className="topicName">ข้อมูลรีวิว</p>
                 </div>
 
-                <div className ="table">
-                    <Table>
+                <div className ="adminTable">
+                    <Table responsive hover>
                         <thead>
                             <tr>
                                 <th>Review ID</th>
@@ -64,7 +67,18 @@ export default class Adreview extends Component {
                                 <td>Table cell</td>
                                 <td>Table cell</td>
                                 <td className='del'>
-                                    <a className="addCate" onClick={()=> this.setState({PopUpDelReview: true})}>ลบ</a>
+                                    <a className="delReview" onClick={()=> this.setState({PopUpDelReview: true})}>ลบ</a>
+                                    <PopUpDelReview show={this.state.PopUpDelReview} onHide={PopUpClose} />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                                <td className='del'>
+                                    <a className="delReview" onClick={()=> this.setState({PopUpDelReview: true})}>ลบ</a>
                                     <PopUpDelReview show={this.state.PopUpDelReview} onHide={PopUpClose} />
                                 </td>
                             </tr>

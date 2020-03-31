@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {Route, Switch, Redirect} from 'react-router-dom';
 
-// import adUser from './components/admin_user/aduser';
+import adUser from './components/admin/admin_user/aduser';
 import adHome from './components/admin/admin_home/adhome';
 import adReview from  './components/admin/admin_review/adreview';
 //import adBoard from './components/admin_board/adboard';
@@ -63,11 +63,11 @@ class App extends Component{
 
             {/* admin */}
             <Route exact path="/admin" component={adHome} />
-            {/*<Route exact path="/admin/banner" component={adAdvertise} />
-            <Route exact path="/admin/user" component={adUser} />*/}          
-            <Route exact path="/admin/review" component={adReview} />
+            {/*<Route exact path="/admin/banner" component={adAdvertise} />*/}
+            <Route exact path="/admin/users" component={adUser} />          
+            <Route exact path="/admin/reviews" component={adReview} />
             {/*<Route exact path="/admin/board" component={adBoard} />*/}
-            <Route exact path="/admin/category" component={adCategory} />
+            <Route exact path="/admin/categories" component={adCategory} />
             
           </Switch>
         </Router>
