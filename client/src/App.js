@@ -64,10 +64,10 @@ class App extends Component{
             {/* admin */}
             <Route exact path="/admin" component={adHome} />
             {/*<Route exact path="/admin/banner" component={adAdvertise} />*/}
-            <Route exact path="/admin/user" component={adUser} />          
-            <Route exact path="/admin/review" component={adReview} />
+            <Route exact path="/admin/users" component={adUser} />          
+            <Route exact path="/admin/reviews" component={adReview} />
             {/*<Route exact path="/admin/board" component={adBoard} />*/}
-            <Route exact path="/admin/category" component={adCategory} />
+            <Route exact path="/admin/categories" component={adCategory} />
             
           </Switch>
         </Router>

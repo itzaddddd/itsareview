@@ -71,7 +71,7 @@ export default class PopUpAddCategory extends Component {
             categoryIcon: ''
         })
 
-        // window.location = '/admin/categories';
+        window.location = '/admin/categories';
             
     }
 

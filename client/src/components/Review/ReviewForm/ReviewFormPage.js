@@ -14,7 +14,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { addReview } from '../../../Redux/Actions/reviewAction'
 
-import firebase from 'firebase'
+import firebase, { storage } from 'firebase'
 
 /* define form validation */
 const ReviewSchema = yup.object().shape({
@@ -40,7 +40,7 @@ const ReviewSchema = yup.object().shape({
 const mapStateToProps = state => {
     return {
         user: state.user,
-        review: state.review,
+        review: state.review
     }
 }
 
@@ -106,23 +106,19 @@ class ReviewFormPage extends Component {
     
     addNewReview = async (newReview) => {
         await this.setUsername()
-        await this.props.addReview(newReview, this.state.username)
-        //await console.log(this.props.review);
-        //await this.setState({des:`/review/${this.props.review.review._id}`})
-        //await console.log('des ',this.state.des)
-        //await this.setState({redirect:true})        
+        this.props.addReview(newReview, this.state.username,()=>{
+            this.setState({des:`/review/${this.props.review.review._id}`},()=>{
+                console.log('des ',this.state.des)
+                this.setState({redirect:true})
+            })
+        });
+        
     }
 
     static propTypes = {
         review: PropTypes.object.isRequired,
         user: PropTypes.object.isRequired,
         addReview: PropTypes.func.isRequired
-    }
-
-    componentWillReceiveProps(nextProps){
-        if(nextProps.review != this.props.review){
-            this.props.history.push(`/review/${nextProps.review.review._id}`)
-        }
     }
 
     render(){
@@ -178,7 +174,8 @@ class ReviewFormPage extends Component {
                                     rvSource
                                     
                                 }
-                                await this.addNewReview(newReview)                       
+                                await this.addNewReview(newReview) 
+                                                               
                             })
                             .catch(err=>console.log(err))
                     }}
@@ -189,8 +186,8 @@ class ReviewFormPage extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-sm">
-                                    <h3><a href="/review/id">เขียนรีวิวนิยาย</a></h3>
-                                    <h6>มาเขียนรีวิวนิยายที่คุณชอบกันเถอะ</h6>
+                                    <h3>เขียนรีวิวนิยาย</h3>
+                                    <h4>มาเขียนรีวิวนิยายที่คุณชอบกันเถอะ</h4>
                                     <div className="title">ชื่อเรื่อง</div>
                                         <Field  
                                             type="text" 
@@ -252,6 +249,7 @@ class ReviewFormPage extends Component {
                                     <div className = "dropbox">
                                         <Field 
                                             component="select" 
+                                            id ="select"
                                             name="rvType"
                                         >
                                             <option value="รักโรแมนติก">รักโรแมนติก</option>
@@ -277,6 +275,7 @@ class ReviewFormPage extends Component {
                                         />
                                     </div>
                                     <div className="show_add_type">
+                                        
                                         {this.state.add_type.map((type,index)=>{
                                             return ( 
                                                 <span key={index}><strong>{type}</strong>
@@ -288,7 +287,7 @@ class ReviewFormPage extends Component {
                                                         this.setState({
                                                             add_type: this.state.add_type.filter(t => t != type)}
                                                     )}}>
-                                                        x
+                                                        &nbsp;x&nbsp;
                                                     </span>
                                                 </span>
                                             )
@@ -311,6 +310,7 @@ class ReviewFormPage extends Component {
                                             type="button"
                                             value="เพิ่ม"
                                             disabled={touched.rvTag && errors.rvTag? true: false}
+                                            id="add_tag"
                                             onClick={()=>{
                                                 this.setState({
                                                     add_tag: [...this.state.add_tag, values.rvTag]
@@ -327,7 +327,7 @@ class ReviewFormPage extends Component {
                                                             add_tag: this.state.add_tag.filter(t => t != tag)}
                                                         )}}
                                                     >
-                                                        x
+                                                        &nbsp;x&nbsp;
                                                     </span>
                                                 </span>
                                             )
@@ -344,9 +344,7 @@ class ReviewFormPage extends Component {
                                                         value="true"
                                                         checked
                                                     />
-                                                    <label className="label" htmlFor="end">
                                                         <span className="status">จบแล้ว</span>
-                                                    </label>
                                                 </div>
                                                 <div>
                                                     <Field 
@@ -356,9 +354,9 @@ class ReviewFormPage extends Component {
                                                         ng-model="content" 
                                                         value="false"
                                                     />
-                                                    <label className="label" htmlFor="not-end">
+                                                    
                                                         <span className="status">ยังไม่จบ</span>
-                                                    </label>
+                                                    
                                                 </div> 
                                         </div>
                                     <div className="title">แหล่งที่มาของนิยาย</div>
