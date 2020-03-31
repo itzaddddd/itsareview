@@ -2,22 +2,65 @@ import React , {Component} from 'react';
 import './aduser.css';
 import Table from 'react-bootstrap/Table';
 import Navbar from "../admin_navbar/navbar";
-import {PopUpDelUser} from "./delUserPopUp";
+import axios from 'axios';
+
+
+const User = props => (
+    <tr>
+        <td>{props.user._id}</td>
+        <td>{props.user.userName}</td>
+        <td>{props.user.userImage}</td>
+        <td>{props.user.userEmail}</td>
+        <td>{props.user.userJoin}</td>
+        {/* <td>{props.user.logReview}</td> */}
+        {/* {homes.map(home => <div>{home.name}</div>)} */}        
+        <td>
+        <button onClick={() => { props.deleteUser(props.user._id) }}>ลบ</button>
+        </td>
+    </tr>
+)
 
 class Aduser extends Component {
     
     constructor(props) {
         super(props);
-        this.state ={PopUpDelUser : false}
+
+        this.deleteUser = this.deleteUser.bind(this);
+
+        this.state = {users: []}
     }
 
-    state = {
-        seen: false
-    };
+    componentDidMount() {
+        axios.get('http://localhost:4000/admin/users/')
+        .then(response => {
+            this.setState({ users: response.data })
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
+
+    deleteUser(id) {
+
+        axios.delete('http://localhost:4000/admin/users/'+id)
+                .then(response => { console.log(response.data)});
+        
+        this.setState({
+            users: this.state.users.filter(el => el._id !== id)
+        })
+    }
+                        
+    
+
+    userList() {
+        return this.state.users.map(currentuser => {
+            return <User user={currentuser} deleteUser={this.deleteUser} key={currentuser._id}/>;
+        })
+    }
 
     render() {
 
-        let PopUpClose =() => this.setState({PopUpDelUser:false});
+        const { users } = this.state;
 
         return (
             <div>
@@ -26,8 +69,8 @@ class Aduser extends Component {
                     <p className="topicName">ข้อมูลผู้ใช้งาน</p>
                 </div>
 
-                <div className ="table">
-                    <Table>
+                <div className ="adminTable">
+                    <Table className ="adminTable">
                         <thead>
                             <tr>
                             <th>user ID</th>
@@ -35,35 +78,21 @@ class Aduser extends Component {
                             <th>รูปผู้ใช้งาน</th>
                             <th>E-mail</th>
                             <th>วันที่เข้ารวม</th>
-                            <th>ประวัติกระทู้</th>
-                            <th>ประวัติรีวิว</th>
+                            {/* <th>ประวัติรีวิว</th> */}
                             <th>แก้ไข</th>
                             </tr>
                         </thead>
                         <tbody>
                             {/* <tr>
-                            <td>{userID}</td>
-                            <td>{name}</td>
-                            <td>{pic}</td>
-                            <td>{email}</td>
-                            <td>{joinDate}</td>
-                            <td>{userHisBoard}</td>
-                            <td>{userHisReview}</td>
-                            <td style={{textDecoration: 'underline'}}><a>ลบ</a></td>
+                                {this.state.users.map(user=> <td>{user.userID}</td>)}
+                                {this.state.users.map(user=> <td>{user.userName}</td>)}
+                                {this.state.users.map(user=> <td>{user.userImage}</td>)}
+                                {this.state.users.map(user=> <td>{user.userEmail}</td>)}
+                                {this.state.users.map(user=> <td>{user.userJoin}</td>)}
+                                {this.state.users.map(user=> <td>{user.logReview}</td>)}
                             </tr> */}
-                            <tr>
-                            <td>1</td>
-                            <td>eizthaymu</td>
-                            <td>none</td>
-                            <td>eizza@kmutt.ac.th</td>
-                            <td>วันนี้</td>
-                            <td>none</td>
-                            <td>none</td>
-                            <td className='del'>
-                                <a className="addCate" onClick={()=> this.setState({PopUpDelUser: true})}>ลบ</a>
-                                <PopUpDelUser show={this.state.PopUpDelUser} onHide={PopUpClose} />
-                            </td>
-                            </tr>
+                            { this.userList() }
+                            
                         </tbody>
                     </Table>
                 </div>

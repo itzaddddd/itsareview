@@ -1,41 +1,57 @@
 @import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
 
 
-input {
-    padding-left: 1em;
+input.inputName , input[type='text'].inputName {
     text-align: left;
     border-radius: 5px;
     box-shadow: 0 4px 2px -2px none;
     border-color: #B9D253;
-    width: 18em;
+    margin-bottom:10px; 
+    margin-top:5px;
+    font-size: 1.2vw;
+    padding: 10px;
 }
 
 .iconCate {
     width:10em;
     margin-top:10px;
-    text-align: center;
+    text-align: left;
+
+}
+
+button.close > span {
+    font-size: 3vw;
 }
 
 input:focus {
     outline: none;
 }
 
-p.inputName {
+label.inputName {
     font-size: 1.5vw;
     text-align: left;
     margin-bottom: 10px;
+    margin-top: 0;
+    width: 100%;
 }
 
-p.inputIcon {
+input.inputIcon {
     text-align: center;
-    margin-top: 20px;
+    font-size: 1.2vw;
 }
 
 p.popUpTopic{
-    font-size: 3vw;
-    font-size: 100%;
+    font-size: 2vw;
     margin-bottom: 0;
+    color:'Black';
+    float: left;
 }
+
+div.modal-footer button.modalBtn {
+    font-size: 1.4vw;
+    color: initial;
+}
+
 
 @media (min-width: 768px) {
     .fade {
@@ -45,14 +61,12 @@ p.popUpTopic{
     .modal-backdrop.show {
     height: 100%;
     overflow: visible;
+    opacity: 0.7 !important;
     }
-}
 
-.Footer Button.modalBtn {
-    margin-left: 1em;
-    margin-right: 1em;
-    margin-bottom: 2em;
-    width: 5em;
+    .modal-content {
+        margin-top: 15vw;
+    }
 }
 
 div.fade.modal.show {
@@ -66,29 +80,3 @@ Button.success {
 Button.success:hover {
     background-color: rgb(142, 167, 42);
 }
-
-
-
-
-
-/* 
-
-.modalHeader p.popUpTopic {
-    margin: 5px;
-    padding: 0px;
-    line-height: auto;
-    color: rgb(113,127,50);
-}
-
-
-.modalCont p.popUpTopic {
-    font-size: 1.5vw;
-    font-weight: normal;
-    color: #B9D253;
-    text-align: left;
-}
-
-.modal-content {
-    background-color: white;
-    
-} */
