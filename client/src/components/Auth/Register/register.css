@@ -1,9 +1,11 @@
 form.RegisterForm {
     /* background: rgb(89,88,106);
     background: linear-gradient(0deg, rgba(89,88,106,1) 0%, rgba(185,210,83,1) 62%); */
-    width:100%;
+    width:100%; 
     height: 100%;
     position: relative;
+    margin-top: 100px;
+
 }
 
 #regis-button {
@@ -17,13 +19,14 @@ form.RegisterForm {
         text-align: center;
         text-decoration: none;
         display: inline-block;
-        font-size: 15px;
+        font-size: 1.3vw;
 }
 
-#regis-title {
-    font-size: 20px;
-    margin-left: 10%;
-    color: black;
+div#regis-title {
+    font-size: 2.5vw;
+    font-weight:bold;
+    text-align: center;
+    color: #737e3d;
     margin-top:20px;
 }
 
@@ -35,4 +38,33 @@ form.RegisterForm {
 
 input{
     padding: 12px 20px;
+}
+
+div#regis-form{
+    width: 50%;
+}
+
+.error-message{
+    width: 87%;
+    background-color: #fbecec;
+    margin-top: 1%;
+    color: #d4554a;
+    margin-left: 6%;
+    font-size: 1vw;
+    border: 1px solid;
+    border-color: #f5cfcb;
+    border-radius: 0.3vw;
+    padding: 0.5% 2% 0.5% ;
+}
+.alert-box{
+    width: 87%;
+    background-color: #d55846;
+    margin-top: 5%;
+    color: white;
+    margin-left: 6%;
+    font-size: 1vw;
+    border: 1px solid;
+    border-color: #f5cfcb;
+    border-radius: 0.3vw;
+    padding: 1.5% 2% 1.5% ;
 }

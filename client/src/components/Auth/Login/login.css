@@ -3,7 +3,7 @@ form.LoginForm {
     background: linear-gradient(0deg, rgba(89,88,106,1) 0%, rgba(185,210,83,1) 62%); */
 
     margin: 10px;
-    margin-top: 20px;
+    margin-top: 100px;
     position: relative;
 }
 
@@ -23,9 +23,11 @@ form.LoginForm {
 
 
 #login-title {
-    font-size: 20px;
-    margin-left: 10%;
-    color: black;
+    font-size: 2.5vw;
+    font-weight:bold;
+    text-align: center;
+    color: #737e3d;
+    margin-top:20px;
 }
 
 #account-regis {
@@ -61,6 +63,36 @@ input{
     font-size: 10px;
     color: red;
     margin-left: 25px;
+}
+
+div#login-form{
+    width: 50%;
+    /* text-align: center; */
+}
+
+.error-message{
+    width: 87%;
+    background-color: #fbecec;
+    margin-top: 1%;
+    color: #d4554a;
+    margin-left: 6%;
+    font-size: 1vw;
+    border: 1px solid;
+    border-color: #f5cfcb;
+    border-radius: 0.3vw;
+    padding: 0.5% 2% 0.5% ;
+}
+.alert-box{
+    width: 87%;
+    background-color: #d55846;
+    margin-top: 5%;
+    color: white;
+    margin-left: 6%;
+    font-size: 1vw;
+    border: 1px solid;
+    border-color: #f5cfcb;
+    border-radius: 0.3vw;
+    padding: 1.5% 2% 1.5% ;
 }
 
 
