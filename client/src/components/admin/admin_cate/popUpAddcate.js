@@ -17,11 +17,7 @@ export default class PopUpAddCategory extends Component {
         this.state = {
         categoryName: '',
         categoryIcon: '',
-<<<<<<< HEAD
         categories: []
-=======
-        categories: [{}]
->>>>>>> a244f5b49cac174dfdfd68cde77f448d9aded8e4
         }
     }
 
