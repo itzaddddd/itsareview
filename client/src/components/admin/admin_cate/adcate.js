@@ -12,7 +12,7 @@ const Category = props => (
     <td>{props.category.categoryName}</td>
     <td>{props.category.categoryIcon}</td>
     <td>
-      <Link to={"/update/"+props.category._id}>แก้ไข</Link> | <button onClick={() => { props.deleteCategory(props.category._id) }}>ลบ</button>
+      <Link to={"/admin/categories/update/"+props.category._id}>แก้ไข</Link> | <button onClick={() => { props.deleteCategory(props.category._id) }}>ลบ</button>
     </td>
   </tr>
 )

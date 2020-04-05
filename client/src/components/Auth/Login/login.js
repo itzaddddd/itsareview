@@ -116,9 +116,9 @@ class Login extends Component{
                     {({ touched, errors, isSubmitting}) => (
                     
                     <Form className="LoginForm">
-                        <div className="container">
+                        <div className="container" id="login-form">
                             <div id="login-title">เข้าสู่ระบบ</div>
-                            {this.state.msg ? <div className="alert-danger">{this.state.msg}</div> : null}
+                            {this.state.msg ? <div className="alert-box">{this.state.msg}</div> : null}
                             <div className="form-group login">
                                 <Field 
                                     type="text" 
@@ -130,6 +130,9 @@ class Login extends Component{
                                     component="div"
                                     name="userName"
                                     className="invalid-feedback"
+                                    render={
+                                        msg => <div className="error-message">{msg}</div>
+                                    }
                                 />
                             </div>
                             
@@ -145,6 +148,9 @@ class Login extends Component{
                                     component="div"
                                     name="pass1"
                                     className="invalid-feedback"
+                                    render={
+                                        msg => <div className="error-message">{msg}</div>
+                                    }
                                 />
                             </div>
                             <div className="button">

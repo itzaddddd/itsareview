@@ -15,10 +15,11 @@ let Category = new Schema({
         required: true
     },
 	// categoryContent : Review[],
-	categoryContent_Num : {
-        type: Number,
-        required: true
-    },
+	// categoryContent_Num : {
+    //     default: 0,
+    //     type: Number,
+    //     required: true
+    // },
 });
 
 module.exports = mongoose.model('Category',Category);

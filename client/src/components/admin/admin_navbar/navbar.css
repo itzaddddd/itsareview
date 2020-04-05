@@ -38,16 +38,15 @@ img.mascot {
     box-shadow: none;
 }
 
-a.ad {
-    color: inherit;
+a.ad , Link.ad {
+    color:  #B9D253;
     margin: 0;
 }
 
-a.ad:hover {
-    color: inherit;
-    transform: scale(2);
-    transition: 1s;
-    text-decoration: none; 
+a.ad:hover , Link.ad:hover{
+    color:  #B9D253;
+    font-weight: bolder;
+    text-decoration-style: wavy;
 }
 
 ul.container1 li {
