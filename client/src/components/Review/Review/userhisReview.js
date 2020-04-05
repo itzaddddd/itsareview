@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Link, Redirect } from 'react-router-dom'
 import { addReadLater } from '../../../Redux/Actions/readlaterAction'
+import { deleteReview } from '../../../Redux/Actions/reviewAction'
 const mapStateToProps = state => {
     return {
         user: state.user
@@ -21,6 +22,8 @@ class UserHisReview extends Component{
 
     static propTypes = {
         user: PropTypes.object.isRequired,
+        addReadLater: PropTypes.func.isRequired,
+        deleteReview: PropTypes.func.isRequired
     }
 
     render(){  
@@ -34,9 +37,9 @@ class UserHisReview extends Component{
                             </Link>
                             <div className="date">
                                 {this.props.review?dateFormat(this.state.review.rvTime, 'dd/mm/yyyy'):''}
-                                <a href="#" onClick={this.props.review?this.props.addReadLater(this.props.review):''}>    
+                                    
                                     <i className="far fa-heart love"></i>
-                                </a>
+                                
                             </div>
                         </div>
                         {this.props.isUserReview?'':
@@ -77,7 +80,13 @@ class UserHisReview extends Component{
                             <div className="num-com">
                             <div className="num-of-read"><i id="icon-b" className="fas fa-eye"></i>{this.props.review?this.props.review.rvView_Num:''}</div>
                             <div className="comment"><i id="icon-b" className="far fa-comment-dots"></i>คอมเม้นต์</div>
-                            </div>
+                            {this.props.isUserReview?
+                                <div className="edit">
+                                    <a href={`/review/${this.props.review?this.props.review._id:''}/edit`}><span>แก้ไข</span></a>
+                                    <span className="delete-review" /*onClick={this.props.review._id?this.props.deleteReview(this.props.review._id):''}*/>ลบ</span>
+                                </div>
+                                :''}
+                        </div>
                         </div>                        
                     </div>               
                 </div>          
@@ -85,5 +94,5 @@ class UserHisReview extends Component{
         )
     }
 }
-export default connect(mapStateToProps, { addReadLater })(UserHisReview);
+export default connect(mapStateToProps, { addReadLater, deleteReview })(UserHisReview);
 

@@ -19,15 +19,16 @@ const initialState = {
 export default function(state=initialState, action){
     switch(action.type){
         case GET_REVIEW:
+        case ADD_REVIEW:
+        case EDIT_REVIEW:
             return {
                 ...state,
                 review: action.payload
             }
-        case ADD_REVIEW:
+        case DELETE_REVIEW:
             return {
-                ...state,
-                review: action.payload,
-            }
+                ...state
+            }        
         case GET_CATEGORY_REVIEW:
             return {
                 ...state,

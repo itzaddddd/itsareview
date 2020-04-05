@@ -13,46 +13,37 @@ class NavBar extends Component {
 
     render(){
         const { user } = this.props.user; /*error with isAuthenticated (get html code instead of user data)*/
-        let Link
         const memberLinks = (
-            <Fragment>
+            <span>
                 <span>
-                    <a href={`/user/${user ? user._id:null}`} id="username"><strong>{ user ? user.userName : ''}</strong></a>
+                    <a href={`/user/${user ? user._id:null}`} id="username"><strong>{ user ? user.userName : 'ชื่อสมาชิก'}</strong></a>
                 </span>
-                <Logout />
-            </Fragment>
+                <Logout />                
+            </span>
         );
 
         const guestLinks = (
-            <Fragment>
+            
                 <a href="/login" id="login"><i className="fas fa-user"> เข้าสู่ระบบ</i></a>
-            </Fragment>
+            
         );
-
-        if(user || this.props.user.isLoading){
-            Link = memberLinks
-        }
-
-        else{
-            Link = guestLinks
-        }
 
         return (
             <div>
-                <nav class="navbar navbar-default navbar-fixed-top">
+                <nav className="navbar navbar-default navbar-fixed-top">
                 <div className="navHeader">
                     <a href="/"><img className="photo" src="https://sv1.picz.in.th/images/2020/02/14/xK1HvZ.png" alt="xK1HvZ.png" border="0" width="auto" height="32" /></a>
                     <a href="/" id="home">หน้าหลัก <i className="fas fa-home"></i></a>
                     <a id="review">รีวิวนิยาย <i className="fas fa-edit"></i></a>
                     <a id="broad">กระทู้ <i className="fas fa-comments"></i></a>
                     <a href={`/user/${user?user._id:''}/readlater`} id="saved">เก็บไว้อ่าน <i className="fas fa-heart"></i></a>
-                    <a className="back-navbar">
-                    { Link }
-                    <span className="search">  <i className="fas fa-search"></i> ค้นหารีวิวนิยาย  </span> 
-                    </a>
+                    <span className="back-navbar">
+                        {user||this.props.user.isLoading? memberLinks:guestLinks}
+                        <span className="search">  <i className="fas fa-search"></i> ค้นหารีวิวนิยาย  </span> 
+                    </span>
                 </div>
                 </nav>
-            </div>   
+            </div>
         );
     }
 }

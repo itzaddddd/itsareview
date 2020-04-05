@@ -22,7 +22,7 @@ a#home, a#review, a#broad, a#saved{
 	margin: 1%;
 	font-size: 1vw;
 }
-a.back-navbar{
+span.back-navbar{
 	position:absolute;
 	display:block;
 	height: 100%;

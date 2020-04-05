@@ -25,6 +25,7 @@ import Dashboard from './components/Review/DashboardReview/dashboard';
 import TypeReview from './components/Review/TypeReview/TypeReview'
 // import TagReview from './components/Review/TagReview/TagReview'
 import ReadLater from './components/ReadLater/ReadLater/ReadLater'
+import EditReviewForm from './components/Review/EditReviewForm/EditReviewForm'
 
 import ProtectedRoute from './components/ExtraRoute/ProtectedRoute/ProtectedRoute' // show user info only authenticated
 
@@ -56,6 +57,7 @@ class App extends Component{
             {/*<Route exact path="/review/tag/:id" component={TagReview} />*/}
             <Route exact path="/review/category/:id" component={TypeReview} />
             <Route exact path="/review/:id" component={ReviewPage} />
+            <Route exact path="/review/:id/edit" component={EditReviewForm} />
             <Route exact path="/" component={Dashboard}/>
             <ProtectedRoute exact path="/user/:id" component={UserInfo} />
             <Route exact path="/user/:id/readlater" component={ReadLater} />

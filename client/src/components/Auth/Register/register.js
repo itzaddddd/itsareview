@@ -140,6 +140,9 @@ class Register extends Component{
                                     componet="div"
                                     name="pass1"
                                     className="invalid-feedback"
+                                    render={
+                                        msg => <div className="error-message">{msg}</div>
+                                    }
                                 />
                             </div>
                             {/*<div className="form-group">

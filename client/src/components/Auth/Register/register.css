@@ -27,9 +27,9 @@ form.RegisterForm {
     margin-top:20px;
 }
 
-.errorMessage {
+.error-message {
     font-size: 10px;
-    color: red;
+    color: pink;
     margin-left: 25px;
 }
 
