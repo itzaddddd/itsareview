@@ -119,7 +119,8 @@ reviewRoute.route('/tag/:tag').get((req,res)=>{
 // @desc    Get a review by id
 // @access  Public
 reviewRoute.route('/:id').get((req,res)=>{
-    Review.findById({_id:req.params.id},(err,result)=>{
+    console.log('id form route :',req.params.id)
+    Review.findById(req.params.id,(err,result)=>{
         if(err){
             console.log(err);
         }else{
@@ -129,7 +130,9 @@ reviewRoute.route('/:id').get((req,res)=>{
     });
     console.log('Get a review');
 });
-
+// @route   GET /review/:id/edit
+// @desc    Get form for editing a review
+// @access  Private
 reviewRoute.route('/:id/edit').get((req,res)=>{
     Review.findById({_id:req.params.id},(err,result)=>{
         if(err){
@@ -140,42 +143,51 @@ reviewRoute.route('/:id/edit').get((req,res)=>{
     });
     console.log('Show form for editing a review');
 });
-
+// @route   Put /review/:id/edit
+// @desc    Edit a review
+// @access  Private
 reviewRoute.route('/:id/edit').put((req,res)=>{
-    Review.findByIdAndUpdate({_id:req.params.id},{
-        $set: {
+    console.log('edit id : ',req.params.id)
+    Review.findOneAndUpdate({_id: req.params.id},{
+        $set:{
             rvTitle: req.body.rvTitle,
-            rvAuthor: req.body.rvAuthor,
             rvType: req.body.rvType,
             rvTag: req.body.rvTag,
             rvChar: req.body.rvChar,
-            rvContent: {
-                rvStory: req.body.rvStory,
-                rvImage: req.body.rvImage
-            },
+            rvContent: req.body.rvContent,
             rvStatus: req.body.rvStatus,
-            rvNovel: {
-                rvSource: req.body.rvSource,
-                rvLink: req.body.rvLink
-            },
-            rvRate: req.body.rvRate,
+            rvSource: req.body.rvSource
         }
-    },(err,result)=>{
+    },{new:true},(err,result)=>{
         if(err){
             console.log(err);
         }else{
+            /* response updated review */
             res.json(result);
+            /* update logReview's user */
+            User.findOneAndUpdate({
+                'userName':req.body.userName,
+                'logReview._id':result._id
+            },{
+                $set:{
+                    "logReview.$": result                
+            }},{new: true},(err,result)=>{
+                if(err)console.log(err);
+            })
         }
     });
     console.log('Edit review');
 });
-
+// @route   Delete /review/:id
+// @desc    Edit a review
+// @access  Private
 reviewRoute.route('/:id').delete((req,res)=>{
-    Review.findByIdAndRemove({_id:req.params.id},(err,result)=>{
+    Review.findOneAndRemove({_id:req.params.id},{new: true},(err,result)=>{
         if(err){
             console.log(err);
         }else{
             res.json(result);
+            console.log('Delete ',result)
         }
     });
     console.log('Delete review');

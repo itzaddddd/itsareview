@@ -24,7 +24,11 @@ a#home, a#review, a#broad, a#saved{
 	margin: 1%;
 	font-size: 1.5vw;
 }
+<<<<<<< HEAD
 div.back-navbar{
+=======
+span.back-navbar{
+>>>>>>> 8a977ed2911d5612bc0cf8e18000269fa9a7e245
 	position:absolute;
 	display:block;
 	height: 100%;

@@ -139,7 +139,7 @@ background-color: #9FB444;
 margin: 10px 30px;
 }
 
-.show_add_type{
+.sub_tag{
 
 margin: 0% 8% ;
 font-size: 15px;
@@ -149,7 +149,7 @@ padding: 0% 1%;
 width: 80%;
 }
 
-.show_add_tag{
+.sub_type{
 
 margin: 0% 6% ;
 font-size: 15px;
@@ -303,9 +303,32 @@ margin: 0% 1%;
 
 .dropbox[type=text], select{
 
+<<<<<<< HEAD
   margin: 3% 10% 2%;
   width: 60%;
 }
+=======
+    margin: 3% 10% 2%;
+    width: 60%;
+  }
+  
+  .sub_type{
+
+    margin: 0% 8% ;
+    font-size: 15px;
+    border:1px solid #9FB444;
+    border-radius:30px;
+    padding: auto;
+    width: 30%;
+    text-align: center;
+  }
+  .sub_tag{
+    padding: auto;
+    width: 30%;
+    text-align: center;
+    margin: 0% 8% ;
+  }
+>>>>>>> 8a977ed2911d5612bc0cf8e18000269fa9a7e245
 
 .show_add_type{
 

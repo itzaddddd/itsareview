@@ -9,9 +9,11 @@ import {
     GET_USER_BY_ID
 } from '../constants'
 import axios from 'axios'
+import store from '../store'
 
 export const getReview = (id, callback) => (dispatch,getState) => {
     if(typeof callback === "function") callback();
+    console.log('id from action : ',id)
     axios.get(`/review/${id}`)
         .then(res => dispatch({
             type: GET_REVIEW,
@@ -41,6 +43,37 @@ export const addReview = ({rvTitle, rvChar, rvContent, rvImageUrl, rvType, rvTag
             console.log(err)
         })
     
+    if(typeof callback === "function") callback();
+}
+
+export const editReview = ({rvTitle, rvChar, rvContent, /*rvImageUrl,*/ rvType, rvTag, rvStatus, rvSource},userName,callback) => dispatch => {
+    const config = {
+        headers: {
+            "Content-type": "application/json"
+        }
+    }
+
+    const body = JSON.stringify({userName, rvTitle, rvChar, rvContent, /*rvImageUrl,*/ rvType, rvTag, rvStatus, rvSource});
+
+    axios.put(`/review/${store.getState().review.review._id}/edit?_method=PUT`, body, config)
+        .then( res => dispatch({
+            type: EDIT_REVIEW,
+            payload: res.data
+        })        
+        )
+        .catch(err => {
+            console.log(err)
+        })
+    
+    if(typeof callback === "function") callback();
+}
+
+export const deleteReview = (id, callback) => dispatch => {
+    axios.delete(`/review/${id}?_method=DELETE`)
+    .then( res => dispatch({
+        type: DELETE_REVIEW
+    }))
+
     if(typeof callback === "function") callback();
 }
 

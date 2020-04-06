@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './ReviewFormPage.css';
+import './EditReviewForm.css';
 import Tag from '../Tag/Tag';
 import NavBar from '../../Bar/NavBar/NavBar';
 import {Redirect} from 'react-router-dom';
@@ -12,7 +12,7 @@ import * as yup from 'yup' // lib for validation
 
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { addReview } from '../../../Redux/Actions/reviewAction'
+import { editReview, getReview } from '../../../Redux/Actions/reviewAction'
 
 import firebase from 'firebase'
 import axios from 'axios'
@@ -46,27 +46,27 @@ const mapStateToProps = state => {
     }
 }
 
-const uploadImage = img => {
-    return new Promise((resolve, reject)=>{
-        let file = img
-        let storageRef = firebase.storage().ref('Itsareview/review')
-        let name = file.name
-        let metadata = {contentType: file.type}
-        let task = storageRef.child(name).put(file, metadata)
-        task
-            .then(()=>{
-                task.snapshot.ref.getDownloadURL()
-                .then(downloadUrl=>{
-                    console.log('url : ',downloadUrl)
-                    resolve(downloadUrl)
-                })
-            })
-            .catch(err=>reject(err))
-    })
-}
+// const uploadImage = img => {
+//     return new Promise((resolve, reject)=>{
+//         let file = img
+//         let storageRef = firebase.storage().ref('Itsareview/review')
+//         let name = file.name
+//         let metadata = {contentType: file.type}
+//         let task = storageRef.child(name).put(file, metadata)
+//         task
+//             .then(()=>{
+//                 task.snapshot.ref.getDownloadURL()
+//                 .then(downloadUrl=>{
+//                     console.log('url : ',downloadUrl)
+//                     resolve(downloadUrl)
+//                 })
+//             })
+//             .catch(err=>reject(err))
+//     })
+// }
 
 
-class ReviewFormPage extends Component {
+class EditReviewForm extends Component {
     constructor(props){
         super(props);
 
@@ -82,7 +82,7 @@ class ReviewFormPage extends Component {
             
         };
 
-        this.addNewReview = this.addNewReview.bind(this)
+        this.editNewReview = this.editNewReview.bind(this)
         this.setUsername = this.setUsername.bind(this)
 
         let firebaseConfig = {
@@ -106,16 +106,16 @@ class ReviewFormPage extends Component {
         }
     }
     
-    addNewReview = async (newReview) => {
+    editNewReview = async (newReview) => {
         await this.setUsername()
-        this.props.addReview(newReview, this.state.username);
-        
+        this.props.editReview(newReview, this.state.username);
     }
 
     static propTypes = {
         review: PropTypes.object.isRequired,
         user: PropTypes.object.isRequired,
-        addReview: PropTypes.func.isRequired
+        editReview: PropTypes.func.isRequired,
+        getReview: PropTypes.func.isRequired
     }
 
     componentDidMount(){
@@ -124,16 +124,25 @@ class ReviewFormPage extends Component {
         .then(res => {
             this.setState({categories: res.data})
         })
+        /* get review from id */
+        let review_id = this.props.match.params.id
+        console.log(review_id)
+        this.props.getReview(review_id)
     }
 
+    componentWillReceiveProps(nextProps){
+        if(nextProps.review !== this.props.review){
+            console.log('nextProps: ',nextProps.review.review)
+            console.log('thisProps: ',this.props.review.review)
+            this.setState({
+                add_type: nextProps.review.review.rvType,
+                add_tag: nextProps.review.review.rvTag,
+                add_image: nextProps.review.review.rvImage,
+            })
+        }
+    }
 
     componentDidUpdate(prevProps, prevState){
-        // redirect after submit
-        if(prevProps.review != this.props.review && this.props.review.review._id){
-            console.log('id ',this.props.review.review._id)
-            this.props.history.push(`/review/${this.props.review.review._id}`)
-        }
-        
         // set add type disabled, limit 3 types
         if(prevState.add_type !== this.state.add_type){
             if(this.state.add_type.length >= 3){
@@ -150,23 +159,31 @@ class ReviewFormPage extends Component {
                 this.setState({tag_disabled:false})
             }
         }
+        // redirect after update
+        if((prevProps.review.review != this.props.review.review) && prevProps.review.review._id){
+            console.log('update ', this.props.review.review)
+            this.props.history.push(`/review/${this.props.review.review._id}`)
+        }
     }
 
-    render(){        
+    render(){
+        let review = this.props.review.review
+        if(review._id && this.state.categories[0]){
+            console.log(review)
         return(
             <div>
                 <NavBar/>
                 <Formik
                     /* initial values (use name of input) */
                     initialValues = {{ 
-                        rvTitle: "",
-                        rvChar: "",
-                        rvContent: "",
+                        rvTitle: review.rvTitle,
+                        rvChar: review.rvChar,
+                        rvContent: review.rvContent,
                         rvImage: null,
-                        rvStatus: false,
-                        rvSource: 'Dek-D',
-                        rvType: 'คอมเมดี้',
-                        rvTag: ""
+                        rvStatus: review.rvStatus,
+                        rvSource: review.rvSource,
+                        rvType: this.state.categories[0].categoryName,
+                        rvTag: ''
                     }}
                     /* set validation form */
                     validationSchema = {ReviewSchema}
@@ -175,14 +192,14 @@ class ReviewFormPage extends Component {
                         const {rvTitle, rvChar, rvContent, rvImage, rvStatus, rvSource} = values;
                         const rvType = this.state.add_type;
                         const rvTag = this.state.add_tag;
-                        uploadImage(rvImage)
-                            .then(async res=>{
-                                const rvImageUrl = res
+                        // uploadImage(rvImage)
+                        //     .then(async res=>{
+                        //      const rvImageUrl = res
                                 console.log(
                                     "ชื่อนิยาย : ",rvTitle,
                                     "\nลักษณะตัวละคร : ",rvChar,
                                     "\nรีวิวเนื้อเรื่อง : ", rvContent,
-                                    "\nภาพประกอบ :",rvImageUrl,
+                                    //"\nภาพประกอบ :",rvImageUrl,
                                     "\nประเภท : ", rvType, 
                                     "\nแท็ก :", rvTag, 
                                     "\nสถานะ : ", rvStatus,
@@ -193,33 +210,34 @@ class ReviewFormPage extends Component {
                                     rvTitle, 
                                     rvChar, 
                                     rvContent,
-                                    rvImageUrl,
+                                    //rvImageUrl,
                                     rvType,
                                     rvTag, 
                                     rvStatus, 
                                     rvSource
                                     
                                 }
-                                await this.addNewReview(newReview) 
+                                this.editNewReview(newReview) 
                                                                
-                            })
-                            .catch(err=>console.log(err))
+                            // })
+                            // .catch(err=>console.log(err))
                     }}
 
                 >
-                    {({ values, touched, errors, isSubmitting, setFieldValue}) =>(   
+                    {({ values, touched, errors, isSubmitting, handleChange, setFieldValue}) =>(   
                     <Form>
                         <div className="container">
                             <div className="row">
                                 <div className="col-sm">
-                                    <h3><a href="/review/id">เขียนรีวิวนิยาย</a></h3>
-                                    <h4>มาเขียนรีวิวนิยายที่คุณชอบกันเถอะ</h4>
+                                    <h3>แก้ไขรีวิวนิยาย</h3>
                                     <div className="title">ชื่อเรื่อง</div>
                                         <Field  
                                             type="text" 
                                             name="rvTitle" 
                                             placeholder=" กรอกชื่อเรื่องมาเลยจ้า"
                                             className={`${touched.rvTitle && errors.rvTitle ? "is-invalid":""}`}
+
+                                            onChange={handleChange}
                                         />
                                         <ErrorMessage 
                                             component="div"
@@ -232,6 +250,7 @@ class ReviewFormPage extends Component {
                                             name="rvChar" 
                                             placeholder=" รีวิวว่าตัวละครแต่ละตัวเป็นแบบไหน"
                                             className={`${touched.rvChar && errors.rvChar ? "is-invalid":""}`}
+                                            onChange={handleChange}
                                         />
                                         <ErrorMessage 
                                             component="div"
@@ -245,6 +264,7 @@ class ReviewFormPage extends Component {
                                             name="rvContent" 
                                             placeholder=" เขียนรีวิวแบ่งปันเรื่องราวให้คนอื่นกันเลย!"
                                             className={`${touched.rvContent && errors.rvContent ? "is-invalid":""}`}
+                                            onChange={handleChange}
                                         />
                                         <ErrorMessage 
                                             component="div"
@@ -264,12 +284,12 @@ class ReviewFormPage extends Component {
                                                 })
                                             }}
                                         />
-                                        {
+                                        {/* image must download from URL */}
+                                        {/*  
                                             this.state.add_image.map((image,i)=>{
                                                  return <Thumb key={i} file={image} /> 
                                             })
-                                            
-                                        }
+                                        */}
                                    </div>
                                     <div className="title">เพิ่มหมวดหมู่<span className="limit">   *ไม่เกิน3หมวดหมู่</span></div>
                                     <div className = "dropbox">
@@ -300,7 +320,7 @@ class ReviewFormPage extends Component {
                                     </div>
                                     <div className="show_add_type">
                                         
-                                        {this.state.add_type.map((type,index)=>{
+                                        {this.state.add_type?this.state.add_type.map((type,index)=>{
                                             return ( 
                                                 <span className="sub_type" key={index}><strong>{type}</strong>
                                                     <span onClick={()=>{
@@ -311,7 +331,7 @@ class ReviewFormPage extends Component {
                                                     </span>
                                                 </span>
                                             )
-                                        })}
+                                        }):''}
                                     </div>
                                     
                                     <div className="title">เพิ่มแท็ก<span className="limit">   *ไม่เกิน3หมวดหมู่</span></div>
@@ -342,7 +362,7 @@ class ReviewFormPage extends Component {
                                             }}
                                         />
                                     <div className="show_add_tag">
-                                        {this.state.add_tag.map((tag,index)=>{
+                                        {this.state.add_tag?this.state.add_tag.map((tag,index)=>{
                                             return ( 
                                                 <span className="sub_tag" key={index}><strong>{tag}</strong>
                                                     <span onClick={()=>{
@@ -354,7 +374,7 @@ class ReviewFormPage extends Component {
                                                     </span>
                                                 </span>
                                             )
-                                        })}
+                                        }):''}
                                     </div>
                                     <div className="title">สถานะนิยาย</div>
                                         <div className="wrap"> 
@@ -365,7 +385,8 @@ class ReviewFormPage extends Component {
                                                         name="rvStatus" 
                                                         ng-model="content" 
                                                         value="true"
-                                                        checked
+                                                        checked={values.status}
+                                            
                                                     />
                                                         <span className="status">จบแล้ว</span>
                                                 </div>
@@ -376,6 +397,8 @@ class ReviewFormPage extends Component {
                                                         name="rvStatus" 
                                                         ng-model="content" 
                                                         value="false"
+                                                        checked={!values.status}
+                                                        onChange={handleChange}                                          
                                                     />
                                                     
                                                         <span className="status">ยังไม่จบ</span>
@@ -408,8 +431,8 @@ class ReviewFormPage extends Component {
                     )}
                 </Formik>
             </div>
-            
-    )}
+                                    
+    )}else{return ''}}
 }
 
-export default connect(mapStateToProps,{ addReview })(ReviewFormPage);
+export default connect(mapStateToProps,{ editReview, getReview })(EditReviewForm);
