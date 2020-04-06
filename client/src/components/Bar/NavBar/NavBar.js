@@ -25,7 +25,7 @@ class NavBar extends Component {
 
         const guestLinks = (
             <Fragment>
-                <a href="/login" id="login"><i className="fas fa-user"> เข้าสู่ระบบ</i></a>
+                <a href="/login" id="login"><i className="fas fa-user"><text> เข้าสู่ระบบ</text></i></a>
             </Fragment>
         );
 
@@ -46,10 +46,10 @@ class NavBar extends Component {
                     <a id="review">รีวิวนิยาย <i className="fas fa-edit"></i></a>
                     <a id="broad">กระทู้ <i className="fas fa-comments"></i></a>
                     <a href={`/user/${user?user._id:''}/readlater`} id="saved">เก็บไว้อ่าน <i className="fas fa-heart"></i></a>
-                    <a className="back-navbar">
+                    <div className="back-navbar">
                     { Link }
-                    <span className="search">  <i className="fas fa-search"></i> ค้นหารีวิวนิยาย  </span> 
-                    </a>
+                    <span className="search"><i className="fas fa-search"></i><text className="searchNiyay">ค้นหารีวิวนิยาย</text></span> 
+                    </div>
                 </div>
                 </nav>
             </div>   

@@ -71,7 +71,7 @@ export default class PopUpAddCategory extends Component {
             categoryIcon: ''
         })
 
-        window.location = '/admin/categories';
+        // window.location = '/admin/categories';
             
     }
 
@@ -93,14 +93,14 @@ export default class PopUpAddCategory extends Component {
                             </Modal.Title>
                         </Modal.Header>
                         <Modal.Body >
-                            <label className="inputName">ชื่อหมวดหมู่</label>
+                            <label className="cateName">ชื่อหมวดหมู่</label>
                             <input required
                             type="text"
-                            className="inputName"
+                            className="cateName"
                             value={this.state.categoryName || ''}  
                             placeholder='ชื่อหมวดหมู่' 
                             onChange={this.onChangeCategoryName} />
-                            <label className="inputName">เพิ่มไอคอน</label>
+                            <label className="cateName">เพิ่มไอคอน</label>
                             <div style={{width:'18em'}}>
                                 <input required
                                 type="file" 

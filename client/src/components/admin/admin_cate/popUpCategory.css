@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
 
 
-input.inputName , input[type='text'].inputName {
+input.cateName , input[type='text'].cateName {
     text-align: left;
     border-radius: 5px;
     box-shadow: 0 4px 2px -2px none;

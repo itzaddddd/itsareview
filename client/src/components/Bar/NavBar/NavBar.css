@@ -1,14 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
+
 div.navHeader {
 	width: 100%;
 	padding: 10px 0;
 	background-color: #000;
-	line-height:3;
+	line-height:2.5;
+	float: left;
 }
 img.photo {
 
 	width:auto; 
 	height:40px;
-	margin: 0px 20px;
 }
     
 div#search {
@@ -20,35 +22,43 @@ div#search {
 a#home, a#review, a#broad, a#saved{
 	color: #9FB444;
 	margin: 1%;
-	font-size: 1vw;
+	font-size: 1.5vw;
 }
-a.back-navbar{
+div.back-navbar{
 	position:absolute;
 	display:block;
 	height: 100%;
-	width: 25%;
-	top: 10px;
-	right:0px;
+	width: 35%;
+	top: 0;
+	right:1vw;
+	float: right;
+	background-color: #000;
+	padding-top: 1vh;
+	padding-right: 1.5vw;
+	text-align: right;
+
 }
 
 a#login{
+		font-family: sans-serif;
 		color: #9FB444;
-		font-size: 1vw;
+		font-size: 1.5vw;
 		margin: 1%;
 }
 a#username{
 	color: #9FB444;
-	font-size: 1vw;
-	margin-left: 23%;
+	font-size: 1.5vw;
 	margin-right: 1%;
 }
 span.search{
 	background-color: #9FB444;
-	font-size: 1vw;
+	font-size: 1.5vw;
 	border-radius: 10px;
 	text-align: center;
 	margin: 1%;
 	margin-right:0px;
+	padding-left: 5px;
+    padding-right: 10px;
 }
 
 
@@ -60,12 +70,13 @@ span.search{
 		padding: 5px 0;
 		background-color: #000;
 		line-height:3;
+		float: left;
 	}
 
 	img.photo{
 		width:auto; 
 		height:30px;
-		margin-left: 1em;
+		margin-left: 1vw;
 	}
 
 	div#search {
@@ -76,27 +87,61 @@ span.search{
 	a#home, a#review, a#broad, a#saved{
 		color: #9FB444;
 		margin: 1%;
-		font-size: 1.5vw;
+		font-size: 1.9vw;
 	}
 
-	a.back-navbar{
+	div.back-navbar{
 		position:absolute;
 		display:block;
 		height: 100%;
-		width: 25%;
-		top: 5px;
-		right:0px;
+		width: 40%;
+		top: 0;
+		right: 1vw;
+		float: right;
+		background-color: #000;
+		padding-top: 0.5vh;
+		text-align: right;
 	}
-	a#login{
+
+	a#username,	a#login {
 		color: #9FB444;
-		font-size: 1vw;
+		font-size: 1.9vw;
 	}
 	span.search{
 		background-color: #9FB444;
-		font-size: 1vw;
+		font-size: 1.9vw;
 		border-radius: 10px;
 		text-align: center;
 		margin: 1%;
+		padding-left: 5px;
+		padding-right: 10px;
 	}
 
+}
+
+@media(max-width: 600px) {
+	text.searchNiyay {
+	display: none;
+	}
+
+	span.search {
+		padding: 5px;
+	}
+
+	div.back-navbar {
+		width: 30%;
+	}
+
+	div.navHeader {
+		width: 71%;
+	}
+
+	img.photo {
+		width: auto;
+		height: 20px;
+	}
+	a#home, a#review, a#broad, a#saved {
+		font-size: 2.2vw;
+	}
+	
 }

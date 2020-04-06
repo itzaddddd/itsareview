@@ -13,7 +13,7 @@ class Logout extends Component {
                 {/*<div className="nav-link" onClick={this.props.logout} href="#">
                     Logout
                 </div>*/}
-                <a href="#" id="logout" onClick={this.props.logout}>ออกจากระบบ</a>
+                <a href="#" id="logout" onClick={this.props.logout}>  ออกจากระบบ</a>
             </Fragment>
         )
     }

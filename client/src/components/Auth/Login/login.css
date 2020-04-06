@@ -53,6 +53,10 @@ input{
     padding: 12px 20px;
 }
 
+input[type='text'].form-control , input[type='password'].form-control#pwd {
+    margin: 6% 6% 0%;
+}
+
 #logo-black {
     margin-left: 20px;
     margin-right: 20px;
@@ -66,7 +70,7 @@ input{
 }
 
 div#login-form{
-    width: 50%;
+    width: 70%;
     /* text-align: center; */
 }
 
