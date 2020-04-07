@@ -24,11 +24,7 @@ a#home, a#review, a#broad, a#saved{
 	margin: 1%;
 	font-size: 1.5vw;
 }
-<<<<<<< HEAD
-div.back-navbar{
-=======
 span.back-navbar{
->>>>>>> 8a977ed2911d5612bc0cf8e18000269fa9a7e245
 	position:absolute;
 	display:block;
 	height: 100%;
@@ -44,10 +40,10 @@ span.back-navbar{
 }
 
 a#login{
-		font-family: sans-serif;
-		color: #9FB444;
-		font-size: 1.5vw;
-		margin: 1%;
+	font-family: sans-serif;
+	color: #9FB444;
+	font-size: 1.5vw;
+	margin: 1%;
 }
 a#username{
 	color: #9FB444;
@@ -121,6 +117,12 @@ span.search{
 		padding-right: 10px;
 	}
 
+}
+
+@media(max-width: 770px) {
+	text.searchNiyay {
+	display: none;
+	}
 }
 
 @media(max-width: 600px) {

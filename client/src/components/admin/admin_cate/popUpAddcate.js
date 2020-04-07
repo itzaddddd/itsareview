@@ -21,22 +21,6 @@ export default class PopUpAddCategory extends Component {
         }
     }
 
-    componentDidMount() {
-        axios.get('http://localhost:4000/admin/categories/')
-        .then(response => {
-            if (response.data.length > 0) {
-            this.setState({
-                categories: response.data.map(category => category.categoryName),
-                categoryName: response.data.categoryName
-            })
-            }
-        })
-        .catch((error) => {
-            console.log(error);
-        })
-
-    }
-
     onChangeCategoryName(e) {
         this.setState({
         categoryName: e.target.value
@@ -71,7 +55,7 @@ export default class PopUpAddCategory extends Component {
             categoryIcon: ''
         })
 
-        // window.location = '/admin/categories';
+        window.location = '/admin/categories';
             
     }
 

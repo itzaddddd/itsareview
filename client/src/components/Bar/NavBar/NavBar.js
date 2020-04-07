@@ -23,15 +23,9 @@ class NavBar extends Component {
         );
 
         const guestLinks = (
-<<<<<<< HEAD
-            <Fragment>
-                <a href="/login" id="login"><i className="fas fa-user"><text> เข้าสู่ระบบ</text></i></a>
-            </Fragment>
-=======
             
                 <a href="/login" id="login"><i className="fas fa-user"> เข้าสู่ระบบ</i></a>
             
->>>>>>> 8a977ed2911d5612bc0cf8e18000269fa9a7e245
         );
 
         return (
@@ -43,17 +37,10 @@ class NavBar extends Component {
                     <a id="review">รีวิวนิยาย <i className="fas fa-edit"></i></a>
                     <a id="broad">กระทู้ <i className="fas fa-comments"></i></a>
                     <a href={`/user/${user?user._id:''}/readlater`} id="saved">เก็บไว้อ่าน <i className="fas fa-heart"></i></a>
-<<<<<<< HEAD
-                    <div className="back-navbar">
-                    { Link }
-                    <span className="search"><i className="fas fa-search"></i><text className="searchNiyay">ค้นหารีวิวนิยาย</text></span> 
-                    </div>
-=======
                     <span className="back-navbar">
                         {user||this.props.user.isLoading? memberLinks:guestLinks}
-                        <span className="search">  <i className="fas fa-search"></i> ค้นหารีวิวนิยาย  </span> 
+                        <span className="search">  <i className="fas fa-search"></i><text className="searchNiyay">ค้นหารีวิวนิยาย</text></span> 
                     </span>
->>>>>>> 8a977ed2911d5612bc0cf8e18000269fa9a7e245
                 </div>
                 </nav>
             </div>

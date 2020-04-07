@@ -10,14 +10,7 @@ class Logout extends Component {
     render(){
         return (
             <Fragment>
-<<<<<<< HEAD
-                {/*<div className="nav-link" onClick={this.props.logout} href="#">
-                    Logout
-                </div>*/}
-                <a href="#" id="logout" onClick={this.props.logout}>  ออกจากระบบ</a>
-=======
                 <span id="logout" onClick={this.props.logout}>ออกจากระบบ</span>
->>>>>>> 8a977ed2911d5612bc0cf8e18000269fa9a7e245
             </Fragment>
         )
     }

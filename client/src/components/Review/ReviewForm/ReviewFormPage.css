@@ -303,11 +303,6 @@ margin: 0% 1%;
 
 .dropbox[type=text], select{
 
-<<<<<<< HEAD
-  margin: 3% 10% 2%;
-  width: 60%;
-}
-=======
     margin: 3% 10% 2%;
     width: 60%;
   }
@@ -328,7 +323,6 @@ margin: 0% 1%;
     text-align: center;
     margin: 0% 8% ;
   }
->>>>>>> 8a977ed2911d5612bc0cf8e18000269fa9a7e245
 
 .show_add_type{
 
