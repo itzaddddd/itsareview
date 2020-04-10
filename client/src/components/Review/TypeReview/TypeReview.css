@@ -1,4 +1,4 @@
-div.reviewName {
+/* div.reviewName {
   text-align: left;
   color: black;
   font-size: 7vmin;
@@ -8,7 +8,6 @@ div.reviewName {
 div.reviewBy p.reviewer {
   display: inline;
   margin-left: 10px;
-  /* margin-bottom: 10px; */
 }
 
 p.reviewer {
@@ -73,4 +72,4 @@ hr.new4 {
 #score{
     font-size: 15px;
     margin: 50px;
-}
+} */

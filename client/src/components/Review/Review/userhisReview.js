@@ -33,23 +33,23 @@ class UserHisReview extends Component{
                     <div className="in-box">
                         <div>
                             <Link key={this.props.review?this.props.review._id:''} to={`/review/${this.props.review?this.props.review._id:''}`}>
-                                <div className="novel-name" className="bold">{this.props.review?this.props.review.rvTitle:''}</div>
+                                <div className="novel-name bold">{this.props.review?this.props.review.rvTitle:''}</div>
                             </Link>
                             <div className="date">
                                 {this.props.review?dateFormat(this.state.review.rvTime, 'dd/mm/yyyy'):''}
                                     
-                                    <i className="far fa-heart love"></i>
+                                &nbsp;<i style={{fontSize:'3vmin'}} className="far fa-heart love"></i>
                                 
                             </div>
                         </div>
                         {this.props.isUserReview?'':
                         <div>
-                            <div className="review-name" className="bold">ชื่อคนรีวิว</div>
+                            <div className="review-name bold">ชื่อคนรีวิว</div>
                         <div className="review-name">{this.props.review?this.props.review.user_id:''}</div>
                         </div>
                         }
                         <div>
-                            <div className="type" className="bold">หมวดหมู่
+                            <div className="type bold">หมวดหมู่
                                 {this.props.review?this.props.review.rvType.map((type,i) => 
                                     <Link key={i} to={`/review/category/${type}`} >
                                        <span className="subtype" key={i}>{type}</span>
@@ -60,7 +60,7 @@ class UserHisReview extends Component{
                             </div>
                         </div>
                         <div>
-                            <div className="tag" className="bold">แท็ก
+                            <div className="tag bold">แท็ก
                             {this.props.review?this.props.review.rvTag.map((tag,i) => 
                                 // <Link key={i} to={`/review/tag/${tag}`}>
                                      <span className="subtag" key={i}>{tag}</span>)
@@ -76,10 +76,10 @@ class UserHisReview extends Component{
                             </div>
                         </div>
                         <div>
-                            <div className="rating">เรตติ้ง</div>
+                            <div className="rating bold">เรตติ้ง</div>
                             <div className="num-com">
-                            <div className="num-of-read"><i id="icon-b" className="fas fa-eye"></i>{this.props.review?this.props.review.rvView_Num:''}</div>
-                            <div className="comment"><i id="icon-b" className="far fa-comment-dots"></i>คอมเม้นต์</div>
+                            <div className="num-of-read"><i id="icon-b" className="fas fa-eye"></i>&nbsp;&nbsp;{this.props.review?this.props.review.rvView_Num:''}</div>
+                            <div className="comment"><i id="icon-b" className="far fa-comment-dots"></i>&nbsp;&nbsp;คอมเม้นต์</div>
                             {this.props.isUserReview?
                                 <div className="edit">
                                     <a href={`/review/${this.props.review?this.props.review._id:''}/edit`}><span>แก้ไข</span></a>

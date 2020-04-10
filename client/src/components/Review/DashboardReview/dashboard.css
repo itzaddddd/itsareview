@@ -15,7 +15,6 @@ div.inlineReviewDashboard {
     white-space: nowrap;
     width: 100%;
     display: inline-block;
-    -ms-overflow-style: none;
 }
 
 div.inlineReviewDashboard::-webkit-scrollbar {
@@ -35,21 +34,17 @@ div.inlineBoard {
     text-align: left;
 }
 
-div.col-sm {
-    padding: 0;
-}
-
-
 h3.mareview{
     color: black;
-    transform: translate(+30%, -40%);
+    transform: translate(+30%, 30%);
+    font-size: 4vw;
 }
 
 p.mareview{
     color:black;
-    font-size: 13px;
+    font-size: 4vw;
     inline-size: auto;
-    transform: translate(+40%, -60%);
+    transform: translate(+10%, 50%);
 }
 
 button.dark{
@@ -57,7 +52,7 @@ button.dark{
     border-color: #272525;
     color: #B9D253;
     border-radius: 30px;
-    width: 70%;
+    width: 45%;
     font-size: 120%;
     transform: translate(+2%, +100%);
     margin: auto;
@@ -75,71 +70,65 @@ div.re{
     
     margin: 2% 5%;
     text-align: left;
-    font-size: 4.5vmin;
+    font-size: 3.5vmin;
     font-weight: bolder;
     
        
 }
+
 center.more{
     padding: 5px;
 }
 
 button.btn{
     font-size: 10px;
- }
-
-@media(min-width: 768px) {
-    div.show-review {
-        max-height: 12em ;
-    }
 }
 
-/* @media(min-width: 375px) {
-    div.show-review {
-        width: 100%;
-    }
-} */
+div.item{
+    width: auto;
+    height: 50vw;
+}
+
+
 
 @media(min-width: 768px) {
+      
+    div.item{
+        width: auto;
+        height: 35vw;
+    }  
     
-    
-       div.item{
-            
-            height: 400px;
-       }  
-    
-       button.dark{
-        width: 23%;
-        font-size: 200%;
-        transform: translate(+150%, -100%);
-        
-        
-        
+    button.dark{
+        width: 30%;
+        font-size: 150%;
+        transform: translate(+130%, -10%);       
     }
 
     p.mareview{
         color:black;
-        font-size: 40px;
         inline-size: auto;
-        transform: translate(+30%, -160%);
+        font-size: 2.7vw;
+        transform: translate(+30%, -65%);
     }
     h3.mareview{
 
-        font-size: 40px;
-         transform: translate(+30%, -100%); 
+        font-size: 2.7vw;
+        transform: translate(+50%, -40%); 
     }
     
     #icona{
         color: #B9D253;
         margin: 3% 1%;
-        font-size: 40px;
+        font-size: 4vmin;
         
     }
+
     center.add{
         padding: 30px;
     }
+
      button.btn{
         font-size: 20px;
-     }
+    }
     
 }

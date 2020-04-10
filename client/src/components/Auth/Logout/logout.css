@@ -1,12 +1,16 @@
 span#logout{
 	color: #9FB444;
-    font-size: 1.7vw;
+    font-size: 2.3vmin;
     margin-right: 1vw;
 }
-
+span#logout:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+/* 
 @media(max-width: 900px) {
     a#logout{
-        font-size: 2vw;
+        font-size: 2.5vmin;
     }
 }
 
@@ -14,4 +18,4 @@ span#logout{
     a#logout{
         font-size: 2.2vw;
     }
-}
+} */

@@ -24,7 +24,7 @@ class NavBar extends Component {
 
         const guestLinks = (
             
-                <a href="/login" id="login"><i className="fas fa-user"> เข้าสู่ระบบ</i></a>
+                <a href="/login" id="login"><i className="fas fa-user"></i> เข้าสู่ระบบ</a>
             
         );
 
