@@ -9,8 +9,7 @@ import {connect} from 'react-redux'
 import { getCategory } from '../../../Redux/Actions/reviewAction'
 
 import Review from '../Review/userhisReview'
-
-
+import queryString from 'query-string'
 const mapStateToProps = state =>{
     return {
         user: state.user,
@@ -24,19 +23,21 @@ class TypeReview extends Component{
     }
     /* get category from database */
     componentDidMount(){
-        let id = this.props.match.params.id
-        this.props.getCategory(id)
+        let values = queryString.parse(this.props.location.search)
+        this.props.getCategory(values.category)
     }
     /* refresh data if click other link*/
     componentWillReceiveProps(nextProps){
-        let id = this.props.match.params.id
-        if(nextProps.review.category != this.props.review.category){
-            this.props.getCategory(id)
+        let next_values = queryString.parse(nextProps.location.search)
+        let this_values = queryString.parse(this.props.location.search) 
+        if(next_values.category !== this_values.category){
+            this.props.getCategory(next_values.category)
         }
     }
 
     render(){
-        let type = this.props.match.params.id
+        let values = queryString.parse(this.props.location.search)
+        let type = values.category
         let category = this.props.review.category
         return(
             <div>

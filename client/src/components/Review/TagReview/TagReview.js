@@ -9,6 +9,7 @@ import {connect} from 'react-redux'
 import { getTag } from '../../../Redux/Actions/reviewAction'
 
 import Review from '../Review/userhisReview'
+import queryString from 'query-string'
 
 
 const mapStateToProps = state =>{
@@ -24,26 +25,28 @@ class TagReview extends Component{
     }
     /* get category from database */
     componentDidMount(){
-        let id = this.props.match.params.id
-        this.props.getTag(id)
+        let values = queryString.parse(this.props.location.search)
+        this.props.getTag(values.tag)
     }
     /* refresh data if click other link*/
     componentWillReceiveProps(nextProps){
-        let id = this.props.match.params.id
-        if(nextProps.review.category != this.props.review.category){
-            this.props.getTag(id)
+        let next_values = queryString.parse(nextProps.location.search)
+        let this_values = queryString.parse(this.props.location.search) 
+        if(next_values.tag !== this_values.tag){
+            this.props.getTag(next_values.tag)
         }
     }
 
     render(){
-        let id = this.props.match.params.id
+        let values = queryString.parse(this.props.location.search) 
+        let title = values.tag
         let tag = this.props.review.tag
         return(
             <div>
                 <NavBar/>
                 <div className="row">
                     <div className="col-sm containerReview">
-                        <div className="reviewName">{id}</div>
+                        <div className="reviewName">{title}</div>
                         <hr className="new5"></hr>
                         {tag.map(review => 
                                 <Review review={review} key={review._id} />

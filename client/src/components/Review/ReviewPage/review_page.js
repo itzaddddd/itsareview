@@ -7,6 +7,7 @@ import NavBar from '../../Bar/NavBar/NavBar'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getReview, getCategory, getUserById } from '../../../Redux/Actions/reviewAction'
+import { addReadLater, deleteReadLater } from '../../../Redux/Actions/readlaterAction'
 import dateFormat from 'dateformat'
 
 const mapStateToProps = state =>{
@@ -20,8 +21,17 @@ class ReviewPage extends Component{
     constructor(props){
         super(props);
         this.state = {
-            isLoading: true
+            isLoading: true,
+            heart: '',
+            save: false
+        
         }
+    }
+
+    toggleSave = () => {
+        this.setState({
+            save: !this.state.save
+        })
     }
 
     componentDidMount(){
@@ -32,11 +42,41 @@ class ReviewPage extends Component{
         this.props.getReview(review_id)
     }
 
-    // componentWillReceiveProps(nextProps){
-    //     if(nextProps.review != this.props.review){
-    //         this.props.getUserById(nextProps.review.review.user_id)
-    //     }
-    // }
+    componentWillReceiveProps(nextProps){
+        /* if user login, can save review to read later  */
+        /* check next props review is match a review in read later */
+        /* if match, show black heart */
+        /* if not match, show white heart */
+        /* if guest, show nothing */
+        let heart_white = <i className="far fa-heart" onClick={()=>{this.props.addReadLater(this.props.review.review._id);this.toggleSave()}}></i>
+        let heart_black = <i className="fas fa-heart" onClick={()=>{this.props.deleteReadLater(this.props.review.review._id);this.toggleSave()}}></i>
+        if((nextProps.review.review !== this.props.review.review) && this.props.user.user){
+            if(nextProps.user.user.readLater.some(review => review._id === nextProps.review.review._id)){
+                this.setState({
+                    heart: heart_black,
+                    save: true
+                })
+            }else{
+                this.setState({
+                    heart: heart_white,
+                    save: false
+                })
+            }
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        /* check if on click on heart, toggle heart */
+        let heart_white = <i className="far fa-heart" onClick={()=>{this.props.addReadLater(this.props.review.review._id);this.toggleSave()}}></i>
+        let heart_black = <i className="fas fa-heart" onClick={()=>{this.props.deleteReadLater(this.props.review.review._id);this.toggleSave()}}></i>
+        if(prevState.save !== this.state.save){
+            if(this.state.save === true){
+                this.setState({heart: heart_black})
+            }else{
+                this.setState({heart: heart_white})
+            }
+        }
+    }
 
     render(){
         let review = this.props.review.review
@@ -48,20 +88,24 @@ class ReviewPage extends Component{
                     <div className="col-sm containerReview">
                         <div className="reviewName">{review.rvTitle}</div>
                         <hr className="new5"></hr>
-                        <div className="reviewBy">รีวิวโดย<p className="reviewer">{review.user_id}</p></div>
+                        <div className="reviewBy">รีวิวโดย<p className="reviewer">{review.user_id}</p>{this.state.heart}</div>
                         <div className = "view"><i style={{color:"9FB444"}} className="far fa-clock"></i>{dateFormat(review.rvTime, 'dd/mm/yyyy')}</div>
                         <div className = "view"><i style={{color:"9FB444"}} className="fas fa-eye"></i>{review.rvView_Num}</div>
                         <div className="reviewBy">คะแนนนิยาย</div>
                         <div className="reviewBy">ที่มา {review.rvSource}</div>
                         <div className = "reviewBy2">หมวดหมู่นิยาย 
                             {review.rvType?review.rvType.map((type,i)=>
-                                <Link key={i} to={`/review/category/${type}`} >
+                                <Link key={i} to={`/review/category?category=${type}`} >
                                     {type}
                                 </Link>    
                             ):''}
                         </div>
-                        <div className = "reviewBy2">แท็ก {review.rvTag}</div>
-                        
+                        <div className = "reviewBy2">แท็ก</div>
+                            {review.rvTag?review.rvTag.map((tag,i)=>
+                                <Link key={i} to={`/review/tag?tag=${encodeURIComponent(tag)}`} >
+                                    {tag}
+                                </Link>    
+                            ):''}
                         
                         <div className = "reviewBy2">รีวิวตัวละคร</div>
                         <div className = "boxContent">{review.rvChar}</div>
@@ -82,4 +126,4 @@ class ReviewPage extends Component{
         )}
 }
 
-export default connect(mapStateToProps,{ getReview, getCategory, getUserById })(ReviewPage);
+export default connect(mapStateToProps,{ getReview, getCategory, getUserById, addReadLater, deleteReadLater })(ReviewPage);

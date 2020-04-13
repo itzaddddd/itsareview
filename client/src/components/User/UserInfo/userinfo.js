@@ -2,50 +2,50 @@ import React, { Component } from 'react';
 import './userinfo.css';
 import Navbar from '../../Bar/NavBar/NavBar';
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux' // redux hook function for use global state (user data)
+import { connect } from 'react-redux' // redux hook function for use global props (user data)
 import PropTypes from 'prop-types'
 import Review from '../../Review/Review/userhisReview'
-import store from '../../../Redux/store'
+import { loadUser } from '../../../Redux/Actions/userAction';
 
-const mapStateToProps = state => {
+const mapStateToProps = props => {
     return {
-        user: state.user
+        user: props.user,
+        review: props.review
     }
 }
 class UserInfo extends Component{
 
     constructor(props){
         super(props)
-        this.state = {
-            user: {}
-        }
+
     }
 
     static propTypes = {
-        user: PropTypes.object.isRequired
+        user: PropTypes.object.isRequired,
+        review: PropTypes.object.isRequired
     }
 
-    componentWillReceiveProps(nextProps){
-        if((nextProps.user !== this.props.user) && (nextProps.user.user)){
-            this.setState({user: nextProps.user.user})
+    componentDidUpdate(prevProps){
+        if(prevProps.review.is_deleted !== this.props.review.is_deleted && prevProps.review.is_deleted===false){
+            this.props.loadUser()
         }
     }
 
     render(){
-        if(this.state.user.userName){
+        if(this.props.user.user){
             return(
                 <div>
                     <Navbar logout={true}/>
                     <div className="header">
                         <div className="avatar">
-                            {<img className="avatar" src={this.state.user?this.state.user.userImage:''} alt="avatar" />}
+                            {<img className="avatar" src={this.props.user.user?this.props.user.user.userImage:''} alt="avatar" />}
                         </div>    
                     </div>
                     
                     <div className="rowname">
-                        <div className="col-sm-12" id="line1"><i className="far fa-user fa-2x"></i>{this.state.user?this.state.user.userName:null}</div>
-                        <div className="col-sm-12"><i className="far fa-user fa-2x"></i>{this.state.user?this.state.user.userName:null}</div>
-                        <div className="col-sm-12"><i className="far fa-envelope fa-2x"></i>{this.state.user?this.state.user.userEmail:null}</div>
+                        <div className="col-sm-12" id="line1"><i className="far fa-user fa-2x"></i>{this.props.user.user?this.props.user.user.userName:null}</div>
+                        <div className="col-sm-12"><i className="far fa-user fa-2x"></i>{this.props.user.user?this.props.user.user.userName:null}</div>
+                        <div className="col-sm-12"><i className="far fa-envelope fa-2x"></i>{this.props.user.user?this.props.user.user.userEmail:null}</div>
                     </div>
                     
                     <div id="edit">
@@ -68,13 +68,13 @@ class UserInfo extends Component{
                         </div>*/}
 
                         {/*show user reviewed */}
-                        {this.state.user.logReview.map(review => {
+                        {this.props.user.user?this.props.user.user.logReview.map(review => {
                             return (
                                 
                                 <Review review={review} key={review._id} isUserReview/>
                                 
                             )
-                        })}
+                        }):''}
                     </div>
                 </div>
             )   
@@ -84,5 +84,5 @@ class UserInfo extends Component{
     }
 }
 
-const UserInfoConnect = connect(mapStateToProps,null)(UserInfo)
+const UserInfoConnect = connect(mapStateToProps,{loadUser})(UserInfo)
 export default UserInfoConnect;
