@@ -12,7 +12,8 @@
 .rating > input { display: none; } 
 .rating > label:before { 
   
-  font-size: 1.25em;
+  font-size: 4em;
+  text-align: center;
   font-family: FontAwesome;
   display: inline-block;
   content: "\f005";

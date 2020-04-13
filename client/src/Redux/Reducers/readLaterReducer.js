@@ -1,7 +1,8 @@
 import {
     GET_READ_LATER,
     ADD_READ_LATER,
-    DELETE_READ_LATER
+    DELETE_READ_LATER,
+    DELETE_READ_LATER_COMPLETED
 } from '../constants'
 
 const initialState = {
@@ -17,6 +18,7 @@ export default function(state=initialState, action){
                 ...state,
                 readLater: action.payload 
             }
+        
         default:
             return state
     }

@@ -4,14 +4,14 @@ div.userHis{
 }
 
 div.show-review{
-    width: 80%;
+    width: 100%;
     color: #242424;
     margin: auto;
     border-style: solid;
     border-width: thin;
     border-color: #e6e6e6;
     font-size: 1.00em;
-     overflow: auto;
+    overflow: auto;
     line-height: 2em;
 }
 
@@ -26,13 +26,18 @@ div.in-box{
     width: 20px;
 }
 
-a.novel-name{
+div.novel-name{
     font-size: 4vmin;
 }
 
-a.date, .num-com{
+div.date, .num-com{
     float: right;
 }
+
+/* div.novel-name + div.date {
+    display: inline;
+} */
+
 a.review-name, .type, .tag, .comment{
     padding-left: 1.5em;
 }
@@ -40,7 +45,7 @@ a.review-name, .type, .tag, .comment{
 div.story{
     line-height:14pt;
     height:10pt;
-    overflow:hidden;
+    overflow:auto;
     text-indent: 20px;
     color: gray;
     font-size: 1.00em;
@@ -49,81 +54,100 @@ div.story{
     font-weight: bold;
 }
 
-span.subtype{
+span.subtype , span.subtag {
     font-weight: normal;
     margin: 1%;
-}
-
-span.subtag{
-    font-weight: normal;
-    margin: 1%;
-}
-
-@media(min-width: 375px) {
-    div.show-review {
-        width: 70%;
-    }
 }
 
 @media(max-width: 425px) {
-    a#bold.review-name, a#bold.type, a#bold.tag {
-        margin: 10em 0 10em 0 ;
-        line-height: initial;
-    }
 
     div.in-box {
         width: 80%;
     }
 }
 
-
+/* ---------------------------------------------------------------------------------------------------------- */
 @media(min-width: 768px) {
     
-    div.show-review{
-        height: 100%;
-        padding-top: 50px;
-    }
-
     div.userHis{
         font-size: 1.75em;
     }
     
     div.show-review{
-        width: 60%;
+        height: 100%;
+        padding-top: 4vmin;
+        padding-bottom: 2vmin;
+        width: 90%;
         color: #242424;
-        margin: 0% 20%;
         border-style: solid;
         border-width: thin;
-        border-color: #e6e6e6;
+        border-color: rgb(119, 134, 53);
         font-size: 1.00em;
-         overflow: auto;
-        line-height: 2em;
+        overflow: auto;
+        line-height: normal;
+        margin-bottom: 2vw;
     }
     
     div.in-box{
-        width: 70%;
+        width: 90%;
         margin: auto;
         white-space: nowrap;
-       
-        
     }
     
-    a.novel-name{
-        font-size: 1.5em;}
-    
-    a.date, .num-com{
+    div.novel-name{
+        font-size: 4vmin;
+        display: inline;
+        color: #9FB444;
+    }
+
+    div.novel-name:hover{
+        text-decoration: none;
+        transform: scale(1.2);
+    }
+
+    div.date {
+        font-size: 2.5vmin;
         float: right;
     }
-    a.review-name, .type, .tag, .comment{
+
+    span.subtag , span.subtype {
+        font-size: 2.5vmin;
+        color: gray;
+        margin: 0 1vw;
+    }
+
+    a.review-name, .type, .tag, .comment, .rating{
         padding-left: 1.5em;
     }
+    
+    .type, .tag, .comment, .rating, .edit {
+        font-size: 3vmin;
+    }
+
+    .edit , span.delete-review {
+        font-weight: bolder;
+        text-decoration: none;
+        padding: 0 1vw;
+    }
+
+    .edit:hover a , span.delete-review:hover {
+        text-decoration: none;
+    }
+
     div.story{
-        line-height:14pt;
-        height:10pt;
-        overflow:hidden;
-        text-indent: 20px;
+        margin: 1vw 0;
+        line-height:1.7;
+        height:auto;
+        overflow:auto;
         color: gray;
-        font-size: 1.00em;
+        font-size: 2.2vmin;
+        white-space: pre-wrap;
+        padding-left: 1.8em;
+    }
+
+    .num-com {
+        display: inline-flex;
     }
     
 }
+

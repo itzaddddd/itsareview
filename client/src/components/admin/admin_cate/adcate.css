@@ -12,9 +12,13 @@ Table.adminTable {
     border-bottom: 1px solid #ddd;
 }
 
-tr th {
+.adminTable tr th {
     line-height: initial;
     text-align: center;
+}
+
+div.adminTable th {
+    color: #B9D253;
 }
 
 div.topicPage {

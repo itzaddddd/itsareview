@@ -16,28 +16,28 @@ export default class Dashboard extends Component {
                     <div className="col-sm">
                         <div id="myCarousel" className="carousel slide" data-ride="carousel">
 
-                            <ol className="carousel-indicators">
+                            {/* <ol className="carousel-indicators">
                                 <li data-target="#myCarousel" data-slide-to="0" className="active" ></li>
                                 <li data-target="#myCarousel" data-slide-to="1"></li>
                                 <li data-target="#myCarousel" data-slide-to="2"></li>
                                 <li data-target="#myCarousel" data-slide-to="3"></li>
-                            </ol>
+                            </ol> */}
 
                             <div className="carousel-inner">
                                 <div className="item active">
-                                    <img src="main2.jpg" border="0" alt="main2.jpg"/>
+                                    <img clasName="imgBanner" src="main2.jpg" border="0" alt="main2.jpg"/>
                                     <div className="carousel-caption">
-                                        <h3 className = "mareview">แบ่งปันนิยายที่คุณชอบได้ทุกที่</h3>
+                                        <h3 className = "mareview">แบ่งปันนิยายที่คุณชอบได้ทุกที่นี่</h3>
                                         <p className = "mareview">มารีวิวนิยายที่คุณอยากแชร์กับอิสสิ!</p>
                                         <a href="/review/create"><button type="button" className="dark">เขียนรีวิวนิยาย</button></a>
                                     </div>
                                 </div>
 
                                 <div className="item">
-                                    <img src="main2.jpg" border="0" alt="main2.jpg" />
+                                    <img clasName="imgBanner" src="main2.jpg" border="0" alt="main2.jpg" />
                                     <div className="carousel-caption">
-                                        <h3 className = "mareview">New York</h3>
-                                        <p className = "mareview">We love the Big Apple!</p>
+                                        <h3 className = "mareview">สนใจโฆษณากับอิสไหม ?</h3>
+                                        <p className = "mareview">ติดต่อทีมอิสสิ !</p>
                                         <a href="/review/create"><button type="button" className="dark">เขียนรีวิวนิยาย</button></a>
                                     </div>
                                 </div>
@@ -61,10 +61,14 @@ export default class Dashboard extends Component {
                         </div>
 
                         <div className="inlineReviewDashboard flex-container">
-                            <div className="inlineReview"></div>
-                            <div className="inlineReview"></div>
-                            <div className="inlineReview"></div>
-                            
+                            <div>
+                                <div className="inlineReview"><Review/></div>
+                                <div className="inlineReview"><Review/></div>
+                                <div className="inlineReview"><Review/></div>
+                                <div className="inlineReview"><Review/></div>
+                                <div className="inlineReview"><Review/></div>
+                                <div className="inlineReview"><Review/></div>
+                            </div>             
                         </div>
 
                        {/*<div className = "re">

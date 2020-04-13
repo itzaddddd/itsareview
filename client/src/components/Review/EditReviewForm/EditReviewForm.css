@@ -1,4 +1,4 @@
-h3 {
+/* h3 {
     color: black;
     margin-left: auto;
     margin-right: auto;
@@ -15,35 +15,35 @@ h4 {
     margin-right: auto;
     width: fit-content;
     
-}
+} */
 
 /*change body to title*/
-div.title{
+/* div.title{
 
     font-size: 20px;
     padding:30px 20px 0px;
     line-height: 0%;
     color: #9FB444;
-}
+} */
 
 /*limit 3 object of type and tag*/
-span.limit{
+/* span.limit{
   font-size: 10px;
   color: black;
-}
+} */
 
 /*status white space from radio botton*/
-span.status{
+/* span.status{
   
   font-size:16px;
   padding-left: 0px;
 
-}
+} */
 
 
 
 
-input[type='text'], input[type='password'], input[type='email']{
+/* input[type='text'], input[type='password'], input[type='email']{
     
     color:black;
     width: 87%;
@@ -213,11 +213,11 @@ margin: 0% 3%;
     text-align: center;
     font-size: 15px ;
     
-  }
+  } */
 
 
   
-  @media(min-width: 768px) {
+  /* @media(min-width: 768px) {
     h3 {
       padding:5% 2% 0%;
       color: black;
@@ -389,4 +389,4 @@ input#other{
 #score{
     font-size: 15px;
     margin: 50px;
-}
+} */

@@ -70,9 +70,21 @@ hr{
 }
 div.review, div.board{
     color: #707070;
+    font-size: 3vmin;
+    margin-bottom: 2vmin;
+}
+
+div.review i {
+    color: #9FB444;
 }
 a.more{
     float: right;
+    color: #9FB444;
+}
+a.more:hover{
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bolder;
 }
 div.show{
     /* background-color: #e6e6e6; */

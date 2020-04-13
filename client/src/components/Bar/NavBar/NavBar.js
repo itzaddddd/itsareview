@@ -24,7 +24,7 @@ class NavBar extends Component {
 
         const guestLinks = (
             
-                <a href="/login" id="login"><i className="fas fa-user"> เข้าสู่ระบบ</i></a>
+                <a href="/login" id="login"><i className="fas fa-user"></i> เข้าสู่ระบบ</a>
             
         );
 
@@ -39,7 +39,7 @@ class NavBar extends Component {
                     <a href={`/user/${user?user._id:''}/readlater`} id="saved">เก็บไว้อ่าน <i className="fas fa-heart"></i></a>
                     <span className="back-navbar">
                         {user||this.props.user.isLoading? memberLinks:guestLinks}
-                        <a href="/search"><span className="search">  <i className="fas fa-search"></i> ค้นหารีวิวนิยาย  </span></a> 
+                        <span className="search">  <i className="fas fa-search"></i><text className="searchNiyay">ค้นหารีวิวนิยาย</text></span> 
                     </span>
                 </div>
                 </nav>

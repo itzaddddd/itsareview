@@ -27,6 +27,7 @@ export const GET_TAG_REVIEW = 'GET_TAG_REVIEW';
 export const ADD_READ_LATER = 'ADD_READ_LATER';
 export const DELETE_READ_LATER = 'DELETE_READ_LATER';
 export const GET_READ_LATER = 'GET_READ_LATER';
+export const DELETE_READ_LATER_COMPLETED = 'DELETE_READ_LATER_COMPLETED';
 
 /*Search  constant*/
 export const SEARCH_REVIEW = 'SEARCH_REVIEW'

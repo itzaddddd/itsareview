@@ -218,7 +218,7 @@ class ReviewFormPage extends Component {
                                         <Field  
                                             type="text" 
                                             name="rvTitle" 
-                                            placeholder=" กรอกชื่อเรื่องมาเลยจ้า"
+                                            placeholder="กรอกชื่อเรื่องมาเลยจ้า"
                                             className={`${touched.rvTitle && errors.rvTitle ? "is-invalid":""}`}
                                         />
                                         <ErrorMessage 
@@ -230,7 +230,7 @@ class ReviewFormPage extends Component {
                                         <Field 
                                             type="text" 
                                             name="rvChar" 
-                                            placeholder=" รีวิวว่าตัวละครแต่ละตัวเป็นแบบไหน"
+                                            placeholder="รีวิวว่าตัวละครแต่ละตัวเป็นแบบไหน"
                                             className={`${touched.rvChar && errors.rvChar ? "is-invalid":""}`}
                                         />
                                         <ErrorMessage 
@@ -243,7 +243,7 @@ class ReviewFormPage extends Component {
                                             component="textarea" 
                                             id="story" 
                                             name="rvContent" 
-                                            placeholder=" เขียนรีวิวแบ่งปันเรื่องราวให้คนอื่นกันเลย!"
+                                            placeholder="เขียนรีวิวแบ่งปันเรื่องราวให้คนอื่นกันเลย!"
                                             className={`${touched.rvContent && errors.rvContent ? "is-invalid":""}`}
                                         />
                                         <ErrorMessage 
@@ -256,6 +256,7 @@ class ReviewFormPage extends Component {
                                         <input 
                                             type="file"
                                             name="rvImage"
+                                            accept="image/*"
                                             multiple
                                             onChange={e=>{
                                                 setFieldValue("rvImage",e.currentTarget.files[0]);
@@ -271,7 +272,7 @@ class ReviewFormPage extends Component {
                                             
                                         }
                                    </div>
-                                    <div className="title">เพิ่มหมวดหมู่<span className="limit">   *ไม่เกิน3หมวดหมู่</span></div>
+                                    <div className="title">เพิ่มหมวดหมู่<span className="limit">   *ไม่เกิน 3 หมวดหมู่</span></div>
                                     <div className = "dropbox">
                                         <Field 
                                             component="select" 
@@ -314,18 +315,14 @@ class ReviewFormPage extends Component {
                                         })}
                                     </div>
                                     
-                                    <div className="title">เพิ่มแท็ก<span className="limit">   *ไม่เกิน3หมวดหมู่</span></div>
+                                    <div className="title">เพิ่มแท็ก<span className="limit">   *ไม่เกิน 3 แท็ก</span></div>
                                         <Field
                                             type="text"
                                             name="rvTag"
                                             id="rvTag"
                                             className={`${touched.rvTag && errors.rvTag ? "is-invalid":""}`}
                                         />
-                                        <ErrorMessage 
-                                            component="div"
-                                            name="rvTag"
-                                            className="invalid-feedback"
-                                        />
+                                        
                                         <Field
                                             type="button"
                                             value="เพิ่ม"
@@ -340,6 +337,11 @@ class ReviewFormPage extends Component {
                                                     values.rvTag='';
                                                 }
                                             }}
+                                        />
+                                        <ErrorMessage 
+                                            component="div"
+                                            name="rvTag"
+                                            className="invalid-feedback"
                                         />
                                     <div className="show_add_tag">
                                         {this.state.add_tag.map((tag,index)=>{

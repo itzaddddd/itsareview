@@ -1,14 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
+
 div.navHeader {
 	width: 100%;
 	padding: 10px 0;
 	background-color: #000;
-	line-height:3;
+	line-height:2;
+	float: left;
 }
-img.photo {
 
+img.photo {
+	margin-left: 1vw;
 	width:auto; 
 	height:40px;
-	margin: 0px 20px;
 }
     
 div#search {
@@ -20,52 +23,69 @@ div#search {
 a#home, a#review, a#broad, a#saved{
 	color: #9FB444;
 	margin: 1%;
-	font-size: 1vw;
+	font-size: 2.3vmin;
 }
 span.back-navbar{
 	position:absolute;
 	display:block;
 	height: 100%;
-	width: 25%;
-	top: 10px;
-	right:0px;
+	width: 40%;
+	top: 0;
+	right:0;
+	float: right;
+	background-color: #000;
+	padding-right: 1.5vw;
+	text-align: right;
+	padding-top: inherit;
 }
 
 a#login{
-		color: #9FB444;
-		font-size: 1vw;
-		margin: 1%;
+	font-family: 'Kanit', sans-serif;;
+	color: #9FB444;
+	font-size: 2.3vmin;
+	margin: 1%;
+	
 }
 a#username{
 	color: #9FB444;
-	font-size: 1vw;
-	margin-left: 23%;
+	font-size: 2.3vmin;
 	margin-right: 1%;
 }
 span.search{
 	background-color: #9FB444;
-	font-size: 1vw;
-	border-radius: 10px;
+	font-size: 2.3vmin;
+	border-radius: 20px;
 	text-align: center;
 	margin: 1%;
 	margin-right:0px;
+	padding-left: 5px;
+	padding-right: 10px;
+
 }
 
+.navbar-fixed-top {
+    top: 0;
+    border-width: 0;
+}
 
+.navbar-default {
+    background-color: black;
+}
 
 
 @media(max-width: 900px) {
 	div.navHeader {
-		width: 100%;
+		width: 70%;
 		padding: 5px 0;
 		background-color: #000;
 		line-height:3;
+		float: left;
 	}
 
 	img.photo{
 		width:auto; 
 		height:30px;
-		margin-left: 1em;
+		margin-left: 1vw;
 	}
 
 	div#search {
@@ -73,30 +93,60 @@ span.search{
 		float: right;
 		margin-right: 1em ;
 	}
-	a#home, a#review, a#broad, a#saved{
-		color: #9FB444;
-		margin: 1%;
-		font-size: 1.5vw;
-	}
 
-	a.back-navbar{
+
+	span.back-navbar{
 		position:absolute;
 		display:block;
 		height: 100%;
-		width: 25%;
-		top: 5px;
-		right:0px;
+		width: 35%;
+		top: 0;
+		right: 0;
+		float: right;
+		background-color: #000;
+		text-align: right;
 	}
-	a#login{
+
+	a#username,	a#login {
 		color: #9FB444;
-		font-size: 1vw;
+		/* font-size: 1.5vw; */
 	}
 	span.search{
 		background-color: #9FB444;
-		font-size: 1vw;
+		/* font-size: 1.5vw; */
 		border-radius: 10px;
 		text-align: center;
 		margin: 1%;
+		padding-left: 5px;
+		padding-right: 10px;
 	}
 
+	text.searchNiyay {
+		display: none;
+	}
+
+}
+
+@media(max-width: 600px) {
+
+	span.search {
+		padding: 5px;
+	}
+
+	div.back-navbar {
+		width: 30%;
+	}
+
+	div.navHeader {
+		width: 71%;
+	}
+
+	img.photo {
+		width: auto;
+		height: 20px;
+	}
+	/* a#home, a#review, a#broad, a#saved {
+		font-size: 2.2vw;
+	} */
+	
 }

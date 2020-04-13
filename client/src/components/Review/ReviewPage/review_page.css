@@ -5,10 +5,11 @@ div.reviewName {
   font-weight: bolder;
 } 
 
+
 div.reviewBy p.reviewer {
   display: inline;
   margin-left: 10px;
-  /* margin-bottom: 10px; */
+  margin-bottom: 10px;
 }
 
 p.reviewer {
@@ -24,15 +25,20 @@ div.containerReview{
 div.reviewBy {
   font-size: 4vmin;
   font-weight: 500;
-  margin-top: 10px;
-  margin-left: 15px;
+  margin: 10px 20px;
 }
 
 div.reviewBy2 {
-  font-weight: bolder;
+  font-weight: bold;
   font-size: 4.5vmin;
-  margin-top: 1em;
-  margin-left: 15px;
+  margin: 10px 40px;
+}
+
+div.reviewBy3{
+  font-weight: bold;
+  font-size: 4.5vmin;
+  margin: 10px 20px;
+
 }
 
 hr.new5 {
@@ -55,7 +61,7 @@ hr.new4 {
 
 .boxContent{
   border:1px solid #9FB444;
-  border-radius:7%;
+  border-radius:10px;
   width: 85%;
   height: 40%;
   margin: 6% 6% 0%;
@@ -66,7 +72,112 @@ hr.new4 {
   font-size: 3vmin;
   margin: 0% 34.5%;
     color: black;
+}
+
+hr.line{
+
+  width:70%;
+  text-align:center;
+  color : #9FB444;
+}
+
+
+div.reviewBy4{
+  text-align: center;
+  font-weight: lighter;
+  font-size: 4.5vmin;
+}
+
+@media(min-width: 768px) {
+
+  
+  
+  div.reviewName {
+    text-align: 50px;
+    color: black;
+    font-size: 7vmin;
+    font-weight: bolder;
+  } 
+  
+  div.reviewBy p.reviewer {
+    display: inline;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  
+  p.reviewer {
+    font-size: 3vmin;
+  }
+  
+  div.view{
+    font-size: 2vmin;
+  }
+  
+  div.reviewBy {
+    font-size: 2em;
+    font-weight: 500;
+    max-width: 10px 20px;
     
+  }
+
+  div.reviewBy2 {
+    font-weight: lighter;
+    font-size: 3vmin;
+    margin: 0 3% 0;
+  }
+
+  div.reviewBy3{
+    font-weight: lighter;
+    font-size: 3vmin;
+    margin: 10px 60px;
+    padding: 1% 50% 0 0;
+  }
+
+  hr.line{
+    width:80%;
+    text-align:center;
+    size:10;  
+    color : #9FB444;
+  }
+  
+  hr.new5 {
+    border-top: 1px solid #9FB444;
+    color: black;
+    margin: 0;
+  }
+  
+  hr.new4 {
+    border-top: 1px solid #9FB444;
+    color: black;
+    margin: 10% 1% 0% ;
+  }
+  
+  .view{
+    font-size: 2.5vmin;
+    margin: 0.2% 7% ;
+    color: black;
+  }
+  
+  .boxContent{
+    border:1px solid #9FB444;
+    border-radius:20px;
+    width: 87%;
+    height: 55%;
+    margin: 2% 6% 6%;
+    padding: 5px;
+  }  
+  
+  .givereview{
+    font-size: 3vmin;
+    margin: 0% 34.5%;
+      color: black;
+  }
+
+  div.reviewBy4{
+    text-align: center;
+    font-weight: lighter;
+    font-size: 3vmin;
+  }
 
 }
 

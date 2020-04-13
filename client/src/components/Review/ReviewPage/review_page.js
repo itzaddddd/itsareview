@@ -84,42 +84,50 @@ class ReviewPage extends Component{
         return(
             <div>
                 <NavBar/>
-                <div className="row">
-                    <div className="col-sm containerReview">
-                        <div className="reviewName">{review.rvTitle}</div>
-                        <hr className="new5"></hr>
-                        <div className="reviewBy">รีวิวโดย<p className="reviewer">{review.user_id}</p>{this.state.heart}</div>
-                        <div className = "view"><i style={{color:"9FB444"}} className="far fa-clock"></i>{dateFormat(review.rvTime, 'dd/mm/yyyy')}</div>
-                        <div className = "view"><i style={{color:"9FB444"}} className="fas fa-eye"></i>{review.rvView_Num}</div>
-                        <div className="reviewBy">คะแนนนิยาย</div>
-                        <div className="reviewBy">ที่มา {review.rvSource}</div>
-                        <div className = "reviewBy2">หมวดหมู่นิยาย 
-                            {review.rvType?review.rvType.map((type,i)=>
-                                <Link key={i} to={`/review/category?category=${type}`} >
-                                    {type}
-                                </Link>    
-                            ):''}
-                        </div>
-                        <div className = "reviewBy2">แท็ก</div>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm containerReview">
+                            <div className="reviewName">{review.rvTitle}</div>
+                            <hr className="new5"></hr>
+                            <div className="reviewBy">รีวิวโดย<p className="reviewer">{review.user_id}</p>{this.state.heart}</div>
+                            <div className = "view"><i style={{color:"9FB444"}} className="far fa-clock"></i>{dateFormat(review.rvTime, 'dd/mm/yyyy')}</div>
+                            <div className = "view"><i style={{color:"9FB444"}} className="fas fa-eye"></i>{review.rvView_Num}</div>
+                            <div className="reviewBy">คะแนนนิยาย</div>
+                            <div className="reviewBy">ที่มา {review.rvSource}</div>
+                            <div className = "reviewBy2" id = "reviewby2_">หมวดหมู่นิยาย 
+                                {review.rvType?review.rvType.map((type,i)=>
+                                    <Link key={i} to={`/review/category?category=${type}`} >
+                                        {type}
+                                    </Link>    
+                                ):''}
+                            </div>
+                            <div className = "reviewBy2">แท็ก {review.rvTag}</div>
                             {review.rvTag?review.rvTag.map((tag,i)=>
                                 <Link key={i} to={`/review/tag?tag=${encodeURIComponent(tag)}`} >
                                     {tag}
                                 </Link>    
                             ):''}
-                        
-                        <div className = "reviewBy2">รีวิวตัวละคร</div>
-                        <div className = "boxContent">{review.rvChar}</div>
-                        <div className = "reviewBy2">รีวิวเนื้อเรื่อง</div>
-                        <div className = "boxContent">{review.rvContent}</div>
-                        {review.rvImage?
-                            <div className = "boxContent">
-                                <img src={review.rvImage} width="300" height="auto" alt="image" />
-                            </div>:''}
-                        {/*This section will be implemented in next sprint*/}
-                        {/*<hr className="new4"></hr>
-                            <div className = "givereview">ให้คะแนนรีวิวนี้</div>
-                                <Rating />
-                        <hr className="new4"></hr>*/}
+                            
+                            <div className = "reviewBy3">รีวิวตัวละคร</div>
+                            <div className = "boxContent">{review.rvChar}</div>
+                            <div className = "reviewBy3">รีวิวเนื้อเรื่อง</div>
+                            <div className = "boxContent">{review.rvContent}</div>
+                            <div className = "reviewBy3">รูปภาพ</div>
+                            {review.rvImage?
+                                <div className = "boxContent">
+                                    <img src={review.rvImage} width="300" height="auto" alt="image" />
+                                </div>:''}
+                            <hr className="line">
+                            
+                            </hr>
+                            <div className = "reviewBy4">ให้คะแนนรีวิวนี้</div>
+                            <Rating></Rating>
+                            {/*This section will be implemented in next sprint*/}
+                            {/*<hr className="new4"></hr>
+                                <div className = "givereview">ให้คะแนนรีวิวนี้</div>
+                                    <Rating />
+                            <hr className="new4"></hr>*/}
+                        </div>
                     </div>
                 </div>
             </div>

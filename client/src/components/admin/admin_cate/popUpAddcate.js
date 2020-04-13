@@ -21,22 +21,6 @@ export default class PopUpAddCategory extends Component {
         }
     }
 
-    componentDidMount() {
-        axios.get('http://localhost:4000/admin/categories/')
-        .then(response => {
-            if (response.data.length > 0) {
-            this.setState({
-                categories: response.data.map(category => category.categoryName),
-                categoryName: response.data.categoryName
-            })
-            }
-        })
-        .catch((error) => {
-            console.log(error);
-        })
-
-    }
-
     onChangeCategoryName(e) {
         this.setState({
         categoryName: e.target.value
@@ -93,14 +77,14 @@ export default class PopUpAddCategory extends Component {
                             </Modal.Title>
                         </Modal.Header>
                         <Modal.Body >
-                            <label className="inputName">ชื่อหมวดหมู่</label>
+                            <label className="cateName">ชื่อหมวดหมู่</label>
                             <input required
                             type="text"
-                            className="inputName"
+                            className="cateName"
                             value={this.state.categoryName || ''}  
                             placeholder='ชื่อหมวดหมู่' 
                             onChange={this.onChangeCategoryName} />
-                            <label className="inputName">เพิ่มไอคอน</label>
+                            <label className="cateName">เพิ่มไอคอน</label>
                             <div style={{width:'18em'}}>
                                 <input required
                                 type="file" 

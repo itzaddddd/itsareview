@@ -1,22 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
 
-div.adminTable {
-    margin: 0em 5em 5em 5em;
-    width: 90%;
+div.adminTableReview {
+    width: max-content;
     text-align: center;
     align-content: center;
     border-collapse: collapse;
     border-bottom: 1px solid #ddd;
-    font-size: 1.2vw;
+    font-size: 1.1vw;
+    margin-left: 3vw;
 }
 
-.adminTable tr th {
+.adminTableReview tr th {
     line-height: initial;
     align-items: center;
 }
 
-div.adminTable th {
+div.adminTableReview th {
     color: #B9D253;
+    text-align: center;
 }
 
 div.topicPage {
