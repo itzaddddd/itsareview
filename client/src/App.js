@@ -55,10 +55,11 @@ class App extends Component{
             <Route exact path="/review/create" component={ReviewForm} />
             <Route exact path="/review/tag" component={TagReview} />
             <Route exact path="/review/:id" component={ReviewPage} />
-            <Route exact path="/review/:id/edit" component={EditReviewForm} />
+            <ProtectedRoute exact path="/review/:id/edit" component={EditReviewForm} />
             <Route exact path="/" component={Dashboard}/>
             <ProtectedRoute exact path="/user/:id" component={UserInfo} />
-            <Route exact path="/user/:id/readlater" component={ReadLater} />
+            <ProtectedRoute path="/user/:id/readlater" component={ReadLater} />
+            <ProtectedRoute path="/user//readlater" component={ReadLater} />
             
 
             {/* admin */}

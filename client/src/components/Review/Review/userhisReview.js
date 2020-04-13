@@ -6,8 +6,6 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { addReadLater, deleteReadLater } from '../../../Redux/Actions/readlaterAction'
 import { deleteReview } from '../../../Redux/Actions/reviewAction'
-import store from '../../../Redux/store';
-import { DELETE_READ_LATER_COMPLETED } from '../../../Redux/constants';
 
 const mapStateToProps = state => {
     return {
