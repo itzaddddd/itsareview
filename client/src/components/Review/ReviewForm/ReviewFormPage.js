@@ -107,7 +107,7 @@ class ReviewFormPage extends Component {
     }
     
     addNewReview = async (newReview) => {
-        await this.setUsername()
+        this.setUsername()
         this.props.addReview(newReview, this.state.username);
         
     }
@@ -212,12 +212,8 @@ class ReviewFormPage extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-sm">
-                                    <h3><a href="/review/id">เขียนรีวิวนิยาย</a></h3>
-                                    <h4 className="h4promote">มาเขียนรีวิวนิยายที่คุณชอบกันเถอะ</h4>
-
-                                    <hr style={{color:"#9FB444" , border:"1px solid", opacity:"0.5"}}>
-                                    </hr>
-
+                                    <h3>เขียนรีวิวนิยาย</h3>
+                                    <h4>มาเขียนรีวิวนิยายที่คุณชอบกันเถอะ</h4>
                                     <div className="title">ชื่อเรื่อง</div>
                                         <Field  
                                             type="text" 

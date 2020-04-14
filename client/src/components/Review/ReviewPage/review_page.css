@@ -1,6 +1,7 @@
 div.reviewName {
+  text-align: left;
   color: black;
-  font-size: 4vmin;
+  font-size: 7vmin;
   font-weight: bolder;
 } 
 
@@ -8,6 +9,7 @@ div.reviewName {
 div.reviewBy p.reviewer {
   display: inline;
   margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 p.reviewer {
@@ -15,7 +17,9 @@ p.reviewer {
 }
 
 div.containerReview{
-  margin-top: 12vmax;
+  padding: 6%;
+  padding-left: 9%;
+  padding-right: 9%;
 }
 
 div.reviewBy {
@@ -61,7 +65,7 @@ hr.new4 {
   width: 85%;
   height: 40%;
   margin: 6% 6% 0%;
-  padding: 2vw;
+  padding: 5px;
 }  
 
 .givereview{
@@ -89,14 +93,16 @@ div.reviewBy4{
   
   
   div.reviewName {
+    text-align: 50px;
     color: black;
-    font-size: 4vmin;
+    font-size: 7vmin;
     font-weight: bolder;
   } 
   
   div.reviewBy p.reviewer {
     display: inline;
     margin-left: 10px;
+    margin-bottom: 10px;
   }
   
   p.reviewer {

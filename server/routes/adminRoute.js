@@ -39,9 +39,10 @@ adminRoute.route('/reviews/:id').delete((req, res) => {
 
 adminRoute.route('/categories').get((req,res)=>{
   Category.find()
-    .then(categories => res.json(categories))
+    .then(categories => {res.json(categories)})
     .catch(err => res.status(400).json('Error: ' + err));
   console.log('Show Category from Database');
+  
 });
 
 adminRoute.route('/categories/add').post((req, res) => {

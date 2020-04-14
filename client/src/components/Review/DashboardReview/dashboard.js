@@ -3,7 +3,7 @@ import NavBar from '../../Bar/NavBar/NavBar'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './dashboard.css';
 import Typebar from '../../Bar/Typebar/Typebar'
-import UserhisReview from '../Review/userhisReview';
+import Review from '../Review/userhisReview';
 import UserHisBoard from '../../Board/Board/userhisBoard';
     
 export default class Dashboard extends Component {
@@ -62,12 +62,12 @@ export default class Dashboard extends Component {
 
                         <div className="inlineReviewDashboard flex-container">
                             <div>
-                                <div className="inlineReview"><UserhisReview/></div>
-                                <div className="inlineReview"><UserhisReview/></div>
-                                <div className="inlineReview"><UserhisReview/></div>
-                                <div className="inlineReview"><UserhisReview/></div>
-                                <div className="inlineReview"><UserhisReview/></div>
-                                <div className="inlineReview"><UserhisReview/></div>
+                                <div className="inlineReview"><Review/></div>
+                                <div className="inlineReview"><Review/></div>
+                                <div className="inlineReview"><Review/></div>
+                                <div className="inlineReview"><Review/></div>
+                                <div className="inlineReview"><Review/></div>
+                                <div className="inlineReview"><Review/></div>
                             </div>             
                         </div>
 

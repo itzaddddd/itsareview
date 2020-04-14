@@ -7,9 +7,9 @@ h1{
     text-align: center;
 }
 h1.head1{
-    background-color: black;
-    border: 10px solid black;
-    border-radius: 5px;
+    /* background-color: black; */
+    /* border: 10px solid black; */
+    /* border-radius: 5px; */
     margin: 40px;
 }
 p.inputP{

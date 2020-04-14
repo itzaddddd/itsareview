@@ -3,30 +3,77 @@ import './userhisReview.css';
 import dateFormat from 'dateformat'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { Link, Redirect } from 'react-router-dom'
-import { addReadLater } from '../../../Redux/Actions/readlaterAction'
+import { Link } from 'react-router-dom'
+import { addReadLater, deleteReadLater } from '../../../Redux/Actions/readlaterAction'
 import { deleteReview } from '../../../Redux/Actions/reviewAction'
+
 const mapStateToProps = state => {
     return {
-        user: state.user
+        user: state.user,
+        readLater: state.readLater
     }
 }
 class UserHisReview extends Component{
     constructor(props){
         super(props);
-        
+
         this.state = {
-            review: []
+            save: null,
+            heart: ''
         }
+        this.toggleSave = this.toggleSave.bind(this)
     }
+
+    toggleSave = () => {
+        this.setState({
+            save: !this.state.save
+        })
+    }
+
 
     static propTypes = {
         user: PropTypes.object.isRequired,
         addReadLater: PropTypes.func.isRequired,
+        deleteReadLater: PropTypes.func.isRequired,
         deleteReview: PropTypes.func.isRequired
     }
+    
+    componentDidMount(){
+        let heart_white = <i className="far fa-heart" onClick={()=>{this.props.addReadLater(this.props.review._id,()=>this.toggleSave());}}></i>
+        let heart_black = <i className="fas fa-heart" onClick={()=>{this.props.deleteReadLater(this.props.review._id,()=>this.toggleSave());}}></i>
+        if(this.props.user.user){
+            if(this.props.user.user.readLater.some(review => review._id === this.props.review._id)){
+                this.setState({
+                    heart: heart_black,
+                    save: true
+                }/*,()=>console.log('did mount save true',this.state.save)*/)
+            }else{
+                this.setState({
+                    heart: heart_white,
+                    save: false
+                }/*,()=>console.log('did mount save false',this.state.save)*/)
+            }
+        }
+    }
 
-    render(){  
+    componentDidUpdate(prevProps, prevState){
+        /* Bug!! after unsave, review in next index of deleted review will chang save state to false */
+        /* It must set state after delete readlater completed */
+        let heart_white = <i className="far fa-heart" onClick={()=>{this.props.addReadLater(this.props.review._id,()=>this.toggleSave());}}></i>
+        let heart_black = <i className="fas fa-heart" onClick={()=>{this.props.deleteReadLater(this.props.review._id,()=>this.toggleSave());}}></i>
+        //console.log('save ',this.props.review.rvTitle,' ',this.state)
+        
+        if(prevState.save !== this.state.save){
+                if(this.state.save===true){
+                    this.setState({heart:heart_black})
+                }else{
+                    this.setState({heart:heart_white})
+                }
+            
+        }
+    }
+    
+    render(){
         return(
             <div className="show-box userHis">
                 <div className="show-review">
@@ -51,7 +98,7 @@ class UserHisReview extends Component{
                         <div>
                             <div className="type bold">หมวดหมู่
                                 {this.props.review?this.props.review.rvType.map((type,i) => 
-                                    <Link key={i} to={`/review/category/${type}`} >
+                                    <Link key={i} to={`/review/category?category=${type}`} >
                                        <span className="subtype" key={i}>{type}</span>
                                     </Link>
                                     )
@@ -62,10 +109,10 @@ class UserHisReview extends Component{
                         <div>
                             <div className="tag bold">แท็ก
                             {this.props.review?this.props.review.rvTag.map((tag,i) => 
-                                // <Link key={i} to={`/review/tag/${tag}`}>
-                                     <span className="subtag" key={i}>{tag}</span>)
-                                // </Link>
-                                
+                                <Link key={i} to={`/review/tag?tag=${encodeURIComponent(tag)}`}>
+                                     <span className="subtag" key={i}>{tag}</span>
+                                </Link>
+                                )
                                 :''
                             }
                             </div>
@@ -83,9 +130,12 @@ class UserHisReview extends Component{
                             {this.props.isUserReview?
                                 <div className="edit">
                                     <a href={`/review/${this.props.review?this.props.review._id:''}/edit`}><span>แก้ไข</span></a>
-                                    <span className="delete-review" /*onClick={this.props.review._id?this.props.deleteReview(this.props.review._id):''}*/>ลบ</span>
+                                    <span className="delete-review" onClick={()=>this.props.deleteReview(this.props.review._id)}>
+                                        ลบ
+                                    </span>
                                 </div>
-                                :''}
+                                :''
+                            }
                         </div>
                         </div>                        
                     </div>               
@@ -94,5 +144,5 @@ class UserHisReview extends Component{
         )
     }
 }
-export default connect(mapStateToProps, { addReadLater, deleteReview })(UserHisReview);
+export default connect(mapStateToProps, { addReadLater, deleteReadLater, deleteReview })(UserHisReview);
 

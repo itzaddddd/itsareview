@@ -13,7 +13,6 @@ import store from '../store'
 
 export const getReview = (id, callback) => (dispatch,getState) => {
     if(typeof callback === "function") callback();
-    console.log('id from action : ',id)
     axios.get(`/review/${id}`)
         .then(res => dispatch({
             type: GET_REVIEW,
@@ -71,16 +70,16 @@ export const editReview = ({rvTitle, rvChar, rvContent, /*rvImageUrl,*/ rvType, 
 export const deleteReview = (id, callback) => dispatch => {
     axios.delete(`/review/${id}?_method=DELETE`)
     .then( res => dispatch({
-        type: DELETE_REVIEW
+        type: DELETE_REVIEW,
+        payload: res.data
     }))
-
+    .catch(err => console.log(err))
     if(typeof callback === "function") callback();
 }
 
-export const getCategory = (id, callback) => dispatch => {
+export const getCategory = (category, callback) => dispatch => {
     if(typeof callback === "function") callback();
-    
-    axios.get(`/review/category/${id}`)
+    axios.get(`/review/category?category=${category}`)
         .then( res => dispatch({
             type: GET_CATEGORY_REVIEW,
             payload: res.data
@@ -92,8 +91,7 @@ export const getCategory = (id, callback) => dispatch => {
 
 export const getTag = (tag, callback) => dispatch => {
     if(typeof callback === "function") callback();
-    
-    axios.get(`/review/tag/${tag}`)
+    axios.get(`/review/tag?tag=${encodeURIComponent(tag)}`)
         .then( res => dispatch({
             type: GET_TAG_REVIEW,
             payload: res.data
