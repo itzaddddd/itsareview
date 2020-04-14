@@ -6,6 +6,8 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { addReadLater, deleteReadLater } from '../../../Redux/Actions/readlaterAction'
 import { deleteReview } from '../../../Redux/Actions/reviewAction'
+import store from '../../../Redux/store';
+import { DELETE_READ_LATER_COMPLETED } from '../../../Redux/constants';
 
 const mapStateToProps = state => {
     return {
@@ -41,20 +43,21 @@ class UserHisReview extends Component{
     componentDidMount(){
         let heart_white = <i className="far fa-heart" onClick={()=>{this.props.addReadLater(this.props.review._id,()=>this.toggleSave());}}></i>
         let heart_black = <i className="fas fa-heart" onClick={()=>{this.props.deleteReadLater(this.props.review._id,()=>this.toggleSave());}}></i>
-        // if(this.props.user.user && this.props.review._id){
-        //     if(this.props.user.user.readLater.some(review => review._id === this.props.review._id)){
-        //         this.setState({
-        //             heart: heart_black,
-        //             save: true
-        //         }/*,()=>console.log('did mount save true',this.state.save)*/)
-        //     }else{
-        //         this.setState({
-        //             heart: heart_white,
-        //             save: false
-        //         }/*,()=>console.log('did mount save false',this.state.save)*/)
-        //     }
-        // }
+        if(this.props.user.user && this.props.review){
+            if(this.props.user.user.readLater.some(review => review._id === this.props.review._id)){
+                this.setState({
+                    heart: heart_black,
+                    save: true
+                }/*,()=>console.log('did mount save true',this.state.save)*/)
+            }else{
+                this.setState({
+                    heart: heart_white,
+                    save: false
+                }/*,()=>console.log('did mount save false',this.state.save)*/)
+            }
+        }
     }
+
 
     componentDidUpdate(prevProps, prevState){
         /* Bug!! after unsave, review in next index of deleted review will chang save state to false */
@@ -83,15 +86,15 @@ class UserHisReview extends Component{
                                 <div className="novel-name bold">{this.props.review?this.props.review.rvTitle:''}</div>
                             </Link>
                             <div className="date">
-                                {this.props.review?dateFormat(this.state.review.rvTime, 'dd/mm/yyyy'):''}
+                                {this.props.review?dateFormat(this.props.review.rvTime, 'dd/mm/yyyy'):''}
                                     
-                               <i id="icon-b" className="far fa-heart love"></i>
+                                {this.state.heart}
                                 
                             </div>
                         </div>
                         {this.props.isUserReview?'':
                         <div>
-                            <div className="review-name bold">ชื่อคนรีวิว</div>
+                            <div className="review-name bold">รีวิวโดย</div>
                         <div className="review-name">{this.props.review?this.props.review.user_id:''}</div>
                         </div>
                         }

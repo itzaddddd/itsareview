@@ -52,7 +52,7 @@ class App extends Component{
             <Route exact path="/login" component={Login} />
             <Route exact path="/search" component={SearchForm} />
             <Route exact path="/review/category" component={TypeReview} />
-            <Route exact path="/review/create" component={ReviewForm} />
+            <ProtectedRoute exact path="/review/create" component={ReviewForm} />
             <Route exact path="/review/tag" component={TagReview} />
             <Route exact path="/review/:id" component={ReviewPage} />
             <ProtectedRoute exact path="/review/:id/edit" component={EditReviewForm} />

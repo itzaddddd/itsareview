@@ -43,9 +43,9 @@ class UserInfo extends Component{
                     </div>
                     
                     <div className="rowname">
-                        {/*<div className="col-sm-12 user1" id="line1"><i className="far fa-user fa-2x"></i>{this.state.user?this.state.user.userName:null}</div>
-                        <div className="col-sm-12 user1"><i className="far fa-user fa-2x"></i>{this.state.user?this.state.user.userName:null}</div>
-                        <div className="col-sm-12 user1"><i className="far fa-envelope fa-2x"></i>{this.state.user?this.state.user.userEmail:null}</div>*/}
+                        <div className="col-sm-12 user1" id="line1"><i className="far fa-user fa-2x"></i>{this.props.user.user?this.props.user.user.userName:null}</div>
+                        <div className="col-sm-12 user1"><i className="far fa-user fa-2x"></i>{this.props.user.user?this.props.user.user.userName:null}</div>
+                        <div className="col-sm-12 user1"><i className="far fa-envelope fa-2x"></i>{this.props.user.user?this.props.user.user.userEmail:null}</div>
                     </div>
                     
                     <div id="edit">
@@ -70,9 +70,7 @@ class UserInfo extends Component{
                         {/*show user reviewed */}
                         {this.props.user.user?this.props.user.user.logReview.map(review => {
                             return (
-                                
-                                <Review review={review} key={review._id} isUserReview/>
-                                
+                                <Review review={review} key={review._id} isUserReview/>  
                             )
                         }):''}
                     </div>
