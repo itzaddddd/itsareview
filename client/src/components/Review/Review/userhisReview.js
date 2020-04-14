@@ -41,19 +41,19 @@ class UserHisReview extends Component{
     componentDidMount(){
         let heart_white = <i className="far fa-heart" onClick={()=>{this.props.addReadLater(this.props.review._id,()=>this.toggleSave());}}></i>
         let heart_black = <i className="fas fa-heart" onClick={()=>{this.props.deleteReadLater(this.props.review._id,()=>this.toggleSave());}}></i>
-        if(this.props.user.user){
-            if(this.props.user.user.readLater.some(review => review._id === this.props.review._id)){
-                this.setState({
-                    heart: heart_black,
-                    save: true
-                }/*,()=>console.log('did mount save true',this.state.save)*/)
-            }else{
-                this.setState({
-                    heart: heart_white,
-                    save: false
-                }/*,()=>console.log('did mount save false',this.state.save)*/)
-            }
-        }
+        // if(this.props.user.user && this.props.review._id){
+        //     if(this.props.user.user.readLater.some(review => review._id === this.props.review._id)){
+        //         this.setState({
+        //             heart: heart_black,
+        //             save: true
+        //         }/*,()=>console.log('did mount save true',this.state.save)*/)
+        //     }else{
+        //         this.setState({
+        //             heart: heart_white,
+        //             save: false
+        //         }/*,()=>console.log('did mount save false',this.state.save)*/)
+        //     }
+        // }
     }
 
     componentDidUpdate(prevProps, prevState){
