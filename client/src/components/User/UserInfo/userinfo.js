@@ -43,9 +43,9 @@ class UserInfo extends Component{
                     </div>
                     
                     <div className="rowname">
-                        <div className="col-sm-12" id="line1"><i className="far fa-user fa-2x"></i>{this.state.user?this.state.user.userName:null}</div>
-                        <div className="col-sm-12"><i className="far fa-user fa-2x"></i>{this.state.user?this.state.user.userName:null}</div>
-                        <div className="col-sm-12"><i className="far fa-envelope fa-2x"></i>{this.state.user?this.state.user.userEmail:null}</div>
+                        <div className="col-sm-12 user1" id="line1"><i className="far fa-user fa-2x"></i>{this.state.user?this.state.user.userName:null}</div>
+                        <div className="col-sm-12 user1"><i className="far fa-user fa-2x"></i>{this.state.user?this.state.user.userName:null}</div>
+                        <div className="col-sm-12 user1"><i className="far fa-envelope fa-2x"></i>{this.state.user?this.state.user.userEmail:null}</div>
                     </div>
                     
                     <div id="edit">
@@ -56,7 +56,7 @@ class UserInfo extends Component{
                         <h3>ประวัติ</h3>
                         <hr></hr>
                         <div className="review">
-                            <i className="fas fa-star fa-2x"></i>  นิยายที่รีวิว
+                            <i className="fas fa-star fa-2x"></i>  <p className="topicHistory">นิยายที่รีวิว</p>
                             <a className="more">ดูเพิ่มเติม  <i className="fas fa-angle-double-right"></i></a>
                             {/*<div className="show"></div>*/}
                             {/*<UserHisReview />*/}

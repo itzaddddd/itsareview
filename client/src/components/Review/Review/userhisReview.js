@@ -38,7 +38,7 @@ class UserHisReview extends Component{
                             <div className="date">
                                 {this.props.review?dateFormat(this.state.review.rvTime, 'dd/mm/yyyy'):''}
                                     
-                                &nbsp;<i style={{fontSize:'3vmin'}} className="far fa-heart love"></i>
+                               <i id="icon-b" className="far fa-heart love"></i>
                                 
                             </div>
                         </div>
@@ -78,8 +78,8 @@ class UserHisReview extends Component{
                         <div>
                             <div className="rating bold">เรตติ้ง</div>
                             <div className="num-com">
-                            <div className="num-of-read"><i id="icon-b" className="fas fa-eye"></i>&nbsp;&nbsp;{this.props.review?this.props.review.rvView_Num:''}</div>
-                            <div className="comment"><i id="icon-b" className="far fa-comment-dots"></i>&nbsp;&nbsp;คอมเม้นต์</div>
+                            <div className="num-of-read"><i id="icon-b" className="fas fa-eye"></i>{this.props.review?this.props.review.rvView_Num:''}</div>
+                            <div className="comment"><i id="icon-b" className="far fa-comment-dots"></i>คอมเม้นต์</div>
                             {this.props.isUserReview?
                                 <div className="edit">
                                     <a href={`/review/${this.props.review?this.props.review._id:''}/edit`}><span>แก้ไข</span></a>

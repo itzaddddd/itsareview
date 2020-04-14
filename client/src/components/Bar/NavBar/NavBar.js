@@ -39,7 +39,7 @@ class NavBar extends Component {
                     <a href={`/user/${user?user._id:''}/readlater`} id="saved">เก็บไว้อ่าน <i className="fas fa-heart"></i></a>
                     <span className="back-navbar">
                         {user||this.props.user.isLoading? memberLinks:guestLinks}
-                        <span className="search">  <i className="fas fa-search"></i><text className="searchNiyay">ค้นหารีวิวนิยาย</text></span> 
+                        <span className="search">  <i className="fas fa-search"></i><p className="searchNiyay">ค้นหารีวิวนิยาย</p></span> 
                     </span>
                 </div>
                 </nav>
