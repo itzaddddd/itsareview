@@ -43,7 +43,7 @@ class UserHisReview extends Component{
     componentDidMount(){
         let heart_white = <i className="far fa-heart" onClick={()=>{this.props.addReadLater(this.props.review._id,()=>this.toggleSave());}}></i>
         let heart_black = <i className="fas fa-heart" onClick={()=>{this.props.deleteReadLater(this.props.review._id,()=>this.toggleSave());}}></i>
-        if(this.props.user.user && this.props.review._id){
+        if(this.props.user.user && this.props.review){
             if(this.props.user.user.readLater.some(review => review._id === this.props.review._id)){
                 this.setState({
                     heart: heart_black,
@@ -87,7 +87,9 @@ class UserHisReview extends Component{
                             </Link>
                             <div className="date">
                                 {this.props.review?dateFormat(this.props.review.rvTime, 'dd/mm/yyyy'):''}
-                                &nbsp;{this.state.heart}
+                                    
+                               <i id="icon-b" className="far fa-heart love"></i>
+                                
                             </div>
                         </div>
                         {this.props.isUserReview?'':
@@ -126,8 +128,8 @@ class UserHisReview extends Component{
                         <div>
                             <div className="rating bold">เรตติ้ง</div>
                             <div className="num-com">
-                            <div className="num-of-read"><i id="icon-b" className="fas fa-eye"></i>&nbsp;&nbsp;{this.props.review?this.props.review.rvView_Num:''}</div>
-                            <div className="comment"><i id="icon-b" className="far fa-comment-dots"></i>&nbsp;&nbsp;คอมเม้นต์</div>
+                            <div className="num-of-read"><i id="icon-b" className="fas fa-eye"></i>{this.props.review?this.props.review.rvView_Num:''}</div>
+                            <div className="comment"><i id="icon-b" className="far fa-comment-dots"></i>คอมเม้นต์</div>
                             {this.props.isUserReview?
                                 <div className="edit">
                                     <a href={`/review/${this.props.review?this.props.review._id:''}/edit`}><span>แก้ไข</span></a>

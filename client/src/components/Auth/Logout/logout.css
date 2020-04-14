@@ -5,7 +5,7 @@ span#logout{
 }
 span#logout:hover{
     cursor: pointer;
-    text-decoration: underline;
+    font-weight: bolder;
 }
 /* 
 @media(max-width: 900px) {

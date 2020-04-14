@@ -1,4 +1,3 @@
-/*chage body to clase userHis*/
 div.userHis{
     font-size: 0.75em;
 }
@@ -6,64 +5,82 @@ div.userHis{
 div.show-review{
     width: 100%;
     color: #242424;
-    margin: auto;
+    margin-bottom: 2%;
     border-style: solid;
     border-width: thin;
-    border-color: #e6e6e6;
+    border-color: rgb(119, 134, 53);
     font-size: 1.00em;
     overflow: auto;
     line-height: 2em;
 }
 
 div.in-box{
-    width: 80%;
-    margin: auto;
+    width: 95%;
+    margin: 1.5vmin auto;
     white-space: nowrap; 
+    line-height: initial;
 }
 
 #icon-b{
     color: black;
-    width: 20px;
+    padding: 0 1vmin;
+    font-size: 3vmin;
+    vertical-align: middle;
 }
 
 div.novel-name{
     font-size: 4vmin;
+    display: inline;
+    color: #9FB444;
+
 }
 
 div.date, .num-com{
     float: right;
+    display: inline-flex;
+    font-size: 2.5vmin;
 }
 
-/* div.novel-name + div.date {
-    display: inline;
+.edit , span.delete-review {
+    font-weight: bolder;
+    text-decoration: none;
+    padding: 0 1vw;
+    font-size: 2.5vmin;
+}
+
+/* a.review-name, .type, .tag, .comment{
+    padding-left: 1.5em;
 } */
 
-a.review-name, .type, .tag, .comment{
-    padding-left: 1.5em;
-}
-
 div.story{
-    line-height:14pt;
-    height:10pt;
+    line-height:normal;
+    height:auto;
     overflow:auto;
     text-indent: 20px;
     color: gray;
-    font-size: 1.00em;
+    font-size: 2.5vmin;
+    white-space: pre-wrap;
+    padding:auto 1em;
 }
+
 .bold{
     font-weight: bold;
+}
+
+.type, .tag, .comment, .rating, .edit {
+    font-size: 3vmin;
 }
 
 span.subtype , span.subtag {
     font-weight: normal;
     margin: 1%;
-}
-
-@media(max-width: 425px) {
-
-    div.in-box {
-        width: 80%;
-    }
+    border: 1px solid #9FB444;
+    border-radius: 20px;
+    padding: 0 1.2%;
+    -webkit-box-shadow: 2px 1px 7px -4px #000000; 
+    box-shadow: 2px 1px 7px -4px #000000;
+    font-size: 2.5vmin;
+    color: gray;
 }
 
 /* ---------------------------------------------------------------------------------------------------------- */
@@ -116,8 +133,9 @@ span.subtype , span.subtag {
         margin: 0 1vw;
     }
 
-    a.review-name, .type, .tag, .comment, .rating{
+    a.novel-name , div.review-name, .type, .tag, .comment, .rating{
         padding-left: 1.5em;
+        margin-bottom: 1%;
     }
     
     .type, .tag, .comment, .rating, .edit {
