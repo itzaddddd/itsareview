@@ -88,7 +88,7 @@ class UserHisReview extends Component{
                             <div className="date">
                                 {this.props.review?dateFormat(this.props.review.rvTime, 'dd/mm/yyyy'):''}
                                     
-                               <i id="icon-b" className="far fa-heart love"></i>
+                                {this.state.heart}
                                 
                             </div>
                         </div>
