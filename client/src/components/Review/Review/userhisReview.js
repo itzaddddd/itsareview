@@ -6,6 +6,8 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { addReadLater, deleteReadLater } from '../../../Redux/Actions/readlaterAction'
 import { deleteReview } from '../../../Redux/Actions/reviewAction'
+import store from '../../../Redux/store';
+import { DELETE_READ_LATER_COMPLETED } from '../../../Redux/constants';
 
 const mapStateToProps = state => {
     return {
@@ -41,7 +43,7 @@ class UserHisReview extends Component{
     componentDidMount(){
         let heart_white = <i className="far fa-heart" onClick={()=>{this.props.addReadLater(this.props.review._id,()=>this.toggleSave());}}></i>
         let heart_black = <i className="fas fa-heart" onClick={()=>{this.props.deleteReadLater(this.props.review._id,()=>this.toggleSave());}}></i>
-        if(this.props.user.user){
+        if(this.props.user.user && this.props.review._id){
             if(this.props.user.user.readLater.some(review => review._id === this.props.review._id)){
                 this.setState({
                     heart: heart_black,
@@ -55,6 +57,7 @@ class UserHisReview extends Component{
             }
         }
     }
+
 
     componentDidUpdate(prevProps, prevState){
         /* Bug!! after unsave, review in next index of deleted review will chang save state to false */
@@ -89,7 +92,7 @@ class UserHisReview extends Component{
                         </div>
                         {this.props.isUserReview?'':
                         <div>
-                            <div className="review-name bold">ชื่อคนรีวิว</div>
+                            <div className="review-name bold">รีวิวโดย</div>
                         <div className="review-name">{this.props.review?this.props.review.user_id:''}</div>
                         </div>
                         }

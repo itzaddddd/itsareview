@@ -70,9 +70,7 @@ class UserInfo extends Component{
                         {/*show user reviewed */}
                         {this.props.user.user?this.props.user.user.logReview.map(review => {
                             return (
-                                
-                                <Review review={review} key={review._id} isUserReview/>
-                                
+                                <Review review={review} key={review._id} isUserReview/>  
                             )
                         }):''}
                     </div>

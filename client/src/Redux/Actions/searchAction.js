@@ -1,8 +1,11 @@
 import { SEARCH_REVIEW } from '../constants'
 import axios from 'axios'
 
-export const searchReview = ({rvTitle, rvContent}) => dispatch => {
-    axios.get(`/search?rvTitle=${rvTitle}&rvContent=${rvContent}`)
+export const searchReview = (search) => dispatch => {
+
+
+    
+    axios.get(`/search`)
     .then(res => dispatch({
         type: SEARCH_REVIEW,
         payload: res.data

@@ -25,7 +25,7 @@ export default class Dashboard extends Component {
 
                             <div className="carousel-inner">
                                 <div className="item active">
-                                    <img clasName="imgBanner" src="main2.jpg" border="0" alt="main2.jpg"/>
+                                    <img className="imgBanner" src="main2.jpg" border="0" alt="main2.jpg"/>
                                     <div className="carousel-caption">
                                         <h3 className = "mareview">แบ่งปันนิยายที่คุณชอบได้ทุกที่นี่</h3>
                                         <p className = "mareview">มารีวิวนิยายที่คุณอยากแชร์กับอิสสิ!</p>
@@ -34,7 +34,7 @@ export default class Dashboard extends Component {
                                 </div>
 
                                 <div className="item">
-                                    <img clasName="imgBanner" src="main2.jpg" border="0" alt="main2.jpg" />
+                                    <img className="imgBanner" src="main2.jpg" border="0" alt="main2.jpg" />
                                     <div className="carousel-caption">
                                         <h3 className = "mareview">สนใจโฆษณากับอิสไหม ?</h3>
                                         <p className = "mareview">ติดต่อทีมอิสสิ !</p>
