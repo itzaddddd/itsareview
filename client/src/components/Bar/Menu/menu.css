@@ -21,6 +21,7 @@
         text-align: center;
         position: fixed;
         bottom: 0;
+        position: fixed;
     }
     
     nav ul.foot {
