@@ -8,7 +8,7 @@ import * as yup from 'yup' // lib for validation
 
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { addReview } from '../../../Redux/Actions/reviewAction'
+import { searchReview } from '../../../Redux/Actions/searchAction'
 
 import firebase from 'firebase'
 import axios from 'axios'
@@ -26,7 +26,8 @@ const ReviewSchema = yup.object().shape({
 const mapStateToProps = state => {
     return {
         user: state.user,
-        review: state.review
+        review: state.review,
+        search: state.search
     }
 }
 
@@ -41,10 +42,7 @@ class ReviewFormPage extends Component {
             add_image: [],
             type_disabled: false,
             tag_disabled: false,
-            img: null,
-            username:"",
             categories: []
-            
         };
     }
 
@@ -52,6 +50,8 @@ class ReviewFormPage extends Component {
     static propTypes = {
         review: PropTypes.object.isRequired,
         user: PropTypes.object.isRequired,
+        search: PropTypes.object.isRequired,
+        searchReview: PropTypes.func.isRequired
     }
 
     componentDidMount(){
@@ -61,6 +61,14 @@ class ReviewFormPage extends Component {
             this.setState({categories: res.data})
         })
     }
+    
+    componentWillReceiveProps(nextProps){
+        // if search completed, redirect to show result 
+        if((nextProps.search.search_result !== this.props.search.search_result)){
+            this.props.history.push(`/search/result${nextProps.search.query}`)
+        }
+    }
+
     componentDidUpdate(prevProps, prevState){
 
         // set add type disabled, limit 3 types
@@ -90,21 +98,31 @@ class ReviewFormPage extends Component {
                         rvTitle: "",
                         rvChar: "",
                         rvContent: "",
-                        rvStatus: true,
-                        rvSource: 'Dek-D',
-                        rvType: 'คอมเมดี้',
+                        rvStatus: "",
+                        rvSource: "",
+                        rvType: "",
                         rvTag: ""
                     }}
                     /* set validation form */
                     validationSchema = {ReviewSchema}
                     /*set onSubmit function*/
                     onSubmit = { values => {
-                        let rvContent = this.state.add_type;
+                        let {rvTitle, rvChar, rvContent, rvSource, rvStatus} = values
+                        let rvType = this.state.add_type;
                         let rvTag = this.state.add_tag
 
                         let search_values = {
-                            
+                            rvTitle,
+                            rvChar,
+                            rvContent,
+                            rvSource,
+                            rvStatus,
+                            rvType,
+                            rvTag
                         }
+
+                        console.log(search_values)
+                        this.props.searchReview(search_values)
                     }}
 
                 >
@@ -144,6 +162,9 @@ class ReviewFormPage extends Component {
                                             id ="select"
                                             name="rvType"
                                         >
+                                            <option value='' key="all">
+                                                ทั้งหมด
+                                            </option>
                                             {this.state.categories.map(category => 
                                                 <option value={category.categoryName} key={category._id}>
                                                     {category.categoryName}
@@ -224,7 +245,8 @@ class ReviewFormPage extends Component {
                                         })}
                                     </div>
                                     <div className="title">จบหรือยัง</div>
-                                        <div className="wrap"> 
+                                        <div className="wrap">
+                                            
                                                 <div>
                                                     <Field 
                                                         id="first" 
@@ -232,7 +254,6 @@ class ReviewFormPage extends Component {
                                                         name="rvStatus" 
                                                         ng-model="content" 
                                                         value="true"
-                                                        checked
                                                     />
                                                         <span className="status">จบแล้ว</span>
                                                 </div>
@@ -246,8 +267,19 @@ class ReviewFormPage extends Component {
                                                     />
                                                     
                                                         <span className="status">ยังไม่จบ</span>
+                                                </div>
+                                                <div>
+                                                    <Field 
+                                                        id="all" 
+                                                        type="radio" 
+                                                        name="rvStatus" 
+                                                        ng-model="content" 
+                                                        value=""
+                                                    />
                                                     
-                                                </div> 
+                                                        <span className="status">ทั้งหมด</span>
+                                                    
+                                                </div>   
                                         </div>
                                     <div className="title">หาจากที่มาของนิยาย</div>
                                     <div className = "dropbox">
@@ -256,6 +288,7 @@ class ReviewFormPage extends Component {
                                             id="country" 
                                             name="rvSource"
                                         >
+                                            <option value="">ทั้งหมด</option>
                                             <option value="Dek-D">Dek-D</option>
                                             <option value="จอยลดา">จอยลดา</option>
                                             <option value="ReadAWrite">ReadAWrite</option>
@@ -279,4 +312,4 @@ class ReviewFormPage extends Component {
     )}
 }
 
-export default connect(mapStateToProps,{ addReview })(ReviewFormPage);
+export default connect(mapStateToProps,{ searchReview })(ReviewFormPage);
