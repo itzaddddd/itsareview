@@ -14,6 +14,7 @@ import Register from './components/Auth/Register/register';
 import Login from './components/Auth/Login/login';
 // import Menu from './components/Menu/menu';
 import UserInfo from './components/User/UserInfo/userinfo';
+import UserEditForm from './components/User/UserEditForm/UserEditForm'
 import ReviewPage from './components/Review/ReviewPage/review_page';
 import ReviewForm from './components/Review/ReviewForm/ReviewFormPage'; 
 import SearchForm from './components/Search/SearchForm/search';
@@ -59,6 +60,7 @@ class App extends Component{
             <ProtectedRoute exact path="/review/:id/edit" component={EditReviewForm} />
             <Route exact path="/" component={Dashboard}/>
             <ProtectedRoute exact path="/user/:id" component={UserInfo} />
+            <ProtectedRoute exact path="/user/:id/edit" component={UserEditForm} />
             <ProtectedRoute path="/user/:id/readlater" component={ReadLater} />
             <ProtectedRoute path="/user//readlater" component={ReadLater} />
             

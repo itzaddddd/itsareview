@@ -1,7 +1,5 @@
 const userRoute = require('express').Router();
-const mongoose = require('mongoose');
 const loginRoute = require('./loginRoute');
-const logoutRoute = require('./logoutRoute');
 const registerRoute = require('./registerRoute');
 
 const auth = require('../middleware/auth');
@@ -96,26 +94,36 @@ userRoute.route('/:id/readlater').delete((req,res)=>{
     
     console.log('Delete a review read later')
 })
-
+// @route   Edit user
+// @desc    Edit user profile
+// @access  Private
 userRoute.route('/:id/edit').put((req,res)=>{
-    User.findByIdAndUpdate({_id:req.params.id},{
-        $set:{
-            userName: req.body.userName,
-            userImage: req.body.userImage,
-            userEmail: req.body.userEMail
-        }
-    },(err, result)=>{
-        if(err){
-            console.log(err);
-        }else{
-            res.json(result);
-        }
-    });
+    console.log('body ',req.body)
+    User.findOne({userName: req.body.userName},(err,user)=>{
+        if(err)console.log(err)
+        if(user && (req.body.userName !== user.userName))return res.status(400).json({msg: 'ชื่อผู้ใช้นี้ถูกใช้งานแล้ว'});
+        User.findOne({userEmail: req.body.userEmail},(err,user)=>{
+            if(err)console.log(err)
+            if(user && (req.body.userEmail !== user.userEmail))return res.status(400).json({msg: 'อีเมลนี้ถูกใช้งานแล้ว'});
+            User.findByIdAndUpdate(req.params.id,{
+                $set:{
+                    userName: req.body.userName,
+                    penName: req.body.penName,
+                    userEmail: req.body.userEmail
+                }
+            },{new:true},(err, result)=>{
+                if(err){
+                    console.log(err);
+                }else{
+                    res.json(result);
+                }
+            });
+        })
+    })
     console.log('Edit profile');
 });
 
 userRoute.use('/login',loginRoute);
-userRoute.use('/logout',logoutRoute);
 userRoute.use('/register',registerRoute);
 
 module.exports = userRoute;

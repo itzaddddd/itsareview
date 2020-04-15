@@ -1,6 +1,7 @@
 import {
     USER_LOADED,
     USER_LOADING,
+    USER_EDIT,
     AUTH_ERROR,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
@@ -50,6 +51,11 @@ export default function(state = initialState, action){
                 isAuthenticated: false,
                 isLoading: false
             };
+        case USER_EDIT:
+            return {
+                ...state,
+                user: action.payload
+            }
         default:
             return state;
     }

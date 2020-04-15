@@ -1,6 +1,8 @@
 import {
     USER_LOADED,
     USER_LOADING,
+    USER_EDIT,
+    USER_EDIT_FAIL,
     AUTH_ERROR,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
@@ -89,6 +91,29 @@ export const logout = () => {
     return {
         type: LOGOUT_SUCCESS
     }
+}
+
+// Edit user
+export const editUser = ({userName, penName, userEmail}) => (dispatch, getState) => {
+    // Headers
+    const config = {
+        headers: {
+            "Content-type": "application/json"
+        }
+    }
+
+    // Request body
+    const body = JSON.stringify({userName, penName, userEmail});
+
+    axios.put(`/user/${getState().user.user._id}/edit?_method=PUT`,body,config)
+        .then(res => dispatch({
+            type: USER_EDIT,
+            payload: res.data    
+        }))
+        .catch( err => {
+            dispatch(returnErrors(err.response.data, err.response.status, 'USER_EDIT_FAIL'));
+            dispatch({ type: USER_EDIT_FAIL });
+        });
 }
 
 // Setup config/headers and token
