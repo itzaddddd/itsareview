@@ -27,7 +27,7 @@ const RegisterSchema = yup.object().shape({
     //     .required("กรุณาใส่รหัสผ่าน"),
     userEmail: yup.string()
         .email('รูปแบบอีเมลไม่ถูกต้อง')
-        .required('กรุุณาใส่อีเมล')
+        .required('กรุณาใส่อีเมล')
 })
 
 const mapStateToProps = state => {

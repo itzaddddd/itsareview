@@ -9,39 +9,31 @@ form.RegisterForm {
 }
 
 #regis-button {
-        background-color: #B9D253; 
-        width: 50%;
-        margin-left: 25%;
-        margin-right: 25%;
-        border: none;
-        color:black;
-        padding: 5px 15px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 1.3vw;
+    background-color: #B9D253; 
+    width: 50%;
+    margin-top: 5%;
+    margin-left: 25%;
+    margin-right: 25%;
+    border: none;
+    color:black;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 3vmin;
 }
 
 div#regis-title {
-    font-size: 2.5vw;
+    font-size: 4vmin;
     font-weight:bold;
     text-align: center;
     color: #737e3d;
     margin-top:20px;
 }
 
-.error-message {
-    font-size: 10px;
-    color: pink;
-    margin-left: 25px;
-}
-
-input{
-    padding: 12px 20px;
-}
-
 input[type='text'].form-control input[type='password'].form-control {
     margin: 6% 6% 0%;
+    padding: 12px 20px;
 }
 
 div#regis-form{
@@ -54,7 +46,7 @@ div#regis-form{
     margin-top: 1%;
     color: #d4554a;
     margin-left: 6%;
-    font-size: 1vw;
+    font-size: 2vmin;
     border: 1px solid;
     border-color: #f5cfcb;
     border-radius: 0.3vw;
@@ -66,7 +58,7 @@ div#regis-form{
     margin-top: 5%;
     color: white;
     margin-left: 6%;
-    font-size: 1vw;
+    font-size: 2vmin;
     border: 1px solid;
     border-color: #f5cfcb;
     border-radius: 0.3vw;

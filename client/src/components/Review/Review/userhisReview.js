@@ -88,7 +88,7 @@ class UserHisReview extends Component{
                             <div className="date">
                                 {this.props.review?dateFormat(this.props.review.rvTime, 'dd/mm/yyyy'):''}
                                     
-                                {this.state.heart}
+                                <div className="heart-fav">{this.state.heart}</div>
                                 
                             </div>
                         </div>
@@ -126,7 +126,7 @@ class UserHisReview extends Component{
                             </div>
                         </div>
                         <div>
-                            <div className="rating bold">เรตติ้ง</div>
+                            <div className="rating-his bold">เรตติ้ง</div>
                             <div className="num-com">
                             <div className="num-of-read"><i id="icon-b" className="fas fa-eye"></i>{this.props.review?this.props.review.rvView_Num:''}</div>
                             <div className="comment"><i id="icon-b" className="far fa-comment-dots"></i>คอมเม้นต์</div>

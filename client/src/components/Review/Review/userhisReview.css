@@ -32,7 +32,10 @@ div.novel-name{
     font-size: 4vmin;
     display: inline;
     color: #9FB444;
+}
 
+div.review-name {
+    display: inline;
 }
 
 div.date, .num-com{
@@ -41,11 +44,16 @@ div.date, .num-com{
     font-size: 2.5vmin;
 }
 
+div.heart-fav {
+    font-size: 3.5vmin;
+    padding-left: 10%;
+}
+
 .edit , span.delete-review {
     font-weight: bolder;
     text-decoration: none;
     padding: 0 1vw;
-    font-size: 2.5vmin;
+    font-size: 3vmin;
 }
 
 /* a.review-name, .type, .tag, .comment{
@@ -67,7 +75,7 @@ div.story{
     font-weight: bold;
 }
 
-.type, .tag, .comment, .rating, .edit {
+.type, .tag, .comment, .rating-his, .edit, div.review-name {
     font-size: 3vmin;
 }
 
@@ -98,11 +106,13 @@ span.subtype , span.subtag {
         color: #242424;
         border-style: solid;
         border-width: thin;
-        border-color: rgb(119, 134, 53);
+        border-color: #9FB444;
+        box-shadow:0px 0px 3px #000000;
         font-size: 1.00em;
         overflow: auto;
         line-height: normal;
         margin-bottom: 2vw;
+        margin-left: 5%;
     }
     
     div.in-box{
@@ -133,12 +143,16 @@ span.subtype , span.subtag {
         margin: 0 1vw;
     }
 
-    a.novel-name , div.review-name, .type, .tag, .comment, .rating{
+    div.review-name {
+        display: inline;
+    }
+
+    a.novel-name , div.review-name, .type, .tag, .comment, .rating-his{
         padding-left: 1.5em;
         margin-bottom: 1%;
     }
     
-    .type, .tag, .comment, .rating, .edit {
+    .type, .tag, .comment, .rating-his, .edit, div.review-name {
         font-size: 3vmin;
     }
 
@@ -150,6 +164,7 @@ span.subtype , span.subtag {
 
     .edit:hover a , span.delete-review:hover {
         text-decoration: none;
+        font-size: 3vmin;
     }
 
     div.story{
