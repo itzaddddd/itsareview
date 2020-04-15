@@ -8,7 +8,12 @@ searchRouter.route('/review').get((req,res)=>{
     let query = {}
     for(let propName in req.query){
         if(typeof req.query[propName] !== 'undefined'){
-            query[propName] = {$regex:req.query[propName]}
+            if(Array.isArray(req.query[propName])){
+                query[propName] = {$in:req.query[propName]}
+            }else{
+                query[propName] = {$regex:req.query[propName]}
+            }
+            
         }
     }
     if(Object.keys(query).length !== 0){

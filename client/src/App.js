@@ -17,13 +17,13 @@ import UserInfo from './components/User/UserInfo/userinfo';
 import ReviewPage from './components/Review/ReviewPage/review_page';
 import ReviewForm from './components/Review/ReviewForm/ReviewFormPage'; 
 import SearchForm from './components/Search/SearchForm/search';
+import SearchResult from './components/Search/SearchResult/SearchResult'
 import Navbar from './components/Bar/NavBar/NavBar';
 import Dashboard from './components/Review/DashboardReview/dashboard';
 import TypeReview from './components/Review/TypeReview/TypeReview'
 import TagReview from './components/Review/TagReview/TagReview'
 import ReadLater from './components/ReadLater/ReadLater/ReadLater'
 import EditReviewForm from './components/Review/EditReviewForm/EditReviewForm'
-
 import ProtectedRoute from './components/ExtraRoute/ProtectedRoute/ProtectedRoute' // show user info only authenticated
 
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -51,6 +51,7 @@ class App extends Component{
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/search" component={SearchForm} />
+            <Route exact path="/search/result" component={SearchResult} />
             <Route exact path="/review/category" component={TypeReview} />
             <ProtectedRoute exact path="/review/create" component={ReviewForm} />
             <Route exact path="/review/tag" component={TagReview} />
