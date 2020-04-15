@@ -87,7 +87,7 @@ class ReviewPage extends Component{
                 <div className="containerReview">
                     <div className="row">
                         <div className="col-sm">
-                            <div className="reviewName">{review.rvTitle}<div className="heart-fav">{this.state.heart}</div></div>
+                            <div className="reviewName">{review.rvTitle}<div className="heart-fav1">{this.state.heart}</div></div>
                             <hr className="new5"></hr>
                             <div className="reviewBy">รีวิวโดย<p className="reviewer">{review.user_id}</p></div>
                             <div className = "date"><i style={{color:"9FB444"}} className="far fa-clock"></i><p className="date">{dateFormat(review.rvTime, 'dd/mm/yyyy')}</p></div>

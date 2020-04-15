@@ -6,8 +6,9 @@ div.reviewName {
   display: inline;
 } 
 
-div.heart-fav {
+div.heart-fav1 {
   float: right;
+  font-size: 5vmin;
 }
 
 .fa-clock::before {

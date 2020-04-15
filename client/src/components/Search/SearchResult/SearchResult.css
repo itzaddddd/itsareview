@@ -1,4 +1,4 @@
- div.reviewName {
+ /* div.reviewName {
   text-align: left;
   color: black;
   font-size: 7vmin;
@@ -59,7 +59,7 @@ hr.new4 {
   height: 40%;
   margin: 6% 6% 0%;
   padding: 5px;
-}  
+}   */
 
 .givereview{
   font-size: 3vmin;
@@ -69,7 +69,7 @@ hr.new4 {
 
 }
 
-.search-not-found{
+span.search-not-found{
   font-size: 4vmin;
 }
 
