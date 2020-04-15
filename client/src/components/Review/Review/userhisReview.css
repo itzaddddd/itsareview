@@ -32,7 +32,10 @@ div.novel-name{
     font-size: 4vmin;
     display: inline;
     color: #9FB444;
+}
 
+div.review-name {
+    display: inline;
 }
 
 div.date, .num-com{
@@ -72,7 +75,7 @@ div.story{
     font-weight: bold;
 }
 
-.type, .tag, .comment, .rating-his, .edit {
+.type, .tag, .comment, .rating-his, .edit, div.review-name {
     font-size: 3vmin;
 }
 

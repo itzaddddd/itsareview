@@ -1,59 +1,75 @@
-/*{
-    box-sizing: border-box;
+@media(max-width : 430px) {
+
+    a.menuButton {
+        text-decoration: none;
+        color: inherit;
+        margin: 1% 4%;
+    }
+
+    p.menu-name {
+        margin: 0;
+        font-size: 3vmin;
+    }
+    
+    .container {
+        padding: 25px;
+    }
+    
+    .foot-main-navigation {
+        width: 100%;
+        background: #B9D253;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+    }
+    
+    nav ul.foot {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: inline-flex;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    nav.fooot li {
+        display: inline-block;
+        width: calc(100%/2 - 1px - 2*3px);
+    
+        /* width: calc(100vw / 4.6); */
+        padding: 10px;
+    }
+    
+    nav.fooot p {
+        font-size: .9em;
+    }
+    
+    nav.fooot li:hover {
+        transform: scale(1.2);
+        transition: 1s;
+    }
+    
+    /* add this css for chang color of icon in menu from green to black*/
+    i.menu{
+        color: black;
+        font-size: 4vmin;
+    }
+
+    img.photo{
+		width:auto; 
+		height:30px;
+		margin-left: 1vw;
+    }
 }
 
-    line-height: 1.5;
-    font-size: 1em;
-} */
-
-
-a {
-    text-decoration: none;
-    color: inherit;
-    margin: 0;
-}
-
-.container {
-    padding: 25px;
-}
-
-.foot-main-navigation {
-    width: 100%;
-    background: #B9D253;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-}
-
-nav ul.foot {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-nav.fooot li {
-    display: inline-block;
-    width: calc(100%/2 - 1px - 2*3px);
-
-    /* width: calc(100vw / 4.6); */
-    padding: 10px;
-}
-
-nav.fooot p {
-    font-size: .9em;
-}
-
-nav.fooot li:hover {
-    transform: scale(1.2);
-    transition: 1s;
-}
-
-/* add this css for chang color of icon in menu from green to black*/
-i.menu{
-    color: black;
+@media(min-width: 427px) {
+    div.foot-main-navigation {
+        display: none;
+    }
 }
 
 
+/* 
 @media (max-width: 782px){
     nav li {
         width: calc(100%/2 - 1px - 2*3px);
@@ -66,4 +82,4 @@ i.menu{
     nav.fooot p{
         display: none;
     }
-}
+} */
