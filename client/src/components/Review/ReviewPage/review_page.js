@@ -84,49 +84,51 @@ class ReviewPage extends Component{
         return(
             <div>
                 <NavBar/>
-                <div className="container">
+                <div className="containerReview">
                     <div className="row">
-                        <div className="col-sm containerReview">
-                            <div className="reviewName">{review.rvTitle}</div>
+                        <div className="col-sm">
+                            <div className="reviewName">{review.rvTitle}<div className="heart-fav">{this.state.heart}</div></div>
                             <hr className="new5"></hr>
-                            <div className="reviewBy">รีวิวโดย<p className="reviewer">{review.user_id}</p>{this.state.heart}</div>
-                            <div className = "view"><i style={{color:"9FB444"}} className="far fa-clock"></i>{dateFormat(review.rvTime, 'dd/mm/yyyy')}</div>
-                            <div className = "view"><i style={{color:"9FB444"}} className="fas fa-eye"></i>{review.rvView_Num}</div>
-                            <div className="reviewBy">คะแนนนิยาย</div>
-                            <div className="reviewBy">ที่มา {review.rvSource}</div>
-                            <div className = "reviewBy2" id = "reviewby2_">หมวดหมู่นิยาย 
+                            <div className="reviewBy">รีวิวโดย<p className="reviewer">{review.user_id}</p></div>
+                            <div className = "date"><i style={{color:"9FB444"}} className="far fa-clock"></i><p className="date">{dateFormat(review.rvTime, 'dd/mm/yyyy')}</p></div>
+                            <div className = "view"><i style={{color:"9FB444"}} className="fas fa-eye"></i><p className="view">{review.rvView_Num}</p></div>
+                            <div className="rating-niyay">คะแนนนิยาย</div>
+                            <div className="reviewBy2">ที่มา <p className="novel-source">{review.rvSource}</p></div>
+                            <div className = "reviewBy2">หมวดหมู่นิยาย 
                                 {review.rvType?review.rvType.map((type,i)=>
-                                    <Link key={i} to={`/review/category?category=${type}`} >
-                                        {type}
-                                    </Link>    
+                                    <span className="subtype">
+                                        <Link key={i} to={`/review/category?category=${type}`} >
+                                            {type}
+                                        </Link>
+                                    </span>    
                                 ):''}
                             </div>
-                            <div className = "reviewBy2">แท็ก {review.rvTag}</div>
+                            <div className = "reviewBy2">แท็ก
                             {review.rvTag?review.rvTag.map((tag,i)=>
-                                <Link key={i} to={`/review/tag?tag=${encodeURIComponent(tag)}`} >
-                                    {tag}
-                                </Link>    
+                                <span className="subtag">
+                                    <Link key={i} to={`/review/tag?tag=${encodeURIComponent(tag)}`} >
+                                        {tag}
+                                    </Link> 
+                                </span>   
                             ):''}
-                            
-                            <div className = "reviewBy3">รีวิวตัวละคร</div>
+                            </div>
+                            <div className = "reviewBy2 reviewBy5">รีวิวตัวละคร</div>
                             <div className = "boxContent">{review.rvChar}</div>
-                            <div className = "reviewBy3">รีวิวเนื้อเรื่อง</div>
+                            <div className = "reviewBy2 reviewBy5">รีวิวเนื้อเรื่อง</div>
                             <div className = "boxContent">{review.rvContent}</div>
-                            <div className = "reviewBy3">รูปภาพ</div>
+                            <div className = "reviewBy2 reviewBy5">รูปภาพ</div>
                             {review.rvImage?
                                 <div className = "boxContent">
-                                    <img src={review.rvImage} width="300" height="auto" alt="image" />
+                                    <img src={review.rvImage} width="35%" height="auto" alt="image" />
                                 </div>:''}
-                            <hr className="line">
-                            
-                            </hr>
-                            <div className = "reviewBy4">ให้คะแนนรีวิวนี้</div>
-                            <Rating></Rating>
-                            {/*This section will be implemented in next sprint*/}
-                            {/*<hr className="new4"></hr>
-                                <div className = "givereview">ให้คะแนนรีวิวนี้</div>
-                                    <Rating />
-                            <hr className="new4"></hr>*/}
+                            <div className = "reviewBy4">ให้คะแนนรีวิวนี้
+                                <Rating/>
+                                {/*This section will be implemented in next sprint*/}
+                                {/*<hr className="new4"></hr>
+                                    <div className = "givereview">ให้คะแนนรีวิวนี้</div>
+                                        <Rating />
+                                <hr className="new4"></hr>*/}
+                            </div>
                         </div>
                     </div>
                 </div>
