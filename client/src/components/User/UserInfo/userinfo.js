@@ -32,7 +32,6 @@ class UserInfo extends Component{
             this.props.loadUser()
         }
     }
-
     render(){
         if(this.props.user.user){
             return(
@@ -46,13 +45,13 @@ class UserInfo extends Component{
                     
                     <div className="rowname">
                         <div className="col-sm-12 user1" id="line1"><i className="far fa-user fa-2x"></i>{this.props.user.user?this.props.user.user.userName:null}</div>
-                        <div className="col-sm-12 user1"><i className="far fa-user fa-2x"></i>{this.props.user.user?this.props.user.user.userName:null}</div>
+                        <div className="col-sm-12 user1"><i className="far fa-user fa-2x"></i>{this.props.user.user?this.props.user.user.penName:null}</div>
                         <div className="col-sm-12 user1"><i className="far fa-envelope fa-2x"></i>{this.props.user.user?this.props.user.user.userEmail:null}</div>
                         <div className="log-out-mobile"><Logout/></div>
                     </div>
                     
                     <div id="edit">
-                        <button className="button-edit">แก้ไข</button>
+                        <a href={`/user/${this.props.user.user?this.props.user.user._id:''}/edit`}><button className="button-edit">แก้ไข</button></a>
                     </div>
 
                     <div className="history" >
