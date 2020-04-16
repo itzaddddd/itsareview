@@ -23,39 +23,44 @@ registerRoute.route('/').post((req,res)=>{
     User.findOne({ userName })
         .then(user => {
             if(user) return res.status(400).json({msg: 'ชื่อผู้ใช้นี้ถูกใช้งานแล้ว'});
-        
-            const newUser = new User({
-                userName: userName,
-                userEmail: userEmail,
-                password: pass1
-            })
+            User.findOne({ userEmail })
+                .then(user => {
+                    if(user) return res.status(400).json({msg: 'อีเมลนี้ถูกใช้งานแล้ว'})
 
-            // Create salt and hash
-            bcrypt.genSalt(10, (err,salt)=>{
-                bcrypt.hash(newUser.password, salt, (err, hash) => {
-                    if(err){
-                        console.log(err);
-                    }
-                    newUser.password = hash;
-                    newUser.save()
-                        .then(user => {
-                            jwt.sign(
-                                {id: user._id},
-                                config.get('jwtSecret'),
-                                { expiresIn: 3600 },
-                                (err, token) => {
-                                    if(err){
-                                        console.log(err);
-                                    }
-                                    res.json({
-                                        token,
-                                        user
-                                    });
-                                }
-                            )
+                    const newUser = new User({
+                        userName: userName,
+                        penName: userName,
+                        userEmail: userEmail,
+                        password: pass1
+                    })
+        
+                    // Create salt and hash
+                    bcrypt.genSalt(10, (err,salt)=>{
+                        bcrypt.hash(newUser.password, salt, (err, hash) => {
+                            if(err){
+                                console.log(err);
+                            }
+                            newUser.password = hash;
+                            newUser.save()
+                                .then(user => {
+                                    jwt.sign(
+                                        {id: user._id},
+                                        config.get('jwtSecret'),
+                                        { expiresIn: 3600 },
+                                        (err, token) => {
+                                            if(err){
+                                                console.log(err);
+                                            }
+                                            res.json({
+                                                token,
+                                                user
+                                            });
+                                        }
+                                    )
+                                })
                         })
+                    });
                 })
-            });
         })
 });
 

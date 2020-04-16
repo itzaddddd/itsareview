@@ -1,6 +1,7 @@
 import {GET_REVIEW, 
         ADD_REVIEW, 
         DELETE_REVIEW, 
+        DELETE_REVIEW_COMPLETED,
         EDIT_REVIEW,
         GET_REVIEW_USER,
         GET_CATEGORY_REVIEW,
@@ -13,7 +14,9 @@ const initialState = {
     review: {},
     category: [],
     tag: [],
-    found_user: {}
+    found_user: {},
+    is_deleted: false,
+    log_review: [],
 }
 
 export default function(state=initialState, action){
@@ -27,7 +30,13 @@ export default function(state=initialState, action){
             }
         case DELETE_REVIEW:
             return {
-                ...state
+                ...state,
+                is_deleted: true
+            }
+        case DELETE_REVIEW_COMPLETED:
+            return {
+                ...state,
+                is_deleted: false
             }        
         case GET_CATEGORY_REVIEW:
             return {

@@ -14,19 +14,17 @@ import Register from './components/Auth/Register/register';
 import Login from './components/Auth/Login/login';
 // import Menu from './components/Menu/menu';
 import UserInfo from './components/User/UserInfo/userinfo';
-// import Review from './components/Review/review';
+import UserEditForm from './components/User/UserEditForm/UserEditForm'
 import ReviewPage from './components/Review/ReviewPage/review_page';
 import ReviewForm from './components/Review/ReviewForm/ReviewFormPage'; 
-// import UserHis from './components/Userhis/userhis';
-// import UserHisReview from './components/UserhisReview/userhisReview';
-// import Search from './components/Search/search';
+import SearchForm from './components/Search/SearchForm/search';
+import SearchResult from './components/Search/SearchResult/SearchResult'
 import Navbar from './components/Bar/NavBar/NavBar';
 import Dashboard from './components/Review/DashboardReview/dashboard';
 import TypeReview from './components/Review/TypeReview/TypeReview'
-// import TagReview from './components/Review/TagReview/TagReview'
+import TagReview from './components/Review/TagReview/TagReview'
 import ReadLater from './components/ReadLater/ReadLater/ReadLater'
 import EditReviewForm from './components/Review/EditReviewForm/EditReviewForm'
-
 import ProtectedRoute from './components/ExtraRoute/ProtectedRoute/ProtectedRoute' // show user info only authenticated
 
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -53,14 +51,18 @@ class App extends Component{
             {/* User */}
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/review/create" component={ReviewForm} />
-            {/*<Route exact path="/review/tag/:id" component={TagReview} />*/}
-            <Route exact path="/review/category/:id" component={TypeReview} />
+            <Route exact path="/search" component={SearchForm} />
+            <Route exact path="/search/result" component={SearchResult} />
+            <Route exact path="/review/category" component={TypeReview} />
+            <ProtectedRoute exact path="/review/create" component={ReviewForm} />
+            <Route exact path="/review/tag" component={TagReview} />
             <Route exact path="/review/:id" component={ReviewPage} />
-            <Route exact path="/review/:id/edit" component={EditReviewForm} />
+            <ProtectedRoute exact path="/review/:id/edit" component={EditReviewForm} />
             <Route exact path="/" component={Dashboard}/>
             <ProtectedRoute exact path="/user/:id" component={UserInfo} />
-            <Route exact path="/user/:id/readlater" component={ReadLater} />
+            <ProtectedRoute exact path="/user/:id/edit" component={UserEditForm} />
+            <ProtectedRoute path="/user/:id/readlater" component={ReadLater} />
+            <ProtectedRoute path="/user//readlater" component={ReadLater} />
             
 
             {/* admin */}

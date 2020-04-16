@@ -15,11 +15,6 @@ reviewRoute.route('/').get((req,res)=>{
     console.log('All reviews');
 });
 
-reviewRoute.route('/create').get((req,res)=>{
-    res.send('Review creating form');
-    console.log('Show form for creating a review');
-});
-
 // @route   POST /review/create
 // @desc    Create a review 
 // @access  Public
@@ -86,11 +81,11 @@ reviewRoute.route('/create').post((req,res)=>{
     console.log('Create a review');
 });
 
-// @route   GET /review/category/:id
+// @route   GET /review/category?category=category
 // @desc    Get a type of review by id
 // @access  Public
-reviewRoute.route('/category/:id').get((req,res)=>{
-    Review.find({rvType:req.params.id},(err,result)=>{
+reviewRoute.route('/category').get((req,res)=>{
+    Review.find({rvType:req.query.category},(err,result)=>{
         if(err){
             console.log(err);
         }else{
@@ -103,9 +98,9 @@ reviewRoute.route('/category/:id').get((req,res)=>{
 // @route   GET /review/tag/:id
 // @desc    Get a tag of review by id
 // @access  Public
-reviewRoute.route('/tag/:tag').get((req,res)=>{
-    Review.find({rvTag:{$regex:"#"}},(err,result)=>{
-        console.log('tag : ',req.params.tag)
+reviewRoute.route('/tag').get((req,res)=>{
+
+    Review.find({rvTag:req.query.tag},(err,result)=>{
         if(err){
             console.log(err);
         }else{
@@ -124,7 +119,6 @@ reviewRoute.route('/:id').get((req,res)=>{
         if(err){
             console.log(err);
         }else{
-            console.log(result)
             res.json(result);
         }
     });
@@ -182,13 +176,16 @@ reviewRoute.route('/:id/edit').put((req,res)=>{
 // @desc    Edit a review
 // @access  Private
 reviewRoute.route('/:id').delete((req,res)=>{
-    Review.findOneAndRemove({_id:req.params.id},{new: true},(err,result)=>{
-        if(err){
-            console.log(err);
-        }else{
-            res.json(result);
-            console.log('Delete ',result)
-        }
+    Review.findOneAndRemove({_id:req.params.id},(err,review)=>{
+        if(err)console.log(err)
+        console.log('deleted review : ',review)
+        User.findOneAndUpdate({_id:review.user_id},{
+            $pull: {'logReview':{_id:review._id}}
+        },{new:true},(err,user)=>{
+            if(err)console.log(err)
+            console.log('user log review ',user.logReview)
+            res.json(user)
+        })
     });
     console.log('Delete review');
 });

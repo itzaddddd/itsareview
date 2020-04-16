@@ -1,4 +1,4 @@
-/* div.reviewName {
+ /* div.reviewName {
   text-align: left;
   color: black;
   font-size: 7vmin;
@@ -59,17 +59,36 @@ hr.new4 {
   height: 40%;
   margin: 6% 6% 0%;
   padding: 5px;
-}  
+}   */
 
 .givereview{
   font-size: 3vmin;
   margin: 0% 34.5%;
-    color: black;
+  color: black;
     
 
+}
+
+span.search-not-found{
+  font-size: 4vmin;
+}
+
+button.button-search-back{
+  background-color: #B9D253;
+  color: #242424;
+  border: none;
+  width: 25%;
+  font-size: 3vmin;
+  border-radius: 5em;
+  cursor: pointer;
+  margin: 10%;
+}
+#search-back{
+  text-align: center;
+  padding-top: 30px;
 }
 
 #score{
     font-size: 15px;
     margin: 50px;
-} */
+} 

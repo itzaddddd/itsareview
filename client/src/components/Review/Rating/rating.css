@@ -6,13 +6,13 @@
 
 .rating { 
   border: none;
-   float: left; 
+  float: none; 
 }
 
 .rating > input { display: none; } 
 .rating > label:before { 
   
-  font-size: 4em;
+  font-size: 3.5vmin;
   text-align: center;
   font-family: FontAwesome;
   display: inline-block;
