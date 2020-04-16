@@ -75,6 +75,7 @@ div.history{
     color: #242424;
     margin: auto;
     padding-top: 5%;
+    margin-bottom: 30%;
 }
 hr{
     background-color: #707070;
@@ -107,4 +108,14 @@ div.show{
     overflow:scroll;
     overflow-x:hidden;
     overflow-y:scroll;
+}
+
+div.log-out-mobile {
+    text-align: center;
+}
+
+@media(min-width: 427px) {
+    div.log-out-mobile {
+        display: none;
+    }
 }
