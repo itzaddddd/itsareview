@@ -1,30 +1,25 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
-let Commentx = new Schema({
-    rvID : {
-        type: String,
-        required: true
-    },
-	commentID : {
-        type: String,
+let Comment = new Schema({
+    review_id : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Review',
         required: true
     },
 	commentPost : {
         type: String,
         required: true
     },
-    commentImage : {
-        type: String,
-    },
 	commentDate : {
         type: Date,
-        required: true
+        default: Date.now()
     },
-	userID : {
-        type: String,
+	user_id : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     },
 });
 
-module.exports = mongoose.model('Comment', Commentx);
+module.exports = mongoose.model('Comment', Comment);

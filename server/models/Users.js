@@ -22,7 +22,7 @@ let User = new Schema({
     },
 	userJoin : {
         type: Date,
-        default: Date.now
+        default: Date.now()
     },
     password : {
         type: String,

@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const User = require('../models/Users');
+const Comment = require('../models/Comments');
+const CommentSchema = mongoose.model('Comment').schema;
 // const UserSchema = mongoose.model('User').schema;
 
 let Review = new Schema({
@@ -64,13 +66,7 @@ let Review = new Schema({
         required: true,
         default: 0
     },
-	// rvComment : {
-	// 	rvComment_Num : {
-    //         type: Number,
-    //         required: true
-    //     },
-	// 	rvComment_Post : Comment[]
-	// },
+	rvComment : [CommentSchema]
 	// rvFav_Num : {
     //     type: Number,
     //     required: true

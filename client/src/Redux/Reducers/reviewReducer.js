@@ -6,12 +6,16 @@ import {GET_REVIEW,
         GET_REVIEW_USER,
         GET_CATEGORY_REVIEW,
         GET_TAG_REVIEW,
-        GET_USER_BY_ID
+        GET_USER_BY_ID,
+        ADD_COMMENT,
+        DELETE_COMMENT,
+        GET_COMMENT
     } 
 from '../constants'
 
 const initialState = {
     review: {},
+    comment: [],
     category: [],
     tag: [],
     found_user: {},
@@ -24,6 +28,9 @@ export default function(state=initialState, action){
         case GET_REVIEW:
         case ADD_REVIEW:
         case EDIT_REVIEW:
+        case GET_COMMENT:
+        case ADD_COMMENT:
+        case DELETE_COMMENT:
             return {
                 ...state,
                 review: action.payload
@@ -37,7 +44,7 @@ export default function(state=initialState, action){
             return {
                 ...state,
                 is_deleted: false
-            }        
+            }       
         case GET_CATEGORY_REVIEW:
             return {
                 ...state,

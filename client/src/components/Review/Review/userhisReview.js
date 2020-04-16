@@ -40,11 +40,11 @@ class UserHisReview extends Component{
         deleteReview: PropTypes.func.isRequired
     }
     
-    componentDidMount(){
+    componentWillReceiveProps(nextProps){
         let heart_white = <i className="far fa-heart" onClick={()=>{this.props.addReadLater(this.props.review._id,()=>this.toggleSave());}}></i>
         let heart_black = <i className="fas fa-heart" onClick={()=>{this.props.deleteReadLater(this.props.review._id,()=>this.toggleSave());}}></i>
-        if(this.props.user.user && this.props.review){
-            if(this.props.user.user.readLater.some(review => review._id === this.props.review._id)){
+        if((nextProps.user.user !== this.props.user.user) && nextProps.review){
+            if(nextProps.user.user.readLater.some(review => review._id === nextProps.review._id)){
                 this.setState({
                     heart: heart_black,
                     save: true
