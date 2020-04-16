@@ -80,9 +80,8 @@ export const deleteReview = (id, callback) => dispatch => {
     if(typeof callback === "function") callback();
 }
 
-export const addComment = ({commentPost, user_id}) => (dispatch, getState) => {
-    let body = JSON.stringify({commentPost, user_id});
-    axios.post(`/review/${getState().review.review._id}/comment`,body)
+export const addComment = (commentPost, user_id) => (dispatch, getState) => {
+    axios.post(`/review/${getState().review.review._id}/comment`,{commentPost:commentPost,user_id:user_id})
         .then(res => dispatch({
             type: ADD_COMMENT,
             payload: res.data

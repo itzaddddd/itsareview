@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import dateFormat from 'dateformat'
 import PropTypes from 'prop-types'
-import { addComment, deleteComment } from '../../../Redux/Actions/reviewAction'
+import { addComment, deleteComment, getUserById } from '../../../Redux/Actions/reviewAction'
 import store from '../../../Redux/store'
 const mapStateToProps = state =>{
   return {
@@ -26,7 +26,8 @@ class CommentBox extends React.Component {
       user: PropTypes.object.isRequired,
       review: PropTypes.object.isRequired,
       addComment: PropTypes.func.isRequired,
-      deleteComment: PropTypes.func.isRequired
+      deleteComment: PropTypes.func.isRequired,
+      getUserById: PropTypes.func.isRequired
     }
 
     componentWillReceiveProps(nextProps){
@@ -39,18 +40,18 @@ class CommentBox extends React.Component {
     render () {
       const comments = this._getComments();
       let commentNodes;
-      let buttonText = 'Show Comments';
+      let buttonText = 'ความคิดเห็นทั้งหมด';
       
       /* if want to show comment */
       if (this.state.showComments) {
-        buttonText = 'Hide Comments';
+        buttonText = 'ซ่อนความคิดเห็น';
         commentNodes = <div className="comment-list">{comments}</div>;
       }
       
       return(
         <div className="comment-box">
-            <h2>แสดงความคิดเห็นตอ่รีวิวนี้</h2>
-            <CommentForm addComment={this._addComment.bind(this)}/>  
+            <h2>แสดงความคิดเห็นต่อรีวิวนี้</h2>
+            <CommentForm addComment={this.props.addComment}/>  
             <button id="comment-reveal" onClick={this._handleClick.bind(this)}>
                 {buttonText}
             </button>
@@ -63,14 +64,6 @@ class CommentBox extends React.Component {
       );
     } // end render
     
-    _addComment(author, body) {
-      const comment = {
-        id: this.state.comments.length + 1,
-        author,
-        body
-      };
-    }
-    
     _handleClick() {
       this.setState({
         showComments: !this.state.showComments
@@ -78,13 +71,14 @@ class CommentBox extends React.Component {
     }
     
     _getComments() {    
-      return this.state.comments.map((comment) => { 
+      return this.state.comments.map((comment) => {
         return (
           <Comment 
             author={comment.user_id} 
             body={comment.commentPost} 
             key={comment._id}
-            id={comment._id} 
+            id={comment._id}
+            date={dateFormat(comment.commentDate, 'dd/mm/yyyy')}
             deleteComment={this.props.deleteComment}
           />
         ); 
@@ -105,21 +99,22 @@ class CommentBox extends React.Component {
       return (
         <form className="comment-form" onSubmit={this._handleSubmit.bind(this)}>
           <div className="comment-form-fields">
-            <input placeholder="Name" required ref={(input) => this._author = input}></input><br />
+            <br />
             <textarea placeholder="Comment" rows="4" required ref={(textarea) => this._body = textarea}></textarea>
           </div>
           <div className="comment-form-actions">
-            <button type="submit">Post Comment</button>
+            <button type="submit">เพิ่มความคิดเห็น</button>
           </div>
         </form>
       );
     } // end render
     
     _handleSubmit(event) { 
+      console.log('body',this._body)
       event.preventDefault();   // prevents page from reloading on submit
-      let author = this._author;
-      let body = this._body;
-      this.props.addComment(author.value, body.value);
+      let body = this._body.value;
+      let user_id = store.getState().user.user._id
+      this.props.addComment(body, user_id);
     }
   } // end CommentForm component
   
@@ -129,6 +124,7 @@ class CommentBox extends React.Component {
         <div className="comment">
           <p className="comment-header">{this.props.author}</p>
           <p className="comment-body">- {this.props.body}</p>
+          <p className="comment-date">- {this.props.date}</p>
           { store.getState().user.user && (store.getState().user.user._id === this.props.author)?
           <div className="comment-footer">
             <span className="comment-footer-delete" onClick={()=>this.props.deleteComment(this.props.id)}>Delete Comment</span>
@@ -139,4 +135,4 @@ class CommentBox extends React.Component {
     }
   }
   
-export default connect(mapStateToProps,{addComment, deleteComment})(CommentBox)
+export default connect(mapStateToProps,{addComment, deleteComment, getUserById})(CommentBox)
