@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './review_page.css';
 import Rating from '../Rating/rating';
+import CommentBox from '../Comment/Comment'
 //import './Tag.css';
 //import Tag from '../Tag/Tag'
 import NavBar from '../../Bar/NavBar/NavBar'
@@ -96,11 +97,11 @@ class ReviewPage extends Component{
                             <div className="reviewBy2">ที่มา <p className="novel-source">{review.rvSource}</p></div>
                             <div className = "reviewBy2">หมวดหมู่นิยาย 
                                 {review.rvType?review.rvType.map((type,i)=>
-                                    <span className="subtype">
+                                    (<span className="subtype">
                                         <Link key={i} to={`/review/category?category=${type}`} >
                                             {type}
                                         </Link>
-                                    </span>    
+                                    </span>)    
                                 ):''}
                             </div>
                             <div className = "reviewBy2">แท็ก
@@ -131,6 +132,7 @@ class ReviewPage extends Component{
                             </div>
                         </div>
                     </div>
+                    <CommentBox />
                 </div>
             </div>
         )}

@@ -6,7 +6,10 @@ import {
     GET_REVIEW_USER,
     GET_CATEGORY_REVIEW,
     GET_TAG_REVIEW,
-    GET_USER_BY_ID
+    GET_USER_BY_ID,
+    GET_COMMENT,
+    ADD_COMMENT,
+    DELETE_COMMENT
 } from '../constants'
 import axios from 'axios'
 import store from '../store'
@@ -75,6 +78,25 @@ export const deleteReview = (id, callback) => dispatch => {
     }))
     .catch(err => console.log(err))
     if(typeof callback === "function") callback();
+}
+
+export const addComment = ({commentPost, user_id}) => (dispatch, getState) => {
+    let body = JSON.stringify({commentPost, user_id});
+    axios.post(`/review/${getState().review.review._id}/comment`,body)
+        .then(res => dispatch({
+            type: ADD_COMMENT,
+            payload: res.data
+        }))
+        .catch(err => console.log(err))
+}
+
+export const deleteComment = (comment_id) => (dispatch,getState) => {
+    axios.post(`/review/${getState().review.review._id}/comment?_method=DELETE`,{comment_id:comment_id})
+        .then(res => dispatch({
+            type: DELETE_COMMENT,
+            payload: res.data
+        }))
+        .catch(err => console.log(err))
 }
 
 export const getCategory = (category, callback) => dispatch => {
