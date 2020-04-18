@@ -30,7 +30,15 @@ let User = new Schema({
     },
 	logReview : [ReviewSchema],
 	// logBoard : Board[],
-	readLater : [ReviewSchema]
+    readLater : [ReviewSchema],
+    resetPasswordToken: {
+        type: String,
+        default: null
+    },
+    resetPasswordExpires: {
+        type: Number,
+        default: null
+    }
 });
 
 module.exports = mongoose.model('User',User);

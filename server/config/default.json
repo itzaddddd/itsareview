@@ -1,5 +1,9 @@
 {
     "jwtSecret": "itsareview",
     "PORT": 4000,
-    "url": "mongodb+srv://itzaddddd:11oo7o283569o!@cluster0-rjye3.mongodb.net/itsareview"
+    "url": "mongodb+srv://itzaddddd:11oo7o283569o!@cluster0-rjye3.mongodb.net/itsareview",
+    "email": {
+        "user":"isarafff@gmail.com",
+        "pass":"11oo7o283569o!"
+    }
 }

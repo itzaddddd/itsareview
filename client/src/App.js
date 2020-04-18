@@ -26,6 +26,8 @@ import TagReview from './components/Review/TagReview/TagReview'
 import ReadLater from './components/ReadLater/ReadLater/ReadLater'
 import EditReviewForm from './components/Review/EditReviewForm/EditReviewForm'
 import ProtectedRoute from './components/ExtraRoute/ProtectedRoute/ProtectedRoute' // show user info only authenticated
+import ForgotForm from './components/Auth/Forgot/ForgotForm'
+import ResetForm from './components/Auth/Reset/ResetPassForm'
 
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux'
@@ -51,6 +53,8 @@ class App extends Component{
             {/* User */}
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/forgot" component={ForgotForm} />
+            <Route exact path="/reset/:token" component={ResetForm} />
             <Route exact path="/search" component={SearchForm} />
             <Route exact path="/search/result" component={SearchResult} />
             <Route exact path="/review/category" component={TypeReview} />
@@ -63,6 +67,7 @@ class App extends Component{
             <ProtectedRoute exact path="/user/:id/edit" component={UserEditForm} />
             <ProtectedRoute path="/user/:id/readlater" component={ReadLater} />
             <ProtectedRoute path="/user//readlater" component={ReadLater} />
+            
             
 
             {/* admin */}
