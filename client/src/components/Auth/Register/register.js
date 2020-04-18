@@ -113,7 +113,7 @@ class Register extends Component{
                         
                         <Form className="RegisterForm" >
                         <div className="container" id="regis-form">
-                            <a href="/user"><div id="regis-title">สมัครสมาชิก</div></a>
+                            <div id="regis-title">สมัครสมาชิก</div>
                             {this.state.msg ? <div className="alert-box">{this.state.msg}</div> : null}
                             <div className="form-group">
                                 <Field 

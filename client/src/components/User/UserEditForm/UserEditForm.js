@@ -28,7 +28,7 @@ const EditFormSchema = yup.object().shape({
         .matches(/^[a-z0-9_-]{3,16}$/,"กรุณาใช้ตัวอักษรภาษาอังกฤษ ตัวเลข และอักขระพิเศษ _ หรือ -"),
     userEmail: yup.string()
         .email('รูปแบบอีเมลไม่ถูกต้อง')
-        .required('กรุุณาใส่อีเมล')
+        .required('กรุณาใส่อีเมล')
 })
 class UserInfo extends Component{
 
@@ -96,60 +96,63 @@ class UserInfo extends Component{
                                 </div>    
                             </div>
                             
-                            <div className="rowname">
+                            <div className="rowedit">
                                 
-                                <div className="col-sm-12 user1">แก้ไขโปรไฟล์</div>
+                                <div className="col-sm-12 edituserinfo">แก้ไขโปรไฟล์</div>
                                 {this.state.msg ? <div className="alert-box">{this.state.msg}</div> : null}
-                                <div className="col-sm-12 user1" id="line1"><i className="far fa-user fa-2x"></i>
+                                <div className="col-sm-12 editinfo"><i className="edit-i far fa-user fa-2x"></i>
                                     <Field 
                                         type="text" 
+                                        placeholder ="username"
                                         name="userName"
-                                        className={`form-control ${touched.userName && errors.userName ? "is-invalid":""}`} 
+                                        className={`edit-control ${touched.userName && errors.userName ? "is-invalid":""}`} 
                                     />
                                     <ErrorMessage 
                                         componet="div"
                                         name="userName"
                                         className="invalid-feedback"
                                         render={
-                                            msg => <div className="error-message">{msg}</div>
+                                            msg => <div className="error-message error-edit-message edit-control">{msg}</div>
                                         }
                                 />
                                 </div>
-                                <div className="col-sm-12 user1"><i className="far fa-user fa-2x"></i>
+                                <div className="col-sm-12 editinfo"><i className="edit-i far fa-user fa-2x"></i>
                                     <Field 
                                         type="text" 
+                                        placeholder ="pen name"
                                         name="penName"
-                                        className={`form-control ${touched.penName && errors.penName ? "is-invalid":""}`}   
+                                        className={`edit-control ${touched.penName && errors.penName ? "is-invalid":""}`}   
                                     />
                                     <ErrorMessage 
                                         componet="div"
                                         name="penName"
                                         className="invalid-feedback"
                                         render={
-                                            msg => <div className="error-message">{msg}</div>
+                                            msg => <div className="error-message error-edit-message edit-control">{msg}</div>
                                         }
                                     />
                                 </div>
-                                <div className="col-sm-12 user1"><i className="far fa-envelope fa-2x"></i>
+                                <div className="col-sm-12 editinfo"><i className="edit-i far fa-envelope fa-2x"></i>
                                     <Field 
                                         type="text" 
+                                        placeholder ="e-mail"
                                         name="userEmail"
-                                        className={`form-control ${touched.userEmail && errors.userEmail ? "is-invalid":""}`} 
+                                        className={`edit-control ${touched.userEmail && errors.userEmail ? "is-invalid":""}`} 
                                     />
                                     <ErrorMessage 
                                         componet="div"
                                         name="userEmail"
                                         className="invalid-feedback"
                                         render={
-                                            msg => <div className="error-message">{msg}</div>
+                                            msg => <div className="error-message error-edit-message edit-control">{msg}</div>
                                         }
                                     />
                                 </div>
                             </div>
 
-                            <div id="edit">
-                                <button className="button-edit">ยืนยัน</button>
-                                <button className="button-edit" onClick={()=>this.props.history.goBack()}>ยกเลิก</button>
+                            <div id="edit2">
+                                <button className="save-edit">ยืนยัน</button>
+                                <button className="unsave-edit" onClick={()=>this.props.history.goBack()}>ยกเลิก</button>
                             </div>
                         </Form>)}
                     </Formik>

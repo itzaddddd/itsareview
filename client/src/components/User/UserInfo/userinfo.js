@@ -6,7 +6,6 @@ import { connect } from 'react-redux' // redux hook function for use global prop
 import PropTypes from 'prop-types'
 import Review from '../../Review/Review/userhisReview'
 import { loadUser } from '../../../Redux/Actions/userAction';
-import Logout from '../../Auth/Logout/logout';
 
 
 const mapStateToProps = props => {
@@ -44,10 +43,9 @@ class UserInfo extends Component{
                     </div>
                     
                     <div className="rowname">
-                        <div className="col-sm-12 user1" id="line1"><i className="far fa-user fa-2x"></i>{this.props.user.user?this.props.user.user.userName:null}</div>
-                        <div className="col-sm-12 user1"><i className="far fa-user fa-2x"></i>{this.props.user.user?this.props.user.user.penName:null}</div>
-                        <div className="col-sm-12 user1"><i className="far fa-envelope fa-2x"></i>{this.props.user.user?this.props.user.user.userEmail:null}</div>
-                        <div className="log-out-mobile"><Logout/></div>
+                        <div className="col-sm-12 userinfo"><i className="far fa-user fa-2x"></i><p className="info">{this.props.user.user?this.props.user.user.userName:null}</p></div>
+                        <div className="col-sm-12 userinfo"><i className="far fa-user fa-2x"></i><p className="info">{this.props.user.user?this.props.user.user.penName:null}</p></div>
+                        <div className="col-sm-12 userinfo"><i className="far fa-envelope fa-2x"></i><p className="info">{this.props.user.user?this.props.user.user.userEmail:null}</p></div>
                     </div>
                     
                     <div id="edit">
