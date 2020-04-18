@@ -1,11 +1,18 @@
 const userRoute = require('express').Router();
 const loginRoute = require('./loginRoute');
 const registerRoute = require('./registerRoute');
+const forgotRoute = require('./forgotRoute')
+const resetRoute = require('./resetRoute')
 
 const auth = require('../middleware/auth');
 
 const User = require('../models/Users');
 const Review = require('../models/Reviews')
+
+userRoute.use('/login',loginRoute);
+userRoute.use('/register',registerRoute);
+userRoute.use('/forgot',forgotRoute)
+userRoute.use('/reset',resetRoute)
 
 // @route   GET user
 // @desc    Get user data
@@ -101,10 +108,11 @@ userRoute.route('/:id/edit').put((req,res)=>{
     console.log('body ',req.body)
     User.findOne({userName: req.body.userName},(err,user)=>{
         if(err)console.log(err)
-        if(user && (req.body.userName !== user.userName))return res.status(400).json({msg: 'ชื่อผู้ใช้นี้ถูกใช้งานแล้ว'});
+        console.log('user ',user)
+        if(user && (user.userName !== req.body.userName))return res.status(400).json({msg: 'ชื่อผู้ใช้นี้ถูกใช้งานแล้ว'});
         User.findOne({userEmail: req.body.userEmail},(err,user)=>{
             if(err)console.log(err)
-            if(user && (req.body.userEmail !== user.userEmail))return res.status(400).json({msg: 'อีเมลนี้ถูกใช้งานแล้ว'});
+            if(user && (user.userEmail !== req.body.userEmail))return res.status(400).json({msg: 'อีเมลนี้ถูกใช้งานแล้ว'});
             User.findByIdAndUpdate(req.params.id,{
                 $set:{
                     userName: req.body.userName,
@@ -123,7 +131,5 @@ userRoute.route('/:id/edit').put((req,res)=>{
     console.log('Edit profile');
 });
 
-userRoute.use('/login',loginRoute);
-userRoute.use('/register',registerRoute);
 
 module.exports = userRoute;

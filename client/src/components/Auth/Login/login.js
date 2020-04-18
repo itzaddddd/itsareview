@@ -19,6 +19,7 @@ const LoginSchema = yup.object().shape({
     pass1: yup.string()
         // .min(8,"รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัวอักษร")
         .max(16,"รหัสผ่านต้องยาวไม่เกิน 14 ตัวอักษร")
+        .matches(/^[a-z0-9_-]{3,16}$/,"กรุณาใช้ตัวอักษรภาษาอังกฤษ ตัวเลข และอักขระพิเศษ _ หรือ -")
         .required("กรุณาใส่รหัสผ่าน")
 })
 
@@ -164,6 +165,7 @@ class Login extends Component{
                             </div>
                             <div id="account-regis">
                                 <span id="account">ยังไม่มีบัญชี?</span><a href="/register" id="link-regis">สมัคร</a>
+                                <a href="/forgot"><span id="account">ลืมรหัสผ่าน</span></a>
                             </div>
                         </div>
                     </Form>
