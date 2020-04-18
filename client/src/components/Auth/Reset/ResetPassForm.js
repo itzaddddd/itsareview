@@ -115,7 +115,7 @@ class ForgotForm extends Component{
     render(){
             return(
                 <div>
-                    {/* if token expired (this.state.expired === true), can not user link */}
+                    {/* if token expired (this.state.expired === true), can not use link */}
                     {this.state.expired?
                     <div>
                         <div>ลิงก์นี้ไม่สามารถใช้งานได้อีกต่อไป</div>

@@ -5,7 +5,7 @@ const forgotRoute = require('./forgotRoute')
 const resetRoute = require('./resetRoute')
 
 const auth = require('../middleware/auth');
-
+const bcrypt = require('bcryptjs')
 const User = require('../models/Users');
 const Review = require('../models/Reviews')
 
@@ -131,5 +131,31 @@ userRoute.route('/:id/edit').put((req,res)=>{
     console.log('Edit profile');
 });
 
+// @route   PUT /user/reset/viaUser
+// @desc    Reset password via user
+// @access  Private
+userRoute.route('/:id/changepass').put((req,res)=>{
+    let user_id = req.params.id
+    console.log(req.body)
+    User.findById(user_id,(err,user)=>{
+        if(err)console.log(err)
+        /* check req.body.password === user.password */
+        bcrypt.compare(req.body.password,user.password)
+            .then(isMatch => {
+                if(!isMatch)return res.status(400).json({msg:'รหัสผ่านไม่ถูกต้อง'})
+                /* if match, encrypt newpassword and update to user data */
+                bcrypt.genSalt(10, (err,salt)=>{
+                    if(err)console.log(err)
+                    bcrypt.hash(req.body.newpassword, salt, (err, hash)=>{
+                        if(err)console.log(err)
+                        user.updateOne({password:hash},()=>{
+                            console.log('changing password completed')
+                            res.status(200).json({msg:'เปลี่ยนรหัสผ่านเรียบร้อย'})
+                        })
+                    })
+                })
+            })
+    })
+})
 
 module.exports = userRoute;
