@@ -16,11 +16,6 @@
     p.menu2 {
         margin-top: 0.5vmin;
     }
-
-    
-    .container {
-        padding: 25px;
-    }
     
     .foot-main-navigation {
         width: 100%;
@@ -59,13 +54,7 @@
     /* add this css for chang color of icon in menu from green to black*/
     i.menu{
         color: black;
-        font-size: 4vmin;
-    }
-
-    img.photo{
-		width:auto; 
-		height:30px;
-		margin-left: 1vw;
+        font-size: 6vmin;
     }
 }
 
@@ -74,19 +63,3 @@
         display: none;
     }
 }
-
-
-/* 
-@media (max-width: 782px){
-    nav li {
-        width: calc(100%/2 - 1px - 2*3px);
-        
-    }
-
-    .fa-2x {
-        font-size: 1.8em;
-    }
-    nav.fooot p{
-        display: none;
-    }
-} */

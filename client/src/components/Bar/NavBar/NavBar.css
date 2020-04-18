@@ -168,4 +168,9 @@ p.searchNiyay {
 	a.navbarButton , span.navbarButton {
 		display: none;
 	}
+
+	img.photo {
+		width: 10vmax;
+		height: auto;
+	}
 }

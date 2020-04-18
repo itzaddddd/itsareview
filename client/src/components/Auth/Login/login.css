@@ -2,8 +2,8 @@ form.LoginForm {
     /* background: rgb(89,88,106);
     background: linear-gradient(0deg, rgba(89,88,106,1) 0%, rgba(185,210,83,1) 62%); */
 
-    margin: 10px;
-    margin-top: 100px;
+    margin: 2vmin;
+    margin-top: 10vmax;
     position: relative;
 }
 
@@ -24,7 +24,7 @@ form.LoginForm {
 
 
 #login-title {
-    font-size: 4vmin;
+    font-size: 5vmin;
     font-weight:bold;
     text-align: center;
     color: #737e3d;
@@ -69,7 +69,6 @@ input[type='text'].form-control , input[type='password'].form-control#pwd {
 
 div#login-form{
     width: 70%;
-    /* text-align: center; */
 }
 
 .error-message{
@@ -97,4 +96,16 @@ div#login-form{
     padding: 1.5% 2% 1.5% ;
 }
 
+@media(max-width : 768px) /*for medium device*/ {
+    div#login-form{
+        width: 80%;
+    }
+}
 
+@media(max-width : 426px) /*for small device*/ {
+    div#login-form{
+        width: 90%;
+    }
+    
+    
+}

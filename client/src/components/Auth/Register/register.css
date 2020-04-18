@@ -24,7 +24,7 @@ form.RegisterForm {
 }
 
 div#regis-title {
-    font-size: 4vmin;
+    font-size: 5vmin;
     font-weight:bold;
     text-align: center;
     color: #737e3d;
@@ -63,4 +63,16 @@ div#regis-form{
     border-color: #f5cfcb;
     border-radius: 0.3vw;
     padding: 1.5% 2% 1.5% ;
+}
+
+@media(max-width : 768px) /*for medium device*/ {
+    div#regis-form{
+        width: 80%;
+    }
+}
+
+@media(max-width : 426px) /*for small device*/ {
+    div#regis-form{
+        width: 90%;
+    }    
 }

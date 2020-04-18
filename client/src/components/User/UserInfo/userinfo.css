@@ -1,7 +1,5 @@
 body{
     font-family: 'Kanit', sans-serif;
-    /* font-size: 1em;  
-    color: #242424;   */
 }
 div.header{
     margin-top: 50px;
@@ -27,28 +25,41 @@ img.avatar {
     border-radius: 100%;
     top: 27vmin;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
- }
-    
-#line1{
-    margin-top: 15vmin;
 }
 
-div.user1{
-    margin-bottom: 1%;
-    text-align: center;
-    font-size: 3vmin;
+div.rowname {
+    text-align: -webkit-center;
+    margin-top: 15%;
+}
+
+div.userinfo{
+    margin: 1% 25% 3% 25%;
+    text-align: left;
     justify-content: space-between;
+    width: 50%;
+    padding-bottom: 1%;
+
+    border-bottom-width: thin;
+    border-bottom-style: solid;
+    border-bottom-color: #9FB444;
 }
 
-div.user1 > i.far {
-    font-size: 2.7vmin;
-    margin-right: 1%;
+p.info {
+    font-size: 3.3vmin;
+    font-weight: bold;
+    vertical-align: super;
+}
+
+div.userinfo > p.info {
+    display: inline;
+    border-bottom: #9FB444;
+}
+
+div.userinfo > i.far {
+    font-size: 4vmin;
+    margin-right: 5%;
     color: #9FB444;
 }
-
-/* i.far, i.fas{
-    color: #B9D253;
-} */
 
 p.topicHistory {
     display: inline;
@@ -65,10 +76,6 @@ button.button-edit{
     cursor: pointer;
     margin-top: 5%;
 }
-#edit{
-    text-align: center;
-    padding-top: 30px;
-}
 
 div.history{
     width: 80%;
@@ -77,6 +84,7 @@ div.history{
     padding-top: 5%;
     margin-bottom: 30%;
 }
+
 hr{
     background-color: #707070;
 }
@@ -110,12 +118,49 @@ div.show{
     overflow-y:scroll;
 }
 
-div.log-out-mobile {
+div#edit {
+    margin-top: 10%;
+    position: relative;
     text-align: center;
 }
 
-@media(min-width: 427px) {
+/* @media(min-width: 427px) {
     div.log-out-mobile {
         display: none;
     }
+
+    div.rowname {
+        margin-top: 15vmax;
+        text-align: -webkit-center;
+        height: 20vmax;
+    }
+
+    div#edit {
+        margin-top: 5vmax;
+        text-align: center;
+    }
+}*/
+
+@media(max-width: 767px) {
+    
+    div.rowname {
+
+    }
+
+    div.userinfo {
+        width: 60%;
+        padding-bottom: 1%;
+        margin: auto auto 2%;
+    }
 }
+
+/*@media(max-width: 426px) {
+    div.rowname {
+        margin-top: 15%;
+        margin-bottom: 10%;ทวทาวย่มสว
+    }
+
+    div#edit {
+        text-align: center;
+    }
+} */
