@@ -1,7 +1,8 @@
 const reviewRoute = require('express').Router();
 const Review = require('../models/Reviews');
 const User = require('../models/Users');
-const Category = require('../models/Categories')
+const Category = require('../models/Categories');
+const Comment = require('../models/Comments')
 const RegexEscape = require('escape-regexp')
 
 reviewRoute.route('/').get((req,res)=>{
@@ -172,6 +173,50 @@ reviewRoute.route('/:id/edit').put((req,res)=>{
     });
     console.log('Edit review');
 });
+
+// @route   POST /review/:id/comment
+// @desc    Add a comment
+// @access  Private
+reviewRoute.route('/:id/comment').post((req,res)=>{
+    let review_id = req.params.id
+    let {commentPost, user_id} = req.body
+    console.log(req.body)
+    let comment = new Comment({
+        review_id: review_id,
+        commentPost: commentPost,
+        user_id: user_id
+    })
+
+    comment.save((err,comment)=>{
+        if(err)console.log(err)
+        //res.json(comment)
+        Review.findByIdAndUpdate(review_id,{
+            $push:{
+                rvComment:comment
+            }
+        },{new:true},(err,review)=>{
+            if(err)console.log(err)
+            res.json(review)
+        })
+    })
+
+    console.log('Add comment')
+})
+
+reviewRoute.route('/:id/comment').delete((req,res)=>{
+    console.log('body ',req.body)
+    Comment.findByIdAndRemove({_id:req.body.comment_id},(err,comment)=>{
+        if(err)console.log(err)
+        console.log('delete comment ',comment)
+        Review.findByIdAndUpdate(req.params.id,{
+            $pull: {'rvComment':{_id:req.body.comment_id}}
+        },{new: true},(err, review)=>{
+            if(err)console.log(err)
+            res.json(review)
+        })
+    })
+    console.log('Delete comment')
+})
 // @route   Delete /review/:id
 // @desc    Edit a review
 // @access  Private
@@ -189,5 +234,6 @@ reviewRoute.route('/:id').delete((req,res)=>{
     });
     console.log('Delete review');
 });
+
 
 module.exports = reviewRoute;

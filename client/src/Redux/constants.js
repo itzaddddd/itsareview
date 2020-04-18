@@ -24,6 +24,9 @@ export const EDIT_REVIEW = 'EDIT_REVIEW';
 export const GET_REVIEW_USER = 'GET_REVIEW_USER';
 export const GET_CATEGORY_REVIEW = 'GET_CATEGORY_REVIEW';
 export const GET_TAG_REVIEW = 'GET_TAG_REVIEW';
+export const GET_COMMENT = 'GET_COMMENT';
+export const ADD_COMMENT = 'ADD_COMMENT';
+export const DELETE_COMMENT = 'DELETE_COMMENT';
 
 /*Read Later constant*/
 export const ADD_READ_LATER = 'ADD_READ_LATER';
