@@ -14,7 +14,7 @@ function Adreview(props) {
     // let {joinDate} = this.props;
     // let {userHisBoard} = this.props;
     // let {userHisReview} = this.props;
-
+    
     return (
         <div>
             <Navbar/>

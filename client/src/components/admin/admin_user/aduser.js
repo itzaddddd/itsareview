@@ -3,7 +3,13 @@ import './aduser.css';
 import Table from 'react-bootstrap/Table';
 import Navbar from "../admin_navbar/navbar";
 import axios from 'axios';
+import { connect } from 'react-redux'
 
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+}
 
 const User = props => (
     <tr>
@@ -39,6 +45,14 @@ class Aduser extends Component {
             console.log(error);
         })
     }
+    /* redirect to home if not admin */
+    componentWillReceiveProps(nextProps){
+        if((nextProps.user !== this.props.user) && nextProps.user.user){
+            if(!nextProps.user.user.isAdmin){
+                this.props.history.push('/')
+            }
+        }
+    }
 
     deleteUser(id) {
 
@@ -61,46 +75,47 @@ class Aduser extends Component {
     render() {
 
         const { users } = this.state;
+        if(this.props.user.user){
+            return (
+                <div>
+                    <Navbar/>
+                    <div className='topicPage'>
+                        <p className="topicName">ข้อมูลผู้ใช้งาน</p>
+                    </div>
 
-        return (
-            <div>
-                <Navbar/>
-                <div className='topicPage'>
-                    <p className="topicName">ข้อมูลผู้ใช้งาน</p>
-                </div>
-
-                <div className ="adminTable">
-                    <Table className ="adminTable">
-                        <thead>
-                            <tr>
-                            <th>user ID</th>
-                            <th>ชื่อผู้ใช้</th>
-                            <th>รูปผู้ใช้งาน</th>
-                            <th>E-mail</th>
-                            <th>วันที่เข้ารวม</th>
-                            {/* <th>ประวัติรีวิว</th> */}
-                            <th>แก้ไข</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {/* <tr>
-                                {this.state.users.map(user=> <td>{user.userID}</td>)}
-                                {this.state.users.map(user=> <td>{user.userName}</td>)}
-                                {this.state.users.map(user=> <td>{user.userImage}</td>)}
-                                {this.state.users.map(user=> <td>{user.userEmail}</td>)}
-                                {this.state.users.map(user=> <td>{user.userJoin}</td>)}
-                                {this.state.users.map(user=> <td>{user.logReview}</td>)}
-                            </tr> */}
-                            { this.userList() }
-                            
-                        </tbody>
-                    </Table>
-                </div>
-        </div>
+                    <div className ="adminTable">
+                        <Table className ="adminTable">
+                            <thead>
+                                <tr>
+                                <th>user ID</th>
+                                <th>ชื่อผู้ใช้</th>
+                                <th>รูปผู้ใช้งาน</th>
+                                <th>E-mail</th>
+                                <th>วันที่เข้ารวม</th>
+                                {/* <th>ประวัติรีวิว</th> */}
+                                <th>แก้ไข</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {/* <tr>
+                                    {this.state.users.map(user=> <td>{user.userID}</td>)}
+                                    {this.state.users.map(user=> <td>{user.userName}</td>)}
+                                    {this.state.users.map(user=> <td>{user.userImage}</td>)}
+                                    {this.state.users.map(user=> <td>{user.userEmail}</td>)}
+                                    {this.state.users.map(user=> <td>{user.userJoin}</td>)}
+                                    {this.state.users.map(user=> <td>{user.logReview}</td>)}
+                                </tr> */}
+                                { this.userList() }
+                                
+                            </tbody>
+                        </Table>
+                    </div>
+            </div>
         )
+        }else{return ''}
     }
 }
 
 
 
-export default Aduser;
+export default connect(mapStateToProps,null)(Aduser);

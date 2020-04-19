@@ -41,7 +41,8 @@ class Register extends Component{
     state = {
         modal: false,
         msg: null,
-        redirect: false
+        redirect: false,
+        admin_code: false
     };
     
     static propTypes = {
@@ -92,16 +93,18 @@ class Register extends Component{
                         userName: "",
                         pass1: "",
                         // pass2: "",
-                        userEmail: "" 
+                        userEmail: "",
+                        adminCode: "" 
                     }}
                     validationSchema = {RegisterSchema}
                     onSubmit = { (values, {setSubmitting}) => {
-                        const {userName, pass1, /*pass2,*/ userEmail} = values;
+                        const {userName, pass1, /*pass2,*/ userEmail, adminCode} = values;
                         const newUser = {
                             userName,
                             pass1,
                             // pass2,
-                            userEmail
+                            userEmail,
+                            adminCode
                         }
                         // Attemp to register
                         this.props.register(newUser);
@@ -185,6 +188,26 @@ class Register extends Component{
                                 />
                             </div>
                             <div className="button">
+                            {this.state.admin_code?
+                            <div className="form-group">
+                                <Field 
+                                    type="text" 
+                                    className={`form-control ${touched.adminCode && errors.adminCode ? "is-invalid":""}`}
+                                    placeholder="ใส่รหัสสำหรับ admin" 
+                                    name="adminCode" 
+                                />
+                                <ErrorMessage 
+                                    componet="div"
+                                    name="adminCode"
+                                    className="invalid-feedback"
+                                    render={
+                                        msg => <div className="error-message">{msg}</div>
+                                    }
+                                />
+                            </div>
+                            :""
+                            }
+                            <div className="button"></div>
                                 <button 
                                     className="btn btn-success" 
                                     id="regis-button"
@@ -193,6 +216,15 @@ class Register extends Component{
                                     สมัครสมาชิก
                                 </button>
                             </div>
+                            {(this.state.admin_code===false)?
+                            <div onClick={()=>{this.setState({admin_code:true})}}>
+                                ใส่ Admin code
+                            </div>:''}
+                            {this.state.admin_code?
+                                <div onClick={()=>{this.setState({admin_code:false})}}>ยกเลิกการใส่ Admin code</div>
+                            :
+                            ""
+                            }
                         </div>
                     </Form>
                     )}

@@ -10,7 +10,7 @@ class Logout extends Component {
     render(){
         return (
             <Fragment>
-                <span id="logout" onClick={this.props.logout}>ออกจากระบบ</span>
+                <span id="logout" onClick={()=>{this.props.logout();}}>ออกจากระบบ</span>
             </Fragment>
         )
     }

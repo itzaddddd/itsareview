@@ -38,6 +38,7 @@ class NavBar extends Component {
                         <a id="review" className="navbarButton">รีวิวนิยาย <i className="fas fa-edit"></i></a>
                         <a id="broad" className="navbarButton">กระทู้ <i className="fas fa-comments"></i></a>
                         <a href={`/user/${user?user._id:''}/readlater`} id="saved"  className="navbarButton">เก็บไว้อ่าน <i className="fas fa-heart"></i></a>
+                        {(user&&user.isAdmin)?<a href="/admin" id="admin">หน้าหลัก Admin<i className="fas fa-users-cog"></i></a>:''}
                         <span className="back-navbar">
                             <span>{user||this.props.user.isLoading? memberLinks:guestLinks}</span>
                             <a href="/search"><span className="search">  <i className="fas fa-search"></i><p className="searchNiyay">ค้นหารีวิวนิยาย</p></span></a>

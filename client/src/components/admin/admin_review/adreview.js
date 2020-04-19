@@ -4,7 +4,13 @@ import Table from 'react-bootstrap/Table';
 import Navbar from "../admin_navbar/navbar";
 // import {PopUpDelReview} from "./PopUpDelReview";
 import axios from 'axios';
+import { connect } from 'react-redux'
 
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+}
 const Review = props => (
     <tr>
       <td className="rvID">{props.review._id}</td>
@@ -19,7 +25,7 @@ const Review = props => (
     </tr>
   )
 
-export default class Adreview extends Component {
+class Adreview extends Component {
 
 
     constructor(props) {
@@ -38,6 +44,14 @@ export default class Adreview extends Component {
             console.log(error);
         })
     }
+    /* redirect to home if not admin */
+    componentWillReceiveProps(nextProps){
+        if((nextProps.user !== this.props.user) && nextProps.user.user){
+            if(!nextProps.user.user.isAdmin){
+                this.props.history.push('/')
+            }
+        }
+    }
 
     reviewList() {
         return this.state.reviews.map(currentreview => {
@@ -49,34 +63,35 @@ export default class Adreview extends Component {
     render() {
         
         // let PopUpClose =() => this.setState({PopUpDelReview:false});
+        if(this.props.user.user){
+            return (
+                <div>
+                    <Navbar/>
+                    <div className='topicPage'>
+                        <p className="topicName">ข้อมูลรีวิว</p>
+                    </div>
 
-        return (
-            <div>
-                <Navbar/>
-                <div className='topicPage'>
-                    <p className="topicName">ข้อมูลรีวิว</p>
+                    <div className ="adminTableReview">
+                        <Table className="TableReview" responsive hover size="sm">
+                            <thead>
+                                <tr>
+                                    <th>Review ID</th>
+                                    <th>ชื่อรีวิว</th>
+                                    {/* <th>User ID</th> */}
+                                    <th>เวลาที่รีวิว</th>
+                                    <th>หมวดหมู่</th>
+                                    <th>แท็กที่เกี่ยวข้อง</th>
+                                    <th>แก้ไข</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                { this.reviewList() }
+                            </tbody>
+                        </Table>
+                    </div>
                 </div>
-
-                <div className ="adminTableReview">
-                    <Table className="TableReview" responsive hover size="sm">
-                        <thead>
-                            <tr>
-                                <th>Review ID</th>
-                                <th>ชื่อรีวิว</th>
-                                {/* <th>User ID</th> */}
-                                <th>เวลาที่รีวิว</th>
-                                <th>หมวดหมู่</th>
-                                <th>แท็กที่เกี่ยวข้อง</th>
-                                <th>แก้ไข</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            { this.reviewList() }
-                        </tbody>
-                    </Table>
-                </div>
-            </div>
-            
-        )
+            )
+        }else{return ''}
     }
 }
+export default connect(mapStateToProps,null)(Adreview);
