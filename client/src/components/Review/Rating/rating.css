@@ -7,12 +7,13 @@
 .rating { 
   border: none;
   float: none; 
+  margin-left: 5vmin;
 }
 
 .rating > input { display: none; } 
 .rating > label:before { 
   
-  font-size: 3.5vmin;
+  font-size: 3vmin;
   text-align: center;
   font-family: FontAwesome;
   display: inline-block;

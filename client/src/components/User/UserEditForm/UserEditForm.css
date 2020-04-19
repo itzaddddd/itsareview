@@ -34,7 +34,7 @@ div#edit2 {
 }
 
 button.save-edit , button.unsave-edit{
-    margin: 10% 5%;
+    margin: 15vmin 5vmin;
     background-color: #B9D253;
     color: #242424;
     border: none;

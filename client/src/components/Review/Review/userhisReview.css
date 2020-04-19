@@ -75,7 +75,7 @@ div.story{
     font-weight: bold;
 }
 
-.type, .tag, .comment, .rating-his, .edit, div.review-name {
+.type, .tag, .comment2, .rating-his, .edit, div.review-name {
     font-size: 3vmin;
 }
 
@@ -147,12 +147,12 @@ span.subtype , span.subtag {
         display: inline;
     }
 
-    a.novel-name , div.review-name, .type, .tag, .comment, .rating-his{
+    a.novel-name , div.review-name, .type, .tag, .comment2, .rating-his{
         padding-left: 1.5em;
         margin-bottom: 1%;
     }
     
-    .type, .tag, .comment, .rating-his, .edit, div.review-name {
+    .type, .tag, .comment2, .rating-his, .edit, div.review-name {
         font-size: 3vmin;
     }
 

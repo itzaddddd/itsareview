@@ -4,6 +4,8 @@ import dateFormat from 'dateformat'
 import PropTypes from 'prop-types'
 import { addComment, deleteComment, getUserById } from '../../../Redux/Actions/reviewAction'
 import store from '../../../Redux/store'
+
+import './Comment.css';
 const mapStateToProps = state =>{
   return {
       user: state.user,
@@ -40,25 +42,26 @@ class CommentBox extends React.Component {
     render () {
       const comments = this._getComments();
       let commentNodes;
-      let buttonText = 'ความคิดเห็นทั้งหมด';
+      let buttonText = 'ดูความคิดเห็นทั้งหมด ';
       
       /* if want to show comment */
       if (this.state.showComments) {
-        buttonText = 'ซ่อนความคิดเห็น';
+        buttonText = 'ซ่อนความคิดเห็นทั้งหมด ';
         commentNodes = <div className="comment-list">{comments}</div>;
       }
       
       return(
         <div className="comment-box">
-            <h2>แสดงความคิดเห็นต่อรีวิวนี้</h2>
+            {/* <p className="comment-topic">แสดงความคิดเห็นต่อรีวิวนี้</p> */}
             <CommentForm addComment={this.props.addComment}/>  
-            <button id="comment-reveal" onClick={this._handleClick.bind(this)}>
-                {buttonText}
-            </button>
-            <h3>ความคิดเห็น</h3>
-            <h4 className="comment-count">
-                {this._getCommentsTitle(comments.length)}
-            </h4>
+            <div className="button-show-review">
+               <button id="comment-reveal" onClick={this._handleClick.bind(this)}>
+                  {buttonText}
+                  {this._getCommentsTitle(comments.length)}
+              </button>
+            </div>
+           
+            {/* <h3>ความคิดเห็น</h3> */}
             {commentNodes}
         </div>  
       );
@@ -97,15 +100,16 @@ class CommentBox extends React.Component {
   class CommentForm extends React.Component {
     render() {
       return (
-        <form className="comment-form" onSubmit={this._handleSubmit.bind(this)}>
-          <div className="comment-form-fields">
-            <br />
-            <textarea placeholder="Comment" rows="4" required ref={(textarea) => this._body = textarea}></textarea>
-          </div>
-          <div className="comment-form-actions">
-            <button type="submit">เพิ่มความคิดเห็น</button>
-          </div>
-        </form>
+        <div className="input-comment-box">
+          <form className="comment-form" onSubmit={this._handleSubmit.bind(this)}>
+            <div className="comment-form-fields">
+              <textarea className="input-comment" placeholder="บอกเราสิ ว่าคิดยังไงกับรีวิวนี้" rows="4" required ref={(textarea) => this._body = textarea}></textarea>
+            </div>
+            <div className="comment-form-actions">
+              <button className="submit-comment" type="submit">แสดงความคิดเห็น</button>
+            </div>
+          </form>
+        </div>
       );
     } // end render
     
@@ -123,11 +127,11 @@ class CommentBox extends React.Component {
       return(
         <div className="comment">
           <p className="comment-header">{this.props.author}</p>
-          <p className="comment-body">- {this.props.body}</p>
-          <p className="comment-date">- {this.props.date}</p>
+          <p className="comment-body">{this.props.body}</p>
+          <p className="comment-date">{this.props.date}</p>
           { store.getState().user.user && (store.getState().user.user._id === this.props.author)?
           <div className="comment-footer">
-            <span className="comment-footer-delete" onClick={()=>this.props.deleteComment(this.props.id)}>Delete Comment</span>
+            <span className="comment-footer-delete" onClick={()=>this.props.deleteComment(this.props.id)}>ลบ</span>
           </div>:''
           }
         </div>
