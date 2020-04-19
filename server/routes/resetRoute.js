@@ -32,7 +32,7 @@ resetRoute.route('/').get((req,res, next)=>{
 })
 
 // @route   PUT /user/reset/viaEmail
-// @desc    Reset password
+// @desc    Reset password via email
 // @access  Private
 resetRoute.route('/viaEmail').put((req,res)=>{
     /* find user from username */
@@ -56,11 +56,12 @@ resetRoute.route('/viaEmail').put((req,res)=>{
                 })
             })
         }else{
-            /* if no user, return status 404*/
+            /* if no user, return status 404 */
             console.log('no user exists in db to update')
             res.status(404).json({msg:'ไม่พบชื่อผู้ใช้ในระบบ'})
         }
     })
 })
+
 
 module.exports = resetRoute 

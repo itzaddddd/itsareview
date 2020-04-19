@@ -48,13 +48,8 @@ registerRoute.route('/').post((req,res)=>{
                                         config.get('jwtSecret'),
                                         { expiresIn: 3600 },
                                         (err, token) => {
-                                            if(err){
-                                                console.log(err);
-                                            }
-                                            res.json({
-                                                token,
-                                                user
-                                            });
+                                            if(err)console.log(err);
+                                            res.json({token,user});
                                         }
                                     )
                                 })
