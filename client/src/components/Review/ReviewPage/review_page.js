@@ -124,12 +124,8 @@ class ReviewPage extends Component{
                                 </div>:''}
                             <div className = "reviewBy4">ให้คะแนนรีวิวนี้
                                 <Rating/>
-                                {/*This section will be implemented in next sprint*/}
-                                {/*<hr className="new4"></hr>
-                                    <div className = "givereview">ให้คะแนนรีวิวนี้</div>
-                                        <Rating />
-                                <hr className="new4"></hr>*/}
                             </div>
+                            <hr className="new4"></hr>
                         </div>
                     </div>
                     <CommentBox />
