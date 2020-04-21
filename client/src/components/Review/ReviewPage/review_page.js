@@ -68,8 +68,8 @@ class ReviewPage extends Component{
 
     componentDidUpdate(prevProps, prevState){
         /* check if on click on heart, toggle heart */
-        let heart_white = <i className="far fa-heart" onClick={()=>{this.props.addReadLater(this.props.review.review._id);this.toggleSave()}}></i>
-        let heart_black = <i className="fas fa-heart" onClick={()=>{this.props.deleteReadLater(this.props.review.review._id);this.toggleSave()}}></i>
+        let heart_white = <i className="far fa-heart fav-heart" onClick={()=>{this.props.addReadLater(this.props.review.review._id);this.toggleSave()}}></i>
+        let heart_black = <i className="fas fa-heart fav-heart" onClick={()=>{this.props.deleteReadLater(this.props.review.review._id);this.toggleSave()}}></i>
         if(prevState.save !== this.state.save){
             if(this.state.save === true){
                 this.setState({heart: heart_black})

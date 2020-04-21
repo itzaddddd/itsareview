@@ -211,7 +211,7 @@ class ReviewFormPage extends Component {
                     <Form>
                         <div className="container">
                             <div className="row">
-                                <div className="col-sm">
+                                <div className="col-sm review-content">
                                     <h3>เขียนรีวิวนิยาย</h3>
                                     <h4 className="h4promote">มาเขียนรีวิวนิยายที่คุณชอบกันเถอะ</h4>
                                     <div className="title">ชื่อเรื่อง</div>

@@ -8,9 +8,13 @@ input.cateName , input[type='text'].cateName {
     border-color: #B9D253;
     margin-bottom:10px; 
     margin-top:5px;
-    font-size: 1.2vw;
+    font-size: 2.5vmin;
     padding: 10px;
 }
+
+label.cateName{
+    font-size: 3vmin;
+} 
 
 .iconCate {
     width:10em;
@@ -20,7 +24,13 @@ input.cateName , input[type='text'].cateName {
 }
 
 button.close > span {
-    font-size: 3vw;
+    font-size: 6vmin;
+    vertical-align: middle;
+}
+
+button.close:hover > span {
+    color: red;
+    text-shadow: 1px 1px 3px black;
 }
 
 input:focus {
@@ -28,7 +38,7 @@ input:focus {
 }
 
 label.inputName {
-    font-size: 1.5vw;
+    font-size: 3vmin;
     text-align: left;
     margin-bottom: 10px;
     margin-top: 0;
@@ -37,36 +47,37 @@ label.inputName {
 
 input.inputIcon {
     text-align: center;
-    font-size: 1.2vw;
+    font-size: 2vmin;
 }
 
 p.popUpTopic{
-    font-size: 2vw;
+    font-size: 3.5vmin;
+    margin-top: 1vmin;
     margin-bottom: 0;
     color:'Black';
     float: left;
+    vertical-align: middle;
 }
 
 div.modal-footer button.modalBtn {
-    font-size: 1.4vw;
+    font-size: 3vmin;
     color: initial;
 }
 
 
-@media (min-width: 768px) {
-    .fade {
-        height: 100%;
-    }
-
-    .modal-backdrop.show {
+.fade {
     height: 100%;
-    overflow: visible;
-    opacity: 0.7 !important;
-    }
+}
 
-    .modal-content {
-        margin-top: 15vw;
-    }
+.modal-dialog {
+    width: 50%;
+    margin: 13vmax auto;
+}
+
+.modal-backdrop.show {
+height: 100%;
+overflow: visible;
+opacity: 0.7 !important;
 }
 
 div.fade.modal.show {
@@ -75,8 +86,10 @@ div.fade.modal.show {
 
 Button.success {
     background-color: #B9D253;
+    border: none;
 }
 
 Button.success:hover {
-    background-color: rgb(142, 167, 42);
+    background-color: #9FB444;
+    box-shadow: 1px 1px 3px black;
 }

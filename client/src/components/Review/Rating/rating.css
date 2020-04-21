@@ -26,8 +26,10 @@
 }
 
 .rating > label { 
-  color: rgb(219, 219, 219); 
- float: right;
+  color: rgb(219, 219, 219);
+  float: right;
+  margin-bottom: 0;
+  display: flex;
 }
 
 /***** CSS Magic to Highlight Stars on Hover *****/

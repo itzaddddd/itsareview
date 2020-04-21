@@ -47,7 +47,6 @@ div.userinfo{
 p.info {
     font-size: 3.3vmin;
     font-weight: bold;
-    vertical-align: super;
 }
 
 div.userinfo > p.info {
@@ -119,33 +118,11 @@ div.show{
 }
 
 div#edit {
-    margin-top: 10%;
     position: relative;
     text-align: center;
 }
 
-/* @media(min-width: 427px) {
-    div.log-out-mobile {
-        display: none;
-    }
-
-    div.rowname {
-        margin-top: 15vmax;
-        text-align: -webkit-center;
-        height: 20vmax;
-    }
-
-    div#edit {
-        margin-top: 5vmax;
-        text-align: center;
-    }
-}*/
-
 @media(max-width: 767px) {
-    
-    div.rowname {
-
-    }
 
     div.userinfo {
         width: 60%;
@@ -154,13 +131,3 @@ div#edit {
     }
 }
 
-/*@media(max-width: 426px) {
-    div.rowname {
-        margin-top: 15%;
-        margin-bottom: 10%;ทวทาวย่มสว
-    }
-
-    div#edit {
-        text-align: center;
-    }
-} */

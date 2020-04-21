@@ -5,7 +5,7 @@
 
 .comment-form {
   background-color: #ddd;
-  border-radius: 0.25rem;
+  border-radius: 1vmin;
   margin-bottom: 2rem;
   padding: 2vmin;  
 }
@@ -103,7 +103,7 @@ textarea.input-comment:focus {
 
 .comment {
   margin-top: 3vmin;
-  border: 2px solid #909090;
+  border: 2px solid #ddd;
   border-radius: 1vmin;
   padding: 2vmin;
 }

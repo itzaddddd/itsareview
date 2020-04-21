@@ -2,7 +2,7 @@ div.choosetypepopup{
     background-color: #B9D253;
     overflow-x: scroll;
     white-space: nowrap;
-    line-height: 1.2;
+    line-height: 1.5vmax;
     width: 3px 3px;
     height: 1%;
     font-size: 12px;
@@ -41,11 +41,11 @@ div.choosetypepopup a:hover {
 }
 
 #icon{
-    font-size: 4vmin;
+    font-size: 3vmax;
 }
 
 p.typeNameIcon {
-    font-size: 2.2vmin;
+    font-size: 1.3vmax;
     margin: 0;
 }
 

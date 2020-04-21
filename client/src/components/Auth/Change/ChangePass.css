@@ -1,9 +1,6 @@
-body{
-    font-family: 'Kanit', sans-serif;
-    /* font-size: 1em;  
-    color: #242424;   */
-}
-div.header{
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+div.header {
     margin-top: 50px;
     width:100%; 
     height: 40vmin;
@@ -14,12 +11,12 @@ div.header{
     border-bottom-left-radius: 200vmin;
     background-position: 50% 50%;
     border-top: 0px;
- 
- }
+}
 
-div.avatar{
+div.avatar {
     text-align: center;
- }
+}
+
 img.avatar {
     width: 25vmin;
     height: 25vmin;
@@ -27,10 +24,14 @@ img.avatar {
     border-radius: 100%;
     top: 27vmin;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
- }
+}
     
-#line1{
+#line1 {
     margin-top: 15vmin;
+}
+
+.inbox-edit-pass {
+    margin-top: 2vmax;
 }
 
 div.user1{
@@ -46,11 +47,7 @@ div.user1 > i.far {
     color: #9FB444;
 }
 
-/* i.far, i.fas{
-    color: #B9D253;
-} */
-
-p.topicHistory {
+p.edit-pass-topic {
     display: inline;
     font-size: 4vmin;
 }
@@ -63,11 +60,16 @@ button.button-edit{
     font-size: 3vmin;
     border-radius: 5em;
     cursor: pointer;
-    margin-top: 5%;
+    margin: 5vmin auto;
 }
-#edit{
+
+button.button-edit:hover {
+    background-color: #9FB444;
+    box-shadow: 1px 1px 3px black;
+}
+
+#edit-pass{
     text-align: center;
-    padding-top: 30px;
 }
 
 div.history{
@@ -76,10 +78,12 @@ div.history{
     margin: auto;
     padding-top: 5%;
 }
-hr{
+
+hr {
     background-color: #707070;
 }
-div.review, div.board{
+
+div.review, div.board {
     color: #707070;
     font-size: 3vmin;
     margin-bottom: 2vmin;
@@ -89,22 +93,61 @@ div.review, div.board{
 div.review i {
     color: #9FB444;
 }
-a.more{
+
+a.more {
     float: right;
     color: #9FB444;
     padding-top: 1vmin;
 }
-a.more:hover{
+
+a.more:hover {
     text-decoration: none;
     cursor: pointer;
     font-weight: bolder;
 }
-div.show{
-    /* background-color: #e6e6e6; */
+
+div.show {
     text-align: center;
     height: 110px;
     border:solid 2px #e6e6e6;
     overflow:scroll;
     overflow-x:hidden;
     overflow-y:scroll;
+}
+
+.error-message-edit-pass {
+    margin: 5vmin;
+    font-size: 4.5vmin;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.error-message-edit-pass.fail {
+    color: red;
+    margin: 1vmin 1vmin 0;
+    font-size: 3.5vmin;
+    justify-content: baseline;
+}
+
+/* .error-message-edit-pass::after {
+    font-family: FontAwesome;
+    font-size: 4vmax;
+    content: "\f05d" ;
+    margin-right: 2vmin;
+} */
+
+/************************* modal css ****************************/
+.modal-backdrop.show {
+    border: none;
+}
+
+.modal-header#modal-header-edit-pass {
+    padding: 2vmin;
+}
+
+@media(max-width :768px) {
+    .modal-dialog {
+        width: 70%;
+        margin-top: 30vmax;
+    }
 }

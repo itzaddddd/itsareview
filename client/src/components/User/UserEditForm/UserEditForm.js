@@ -8,6 +8,7 @@ import {Formik, Form, Field, ErrorMessage} from 'formik'
 import * as yup from 'yup'
 import Review from '../../Review/Review/userhisReview'
 import { loadUser, editUser } from '../../../Redux/Actions/userAction';
+import PopUpChangePass from '../../Auth/Change/ChangePass'
 
 const mapStateToProps = state => {
     return {
@@ -39,7 +40,9 @@ class UserInfo extends Component{
         super(props)
 
         this.state = {
-            msg: null
+            msg: null,
+            PopUpChangePass : false, 
+            show : false
         }
 
     }
@@ -71,6 +74,9 @@ class UserInfo extends Component{
     }
 
     render(){
+
+        let PopUpClose =() => this.setState({PopUpChangePass:false});
+
         if(this.props.user.user){
             return(
                 <div>
@@ -151,9 +157,10 @@ class UserInfo extends Component{
                                         }
                                     />
                                 </div>
-                                <div>
-                                        <a href={`/user/${this.props.user.user._id || ''}/changepass`}>แก้ไขรหัสผ่าน</a>
-                                </div>
+                            </div>
+                            <div className="editinfo to-edit-pass">
+                                <a onClick={()=> this.setState({PopUpChangePass: true})} className="to-edit-pass"><i className="fas fa-key"/>  เปลี่ยนรหัสผ่าน</a>
+                                <PopUpChangePass show={this.state.PopUpChangePass} onHide={PopUpClose} user_id={this.props.match.params.id} />
                             </div>
 
                             <div id="edit2">

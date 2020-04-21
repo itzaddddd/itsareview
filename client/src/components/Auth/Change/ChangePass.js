@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import {Formik, Form, Field, ErrorMessage} from 'formik'
 import * as yup from 'yup'
 import axios from 'axios'
+import {Modal} from 'react-bootstrap'
 
 const mapStateToProps = state => {
     return {
@@ -36,7 +37,9 @@ class ChangePassword extends Component{
 
         this.state = {
             msg: '',
-            updated: false
+            updated: false,
+            PopUpChangePass : true, 
+            show : true
         }
         this.changePassword = this.changePassword.bind(this)
 
@@ -44,7 +47,7 @@ class ChangePassword extends Component{
 
     changePassword = (password, newpassword) => {
         console.log('change password')
-        axios.put(`/user/${this.props.match.params.id}/changepass?_method=PUT`,{
+        axios.put(`/user/${this.props.user_id}/changepass?_method=PUT`,{
             password: password,
             newpassword: newpassword    
         })
@@ -72,8 +75,15 @@ class ChangePassword extends Component{
     }
 
     render(){
+
+        // let PopUpClose =() => this.setState({PopUpChangePass:false, show:false, msg:'', updated:false});
+
             return(
-                <div>
+                <Modal animation={false}
+                {...this.props}
+                size="md"
+                centered >
+                    
                     <Formik
                         initialValues = {{
                             password: '',
@@ -81,24 +91,32 @@ class ChangePassword extends Component{
                         }}
                         onSubmit = {
                             values => {
+                                console.log(this.props)
+                                console.log(values)
                                 this.changePassword(values.password,values.newpassword)
                             }
                         }
                         validationSchema = {ChangePasswordSchema}
                     >
                         {({touched, errors, isSubmitting }) => (
-                        <Form>
-                            <div className="rowname">
-                                <div>แก้ไขรหัสผ่าน</div>
-                                <div>{this.state.msg.msg}</div>
-    
+                        <Form action="/changpass" method="post">
+                            <Modal.Header id="modal-header-edit-pass" closeButton>
+                                <Modal.Title id="contained-modal-title-vcenter">
+                                <p className="popUpTopic"><i className='fas fa-key' />  แก้ไขรหัสผ่าน</p>
+                                </Modal.Title>
+                            </Modal.Header>
+                            {/* <div className="error-message-edit-pass">{this.state.msg.msg}</div> */}
+                            {this.state.msg.msg==="รหัสผ่านไม่ถูกต้อง"?<div className="error-message-edit-pass fail">{this.state.msg.msg}</div>
+                            :<div className="error-message-edit-pass">{this.state.msg.msg}</div>}
+
+                            <div className="inbox-edit-pass">
                                 {(this.state.updated===false)&&
-                                <div className="col-sm-12 user1">
+                                <div className="col-sm-12">
                                     <Field 
                                         type="password" 
                                         name="password"
                                         placeholder="ใส่รหัสผ่านเดิม"
-                                        className={`form-control ${touched.password && errors.password ? "is-invalid":""}`} 
+                                        className={`edit-form-control ${touched.password && errors.password ? "is-invalid":""}`} 
                                     />
                                     <ErrorMessage 
                                         componet="div"
@@ -110,12 +128,12 @@ class ChangePassword extends Component{
                                     />
                                 </div>}
                                 {(this.state.updated===false)&&
-                                <div className="col-sm-12 user1">
+                                <div className="col-sm-12">
                                     <Field 
                                         type="password" 
                                         name="newpassword"
                                         placeholder="ใส่รหัสผ่านใหม่"
-                                        className={`form-control ${touched.newpassword && errors.newpassword ? "is-invalid":""}`} 
+                                        className={`edit-form-control ${touched.newpassword && errors.newpassword ? "is-invalid":""}`} 
                                     />
                                     <ErrorMessage 
                                         componet="div"
@@ -125,18 +143,18 @@ class ChangePassword extends Component{
                                             msg => <div className="error-message">{msg}</div>
                                         }
                                     />
-                                    </div>}        
+                                </div>} 
                             </div>
-
-                            <div id="edit">
+                                   
+                            <div id="edit-pass">
                                 {(this.state.updated===false)&&
-                                    <button className="button-edit">ยืนยัน</button>
+                                    <button className="button-edit" type="submit">ยืนยัน</button>
                                 }
-                                <button className="button-edit" onClick={()=>this.props.history.goBack()}>ยกเลิก</button>
+                                {/* <button className="button-edit" type="button" onClick={PopUpClose} >ยกเลิก</button> */}
                             </div>
                         </Form>)}
                     </Formik>
-                </div>
+                </Modal>
             )   
         
     }
