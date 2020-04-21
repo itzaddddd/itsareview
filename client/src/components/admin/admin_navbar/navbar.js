@@ -1,12 +1,24 @@
 import React , {Component} from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import Logout from '../../Auth/Logout/logout'
 import './navbar.css';
 
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+}
 
 class Nav extends Component {    
 
-    render() {
+    static propsTypes = {
+        user: PropTypes.object.isRequired
+    }
 
+    render() {
+        const { user } = this.props.user
         return(
             <div className="main-navigation">
                 <nav className="adNav">
@@ -20,8 +32,17 @@ class Nav extends Component {
                         {/* <li><Link className="ad" to="/admin/banners">จัดการโฆษณา <i className="fas fa-bullhorn"></i></Link></li> */}
                     </ul>
                     <ul className="container2">
-                        <li>Admin <i className="fas fa-user"></i></li>
-                        <li><Link className="ad" to="/">ออกจากระบบ <i className="fas fa-sign-out-alt"></i></Link></li>
+                        <li>
+                            <Link className="ad" to="/">กลับสู่อิสรีวิว</Link>
+                        </li>
+                        <li>
+                            <Link to={`/user/${user ? user._id:null}`} id="username" className="ad">
+                                <strong>{ user ? user.userName : 'ชื่อสมาชิก'}</strong>
+                            </Link>
+                        </li>
+                        <li>
+                            <Logout />
+                        </li>
                     </ul>
 
                 </nav>
@@ -31,4 +52,4 @@ class Nav extends Component {
     }
 }
 
-export default Nav;
+export default connect(mapStateToProps,null)(Nav);

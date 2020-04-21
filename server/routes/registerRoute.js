@@ -1,7 +1,7 @@
 const registerRoute = require('express').Router();
 const User = require('../models/Users');
+const config = require('config')
 const bcrypt = require('bcryptjs');
-const config = require('config');
 const jwt = require('jsonwebtoken');
 
 registerRoute.route('/').get((req,res)=>{
@@ -12,7 +12,7 @@ registerRoute.route('/').get((req,res)=>{
 // @desc    Register 
 // @access  Public
 registerRoute.route('/').post((req,res)=>{
-    const {userName, pass1, /*pass2,*/ userEmail} = req.body;
+    const {userName, pass1, /*pass2,*/ userEmail, adminCode} = req.body;
 
     // Simple validation
     if(!userName || !pass1 /*|| !pass2*/ || !userEmail){
@@ -26,12 +26,20 @@ registerRoute.route('/').post((req,res)=>{
             User.findOne({ userEmail })
                 .then(user => {
                     if(user) return res.status(400).json({msg: 'อีเมลนี้ถูกใช้งานแล้ว'})
-
+                    // Check admin code 
+                    let adminCode = config.get('adminCode')
+                    let isAdmin = false;
+                    if(req.body.adminCode === adminCode){
+                        isAdmin = true
+                    }else if((req.body.adminCode !== adminCode) && (req.body.adminCode!=="")){
+                        return res.status(400).json({msg: 'Admin code ไม่ถูกต้อง'})
+                    }
                     const newUser = new User({
                         userName: userName,
                         penName: userName,
                         userEmail: userEmail,
-                        password: pass1
+                        password: pass1,
+                        isAdmin: isAdmin
                     })
         
                     // Create salt and hash

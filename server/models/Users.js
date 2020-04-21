@@ -31,13 +31,17 @@ let User = new Schema({
 	logReview : [ReviewSchema],
 	// logBoard : Board[],
     readLater : [ReviewSchema],
-    resetPasswordToken: {
+    resetPasswordToken: { // for reset password
         type: String,
         default: null
     },
-    resetPasswordExpires: {
+    resetPasswordExpires: { // for reset password
         type: Number,
         default: null
+    },
+    isAdmin: {  // for admin
+        type: Boolean,
+        default: false
     }
 });
 

@@ -20,14 +20,14 @@ div#search {
 	margin-right: 2em ;
 }
 
-a#home, a#review, a#broad, a#saved{
+a#home, a#review, a#broad, a#saved, a#admin{
 	color: #9FB444;
 	margin: 1%;
 	font-size: 2.3vmin;
 	cursor: pointer;
 }
 
-a#home:hover, a#review:hover, a#broad:hover, a#saved:hover {
+a#home:hover, a#review:hover, a#broad:hover, a#saved:hover, a#admin {
 	text-decoration: none;
 	font-weight: bolder;
 }

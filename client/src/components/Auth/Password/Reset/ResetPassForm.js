@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './ResetPassForm.css';
-import Navbar from '../../Bar/NavBar/NavBar';
+import Navbar from '../../../Bar/NavBar/NavBar';
 import { connect } from 'react-redux' // redux hook function for use global props (user data)
 import PropTypes from 'prop-types'
 import {Formik, Form, Field, ErrorMessage} from 'formik'

@@ -5,7 +5,13 @@ import Table from 'react-bootstrap/Table';
 import PopUpAddCategory from './popUpAddcate';
 import Navbar from "../admin_navbar/navbar";
 import axios from 'axios';
+import { connect } from 'react-redux'
 
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+}
 const Category = props => (
   <tr>
     <td>{props.category._id}</td>
@@ -27,6 +33,7 @@ class Admin_cate extends Component {
 
     }
 
+    /* redirect to home if not admin */
     componentDidMount() {
         axios.get('http://localhost:4000/admin/categories/')
         .then(response => {
@@ -35,6 +42,14 @@ class Admin_cate extends Component {
         .catch((error) => {
             console.log(error);
         })
+    }
+
+    componentWillReceiveProps(nextProps){
+        if((nextProps.user !== this.props.user) && nextProps.user.user){
+            if(!nextProps.user.user.isAdmin){
+                this.props.history.push('/')
+            }
+        }
     }
 
     deleteCategory(id) {
@@ -59,36 +74,38 @@ class Admin_cate extends Component {
 
         let PopUpClose =() => this.setState({PopUpAddCategory:false});
         
+        if(this.props.user.user){
+            return (
+                <div>
+                    <Navbar/>
+                    <div className='topicPage'>
+                        <p className="topicName">จัดการหมวดหมู่</p>
+                        <button className="addCate" onClick={()=> this.setState({PopUpAddCategory: true})}>เพิ่มหมวดหมู่</button>
+                        <PopUpAddCategory show={this.state.PopUpAddCategory} onHide={PopUpClose} />
+                    </div>
 
-        return (
-            <div>
-                <Navbar/>
-                <div className='topicPage'>
-                    <p className="topicName">จัดการหมวดหมู่</p>
-                    <button className="addCate" onClick={()=> this.setState({PopUpAddCategory: true})}>เพิ่มหมวดหมู่</button>
-                    <PopUpAddCategory show={this.state.PopUpAddCategory} onHide={PopUpClose} />
+                    
+
+                    <div className ="adminTable">
+                        <Table hover style={{marginBottom:0}}>
+                            <thead className='thead-dark'>
+                                <tr>
+                                    <th>Category ID</th>
+                                    <th>ชื่อหมวดหมู่</th>
+                                    <th>ไอคอน</th>
+                                    <th>จัดการ</th>
+                                </tr>
+                            </thead>
+                            <tbody >
+                                { this.categoryList() }
+                            </tbody>
+                        </Table>
+                    </div>
                 </div>
-
-                
-
-                <div className ="adminTable">
-                    <Table hover style={{marginBottom:0}}>
-                        <thead className='thead-dark'>
-                            <tr>
-                                <th>Category ID</th>
-                                <th>ชื่อหมวดหมู่</th>
-                                <th>ไอคอน</th>
-                                <th>จัดการ</th>
-                            </tr>
-                        </thead>
-                        <tbody >
-                            { this.categoryList() }
-                        </tbody>
-                    </Table>
-                </div>
-            </div>
-        )
+            )
+        }else{return ''}
     }
     
 }
-export default Admin_cate;
+
+export default connect(mapStateToProps,null)(Admin_cate);

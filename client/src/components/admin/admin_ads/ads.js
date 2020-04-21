@@ -17,7 +17,14 @@ class Advertise extends Component {
     //         seen: !this.state.seen
     //     });
     // };
-
+    /* redirect to home if not admin */
+    componentWillReceiveProps(nextProps){
+        if((nextProps.user !== this.props.user) && nextProps.user.user){
+            if(!nextProps.user.user.isAdmin){
+                this.props.history.push('/')
+            }
+        }
+    }
     render() {
         return (
             <div>
