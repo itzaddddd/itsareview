@@ -8,7 +8,7 @@ import {Formik, Form, Field, ErrorMessage} from 'formik'
 import * as yup from 'yup'
 import Review from '../../Review/Review/userhisReview'
 import { loadUser, editUser } from '../../../Redux/Actions/userAction';
-import PopUpChangePass from '../../Auth/Change/ChangePass'
+import PopUpChangePass from '../../Auth/Password/Change/ChangePass'
 
 const mapStateToProps = state => {
     return {
