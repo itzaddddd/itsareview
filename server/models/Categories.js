@@ -12,13 +12,7 @@ let Category = new Schema({
     categoryIcon : {
         type: String,
         required: true
-    },
-	// categoryContent : Review[],
-	// categoryContent_Num : {
-    //     default: 0,
-    //     type: Number,
-    //     required: true
-    // },
+    }
 });
 
 module.exports = mongoose.model('Category',Category);

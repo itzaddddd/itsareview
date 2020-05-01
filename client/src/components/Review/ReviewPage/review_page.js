@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 import { getReview, getCategory, getUserById } from '../../../Redux/Actions/reviewAction'
 import { addReadLater, deleteReadLater } from '../../../Redux/Actions/readlaterAction'
 import dateFormat from 'dateformat'
-
+import axios from 'axios'
 const mapStateToProps = state =>{
     return {
         user: state.user,
@@ -24,7 +24,8 @@ class ReviewPage extends Component{
         this.state = {
             isLoading: true,
             heart: '',
-            save: false
+            save: false,
+            name: ''
         
         }
     }
@@ -63,7 +64,19 @@ class ReviewPage extends Component{
                     save: false
                 })
             }
+
+            
         }
+        if(nextProps.review.review !== this.props.review.review){
+            axios.get(`/user/${nextProps.review.review.user_id}`)
+            .then(res=>{
+            console.log(res)
+            if(res.data){
+                this.setState({name: res.data.userName})
+            }
+            })
+            .catch(err=>console.log(err))
+            }
     }
 
     componentDidUpdate(prevProps, prevState){
@@ -90,7 +103,7 @@ class ReviewPage extends Component{
                         <div className="col-sm">
                             <div className="reviewName">{review.rvTitle}<div className="heart-fav1">{this.state.heart}</div></div>
                             <hr className="new5"></hr>
-                            <div className="reviewBy">รีวิวโดย<p className="reviewer">{review.user_id}</p></div>
+                            <div className="reviewBy">รีวิวโดย<p className="reviewer">{this.state.name}</p></div>
                             <div className = "date"><i style={{color:"9FB444"}} className="far fa-clock"></i><p className="date">{dateFormat(review.rvTime, 'dd/mm/yyyy')}</p></div>
                             <div className = "view"><i style={{color:"9FB444"}} className="fas fa-eye"></i><p className="view">{review.rvView_Num}</p></div>
                             <div className="rating-niyay">คะแนนนิยาย</div>
@@ -118,10 +131,14 @@ class ReviewPage extends Component{
                             <div className = "reviewBy2 reviewBy5">รีวิวเนื้อเรื่อง</div>
                             <div className = "boxContent">{review.rvContent}</div>
                             <div className = "reviewBy2 reviewBy5">รูปภาพ</div>
+                            <div className = "boxContent">
                             {review.rvImage?
-                                <div className = "boxContent">
-                                    <img src={review.rvImage} width="35%" height="auto" alt="image" />
-                                </div>:''}
+                                review.rvImage.forEach(image=>{
+                                    return <img src={image} width="35%" height="auto" alt="image" />
+                                })
+                            :
+                            ''}
+                            </div>
                             <div className = "reviewBy4">ให้คะแนนรีวิวนี้
                                 <Rating/>
                             </div>

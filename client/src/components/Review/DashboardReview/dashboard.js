@@ -4,9 +4,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './dashboard.css';
 import Typebar from '../../Bar/Typebar/Typebar'
 import Review from '../Review/userhisReview';
+import Pagination from 'react-paginate' 
 import UserHisBoard from '../../Board/Board/userhisBoard';
-    
+import axios from 'axios'    
 export default class Dashboard extends Component {
+
+    constructor(){
+        super();
+
+        this.state = {
+            reviews:[]
+        }
+    }
+
+    componentDidMount(){
+        console.log('review')
+        axios.get('/review')
+        .then(res=>{this.setState({reviews:res.data},()=>console.log(this.state.reviews))})
+        .catch(err=>console.log(err))
+    }
 
     render() {
 
@@ -62,13 +78,11 @@ export default class Dashboard extends Component {
 
                         <div className="inlineReviewDashboard flex-container">
                             <div>
-                                <div className="inlineReview"><Review/></div>
-                                <div className="inlineReview"><Review/></div>
-                                <div className="inlineReview"><Review/></div>
-                                <div className="inlineReview"><Review/></div>
-                                <div className="inlineReview"><Review/></div>
-                                <div className="inlineReview"><Review/></div>
-                            </div>             
+                                {/*this.state.reviews?this.state.reviews.map(review => 
+                                    <div><Review review={review} key={review._id} /></div>
+                                ):''*/}  
+                            </div>
+         
                         </div>
 
                        {/*<div className = "re">

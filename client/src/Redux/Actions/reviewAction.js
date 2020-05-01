@@ -32,9 +32,10 @@ export const addReview = ({rvTitle, rvChar, rvContent, rvImageUrl, rvType, rvTag
             "Content-type": "application/json"
         }
     }
+    console.log('rvImage length',rvImageUrl.length)
 
     const body = JSON.stringify({userName, rvTitle, rvChar, rvContent, rvImageUrl, rvType, rvTag, rvStatus, rvSource});
-
+    console.log('body ',body.rvImageUrl)
     axios.post('/review/create', body, config)
         .then( res => dispatch({
             type: ADD_REVIEW,
