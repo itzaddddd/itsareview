@@ -35,15 +35,14 @@ let Review = new Schema({
 	rvChar : {
         type: String,
     },
-	// rvContent : {
-		rvContent : {
-            type: String,
-            required: true
-        },
-		rvImage : {
-            type: String
-        },
-	// },
+	rvContent : {
+        type: String,
+        required: true
+    },
+	rvImage : {
+        type: [String]
+    },
+	
 	rvStatus : {
         type: Boolean,
         required: true,

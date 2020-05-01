@@ -46,23 +46,14 @@ const mapStateToProps = state => {
     }
 }
 
-const uploadImage = img => {
-    return new Promise((resolve, reject)=>{
+const uploadImage = async img => {
         let file = img
         let storageRef = firebase.storage().ref('Itsareview/review')
         let name = file.name
         let metadata = {contentType: file.type}
         let task = storageRef.child(name).put(file, metadata)
-        task
-            .then(()=>{
-                task.snapshot.ref.getDownloadURL()
-                .then(downloadUrl=>{
-                    console.log('url : ',downloadUrl)
-                    resolve(downloadUrl)
-                })
-            })
-            .catch(err=>reject(err))
-    })
+        let downloadUrl = await task.snapshot.ref.getDownloadURL()
+        return downloadUrl
 }
 
 
@@ -74,16 +65,20 @@ class ReviewFormPage extends Component {
             add_type: [],
             add_tag: [],
             add_image: [],
+            url_image: [],
+            url_size: 0,
+            image_array_size:0,
+            uploaded: false,
             type_disabled: false,
             tag_disabled: false,
             img: null,
             username:"",
-            categories: []
+            categories: [],
+            sources: []
+
             
         };
-
-        this.addNewReview = this.addNewReview.bind(this)
-        this.setUsername = this.setUsername.bind(this)
+        this.createImageUrl = this.createImageUrl.bind(this)
 
         let firebaseConfig = {
             apiKey: "AIzaSyC6poQ1xhuRkxYXwOUORCPfp7sPr7VyyeA",
@@ -98,18 +93,15 @@ class ReviewFormPage extends Component {
         if(!firebase.apps.length)firebase.initializeApp(firebaseConfig)
     }
 
-    setUsername = async () => {
-        if(this.props.user.token){
-            await this.setState({username:this.props.user.user.userName})
-        }else{
-            await this.setState({username:"Guest"})
-        }
-    }
-    
-    addNewReview = async (newReview) => {
-        this.setUsername()
-        this.props.addReview(newReview, this.state.username);
-        
+    createImageUrl = () =>{
+        this.state.add_image.forEach(async image => {
+            await Object.values(image).forEach(async img=>{
+                let url = await uploadImage(img)
+                this.setState({url_image:[...this.state.url_image,url]})
+                })
+            })
+        console.log('url image ',this.state.url_image)
+
     }
 
     static propTypes = {
@@ -120,12 +112,20 @@ class ReviewFormPage extends Component {
 
     componentDidMount(){
         /* get categories from database */
-        axios.get('http://localhost:4000/admin/categories/')
+        axios.get('/admin/categories/')
         .then(res => {
             this.setState({categories: res.data})
         })
-    }
+        .catch(err=>console.log(err))
+        /* get sources from database */
+        axios.get('/admin/source')
+        .then(res=>{
+            this.setState({sources: res.data})
+        })
+        .catch(err=>console.log(err))
 
+    
+    }
 
     componentDidUpdate(prevProps, prevState){
         // redirect after submit
@@ -150,9 +150,19 @@ class ReviewFormPage extends Component {
                 this.setState({tag_disabled:false})
             }
         }
+        // check if url completed
+        if(prevState.url_image !== this.state.url_image){
+            if(this.state.url_image.length === this.state.image_array_size){
+                console.log('url complete ',this.state.url_image)
+                this.setState({uploaded:true},()=>{
+                    console.log('completed', this.state.uploaded)
+                })
+            }
+        }
     }
 
-    render(){        
+    render(){    
+        if(this.state.sources[0] && this.state.categories[0]){   
         return(
             <div>
                 <NavBar/>
@@ -164,46 +174,47 @@ class ReviewFormPage extends Component {
                         rvContent: "",
                         rvImage: null,
                         rvStatus: false,
-                        rvSource: 'Dek-D',
-                        rvType: 'คอมเมดี้',
+                        rvSource: this.state.sources[0].sourceName,
+                        rvType: this.state.categories[0].categoryName,
                         rvTag: ""
                     }}
                     /* set validation form */
                     validationSchema = {ReviewSchema}
                     /*set onSubmit function*/
-                    onSubmit = { values => {
+                    onSubmit = { async values => {
+                        console.log(values)
                         const {rvTitle, rvChar, rvContent, rvImage, rvStatus, rvSource} = values;
                         const rvType = this.state.add_type;
                         const rvTag = this.state.add_tag;
-                        uploadImage(rvImage)
-                            .then(async res=>{
-                                const rvImageUrl = res
-                                console.log(
-                                    "ชื่อนิยาย : ",rvTitle,
-                                    "\nลักษณะตัวละคร : ",rvChar,
-                                    "\nรีวิวเนื้อเรื่อง : ", rvContent,
-                                    "\nภาพประกอบ :",rvImageUrl,
-                                    "\nประเภท : ", rvType, 
-                                    "\nแท็ก :", rvTag, 
-                                    "\nสถานะ : ", rvStatus,
-                                    "\nที่มา :", rvSource
-                                )
+                        /* upload image */
+                        this.createImageUrl()
+                        if(this.state.uploaded){
+                            let rvImageUrl = this.state.url_image
+                            console.log(
+                                "ชื่อนิยาย : ",rvTitle,
+                                "\nลักษณะตัวละคร : ",rvChar,
+                                "\nรีวิวเนื้อเรื่อง : ", rvContent,
+                                "\nภาพประกอบ :",rvImageUrl,
+                                "\nประเภท : ", rvType, 
+                                "\nแท็ก :", rvTag, 
+                                "\nสถานะ : ", rvStatus,
+                                "\nที่มา :", rvSource
+                            )
+
+                            const newReview = {
+                                rvTitle, 
+                                rvChar, 
+                                rvContent,
+                                rvImageUrl,
+                                rvType,
+                                rvTag, 
+                                rvStatus, 
+                                rvSource
                                 
-                                const newReview = {
-                                    rvTitle, 
-                                    rvChar, 
-                                    rvContent,
-                                    rvImageUrl,
-                                    rvType,
-                                    rvTag, 
-                                    rvStatus, 
-                                    rvSource
-                                    
-                                }
-                                await this.addNewReview(newReview) 
-                                                               
-                            })
-                            .catch(err=>console.log(err))
+                            }
+                            this.props.addReview(newReview, this.props.user.user.userName)
+                        }
+
                     }}
 
                 >
@@ -258,19 +269,24 @@ class ReviewFormPage extends Component {
                                             name="rvImage"
                                             accept="image/*"
                                             multiple
-                                            onChange={e=>{
-                                                setFieldValue("rvImage",e.currentTarget.files[0]);
-                                                this.setState({
-                                                    add_image: [...this.state.add_image, e.currentTarget.files[0]]
+                                            onChange={ e=>{
+                                                let files = e.currentTarget.files
+                                                this.setState({add_image:[...this.state.add_image,files]},()=>{
+                                                    console.log('images array ',this.state.add_image)
+                                                    this.setState({image_array_size:this.state.image_array_size+files.length},()=>{
+                                                        console.log('size ',this.state.image_array_size)
+                                                    })
                                                 })
+                                                
+                                                
                                             }}
                                         />
-                                        {
+                                        {/*
                                             this.state.add_image.map((image,i)=>{
                                                  return <Thumb key={i} file={image} /> 
                                             })
                                             
-                                        }
+                                        */}
                                    </div>
                                     <div className="title">เพิ่มหมวดหมู่<span className="limit">   *ไม่เกิน 3 หมวดหมู่</span></div>
                                     <div className = "dropbox">
@@ -391,11 +407,11 @@ class ReviewFormPage extends Component {
                                             id="country" 
                                             name="rvSource"
                                         >
-                                            <option value="Dek-D">Dek-D</option>
-                                            <option value="จอยลดา">จอยลดา</option>
-                                            <option value="ReadAWrite">ReadAWrite</option>
-                                            <option value="หนังสือ">หนังสือ</option>
-                                            <option value="อื่นๆ">อื่นๆ</option>  
+                                            {this.state.sources.map(source => 
+                                                <option value={source.sourceName} key={source._id}>
+                                                    {source.sourceName}
+                                                </option>)
+                                            }
                                         </Field>
                                     </div>
                                     <Field
@@ -411,7 +427,8 @@ class ReviewFormPage extends Component {
                 </Formik>
             </div>
             
-    )}
+        )}else{return ''}
+    }
 }
 
 export default connect(mapStateToProps,{ addReview })(ReviewFormPage);

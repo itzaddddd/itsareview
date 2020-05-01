@@ -5,7 +5,6 @@ import NavBar from '../../Bar/NavBar/NavBar';
 import {Redirect} from 'react-router-dom';
 
 import Thumb from './Thumb'
-import Dropzone from 'react-dropzone'
 
 import { Formik, Form, Field, ErrorMessage } from 'formik' // lib for creating form
 import * as yup from 'yup' // lib for validation
@@ -78,13 +77,15 @@ class EditReviewForm extends Component {
             tag_disabled: false,
             img: null,
             username:"",
-            categories: []
+            categories: [],
+            sources: []
             
         };
 
         this.editNewReview = this.editNewReview.bind(this)
         this.setUsername = this.setUsername.bind(this)
 
+        /*firebase initialization for saving image*/
         let firebaseConfig = {
             apiKey: "AIzaSyC6poQ1xhuRkxYXwOUORCPfp7sPr7VyyeA",
             authDomain: "itsareview-404.firebaseapp.com",
@@ -100,9 +101,9 @@ class EditReviewForm extends Component {
 
     setUsername = async () => {
         if(this.props.user.token){
-            await this.setState({username:this.props.user.user.userName})
+            this.setState({username:this.props.user.user.userName})
         }else{
-            await this.setState({username:"Guest"})
+            this.setState({username:"Guest"})
         }
     }
     
@@ -120,9 +121,14 @@ class EditReviewForm extends Component {
 
     componentDidMount(){
         /* get categories from database */
-        axios.get('http://localhost:4000/admin/categories/')
+        axios.get('/admin/categories/')
         .then(res => {
             this.setState({categories: res.data})
+        })
+        /* get sources from database */
+        axios.get('/admin/source')
+        .then(res=>{
+            this.setState({sources: res.data},()=>console.log(this.state.sources))
         })
         /* get review from id */
         let review_id = this.props.match.params.id
@@ -412,11 +418,11 @@ class EditReviewForm extends Component {
                                             id="country" 
                                             name="rvSource"
                                         >
-                                            <option value="Dek-D">Dek-D</option>
-                                            <option value="จอยลดา">จอยลดา</option>
-                                            <option value="ReadAWrite">ReadAWrite</option>
-                                            <option value="หนังสือ">หนังสือ</option>
-                                            <option value="อื่นๆ">อื่นๆ</option>  
+                                            {this.state.sources.map(source => 
+                                                <option value={source.sourceName} key={source._id}>
+                                                    {source.sourceName}
+                                                </option>
+                                            )}
                                         </Field>
                                     </div>
                                     <Field

@@ -8,6 +8,7 @@ import { addReadLater, deleteReadLater } from '../../../Redux/Actions/readlaterA
 import { deleteReview } from '../../../Redux/Actions/reviewAction'
 import store from '../../../Redux/store';
 import { DELETE_READ_LATER_COMPLETED } from '../../../Redux/constants';
+import axios from 'axios'
 
 const mapStateToProps = state => {
     return {
@@ -21,7 +22,8 @@ class UserHisReview extends Component{
 
         this.state = {
             save: null,
-            heart: ''
+            heart: '',
+            name: [] 
         }
         this.toggleSave = this.toggleSave.bind(this)
     }
@@ -39,12 +41,29 @@ class UserHisReview extends Component{
         deleteReadLater: PropTypes.func.isRequired,
         deleteReview: PropTypes.func.isRequired
     }
-    
-    componentWillReceiveProps(nextProps){
+
+    componentDidMount(){
+        if(this.props.review){
+            /* Get user by id*/
+            if(this.props.review.user_id !== 'guest_review' || this.props.review.user_id !== 'บุคคลทั่วไป'|| this.props.review._id !== null){
+                axios.get(`/user/${this.props.review.user_id}`)
+                .then(res=>{
+                    if(res.data){
+                        /* Set username to name state */
+                        this.setState({
+                            name:res.data.userName
+                        })
+                    } 
+                })
+                .catch(err=>console.log(err))
+                }
+        }
+
+        /* set default heart */
         let heart_white = <i className="far fa-heart" onClick={()=>{this.props.addReadLater(this.props.review._id,()=>this.toggleSave());}}></i>
         let heart_black = <i className="fas fa-heart" onClick={()=>{this.props.deleteReadLater(this.props.review._id,()=>this.toggleSave());}}></i>
-        if((nextProps.user.user !== this.props.user.user) && nextProps.review){
-            if(nextProps.user.user.readLater.some(review => review._id === nextProps.review._id)){
+        if(this.props.user.user && this.props.review){
+            if(this.props.user.user.readLater.some(review => review._id === this.props.review._id)){
                 this.setState({
                     heart: heart_black,
                     save: true
@@ -57,7 +76,6 @@ class UserHisReview extends Component{
             }
         }
     }
-
 
     componentDidUpdate(prevProps, prevState){
         /* Bug!! after unsave, review in next index of deleted review will chang save state to false */
@@ -95,7 +113,7 @@ class UserHisReview extends Component{
                         {this.props.isUserReview?'':
                         <div>
                             <div className="review-name bold">รีวิวโดย</div>
-                        <div className="review-name">{this.props.review?this.props.review.user_id:''}</div>
+                            <div className="review-name">{this.state.name}</div>
                         </div>
                         }
                         <div>
