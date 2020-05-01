@@ -41,7 +41,7 @@ class NavBar extends Component {
                         {(user&&user.isAdmin)?<a href="/admin" id="admin">หน้าหลัก Admin<i className="fas fa-users-cog"></i></a>:''}
                         <span className="back-navbar">
                             <span>{user||this.props.user.isLoading? memberLinks:guestLinks}</span>
-                            <a href="/search"><span className="search">  <i className="fas fa-search"></i><p className="searchNiyay">ค้นหารีวิวนิยาย</p></span></a>
+                            <a href="/search" className="search"><span className="search">  <i className="fas fa-search"></i><p className="searchNiyay">ค้นหารีวิวนิยาย</p></span></a>
                         </span>
                     </div>
                 </nav>

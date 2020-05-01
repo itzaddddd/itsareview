@@ -9,6 +9,12 @@ div.reviewName {
 div.heart-fav1 {
   float: right;
   font-size: 5vmin;
+  color: #CD4F39;
+}
+
+.fas.fa-heart.fav-heart:hover, .far.fa-heart.fav-heart:hover {
+  cursor: pointer;
+  color: tomato;
 }
 
 .fa-clock::before {

@@ -1,7 +1,12 @@
 div.edituserinfo {
     font-size: 4vmin;
+    font-weight: bold;
     text-align: center;
     margin-top: 13vmin;
+}
+
+.editinfo {
+    margin-left: 3vmin;
 }
 
 div.rowedit {
@@ -52,6 +57,20 @@ button.unsave-edit {
 
 button.save-edit:hover , button.unsave-edit:hover {
     background-color: #9FB444;
+    box-shadow: 1px 1px 3px black;
+}
+
+div.editinfo.to-edit-pass {
+    text-align: center;
+}
+
+a.to-edit-pass {
+    font-size: 3.2vmin;
+    margin-top: 3vmax;
+    color: #B9D253;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
 }
 
 @media(max-width: 768px) {
