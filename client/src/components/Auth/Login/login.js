@@ -8,6 +8,7 @@ import * as yup from 'yup' // lib for validation
 import PropTypes from 'prop-types' // prop type
 import { login } from '../../../Redux/Actions/userAction' // login action (like a function)
 import { clearErrors } from '../../../Redux/Actions/errorAction' // clear error action
+import PopUpForgotPass from '../../Auth/Password/Forgot/ForgotForm' //popup forgot password
 
 /* define form validaqtion */
 const LoginSchema = yup.object().shape({
@@ -33,8 +34,9 @@ const mapStateToProps = state => {
 
 class Login extends Component{
     state = {
-        modal: false, // set modal (pop-up) (not use)
         msg: null, // error message
+        PopUpForgotPass : false, //set pop-up close
+        show : false
     }
 
     /* set prop types */ 
@@ -76,6 +78,9 @@ class Login extends Component{
     }
 
     render(){
+
+        // import close popup function
+        let PopUpClose =() => this.setState({PopUpForgotPass:false});
 
         // if login successed, redirect
         if(this.props.isAuthenticated){
@@ -165,7 +170,10 @@ class Login extends Component{
                             </div>
                             <div id="account-regis">
                                 <span id="account">ยังไม่มีบัญชี?</span><a href="/register" id="link-regis">สมัคร</a>
-                                <a href="/forgot"><span id="account">ลืมรหัสผ่าน</span></a>
+                            </div>
+                            <div id="account-regis">
+                                <a className="account-forgot" onClick={()=> this.setState({PopUpForgotPass: true})}><span id="account-forgot">ลืมรหัสผ่าน</span></a>
+                                <PopUpForgotPass show={this.state.PopUpForgotPass} onHide={PopUpClose} />
                             </div>
                         </div>
                     </Form>

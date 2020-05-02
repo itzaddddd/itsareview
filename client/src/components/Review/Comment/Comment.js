@@ -4,6 +4,7 @@ import dateFormat from 'dateformat'
 import PropTypes from 'prop-types'
 import { addComment, deleteComment, getUserById } from '../../../Redux/Actions/reviewAction'
 import store from '../../../Redux/store'
+import axios from 'axios'
 
 import './Comment.css';
 const mapStateToProps = state =>{
@@ -53,7 +54,7 @@ class CommentBox extends React.Component {
       return(
         <div className="comment-box">
             {/* <p className="comment-topic">แสดงความคิดเห็นต่อรีวิวนี้</p> */}
-            <CommentForm addComment={this.props.addComment}/>  
+            {this.props.user.user&&this.props.user.user._id?<CommentForm addComment={this.props.addComment}/>:<div><a href="/login">เข้าสู่ระบบ</a>เพื่อแสดงความคิดเห็น</div>}  
             <div className="button-show-review">
                <button id="comment-reveal" onClick={this._handleClick.bind(this)}>
                   {buttonText}
@@ -123,10 +124,26 @@ class CommentBox extends React.Component {
   } // end CommentForm component
   
   class Comment extends React.Component {
+    constructor(){
+      super();
+      this.state = {
+        name: ''
+      }
+    }
+    componentDidMount(){
+      axios.get(`/user/${this.props.author}`)
+        .then(res=>{
+          console.log(res)
+          if(res.data){
+            this.setState({name: res.data.userName})
+          }
+        })
+        .catch(err=>console.log(err))
+    }
     render () {
       return(
         <div className="comment">
-          <p className="comment-header">{this.props.author}</p>
+          <p className="comment-header">{this.state.name}</p>
           <p className="comment-body">{this.props.body}</p>
           <p className="comment-date">{this.props.date}</p>
           { store.getState().user.user && (store.getState().user.user._id === this.props.author)?

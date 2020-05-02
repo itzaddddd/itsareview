@@ -22,6 +22,9 @@ form.LoginForm {
     font-size: 3vmin;
 }
 
+#login-button:hover {
+    box-shadow: 1px 1px 3px black;
+}
 
 #login-title {
     font-size: 5vmin;
@@ -48,6 +51,15 @@ form.LoginForm {
 
 #account {
     color: gray;
+}
+
+#account-forgot {
+    color: #B9D253;
+    cursor: pointer;
+}
+
+#account-forgot:hover , .account-forgot:hover{
+    text-decoration: underline;
 }
 
 input[type='text'].form-control , input[type='password'].form-control#pwd {

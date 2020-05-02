@@ -20,6 +20,7 @@ reviewRoute.route('/').get((req,res)=>{
 // @desc    Create a review 
 // @access  Public
 reviewRoute.route('/create').post((req,res)=>{
+    console.log('image ',req.body.rvImageUrl)
     const {userName,rvTitle, rvChar, rvContent, rvImageUrl, rvType, rvTag, rvStatus, rvSource} = req.body;
     
     // find user_id by userName

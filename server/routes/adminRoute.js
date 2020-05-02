@@ -2,7 +2,7 @@ const adminRoute = require('express').Router();
 const Review = require('../models/Reviews');
 const Category = require('../models/Categories');
 const User = require('../models/Users');
-
+const Source = require('../models/Sources')
 
 
 // *****************************user***************************************
@@ -102,7 +102,26 @@ adminRoute.route('/categories/:id').delete((req, res) => {
 //   });
 
 
-// ***************************banner***************************************
+// ***************************source***************************************
+adminRoute.route('/source').get((req,res)=>{
+  Source.find({},(err,source)=>{
+      if(err)console.log(err)
+      res.json(source)
+      console.log('Get source')
+  })
+})
 
+adminRoute.route('/source').post((req,res)=>{
+  let {sourceName, sourceLink} = req.body
+  let newSource = new Source({
+      sourceName: sourceName,
+      sourceLink: sourceLink
+  })
+  newSource.save((err,source)=>{
+      if(err)console.log(err)
+      res.json(source)
+  })
+  console.log('Add source')
+})
 
 module.exports = adminRoute;
