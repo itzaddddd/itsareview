@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import {Formik, Form, Field, ErrorMessage} from 'formik'
 import * as yup from 'yup'
 import axios from 'axios'
+import {Modal} from 'react-bootstrap'
 
 const mapStateToProps = state => {
     return {
@@ -18,7 +19,7 @@ const mapStateToProps = state => {
 const ForgotFormSchema = yup.object().shape({
     userEmail: yup.string()
         .email('รูปแบบอีเมลไม่ถูกต้อง')
-        .required('กรุุณาใส่อีเมล')
+        .required('กรุณาใส่อีเมล')
 })
 class ForgotForm extends Component{
 
@@ -27,7 +28,9 @@ class ForgotForm extends Component{
 
         this.state = {
             msg: '',
-            send: false
+            send: false,
+            PopUpForgotPass : true, 
+            show : true
         }
         this.sendEmail = this.sendEmail.bind(this)
 
@@ -67,7 +70,10 @@ class ForgotForm extends Component{
 
     render(){
             return(
-                <div>
+                <Modal animation={false}
+                {...this.props}
+                size="sm"
+                centered >
                     {/*<Navbar logout={true}/>*/}
                     <Formik
                         initialValues = {{
@@ -83,36 +89,47 @@ class ForgotForm extends Component{
                     >
                         {({touched, errors, isSubmitting }) => (
                         <Form>
-                            <div className="rowname">
-                                <div>ลืมรหัสผ่านล่ะสิ</div>
-                                <div>ไม่ต้องกังวล แค่กรอกอีเมลเพื่อตั้งรหัสผ่านใหม่</div>
+                            <Modal.Header id="modal-header-forgot-pass" closeButton>
+                                <Modal.Title id="contained-modal-title-vcenter">
+                                <p className="popUpTopic">รีเซ็ตรหัสผ่าน</p>
+                                </Modal.Title>
+                            </Modal.Header>
+                            <div className="topic-message-forgot-pass">
+                                <div className="topic-forgot-pass"><i className="fa fa-lock fa-4x"/><br/>ลืมรหัสผ่านใช่ไหม<br/>กรอกอีเมลเพื่อตั้งรหัสผ่านใหม่</div>
+
+                                {/* {this.state.msg.msg==="อีเมลนี้ไม่มีอยู่ในระบบ"?<div className="error-message-edit-pass fail">{this.state.msg.msg}</div>
+                            :<div className="error-message-edit-pass">{this.state.msg.msg}</div>} */}
                                 <div>{this.state.msg.msg}</div>
                                 {(this.state.send === false) && 
-                                <div className="col-sm-12 user1"><i className="far fa-envelope fa-2x"></i>
+                                <div className="col-sm-12 user1-forgot-pass">
+                                    {/* <i className="far fa-envelope fa-2x envelope-forgot-pass"/> */}
                                     <Field 
                                         type="text" 
                                         name="userEmail"
                                         placeholder="ใส่อีเมลของคุณ"
-                                        className={`form-control ${touched.userEmail && errors.userEmail ? "is-invalid":""}`} 
+                                        className={`forgot-form-control ${touched.userEmail && errors.userEmail ? "is-invalid":""}`} 
                                     />
                                     <ErrorMessage 
                                         componet="div"
                                         name="userEmail"
                                         className="invalid-feedback"
                                         render={
-                                            msg => <div className="error-message">{msg}</div>
+                                            msg => <div className="error-message error-forgot-pass">{msg}</div>
                                         }
                                     />
                                 </div>}
                             </div>
+                            
 
-                            <div id="edit">
-                                {(this.state.send === false)&&<button className="button-edit">ยืนยัน</button>}
-                                <button className="button-edit" onClick={()=>this.props.history.push('/login')}>ยกเลิก</button>
+                            <div id="edit-pass">
+                                {(this.state.send === false)&&<button className="button-edit" type="submit">ยืนยัน</button>}
+                                {/* <button type="button" className="button-edit" onClick={this.state.show===false}>ยกเลิก</button> */}
                             </div>
+
+                            
                         </Form>)}
                     </Formik>
-                </div>
+                </Modal>
             )   
         
     }

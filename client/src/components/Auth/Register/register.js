@@ -193,7 +193,7 @@ class Register extends Component{
                                 <Field 
                                     type="text" 
                                     className={`form-control ${touched.adminCode && errors.adminCode ? "is-invalid":""}`}
-                                    placeholder="ใส่รหัสสำหรับ admin" 
+                                    placeholder="กรุณากรอก admin code" 
                                     name="adminCode" 
                                 />
                                 <ErrorMessage 
@@ -218,10 +218,12 @@ class Register extends Component{
                             </div>
                             {(this.state.admin_code===false)?
                             <div onClick={()=>{this.setState({admin_code:true})}}>
-                                ใส่ Admin code
+                                <p className="for-admin-code">ฉันเป็น admin</p>
                             </div>:''}
                             {this.state.admin_code?
-                                <div onClick={()=>{this.setState({admin_code:false})}}>ยกเลิกการใส่ Admin code</div>
+                                <div onClick={()=>{this.setState({admin_code:false})}}>
+                                    <p  className="for-admin-code" >ฉันไม่ได้เป็น admin</p>
+                                </div>
                             :
                             ""
                             }

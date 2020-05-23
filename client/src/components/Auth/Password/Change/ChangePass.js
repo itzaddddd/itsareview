@@ -105,7 +105,6 @@ class ChangePassword extends Component{
                                 <p className="popUpTopic"><i className='fas fa-key' />  แก้ไขรหัสผ่าน</p>
                                 </Modal.Title>
                             </Modal.Header>
-                            {/* <div className="error-message-edit-pass">{this.state.msg.msg}</div> */}
                             {this.state.msg.msg==="รหัสผ่านไม่ถูกต้อง"?<div className="error-message-edit-pass fail">{this.state.msg.msg}</div>
                             :<div className="error-message-edit-pass">{this.state.msg.msg}</div>}
 

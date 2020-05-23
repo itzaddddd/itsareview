@@ -23,6 +23,10 @@ form.RegisterForm {
     font-size: 3vmin;
 }
 
+#regis-button:hover {
+    box-shadow: 1px 1px 3px black;
+}
+
 div#regis-title {
     font-size: 5vmin;
     font-weight:bold;
@@ -63,6 +67,14 @@ div#regis-form{
     border-color: #f5cfcb;
     border-radius: 0.3vw;
     padding: 1.5% 2% 1.5% ;
+}
+
+div .for-admin-code {
+    font-size: 3vmin;
+    color: #B9D253;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 5vmin;
 }
 
 @media(max-width : 768px) /*for medium device*/ {

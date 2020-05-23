@@ -36,11 +36,10 @@ span.back-navbar{
 	position:absolute;
 	display:block;
 	height: 100%;
-	width: 40%;
+	width: 32vmax;
 	top: 0;
 	right:0;
 	float: right;
-	background-color: #000;
 	padding-right: 1.5vw;
 	text-align: right;
 	padding-top: inherit;
@@ -119,7 +118,6 @@ p.searchNiyay {
 		top: 0;
 		right: 0;
 		float: right;
-		background-color: #000;
 		text-align: right;
 	}
 
