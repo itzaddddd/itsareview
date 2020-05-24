@@ -90,7 +90,7 @@ div .for-admin-code {
 }
 
 .bg-register{
-    /* background-image: url("../../common/book.png"); */
+    /* background-image: url('../../../../public/book.png'); */
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
