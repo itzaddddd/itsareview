@@ -35,8 +35,8 @@ class NavBar extends Component {
                     <div className="navHeader">
                         <a href="/"><img className="photo" src="https://sv1.picz.in.th/images/2020/02/14/xK1HvZ.png" alt="xK1HvZ.png" border="0" width="auto" height="32" /></a>
                         <a href="/" className="navbarButton homepagenavbar" id="home">หน้าหลัก <i className="fas fa-home"></i></a>
-                        <a href="/dashboard+review" id="review" className="navbarButton">รีวิวนิยาย <i className="fas fa-edit"></i></a>
-                        <a href="/dashboard+board" id="broad" className="navbarButton">กระทู้ <i className="fas fa-comments"></i></a>
+                        <a href="/dashboardShowReview" id="review" className="navbarButton">รีวิวนิยาย <i className="fas fa-edit"></i></a>
+                        <a href="/dashboardshowboard" id="broad" className="navbarButton">กระทู้ <i className="fas fa-comments"></i></a>
                         <a href={`/user/${user?user._id:''}/readlater`} id="saved"  className="navbarButton">เก็บไว้อ่าน <i className="fas fa-heart"></i></a>
                         {(user&&user.isAdmin)?<a href="/admin" id="admin">Admin <i className="fas fa-users-cog"></i></a>:''}
                         <span className="back-navbar">
