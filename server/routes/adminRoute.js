@@ -85,23 +85,6 @@ adminRoute.route('/categories/:id').delete((req, res) => {
 });
 
 
-// adminRoute.get('/admin/category', function(req, res, next) {
-//     var resultArray = [];
-//     MongoClient.connect(url, function(err, client){
-//     assert.equal(null, err);
-//     const db = client.db(dbName);
-//     var cursor = db.collection('categories').find();
-//     cursor.forEach(function(doc, err) {
-//         assert.equal(null, err);
-//         resultArray.push(doc);
-//     }, function(){
-//       client.close();
-//       res.render('/admin/category', {items: resultArray});
-//     });
-//     });
-//   });
-
-
 // ***************************source***************************************
 adminRoute.route('/source').get((req,res)=>{
   Source.find({},(err,source)=>{

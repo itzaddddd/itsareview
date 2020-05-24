@@ -21,7 +21,7 @@ const User = props => (
         {/* <td>{props.user.logReview}</td> */}
         {/* {homes.map(home => <div>{home.name}</div>)} */}        
         <td>
-        <button onClick={() => { props.deleteUser(props.user._id) }}>ลบ</button>
+            <button onClick={() => { props.deleteUser(props.user._id) }}>ลบ</button>
         </td>
     </tr>
 )

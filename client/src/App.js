@@ -29,6 +29,7 @@ import AdminRoute from './components/ExtraRoute/AdminRoute/AdminRoute' // show a
 import ForgotForm from './components/Auth/Password/Forgot/ForgotForm'
 import ResetForm from './components/Auth/Password/Reset/ResetPassForm'
 import ChangePassword from './components/Auth/Password/Change/ChangePass'
+// import popUpEditCategory from './components/admin/admin_cate/popUpEditCategory'
 
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux'
@@ -63,6 +64,7 @@ class App extends Component{
             <MemberRoute exact path="/review/create" component={ReviewForm} />
             <Route exact path="/review/tag" component={TagReview} />
             <Route exact path="/review/:id" component={ReviewPage} />
+            {/* <Route exact path='/dashboard+review' component= {ReviewDashboard} /> */}
             <MemberRoute exact path="/review/:id/edit" component={EditReviewForm} />
             <MemberRoute exact path="/user/:id" component={UserInfo} />
             <MemberRoute exact path="/user/:id/changepass" component={ChangePassword} />
@@ -77,6 +79,7 @@ class App extends Component{
             <AdminRoute exact path="/admin/reviews" component={adReview} />
             {/*<Route exact path="/admin/board" component={adBoard} />*/}
             <AdminRoute exact path="/admin/categories" component={adCategory} />
+            {/* <AdminRoute exact path ="/admin/categories/update/:id" component={popUpEditCategory} /> */}
             
           </Switch>
         </Router>

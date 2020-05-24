@@ -13,15 +13,15 @@ const mapStateToProps = state => {
 }
 const Review = props => (
     <tr>
-      <td className="rvID">{props.review._id}</td>
-      <td>{props.review.rvTitle}</td>
-      {/* <td>{props.review.user_id}</td> */}
-      <td>{props.review.rvTime}</td>
-      <td>{props.review.rvType}</td>
-      <td>{props.review.rvTag}</td>
-      <td>
-        จะแล้วมั้ย{/* <Link to={"/admin/categories/update/"+props.category._id}>แก้ไข</Link> | <button onClick={() => { props.deleteCategory(props.category._id) }}>ลบ</button> */}
-      </td>
+        <td className="rvID">{props.review._id}</td>
+        <td>{props.review.rvTitle}</td>
+        {/* <td>{props.review.user_id}</td> */}
+        <td>{props.review.rvTime}</td>
+        <td>{props.review.rvType}</td>
+        <td>{props.review.rvTag}</td>
+        <td>
+            <button onClick={() => { props.deleteReview(props.review._id) }}>ลบ</button>
+        </td>
     </tr>
   )
 
@@ -32,7 +32,7 @@ class Adreview extends Component {
         super(props);
         this.state = {reviews: [{}]}
         // this.state ={PopUpDelReview : false}
-        
+        this.deleteReview = this.deleteReview.bind(this);
     }
 
     componentDidMount() {
@@ -44,6 +44,7 @@ class Adreview extends Component {
             console.log(error);
         })
     }
+
     /* redirect to home if not admin */
     componentWillReceiveProps(nextProps){
         if((nextProps.user !== this.props.user) && nextProps.user.user){
@@ -55,7 +56,17 @@ class Adreview extends Component {
 
     reviewList() {
         return this.state.reviews.map(currentreview => {
-            return <Review review={currentreview} key={currentreview._id}/>;
+            return <Review review={currentreview} key={currentreview._id} deleteReview={this.deleteReview}/>;
+        })
+    }
+
+    deleteReview(id) {
+
+        axios.delete('http://localhost:4000/admin/reviews/'+id)
+                .then(response => { console.log(response.data)});
+        
+        this.setState({
+            reviews: this.state.reviews.filter(el => el._id !== id)
         })
     }
 
