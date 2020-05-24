@@ -1,0 +1,135 @@
+button.dark{
+    background-color: #272525;
+    border-color: #272525;
+    color: #B9D253;
+    border-radius: 30px;
+    width: 45%;
+    font-size: 120%;
+    margin: 100%;
+    
+}
+
+div.Typebar{
+
+    margin: 0%;
+}
+
+div.boarddash{
+    
+    margin: 18% 10% 5%;
+    text-align: left;
+    font-size: 3vmin;
+    font-weight: bolder; 
+    color: #B9D253;
+}
+
+hr.underline {
+    border: 0.1px solid black;
+    border-radius: 1vmin;
+    color: black;
+    width: 100%;
+    margin: 0;
+  }
+
+  div.popboarddash{
+    
+    margin: 10% 10% 5%;
+    text-align: left;
+    font-size: 3vmin;
+    font-weight: bolder; 
+    color: #B9D253;
+}
+
+div.newboarddash{
+    
+    margin: 10% 10% 5%;
+    text-align: left;
+    font-size: 3vmin;
+    font-weight: bolder; 
+    color: #B9D253;
+}
+
+    div.inlineBoardDashboard2{
+    height: 300px ;
+    width: 75% ;  
+    overflow-y: scroll;
+    margin: 0% 15vmin 0% ;
+    display: inline-block;
+    
+    }
+    
+    div.inlineBoard {
+        margin:0 1em 0 1em;
+        display: inline-block;
+        width: 95%;
+        overflow: hidden;
+    }
+    i#iconBoardDash{
+        color: #B9D253;
+        font-size: 1.2em;
+    }
+
+
+
+/*Bigscreen*/
+
+@media(min-width: 768px) {
+
+    div.Typebar{
+
+        margin: 0% 0%;
+    }
+
+    div.boarddash{
+        color: #B9D253;
+        margin: 8% 10% 2%;
+        text-align: left;
+        font-size: 4vmin;
+        font-weight: bolder; 
+    }
+
+    hr.underline {
+        border: 0.5px solid black;
+        border-radius: 10vmin;
+        color: black;
+        width: 100%;
+        margin: 1% 0 0%;
+      }
+
+      div.popboarddash{
+    
+        margin: 5% 10% 3%;
+        text-align: left;
+        font-size: 4vmin;
+        font-weight: bolder; 
+        color: #B9D253;
+    }
+    div.newboarddash{
+    
+        margin: 4% 10% 3%;
+        text-align: left;
+        font-size: 4vmin;
+        font-weight: bolder; 
+        color: #B9D253;
+    }
+
+    div.inlineBoardDashboard2 {
+            overflow: auto;
+            height: 500px;
+            width: 75%;
+            margin: 0% 20vmin;
+                    
+    }
+    
+    div.inlineBoard {
+        margin:0 2em 0 2em;
+        /* display: inline-block; */
+        width: 95%;
+        /* overflow: hidden; */
+    }
+    i#iconBoardDash{
+        color: #B9D253;
+        font-size: 1.3em;
+    }
+      
+    }
