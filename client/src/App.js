@@ -31,6 +31,7 @@ import ProtectedRoute from './components/ExtraRoute/ProtectedRoute/ProtectedRout
 import ForgotForm from './components/Auth/Password/Forgot/ForgotForm'
 import ResetForm from './components/Auth/Password/Reset/ResetPassForm'
 import ChangePassword from './components/Auth/Password/Change/ChangePass'
+// import popUpEditCategory from './components/admin/admin_cate/popUpEditCategory'
 
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux'

@@ -6,7 +6,7 @@
 }
 
 p.admin_welcome {
-    font-size: 3vw;
+    font-size: 4vmin;
     color: black;
 }
 
@@ -25,10 +25,10 @@ ul.container2 {
     margin-right: 1em;
 }
 
-img.Logo {
+img.admin-logo {
     width: 6em;
     height: auto;
-    margin-right: 1.75em;
+    margin-right: 1.75vmin;
     bottom: 0;
 }
 
@@ -41,6 +41,7 @@ img.mascot {
 a.ad , Link.ad {
     color:  #B9D253;
     margin: 0;
+    font-size: 2.3vmin;
 }
 
 a.ad:hover , Link.ad:hover{
@@ -50,22 +51,17 @@ a.ad:hover , Link.ad:hover{
 }
 
 ul.container1 li {
-    margin: 0.7em;
+    margin: 1vmin;
     display: inline;
     vertical-align: middle;
 }
 
-ul.container2 li {
-    margin: 0.7em;
-    display: inline;
-    vertical-align: middle;
-}
 
 
 div.main-navigation {
     margin: 0;
     font-family: 'Kanit', sans-serif;
-    font-size: 1.2vw;
+    font-size: 2vmin;
     font-weight: initial;
     width: 100%;
     height: 3em;
@@ -75,19 +71,23 @@ div.main-navigation {
     top: 0;
     line-height: 3;
     color: #B9D253;
+    position: fixed;
 }
 
-nav.adNav ul.container1 {
+nav.adNav ul.container1 , nav.adNav ul.container1.right{
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-nav.adNav ul.container2 {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+ul.container1.right {
+    float: right;
+    right: 0;
+    vertical-align: middle;
+    width: 30vmax;
 }
+
+
 
 nav.adNav li {
     display: inline;
@@ -98,3 +98,13 @@ nav.adNav li {
 /* nav.adNav p {
     font-size: .9em;
 } */
+
+@media(max-width: 1023px) {
+    img.admin-logo {
+        display: none;
+    }
+ 
+    a.ad:hover , Link.ad:hover {
+        font-size: 2vmin;
+    }
+}
