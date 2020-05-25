@@ -1,256 +1,186 @@
-div.headsearch{
-  color: #C5E057 ;
-  background-color: #4C4F3E;
-  border-radius : 5px;
-  padding: 5px 3em ;
-  margin: 20% 10% 0%;
-  font-size: 5vmin;
-  text-align: center;
-}
-
- div.title{
-  font-size: 5vmin;
-  font-weight: 20;
-  margin: 0 5% 3%;
-}
-    
-  input[type=text]{
-     padding: 5px 10px;
-     margin: 2% 10% 3%;
-     width: 76%;
-   }
-   input#add_tag {
-    font-size: 4vmin;
-    width: 15%;
-    border-radius: 15px;
-    
-   }
-
-   input#add_type{
-    font-size: 4vmin;
-    width: 15%;
-    border-radius: 15px;
-    
-   }
-
-   input[type='text']#rvTag{
-    padding: 5px 10px;
-    margin: 2% 10% 3%;
-    width: 45%
-   }
-
-   #select{
-    padding: 5px 10px;
-    margin: 2% 10% 3%;
-    width: 45%
-   }
-   select{
-    padding: 5px 10px;
-    margin: 2% 10% 3%;
-    width: 76%
-   }
-
+/* div.reviewName {
+    text-align: left;
+    color: black;
+    font-size: 7vmin;
+    font-weight: bolder;
+  } 
   
-  input[type=submit] {
-    margin: 8% 35% 5%;
+  
+  div.reviewBy p.reviewer {
+    display: inline;
+    margin-left: 10px;
+  }
+  
+  p.reviewer {
     font-size: 3vmin;
   }
-
-  /*radio buttom*/
-  .wrap {
-    display: block;
-    position: relative;
-    padding-left: 40px;
-    margin-bottom: 12px;
-    cursor: pointer;
+  
+  div.containerReview{
+    padding: 6%;
+    padding-left: 9%;
+    padding-right: 9%;
+  }
+  
+  div.reviewBy {
     font-size: 4vmin;
-    font-weight: normal;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    font-weight: 500;
+    margin: 10px 20px;
   }
   
-  /* Hide the browser's default radio button */
-  .wrap input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
+  div.reviewBy2 {
+    font-weight: bold;
+    font-size: 4.5vmin;
+    margin: 10px 40px;
   }
   
-  /* Create a custom radio button */
-  .status {
-    position: absolute;
-    top: 0px;
-    left: 2vmin;
-    height: 20px;
-    width: 20px;
-    background-color: #eee;
-    border-radius: 50%;
+  div.reviewBy3{
+    font-weight: bold;
+    font-size: 4.5vmin;
+    margin: 10px 20px;
+  
   }
   
-  /* On mouse-over, add a grey background color */
-  .wrap:hover input ~ .status {
-    background-color: #ccc;
+  hr.new5 {
+    border-top: 1px solid #9FB444;
+    color: black;
+    margin: 0;
   }
   
-  /* When the radio button is checked, add a blue background */
-  .wrap input:checked ~ .status {
-    background-color: #9FB443;
+  hr.new4 {
+    border-top: 1px solid #9FB444;
+    color: black;
+    margin: 10% 1% 0% ;
   }
   
-  /* Create the indicator (the dot/circle - hidden when not checked) */
-  .status:after {
-    content: "";
-    position: absolute;
-    display: none;
+  .view{
+    font-size: 2.5vmin;
+    margin: 0.2% 7% ;
+    color: black;
   }
   
-  /* Show the indicator (dot/circle) when checked */
-  .wrap input:checked ~ .status:after {
-    display: block;
+  .boxContent{
+    border:1px solid #9FB444;
+    border-radius:10px;
+    width: 85%;
+    height: 40%;
+    margin: 6% 6% 0%;
+    padding: 5px;
+  }  
+  
+  .givereview{
+    font-size: 3vmin;
+    margin: 0% 34.5%;
+      color: black;
   }
   
-  /* Style the indicator (dot/circle) */
-  .wrap .status:after {
-     top: 9px;
-    left: 8px;
-    width: 1vmin;
-    height: 1vmin;
-    border-radius: 50%;
-    background: white;
+  hr.line{
+  
+    width:70%;
+    text-align:center;
+    color : #9FB444;
   }
-
-  /*done radio buttom*/
-
+  
+  
+  div.reviewBy4{
+    text-align: center;
+    font-weight: lighter;
+    font-size: 4.5vmin;
+  }
+  
   @media(min-width: 768px) {
   
-    div.headsearch{
-      color: #C5E057 ;
-      background-color: #4C4F3E;
-      border-radius : 5px;
-      padding: 15px 13.55em  ;
-      margin: 10% 0% 0%;
-      
+    
+    
+    div.reviewName {
+      text-align: 50px;
+      color: black;
+      font-size: 7vmin;
+      font-weight: bolder;
+    } 
+    
+    div.reviewBy p.reviewer {
+      display: inline;
+      margin-left: 10px;
     }
     
-    div.col-sm{
-      background-color: #F8F8F8;
-      
-    }
-    div.title{
-      font-weight: 100;
-      font-size: 4vmin;
-      margin: 2% 8%;
-    }
-
-    input[type=text]{
-      padding: 5px 10px;
-      margin: 2% 10% 3%;
-      width: 80%;
+    p.reviewer {
+      font-size: 3vmin;
     }
     
+    div.view{
+      font-size: 2vmin;
+    }
+    
+    div.reviewBy {
+      font-size: 2em;
+      font-weight: 500;
+      max-width: 10px 20px;
+      
+    }
   
-    input[type=submit] {
-      margin: 8% 33% 5%;
- 
-    }
-
-    input#add_tag {
+    div.reviewBy2 {
+      font-weight: lighter;
       font-size: 3vmin;
-      width: 10%;
-      border-radius: 15px;
-      
-     }
-
-     
-
-    /*radio buttom*/
-    .wrap {
-      display: block;
-      position: relative;
-      padding-left: 150px;
-      margin-bottom: 12px;
-      cursor: pointer;
-      font-size: 22px;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
+      margin: 0 3% 0;
     }
-    
-    /* Hide the browser's default radio button */
-    .wrap input {
-      position: absolute;
-      opacity: 0;
-      cursor: pointer;
-    }
-    
-    /* Create a custom radio button */
-    .status {
-      position: absolute;
-      top: 5px;
-      left: 100px;
-      height: 25px;
-      width: 25px;
-      background-color: #eee;
-      border-radius: 50%;
-    }
-    
-    /* On mouse-over, add a grey background color */
-    .wrap:hover input ~ .status {
-      background-color: #ccc;
-    }
-    
-    /* When the radio button is checked, add a blue background */
-    .wrap input:checked ~ .status {
-      background-color: #9FB443;
-    }
-    
-    /* Create the indicator (the dot/circle - hidden when not checked) */
-    .status:after {
-      content: "";
-      position: absolute;
-      display: none;
-    }
-    
-    /* Show the indicator (dot/circle) when checked */
-    .wrap input:checked ~ .status:after {
-      display: block;
-    }
-    
-    /* Style the indicator (dot/circle) */
-    .wrap .status:after {
-       top: 9px;
-      left: 9px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: white;
-    }
-
-    /*done radio buttom*/
-
-    input[type='text']#rvTag{
-      padding: 5px 10px;
-      margin: 2% 10% 0%;
-      width: 60%
-     }
-    
-     input#add_type{
+  
+    div.reviewBy3{
+      font-weight: lighter;
       font-size: 3vmin;
-      width: 10%;
-      border-radius: 15px;
-     }
-
-     #select{
-      padding: 5px 10px;
-      margin: 2% 10% 3%;
-      width: 60%
-     }
-
+      margin: 10px 60px;
+      padding: 1% 50% 0 0;
+    }
+  
+    hr.line{
+      width:80%;
+      text-align:center;
+      size:10;  
+      color : #9FB444;
+    }
+    
+    hr.new5 {
+      border-top: 1px solid #9FB444;
+      color: black;
+      margin: 0;
+    }
+    
+    hr.new4 {
+      border-top: 1px solid #9FB444;
+      color: black;
+      margin: 10% 1% 0% ;
+    }
+    
+    .view{
+      font-size: 2.5vmin;
+      margin: 0.2% 7% ;
+      color: black;
+    }
+    
+    .boxContent{
+      border:1px solid #9FB444;
+      border-radius:20px;
+      width: 87%;
+      height: 55%;
+      margin: 2% 6% 6%;
+      padding: 5px;
+    }  
+    
+    .givereview{
+      font-size: 3vmin;
+      margin: 0% 34.5%;
+        color: black;
+    }
+  
+    div.reviewBy4{
+      text-align: center;
+      font-weight: lighter;
+      font-size: 3vmin;
+    }
+  
   }
+  
   #score{
       font-size: 15px;
       margin: 50px;
   }
+   */

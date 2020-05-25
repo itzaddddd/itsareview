@@ -131,7 +131,7 @@ class ReviewFormPage extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-sm">
-                                    <div className="headsearch">ค้นหารีวิวนิยาย</div>
+                                    <h3>ค้นหารีวิวนิยาย</h3>
                                     <div className="title">หาจากชื่อเรื่อง</div>
                                         <Field  
                                             type="text" 
@@ -245,21 +245,20 @@ class ReviewFormPage extends Component {
                                         })}
                                     </div>
                                     <div className="title">จบหรือยัง</div>
-                                        
+                                        <div className="wrap">
                                             
-                                                <label className="wrap">จบแล้ว
-                                                    <input 
-                                                        
+                                                <div>
+                                                    <Field 
                                                         id="first" 
                                                         type="radio" 
                                                         name="rvStatus" 
                                                         ng-model="content" 
                                                         value="true"
                                                     />
-                                                        <span className="status"></span>
-                                                </label>
-                                                <label className="wrap">ยังไม่จบ
-                                                    <input 
+                                                        <span className="status">จบแล้ว</span>
+                                                </div>
+                                                <div>
+                                                    <Field 
                                                         id="other" 
                                                         type="radio" 
                                                         name="rvStatus" 
@@ -267,10 +266,10 @@ class ReviewFormPage extends Component {
                                                         value="false"
                                                     />
                                                     
-                                                        <span className="status"></span>
-                                                </label>
-                                                <label className="wrap">ทั้งหมด
-                                                    <input 
+                                                        <span className="status">ยังไม่จบ</span>
+                                                </div>
+                                                <div>
+                                                    <Field 
                                                         id="all" 
                                                         type="radio" 
                                                         name="rvStatus" 
@@ -278,10 +277,10 @@ class ReviewFormPage extends Component {
                                                         value=""
                                                     />
                                                     
-                                                        <span className="status"></span>
+                                                        <span className="status">ทั้งหมด</span>
                                                     
-                                                </label>   
-                                            
+                                                </div>   
+                                        </div>
                                     <div className="title">หาจากที่มาของนิยาย</div>
                                     <div className = "dropbox">
                                         <Field 
@@ -297,7 +296,7 @@ class ReviewFormPage extends Component {
                                             <option value="อื่นๆ">อื่นๆ</option>  
                                         </Field>
                                     </div>
-                                    <Field className="submit"
+                                    <Field
                                         type="submit" 
                                         value= "ยืนยัน" 
                                         disabled={isSubmitting}
