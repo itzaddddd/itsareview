@@ -79,21 +79,20 @@ export default class PopUpAddCategory extends Component {
                         <Modal.Body >
                             <label className="cateName">ชื่อหมวดหมู่</label>
                             <input required
-                            type="text"
-                            className="cateName"
-                            value={this.state.categoryName || ''}  
-                            placeholder='ชื่อหมวดหมู่' 
-                            onChange={this.onChangeCategoryName} />
+                                type="text"
+                                className="cateName"
+                                value={this.state.categoryName || ''}  
+                                placeholder='ชื่อหมวดหมู่' 
+                                onChange={this.onChangeCategoryName} />
+
                             <label className="cateName">เพิ่มไอคอน</label>
-                            <div style={{width:'18em'}}>
-                                <input required
-                                type="file" 
-                                className='inputIcon'
+                            <input required
+                                type="text" 
+                                className='cateName'
                                 value={this.state.categoryIcon || ''}
-                                accept="image/*" 
-                                onChange={this.onChangeCategoryIcon} 
-                                style={{marginLeft:'10px'}}/>
-                            </div>
+                                placeholder='ไอคอนประจำหมวดหมู่'
+                                onChange={this.onChangeCategoryIcon} />
+                            
                         </Modal.Body>
                         <Modal.Footer>
                             <Button className='modalBtn success' type="submit" onClick={this.onSubmit} >ยืนยัน</Button>

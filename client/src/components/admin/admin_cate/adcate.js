@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './adcate.css';
 import Table from 'react-bootstrap/Table';
 import PopUpAddCategory from './popUpAddcate';
+import popUpEditCategory from './popUpEditCategory';
 import Navbar from "../admin_navbar/navbar";
 import axios from 'axios';
 import { connect } from 'react-redux'
@@ -12,16 +13,7 @@ const mapStateToProps = state => {
         user: state.user
     }
 }
-const Category = props => (
-  <tr>
-    <td>{props.category._id}</td>
-    <td>{props.category.categoryName}</td>
-    <td>{props.category.categoryIcon}</td>
-    <td>
-      <Link to={"/admin/categories/update/"+props.category._id}>แก้ไข</Link> | <button onClick={() => { props.deleteCategory(props.category._id) }}>ลบ</button>
-    </td>
-  </tr>
-)
+
 class Admin_cate extends Component {
 
     constructor(props) {
@@ -29,8 +21,9 @@ class Admin_cate extends Component {
 
         this.deleteCategory = this.deleteCategory.bind(this);
 
-        this.state = {categories: [{}], PopUpAddCategory : false, show : false}
+        this.state = {categories: [{}], PopUpAddCategory : false, popUpEditCategory : false, show : false}
 
+        this.popUpEditCategory=  this.setState({popUpEditCategory:true})
     }
 
     /* redirect to home if not admin */
@@ -71,23 +64,26 @@ class Admin_cate extends Component {
     }
 
     render() {
-
-        let PopUpClose =() => this.setState({PopUpAddCategory:false});
+        this.PopUpClose = () => this.setState({PopUpAddCategory:false}, {popUpEditCategory:false});
+        
         
         if(this.props.user.user){
             return (
                 <div>
+
                     <Navbar/>
+                    <popUpEditCategory />
+
                     <div className='topicPage'>
                         <p className="topicName">จัดการหมวดหมู่</p>
                         <button className="addCate" onClick={()=> this.setState({PopUpAddCategory: true})}>เพิ่มหมวดหมู่</button>
-                        <PopUpAddCategory show={this.state.PopUpAddCategory} onHide={PopUpClose} />
+                        <PopUpAddCategory show={this.state.PopUpAddCategory} onHide={this.PopUpClose} />
                     </div>
 
                     
 
                     <div className ="adminTable">
-                        <Table hover style={{marginBottom:0}}>
+                        <Table hover >
                             <thead className='thead-dark'>
                                 <tr>
                                     <th>Category ID</th>
@@ -107,5 +103,22 @@ class Admin_cate extends Component {
     }
     
 }
+
+const Category = props => (
+
+    <tr>
+        <td>{props.category._id}</td>
+        <td>{props.category.categoryName}</td>
+        <td>{props.category.categoryIcon}</td>
+        <td>
+            <button className="addCate" onClick={()=> this.popUpEditCategory}>แก้ไขหมวดหมู่</button>
+            {/* <popUpEditCategory show={this.state.popUpEditCategory} onHide={this.PopUpClose()}/> */}
+        
+        {/* <Link to={"/admin/categories/update/"+props.category._id}>แก้ไข</Link>  */}
+        
+        | <button onClick={() => { props.deleteCategory(props.category._id) }}>ลบ</button>
+        </td>
+    </tr>
+)
 
 export default connect(mapStateToProps,null)(Admin_cate);

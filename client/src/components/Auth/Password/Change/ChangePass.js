@@ -75,9 +75,6 @@ class ChangePassword extends Component{
     }
 
     render(){
-
-        // let PopUpClose =() => this.setState({PopUpChangePass:false, show:false, msg:'', updated:false});
-
             return(
                 <Modal animation={false}
                 {...this.props}
@@ -149,7 +146,6 @@ class ChangePassword extends Component{
                                 {(this.state.updated===false)&&
                                     <button className="button-edit" type="submit">ยืนยัน</button>
                                 }
-                                {/* <button className="button-edit" type="button" onClick={PopUpClose} >ยกเลิก</button> */}
                             </div>
                         </Form>)}
                     </Formik>

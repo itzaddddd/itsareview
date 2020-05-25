@@ -2,8 +2,8 @@ form.LoginForm {
     /* background: rgb(89,88,106);
     background: linear-gradient(0deg, rgba(89,88,106,1) 0%, rgba(185,210,83,1) 62%); */
 
-    margin: 2vmin;
-    margin-top: 10vmax;
+     margin: 2vmin;
+    /* margin-top: 10vmax;  */
     position: relative;
 }
 
@@ -80,7 +80,7 @@ input[type='text'].form-control , input[type='password'].form-control#pwd {
 }
 
 div#login-form{
-    width: 70%;
+    width: 100%;
 }
 
 .error-message{
@@ -107,6 +107,12 @@ div#login-form{
     border-radius: 0.3vw;
     padding: 1.5% 2% 1.5% ;
 }
+/* 
+@media(max-width : 1080px) {
+    .login{
+        width: 10%;
+    }
+} */
 
 @media(max-width : 768px) /*for medium device*/ {
     div#login-form{
@@ -118,6 +124,11 @@ div#login-form{
     div#login-form{
         width: 90%;
     }
-    
-    
+}
+
+.bg-login{
+    /* background-image: url("../../common/book.png"); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
