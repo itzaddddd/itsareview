@@ -9,9 +9,10 @@ import Dashboard_show_board from './components/Review/Dashboard_show_board/dashb
 import adUser from './components/admin/admin_user/aduser';
 import adHome from './components/admin/admin_home/adhome';
 import adReview from  './components/admin/admin_review/adreview';
-//import adBoard from './components/admin_board/adboard';
 import adCategory from './components/admin/admin_cate/adcate';
+import EditCategory from './components/admin/admin_cate/EditCategory'
 //import adAdvertise from './components/admin_ads/ads';
+
 import Register from './components/Auth/Register/register';
 import Login from './components/Auth/Login/login';
 // import Menu from './components/Menu/menu';
@@ -31,7 +32,6 @@ import ProtectedRoute from './components/ExtraRoute/ProtectedRoute/ProtectedRout
 import ForgotForm from './components/Auth/Password/Forgot/ForgotForm'
 import ResetForm from './components/Auth/Password/Reset/ResetPassForm'
 import ChangePassword from './components/Auth/Password/Change/ChangePass'
-// import popUpEditCategory from './components/admin/admin_cate/popUpEditCategory'
 
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux'
@@ -85,6 +85,7 @@ class App extends Component{
             <Route exact path="/admin/reviews" component={adReview} />
             {/*<Route exact path="/admin/board" component={adBoard} />*/}
             <Route exact path="/admin/categories" component={adCategory} />
+            <Route exact path="/admin/categories/update/:id" component={EditCategory} />
             
           </Switch>
         </Router>

@@ -96,7 +96,7 @@ class ReviewFormPage extends Component {
                     /* initial values (use name of input) */
                     initialValues = {{ 
                         rvTitle: "",
-                        rvChar: "",
+                        // rvChar: "",
                         rvContent: "",
                         rvStatus: "",
                         rvSource: "",
@@ -107,13 +107,13 @@ class ReviewFormPage extends Component {
                     validationSchema = {ReviewSchema}
                     /*set onSubmit function*/
                     onSubmit = { values => {
-                        let {rvTitle, rvChar, rvContent, rvSource, rvStatus} = values
+                        let {rvTitle, /*rvChar,*/ rvContent, rvSource, rvStatus} = values
                         let rvType = this.state.add_type;
                         let rvTag = this.state.add_tag
 
                         let search_values = {
                             rvTitle,
-                            rvChar,
+                            /*rvChar,*/
                             rvContent,
                             rvSource,
                             rvStatus,
@@ -121,7 +121,7 @@ class ReviewFormPage extends Component {
                             rvTag
                         }
 
-                        console.log(search_values)
+                        //console.log(search_values)
                         this.props.searchReview(search_values)
                     }}
 
@@ -139,21 +139,21 @@ class ReviewFormPage extends Component {
                                             placeholder="อยากได้ชื่อเรื่องที่มีคำนี้"
                                             className={`${touched.rvTitle && errors.rvTitle ? "is-invalid":""}`}
                                         />
-                                    <div className="title">หาจากตัวละคร</div>
+                                    {/*<div className="title">หาจากตัวละคร</div>
                                         <Field 
                                             type="text" 
                                             name="rvChar" 
                                             placeholder="ชอบ(ตัวละคร)แบบนี้"
                                             className={`${touched.rvChar && errors.rvChar ? "is-invalid":""}`}
-                                        />
-                                    <div className="title">หาจากเนื้อเรื่อง</div>
+                                        />*/}
+                                    {/*<div className="title">หาจากเนื้อเรื่อง</div>
                                         <Field 
                                             component="textarea" 
                                             id="story" 
                                             name="rvContent" 
                                             placeholder="อยากอ่านเนื้อเรื่องแบบนี้"
                                             className={`${touched.rvContent && errors.rvContent ? "is-invalid":""}`}
-                                        />
+                                        />*/}
                                     
                                     <div className="title">หาจากหมวดหมู่<span className="limit">   *ไม่เกิน 3 หมวดหมู่</span></div>
                                     <div className = "dropbox">

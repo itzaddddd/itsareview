@@ -63,6 +63,18 @@ adminRoute.route('/categories/add').post((req, res) => {
   console.log(newCategory, 'Add Category to Database');
 });
 
+adminRoute.route('/categories/update/:id').get((req, res) => {
+  Category.findById({_id:req.params.id},(err,result)=>{
+    if(err){
+        console.log(err);
+    }else{
+        res.json(result);
+    }
+  });
+  console.log('Show form for editing a review');
+});
+
+
 adminRoute.route('/categories/update/:id').post((req, res) => {
   Category.findById(req.params.id)
     .then(categories => {

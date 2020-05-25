@@ -127,7 +127,7 @@ div#login-form{
 }
 
 .bg-login{
-    /* background-image: url("../../common/book.png"); */
+    background-image: src("../../../../public/book.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;

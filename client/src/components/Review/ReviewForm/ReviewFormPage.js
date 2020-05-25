@@ -23,10 +23,10 @@ const ReviewSchema = yup.object().shape({
         .required("กรุณาใส่ชื่อนิยาย")
         .min(4,"ชื่อนิยายต้องยาวอย่างน้อย 4 ตัวอักษร")
         .max(60,"ชือนิยายต้องยาวไม่เกิน 60 ตัวอักษร"),
-    rvChar: yup.string()
-        .min(10,"ลักษณะตัวละครต้องมีความยาวอย่างน้อย 10 ตัวอักษร")
-        .max(140,"ลักษณะตัวละครต้องยาวไม่เกิน 140 ตัวอักษร")
-        .required("กรุณาแนะนำลักษณะตัวละคร"),
+    // rvChar: yup.string()
+    //     .min(10,"ลักษณะตัวละครต้องมีความยาวอย่างน้อย 10 ตัวอักษร")
+    //     .max(140,"ลักษณะตัวละครต้องยาวไม่เกิน 140 ตัวอักษร")
+    //     .required("กรุณาแนะนำลักษณะตัวละคร"),
     rvContent: yup.string()
         .min(10,"การรีวิวต้องมีความยาวอย่างน้อย 10 ตัวอักษร")
         .max(1000,"การรีวิวต้องยาวไม่เกิน 1000 ตัวอักษร")
@@ -170,9 +170,9 @@ class ReviewFormPage extends Component {
                     /* initial values (use name of input) */
                     initialValues = {{ 
                         rvTitle: "",
-                        rvChar: "",
+                        //rvChar: "",
                         rvContent: "",
-                        rvImage: null,
+                        //rvImage: null,
                         rvStatus: false,
                         rvSource: this.state.sources[0].sourceName,
                         rvType: this.state.categories[0].categoryName,
@@ -183,29 +183,29 @@ class ReviewFormPage extends Component {
                     /*set onSubmit function*/
                     onSubmit = { async values => {
                         console.log(values)
-                        const {rvTitle, rvChar, rvContent, rvImage, rvStatus, rvSource} = values;
+                        const {rvTitle, /*rvChar,*/ rvContent, /*rvImage,*/ rvStatus, rvSource} = values;
                         const rvType = this.state.add_type;
                         const rvTag = this.state.add_tag;
                         /* upload image */
-                        this.createImageUrl()
-                        if(this.state.uploaded){
-                            let rvImageUrl = this.state.url_image
-                            console.log(
-                                "ชื่อนิยาย : ",rvTitle,
-                                "\nลักษณะตัวละคร : ",rvChar,
-                                "\nรีวิวเนื้อเรื่อง : ", rvContent,
-                                "\nภาพประกอบ :",rvImageUrl,
-                                "\nประเภท : ", rvType, 
-                                "\nแท็ก :", rvTag, 
-                                "\nสถานะ : ", rvStatus,
-                                "\nที่มา :", rvSource
-                            )
+                        //this.createImageUrl()
+                        //if(this.state.uploaded){
+                            //let rvImageUrl = this.state.url_image
+                            // console.log(
+                            //     "ชื่อนิยาย : ",rvTitle,
+                            //     "\nลักษณะตัวละคร : ",rvChar,
+                            //     "\nรีวิวเนื้อเรื่อง : ", rvContent,
+                            //     "\nภาพประกอบ :",rvImageUrl,
+                            //     "\nประเภท : ", rvType, 
+                            //     "\nแท็ก :", rvTag, 
+                            //     "\nสถานะ : ", rvStatus,
+                            //     "\nที่มา :", rvSource
+                            // )
 
                             const newReview = {
                                 rvTitle, 
-                                rvChar, 
+                                //rvChar, 
                                 rvContent,
-                                rvImageUrl,
+                                //rvImageUrl,
                                 rvType,
                                 rvTag, 
                                 rvStatus, 
@@ -213,7 +213,7 @@ class ReviewFormPage extends Component {
                                 
                             }
                             this.props.addReview(newReview, this.props.user.user.userName)
-                        }
+                        //}
 
                     }}
 
@@ -237,7 +237,7 @@ class ReviewFormPage extends Component {
                                             name="rvTitle"
                                             className="invalid-feedback"
                                         />
-                                    <div className="title">รีวิวตัวละคร</div>
+                                    {/*<div className="title">รีวิวตัวละคร</div>
                                         <Field 
                                             type="text" 
                                             name="rvChar" 
@@ -248,7 +248,7 @@ class ReviewFormPage extends Component {
                                             component="div"
                                             name="rvChar"
                                             className="invalid-feedback"
-                                        />
+                                        />*/}
                                     <div className="title">รีวิวเนื้อเรื่อง</div>
                                         <Field 
                                             component="textarea" 
@@ -262,7 +262,7 @@ class ReviewFormPage extends Component {
                                             name="rvContent"
                                             className="invalid-feedback"
                                         />
-                                    <div className="title">เพิ่มรูปภาพ</div>
+                                    {/*<div className="title">เพิ่มรูปภาพ</div>
                                     <div className = "box">
                                         <input 
                                             type="file"
@@ -281,13 +281,7 @@ class ReviewFormPage extends Component {
                                                 
                                             }}
                                         />
-                                        {/*
-                                            this.state.add_image.map((image,i)=>{
-                                                 return <Thumb key={i} file={image} /> 
-                                            })
-                                            
-                                        */}
-                                   </div>
+                                        </div>*/}
                                     <div className="title">เพิ่มหมวดหมู่<span className="limit">   *ไม่เกิน 3 หมวดหมู่</span></div>
                                     <div className = "dropbox">
                                         <Field 

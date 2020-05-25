@@ -41,7 +41,7 @@ class UserInfo extends Component{
             this.state.offset+this.state.perPage
         )
         const postData = slice.map(review => 
-            <Review review={review} key={review._id} />
+            <Review review={review} key={review._id} isUserReview />
         )
 
         this.setState({

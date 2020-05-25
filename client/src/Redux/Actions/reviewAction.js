@@ -26,16 +26,14 @@ export const getReview = (id, callback) => (dispatch,getState) => {
         })
 }
 
-export const addReview = ({rvTitle, rvChar, rvContent, rvImageUrl, rvType, rvTag, rvStatus, rvSource},userName,callback) => dispatch => {
+export const addReview = ({rvTitle, /*rvChar,*/ rvContent, /*rvImageUrl,*/ rvType, rvTag, rvStatus, rvSource},userName,callback) => dispatch => {
     const config = {
         headers: {
             "Content-type": "application/json"
         }
     }
-    console.log('rvImage length',rvImageUrl.length)
 
-    const body = JSON.stringify({userName, rvTitle, rvChar, rvContent, rvImageUrl, rvType, rvTag, rvStatus, rvSource});
-    console.log('body ',body.rvImageUrl)
+    const body = JSON.stringify({userName, rvTitle, /*rvChar,*/ rvContent, /*rvImageUrl,*/ rvType, rvTag, rvStatus, rvSource});
     axios.post('/review/create', body, config)
         .then( res => dispatch({
             type: ADD_REVIEW,
@@ -49,14 +47,14 @@ export const addReview = ({rvTitle, rvChar, rvContent, rvImageUrl, rvType, rvTag
     if(typeof callback === "function") callback();
 }
 
-export const editReview = ({rvTitle, rvChar, rvContent, /*rvImageUrl,*/ rvType, rvTag, rvStatus, rvSource},userName,callback) => dispatch => {
+export const editReview = ({rvTitle, /*rvChar,*/ rvContent, /*rvImageUrl,*/ rvType, rvTag, rvStatus, rvSource},userName,callback) => dispatch => {
     const config = {
         headers: {
             "Content-type": "application/json"
         }
     }
 
-    const body = JSON.stringify({userName, rvTitle, rvChar, rvContent, /*rvImageUrl,*/ rvType, rvTag, rvStatus, rvSource});
+    const body = JSON.stringify({userName, rvTitle, /*rvChar,*/ rvContent, /*rvImageUrl,*/ rvType, rvTag, rvStatus, rvSource});
 
     axios.put(`/review/${store.getState().review.review._id}/edit?_method=PUT`, body, config)
         .then( res => dispatch({

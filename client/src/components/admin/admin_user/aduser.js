@@ -15,13 +15,11 @@ const User = props => (
     <tr>
         <td>{props.user._id}</td>
         <td>{props.user.userName}</td>
-        <td>{props.user.userImage}</td>
+        {/* <td>{props.user.userImage}</td> */}
         <td>{props.user.userEmail}</td>
         <td>{props.user.userJoin}</td>
-        {/* <td>{props.user.logReview}</td> */}
-        {/* {homes.map(home => <div>{home.name}</div>)} */}        
         <td>
-            <button onClick={() => { props.deleteUser(props.user._id) }}>ลบ</button>
+            <button onClick={() => {if(window.confirm('คุณต้องการลบผู้ใช้\nID: ' + props.user._id + '\nชื่อผู้ใช้: '+ props.user.userName)) {props.deleteUser(props.user._id)} }}>ลบ</button>
         </td>
     </tr>
 )
@@ -89,7 +87,7 @@ class Aduser extends Component {
                                 <tr>
                                 <th>user ID</th>
                                 <th>ชื่อผู้ใช้</th>
-                                <th>รูปผู้ใช้งาน</th>
+                                {/* <th>รูปผู้ใช้งาน</th> */}
                                 <th>E-mail</th>
                                 <th>วันที่เข้ารวม</th>
                                 {/* <th>ประวัติรีวิว</th> */}
@@ -97,16 +95,7 @@ class Aduser extends Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                {/* <tr>
-                                    {this.state.users.map(user=> <td>{user.userID}</td>)}
-                                    {this.state.users.map(user=> <td>{user.userName}</td>)}
-                                    {this.state.users.map(user=> <td>{user.userImage}</td>)}
-                                    {this.state.users.map(user=> <td>{user.userEmail}</td>)}
-                                    {this.state.users.map(user=> <td>{user.userJoin}</td>)}
-                                    {this.state.users.map(user=> <td>{user.logReview}</td>)}
-                                </tr> */}
                                 { this.userList() }
-                                
                             </tbody>
                         </Table>
                     </div>

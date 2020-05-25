@@ -27,6 +27,10 @@ i#icon-comment{
   text-align: right;
 }
 
+.comment-guest{
+  text-align: center;
+}
+
 button.submit-comment, #comment-reveal {
   border: none;
   background-color: #B9D253;
@@ -106,4 +110,10 @@ textarea.input-comment:focus {
   border: 2px solid #ddd;
   border-radius: 1vmin;
   padding: 2vmin;
+}
+
+@media (min-width:427px){
+  .comment-guest{
+    font-size:3vmin;
+  }
 }
