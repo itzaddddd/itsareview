@@ -6,7 +6,8 @@ import { connect } from 'react-redux' // redux hook function for use global prop
 import PropTypes from 'prop-types'
 import Review from '../../Review/Review/userhisReview'
 import { loadUser } from '../../../Redux/Actions/userAction';
-
+import Pagination from 'react-paginate'
+import { WaveLoading } from 'react-loadingg'
 
 const mapStateToProps = props => {
     return {
@@ -19,6 +20,13 @@ class UserInfo extends Component{
     constructor(props){
         super(props)
 
+        this.state = {
+            offset: 0,
+            reviews:[],
+            reviewsSize: 0,
+            perPage: 5,
+            currentPage: 0
+        }
     }
 
     static propTypes = {
@@ -26,9 +34,43 @@ class UserInfo extends Component{
         review: PropTypes.object.isRequired
     }
 
+    receiveData = () => {
+        const data = this.props.user.user.logReview
+        const slice = data.slice(
+            this.state.offset,
+            this.state.offset+this.state.perPage
+        )
+        const postData = slice.map(review => 
+            <Review review={review} key={review._id} />
+        )
+
+        this.setState({
+            pageCount: Math.ceil(data.length/ this.state.perPage),
+            reviewsSize: data.length,
+            postData
+        })
+    }
+
+    handlePageClick = e => {
+        const selectedPage = e.selected
+        const offset = selectedPage * this.state.perPage
+        this.setState({
+            currentPage: selectedPage,
+            offset: offset
+        },()=>{
+            this.receiveData()
+        }
+        )
+    }
     componentDidUpdate(prevProps){
         if(prevProps.review.is_deleted !== this.props.review.is_deleted && prevProps.review.is_deleted===false){
             this.props.loadUser()
+        }
+
+        if(prevProps.user !== this.props.user){
+            if(this.props.user.user){
+                this.receiveData()
+            }
         }
     }
     render(){
@@ -56,8 +98,7 @@ class UserInfo extends Component{
                         <h3>ประวัติ</h3>
                         <hr></hr>
                         <div className="review">
-                            <i className="fas fa-star fa-2x"></i>  <p className="topicHistory">นิยายที่รีวิว</p>
-                            <a className="more">ดูเพิ่มเติม  <i className="fas fa-angle-double-right"></i></a>
+                            <i className="fas fa-star fa-2x"></i>  <p className="topicHistory">นิยายที่รีวิว ({this.state.reviewsSize || ''})</p>
                             {/*<div className="show"></div>*/}
                             {/*<UserHisReview />*/}
                         </div>
@@ -68,11 +109,25 @@ class UserInfo extends Component{
                         </div>*/}
 
                         {/*show user reviewed */}
-                        {this.props.user.user?this.props.user.user.logReview.map(review => {
-                            return (
-                                <Review review={review} key={review._id} isUserReview/>  
-                            )
-                        }):''}
+                        <div className="review-his">
+                            {this.state.postData}
+                            {this.state.postData?
+                                <Pagination
+                                    previousLabel={<i className="fas fa-chevron-left"></i>}
+                                    nextLabel={<i className="fas fa-chevron-right"></i>}
+                                    breakLabel={"..."}
+                                    breakClassName={"break-me"}
+                                    pageCount={this.state.pageCount}
+                                    marginPagesDisplayed={2}
+                                    pageRangeDisplayed={this.state.perPage}
+                                    onPageChange={this.handlePageClick}
+                                    containerClassName={"pagination"}
+                                    subContainerClassName={"pages pagination"}
+                                    activeClassName={"active"}
+                                />:
+                                <WaveLoading color="#B9D253" size="small"/>
+                            }
+                        </div>
                     </div>
                 </div>
             )   

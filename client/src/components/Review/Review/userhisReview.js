@@ -44,6 +44,7 @@ class UserHisReview extends Component{
 
     componentDidMount(){
         if(this.props.review){
+            console.log(this.props.review)
             /* Get user by id*/
             if(this.props.review.user_id !== 'guest_review' || this.props.review.user_id !== 'บุคคลทั่วไป'|| this.props.review._id !== null){
                 axios.get(`/user/${this.props.review.user_id}`)
@@ -106,14 +107,16 @@ class UserHisReview extends Component{
                             <div className="date">
                                 {this.props.review?dateFormat(this.props.review.rvTime, 'dd/mm/yyyy'):''}
                                     
-                                <div className="heart-fav">{this.state.heart}</div>
+                                {!this.props.isReadLater?
+                                    <div className="heart-fav">{this.state.heart}</div>:''
+                                }
                                 
                             </div>
                         </div>
                         {this.props.isUserReview?'':
                         <div>
                             <div className="review-name bold">รีวิวโดย</div>
-                            <div className="review-name">{this.state.name}</div>
+                            <div className="review-name">   {this.state.name}</div>
                         </div>
                         }
                         <div>
@@ -144,10 +147,9 @@ class UserHisReview extends Component{
                             </div>
                         </div>
                         <div>
-                            <div className="rating-his bold">เรตติ้ง</div>
                             <div className="num-com">
                             <div className="num-of-read"><i id="icon-b" className="fas fa-eye"></i>{this.props.review?this.props.review.rvView_Num:''}</div>
-                            <div className="comment2"><i id="icon-b" className="far fa-comment-dots"></i>คอมเม้นต์</div>
+                            <div className="comment2"><i id="icon-b" className="far fa-comment-dots"></i>{this.props.review?this.props.review.rvComment.length:0}</div>
                             {this.props.isUserReview?
                                 <div className="edit">
                                     <a href={`/review/${this.props.review?this.props.review._id:''}/edit`}><span>แก้ไข</span></a>

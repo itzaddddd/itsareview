@@ -60,6 +60,10 @@ div.userinfo > i.far {
     color: #9FB444;
 }
 
+div.review-his{
+    margin-bottom: 6vmin;
+}
+
 p.topicHistory {
     display: inline;
     font-size: 4vmin;
@@ -122,12 +126,16 @@ div#edit {
     text-align: center;
 }
 
-@media(max-width: 767px) {
+@media(max-width: 768px) {
 
     div.userinfo {
         width: 60%;
         padding-bottom: 1%;
         margin: auto auto 2%;
+    }
+
+    div.review-his{
+        margin-bottom: 16vmin;
     }
 }
 
