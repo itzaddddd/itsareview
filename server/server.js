@@ -2,81 +2,38 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const PORT = 4000;
-/* connect mongoDB database */
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/Itsareview', { 
-    useUnifiedTopology: true, 
-    useNewUrlParser: true, 
-    useCreateIndex: true 
-});
-const connection = mongoose.connection;
-connection.once('open', ()=>{
-    console.log("MongoDB database connection established successfully");
-});
-/* import model */
-const User = require('./models/Users');
+const path = require('path');
+const config = require('config');
+const methodOverride = require('method-override')
+
+/*set constraint*/
+const PORT = config.get('PORT');
 
 /* import router */
 const userRoute = require('./routes/userRoute');
 const reviewRoute = require('./routes/reviewRoute');
 const searchRoute = require('./routes/searchRoute');
+const adminRoute = require('./routes/adminRoute');
 
-/* passport */
-const LocalStrategy = require('passport-local').Strategy;
-const passport = require('passport');
-const cookieParser = require('cookie-parser');
-const flash = require('connect-flash');
+/* create database connection */
+require('./config/mongoose');
 
-/* - */
 app.use(cors());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(methodOverride('_method'))
 
-app.use(require('express-session')({
-    secret: 'itsareview',
-    resave: false,
-    saveUninitialized: false
-}));
+/* set route */
+app.route('/').get((req,res)=>{
+    res.send("It's a review");
+});
 
-app.use(passport.initialize());
-app.use(flash());
-app.use(passport.session());
-
-passport.use(new LocalStrategy({
-    usernameField: 'userName',
-    passwordField: 'pass1'
-},(username, password, done) => {
-    console.log('username : '+username);
-    User.findOne({
-        userName: username
-    }, (error, user) => {
-        if (error) {
-            return done(error);
-        }
-        if (!user) {
-            return done(null, false, {
-                message: 'Username or password incorrect'
-            });
-        }
-
-
-        // Do other validation/check if any
-
-        return done(null, user);
-    });
-})
-);
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-/* create router */
 app.use('/user',userRoute);
 app.use('/review',reviewRoute);
 app.use('/search',searchRoute);
-
-app.get('/',(req,res)=>{
-    res.send("Hello React");
-});
+app.use('/admin',adminRoute);
 
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);

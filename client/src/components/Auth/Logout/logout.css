@@ -1,0 +1,21 @@
+span#logout{
+	color: #9FB444;
+    font-size: 2.3vmin;
+    margin-right: 1vw;
+}
+span#logout:hover{
+    cursor: pointer;
+    font-weight: bolder;
+}
+/* 
+@media(max-width: 900px) {
+    a#logout{
+        font-size: 2.5vmin;
+    }
+}
+
+@media(max-width: 600px) {
+    a#logout{
+        font-size: 2.2vw;
+    }
+} */

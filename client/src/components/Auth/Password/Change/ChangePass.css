@@ -1,0 +1,153 @@
+/* @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css); */
+
+div.header {
+    margin-top: 50px;
+    width:100%; 
+    height: 40vmin;
+    box-shadow: 0 2px 10px 0 rgba(25,25,25,0.5), 0 4px 13px 0 rgba(25,25,25,0.2);
+    background: linear-gradient(to right, #B9D253 50%, #242424 50%);
+    padding-bottom: 50px;
+    border-bottom-right-radius: 200vmin;
+    border-bottom-left-radius: 200vmin;
+    background-position: 50% 50%;
+    border-top: 0px;
+}
+
+div.avatar {
+    text-align: center;
+}
+
+img.avatar {
+    width: 25vmin;
+    height: 25vmin;
+    position: relative;
+    border-radius: 100%;
+    top: 27vmin;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+    
+#line1 {
+    margin-top: 15vmin;
+}
+
+.inbox-edit-pass {
+    margin-top: 2vmax;
+}
+
+div.user1{
+    margin-bottom: 1%;
+    text-align: center;
+    font-size: 3vmin;
+    justify-content: space-between;
+}
+
+div.user1 > i.far {
+    font-size: 2.7vmin;
+    margin-right: 1%;
+    color: #9FB444;
+}
+
+p.edit-pass-topic {
+    display: inline;
+    font-size: 4vmin;
+}
+
+button.button-edit{
+    background-color: #B9D253;
+    color: #242424;
+    border: none;
+    width: 25%;
+    font-size: 3vmin;
+    border-radius: 5em;
+    cursor: pointer;
+    margin: 5vmin auto;
+}
+
+button.button-edit:hover {
+    background-color: #9FB444;
+    box-shadow: 1px 1px 3px black;
+}
+
+#edit-pass{
+    text-align: center;
+}
+
+div.history{
+    width: 80%;
+    color: #242424;
+    margin: auto;
+    padding-top: 5%;
+}
+
+hr {
+    background-color: #707070;
+}
+
+div.review, div.board {
+    color: #707070;
+    font-size: 3vmin;
+    margin-bottom: 2vmin;
+    vertical-align: middle;
+}
+
+div.review i {
+    color: #9FB444;
+}
+
+a.more {
+    float: right;
+    color: #9FB444;
+    padding-top: 1vmin;
+}
+
+a.more:hover {
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+div.show {
+    text-align: center;
+    height: 110px;
+    border:solid 2px #e6e6e6;
+    overflow:scroll;
+    overflow-x:hidden;
+    overflow-y:scroll;
+}
+
+.error-message-edit-pass {
+    margin: 5vmin;
+    font-size: 4.5vmin;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.error-message-edit-pass.fail {
+    color: red;
+    margin: 1vmin 1vmin 0;
+    font-size: 3.5vmin;
+    justify-content: baseline;
+}
+
+/* .error-message-edit-pass::after {
+    font-family: FontAwesome;
+    font-size: 4vmax;
+    content: "\f05d" ;
+    margin-right: 2vmin;
+} */
+
+/************************* modal css ****************************/
+.modal-backdrop.show {
+    border: none;
+}
+
+.modal-header#modal-header-edit-pass {
+    padding: 2vmin;
+}
+
+@media(max-width :768px) {
+    .modal-dialog {
+        width: 70%;
+        margin-top: 30vmax;
+    }
+}

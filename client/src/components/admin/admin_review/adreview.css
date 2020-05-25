@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
+
+div.adminTableReview {
+    width: max-content;
+    text-align: center;
+    align-content: center;
+    border-collapse: collapse;
+    border-bottom: 1px solid #ddd;
+    font-size: 1.1vw;
+    margin-left: 3vw;
+}
+
+.adminTableReview tr th {
+    line-height: initial;
+    align-items: center;
+}
+
+div.adminTableReview th {
+    color: #B9D253;
+    text-align: center;
+}
+
+div.topicPage {
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 10em;
+    margin-bottom: 3em;
+}
+
+div.topicPage > p.topicName { 
+    font-size: 2.5vw;
+    color: #B9D253;
+    font-weight: bolder;
+}
+
+div.fade.modal.show {
+    overflow: visible;
+}
+
+.fade.show {
+    height: 100%;
+}
+
+a.delReview {
+    text-decoration : underline;
+    cursor : pointer;
+    color : Red;
+}
+
+a.delReview:hover {
+    font-weight: bolder;
+    text-decoration : underline;
+    color : Red;
+}
+
+p.message {
+    font-size: 1.4vw;
+    position: relative;
+    vertical-align: middle;
+}
+
+div.modal-footer button {
+    font-size: 1vw;
+    margin: 0;
+}
+@media (min-width: 768px) {
+    .fade {
+        height: 100%;
+    }
+
+    .modal-backdrop.show {
+    height: 100%;
+    overflow: visible;
+    }
+}
+

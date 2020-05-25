@@ -1,72 +1,71 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const User = require('../models/Users');
+const Comment = require('../models/Comments');
+const CommentSchema = mongoose.model('Comment').schema;
+// const UserSchema = mongoose.model('User').schema;
 
 let Review = new Schema({
-    rvID : {
-        type: String,
-        required: true
-    },
 	rvTitle : {
         type: String,
         required: true
     },
-	rvAuthor : {
+	// rvAuthor : {
+    //     type: String,
+    // },
+	user_id : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
         type: String,
+        default: null
     },
-	userID : String,
 	rvTime : {
         type: Date,
+        default: Date.now(),
         required: true,
-        default: Date.now
+        
     },
-	rvType : [{
-        type: String,
+	rvType : {
+        type: [String],
         required: true
-    }],
-	rvTag : [{
-        type: String,
-    }],
+    },
+	rvTag : {
+        type: [String]
+    },
 	rvChar : {
         type: String,
     },
 	rvContent : {
-		rvStory : {
-            type: String,
-            required: true
-        },
-		rvImage : [{
-            type: String,
-        },]
-	},
+        type: String,
+        required: true
+    },
+	rvImage : {
+        type: [String]
+    },
+	
 	rvStatus : {
         type: Boolean,
         required: true,
         default: false
     },
-	rvNovel : {
+	//rvNovel : {
 		rvSource : {
             type: String,
             required: true
         },
-		rvLink : {
-            type: String,
-        },
-	},
-	reviewRate : {
-        type: Number,
-    },
+	// 	rvLink : {
+    //         type: String,
+    //     },
+	// },
+	// reviewRate : {
+    //     type: Number,
+    // },
 	rvView_Num : {
         type: Number,
         required: true,
         default: 0
     },
-	// rvComment : {
-	// 	rvComment_Num : {
-    //         type: Number,
-    //         required: true
-    //     },
-	// 	rvComment_Post : Comment[]
-	// },
+	rvComment : [CommentSchema]
 	// rvFav_Num : {
     //     type: Number,
     //     required: true

@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
+
+div.adminTable {
+    margin: auto;
+    width: 90%;
+    text-align: center;
+    align-content: center;
+    font-size: 2.3vmin;
+}
+
+Table.adminTable {
+    border-collapse: collapse;
+    border-bottom: 1px solid #ddd;
+}
+
+.adminTable tr th {
+    line-height: initial;
+    text-align: center;
+}
+
+div.adminTable th {
+    color: #B9D253;
+}
+
+div.topicPage {
+    text-align: center;
+    vertical-align: middle;
+}
+
+div.topicPage > p.topicName { 
+    font-size: 2.5vw;
+    color: #B9D253;
+}
+
+.edit {
+    text-decoration : underline;
+    cursor : pointer;
+    color : Red;
+    font-size: 1.2vw;
+}
+
+button.addCate {
+    width: 8em;
+    border-radius: 15px;
+    font-size: 1.2vw;
+}
+
+a.delCategory {
+    color: red;
+    font-size: 1.4vw;
+    cursor: pointer;
+}
+
+a.delCategory:hover,.editCategory:hover {
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.editCategory {
+    font-size: 1.4vw;
+    cursor: pointer;
+}
+

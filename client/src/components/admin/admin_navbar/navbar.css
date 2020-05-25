@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
+
+*{
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+}
+
+p.admin_welcome {
+    font-size: 4vmin;
+    color: black;
+}
+
+ul {
+    display: inline;
+    vertical-align: middle;
+}
+
+ul.container1 {
+    float: left;
+    margin-left: 1em;
+}
+
+ul.container2 {
+    float: right;
+    margin-right: 1em;
+}
+
+img.admin-logo {
+    width: 6em;
+    height: auto;
+    margin-right: 1.75vmin;
+    bottom: 0;
+}
+
+img.mascot {
+    width: 15em;
+    height: auto;
+    box-shadow: none;
+}
+
+a.ad , Link.ad {
+    color:  #B9D253;
+    margin: 0;
+    font-size: 2.3vmin;
+}
+
+a.ad:hover , Link.ad:hover{
+    color:  #B9D253;
+    font-weight: bolder;
+    text-decoration-style: wavy;
+}
+
+ul.container1 li {
+    margin: 1vmin;
+    display: inline;
+    vertical-align: middle;
+}
+
+
+
+div.main-navigation {
+    margin: 0;
+    font-family: 'Kanit', sans-serif;
+    font-size: 2vmin;
+    font-weight: initial;
+    width: 100%;
+    height: 3em;
+    background : black;
+    text-align: left;
+    position: fixed;
+    top: 0;
+    line-height: 3;
+    color: #B9D253;
+    position: fixed;
+}
+
+nav.adNav ul.container1 , nav.adNav ul.container1.right{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.container1.right {
+    float: right;
+    right: 0;
+    vertical-align: middle;
+    width: 30vmax;
+}
+
+
+
+nav.adNav li {
+    display: inline;
+    /* width: calc(100vw / 4.6); */
+    padding: 0px;
+}
+
+/* nav.adNav p {
+    font-size: .9em;
+} */
+
+@media(max-width: 1023px) {
+    img.admin-logo {
+        display: none;
+    }
+ 
+    a.ad:hover , Link.ad:hover {
+        font-size: 2vmin;
+    }
+}

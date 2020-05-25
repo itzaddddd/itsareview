@@ -1,6 +1,9 @@
 const reviewRoute = require('express').Router();
 const Review = require('../models/Reviews');
+const User = require('../models/Users');
 const Category = require('../models/Categories');
+const Comment = require('../models/Comments')
+const RegexEscape = require('escape-regexp')
 
 reviewRoute.route('/').get((req,res)=>{
     Review.find({},(err,result)=>{
@@ -13,43 +16,78 @@ reviewRoute.route('/').get((req,res)=>{
     console.log('All reviews');
 });
 
-reviewRoute.route('/create').get((req,res)=>{
-    res.send('Review creating form');
-    console.log('Show form for creating a review');
-});
-
+// @route   POST /review/create
+// @desc    Create a review 
+// @access  Public
 reviewRoute.route('/create').post((req,res)=>{
-    let review = new Review({
-        rvTitle: req.body.rvTitle,
-        rvAuthor: req.body.rvAuthor,
-        userID: req.session._id,
-        rvType: req.body.rvType,
-        rvTag: req.body.rvTag,
-        rvChar: req.body.rvChar,
-        rvContent: {
-            rvStory: req.body.rvStory,
-            rvImage: req.body.rvImage
-        },
-        rvStatus: req.body.rvStatus,
-        rvNovel: {
-            rvSource: req.body.rvSource,
-            rvLink: req.body.rvLink
-        },
-        rvRate: req.body.rvRate,
-    });
-
-    review.save((err, result)=>{
-        if(err){
-            console.log(err)
-        }else{
-            res.json(result);
-        }
-    });
+    console.log('image ',req.body.rvImageUrl)
+    const {userName,rvTitle, rvChar, rvContent, rvImageUrl, rvType, rvTag, rvStatus, rvSource} = req.body;
+    
+    // find user_id by userName
+    if(userName == 'Guest'){
+        const review = new Review({
+            user_id: 'บุคคลทั่วไป',
+            rvTitle: rvTitle,
+            // rvChar: rvChar,
+            rvContent: rvContent,
+            // rvImage: rvImageUrl,
+            rvType: rvType,
+            rvTag: rvTag,
+            rvStatus: rvStatus,
+            rvSource: rvSource
+        });
+        // save review
+        review.save((err, result)=>{
+            if(err){
+                console.log('Error : ',err)
+            }else{
+                res.json(result);
+            }
+        });
+    }else{
+        User.findOne({userName: userName}, (err,result)=>{
+            if(err) console.log(err);
+            let user_id = result._id
+            // define new review
+            const review = new Review({
+                user_id: user_id,
+                rvTitle: rvTitle,
+                // rvChar: rvChar,
+                rvContent: rvContent,
+                // rvImage: rvImageUrl,
+                rvType: rvType,
+                rvTag: rvTag,
+                rvStatus: rvStatus,
+                rvSource: rvSource
+            });
+            // save review
+            review.save((err, result)=>{
+                if(err){
+                    console.log('Error : ',err)
+                }else{
+                    // update logReview
+                    User.findOneAndUpdate(
+                        {userName: userName},
+                        {$push: {
+                            logReview: result
+                            }
+                        }
+                    )
+                    .then(res => console.log(res))
+                    .catch(err => console.log(err));
+                    res.json(result);
+                }
+            });
+        });
+    }
     console.log('Create a review');
 });
 
-reviewRoute.route('/category/:id').get((req,res)=>{
-    Category.findById({_id:req.params.id},(err,result)=>{
+// @route   GET /review/category?category=category
+// @desc    Get a type of review by id
+// @access  Public
+reviewRoute.route('/category').get((req,res)=>{
+    Review.find({rvType:req.query.category},(err,result)=>{
         if(err){
             console.log(err);
         }else{
@@ -59,17 +97,38 @@ reviewRoute.route('/category/:id').get((req,res)=>{
     console.log('Show reviews in the category by id');
 });
 
-reviewRoute.route('/:id').get((req,res)=>{
-    Review.findById({_id:req.params.id},(err,result)=>{
+// @route   GET /review/tag/:id
+// @desc    Get a tag of review by id
+// @access  Public
+reviewRoute.route('/tag').get((req,res)=>{
+
+    Review.find({rvTag:req.query.tag},(err,result)=>{
         if(err){
             console.log(err);
         }else{
             res.json(result);
         }
     });
-    console.log('Show a review');
+    console.log('Show reviews in the tag by id');
 });
 
+// @route   GET /review/:id
+// @desc    Get a review by id
+// @access  Public
+reviewRoute.route('/:id').get((req,res)=>{
+    console.log('id form route :',req.params.id)
+    Review.findById(req.params.id,(err,result)=>{
+        if(err){
+            console.log(err);
+        }else{
+            res.json(result);
+        }
+    });
+    console.log('Get a review');
+});
+// @route   GET /review/:id/edit
+// @desc    Get form for editing a review
+// @access  Private
 reviewRoute.route('/:id/edit').get((req,res)=>{
     Review.findById({_id:req.params.id},(err,result)=>{
         if(err){
@@ -80,45 +139,102 @@ reviewRoute.route('/:id/edit').get((req,res)=>{
     });
     console.log('Show form for editing a review');
 });
-
+// @route   Put /review/:id/edit
+// @desc    Edit a review
+// @access  Private
 reviewRoute.route('/:id/edit').put((req,res)=>{
-    Review.findByIdAndUpdate({_id:req.params.id},{
-        $set: {
+    console.log('edit id : ',req.params.id)
+    Review.findOneAndUpdate({_id: req.params.id},{
+        $set:{
             rvTitle: req.body.rvTitle,
-            rvAuthor: req.body.rvAuthor,
             rvType: req.body.rvType,
             rvTag: req.body.rvTag,
-            rvChar: req.body.rvChar,
-            rvContent: {
-                rvStory: req.body.rvStory,
-                rvImage: req.body.rvImage
-            },
+            // rvChar: req.body.rvChar,
+            rvContent: req.body.rvContent,
             rvStatus: req.body.rvStatus,
-            rvNovel: {
-                rvSource: req.body.rvSource,
-                rvLink: req.body.rvLink
-            },
-            rvRate: req.body.rvRate,
+            rvSource: req.body.rvSource
         }
-    },(err,result)=>{
+    },{new:true},(err,result)=>{
         if(err){
             console.log(err);
         }else{
+            /* response updated review */
             res.json(result);
+            /* update logReview's user */
+            User.findOneAndUpdate({
+                'userName':req.body.userName,
+                'logReview._id':result._id
+            },{
+                $set:{
+                    "logReview.$": result                
+            }},{new: true},(err,result)=>{
+                if(err)console.log(err);
+            })
         }
     });
     console.log('Edit review');
 });
 
+// @route   POST /review/:id/comment
+// @desc    Add a comment
+// @access  Private
+reviewRoute.route('/:id/comment').post((req,res)=>{
+    let review_id = req.params.id
+    let {commentPost, user_id} = req.body
+    console.log(req.body)
+    let comment = new Comment({
+        review_id: review_id,
+        commentPost: commentPost,
+        user_id: user_id
+    })
+
+    comment.save((err,comment)=>{
+        if(err)console.log(err)
+        //res.json(comment)
+        Review.findByIdAndUpdate(review_id,{
+            $push:{
+                rvComment:comment
+            }
+        },{new:true},(err,review)=>{
+            if(err)console.log(err)
+            res.json(review)
+        })
+    })
+
+    console.log('Add comment')
+})
+
+reviewRoute.route('/:id/comment').delete((req,res)=>{
+    console.log('body ',req.body)
+    Comment.findByIdAndRemove({_id:req.body.comment_id},(err,comment)=>{
+        if(err)console.log(err)
+        console.log('delete comment ',comment)
+        Review.findByIdAndUpdate(req.params.id,{
+            $pull: {'rvComment':{_id:req.body.comment_id}}
+        },{new: true},(err, review)=>{
+            if(err)console.log(err)
+            res.json(review)
+        })
+    })
+    console.log('Delete comment')
+})
+// @route   Delete /review/:id
+// @desc    Edit a review
+// @access  Private
 reviewRoute.route('/:id').delete((req,res)=>{
-    Review.findByIdAndRemove({_id:req.params.id},(err,result)=>{
-        if(err){
-            console.log(err);
-        }else{
-            res.json(result);
-        }
+    Review.findOneAndRemove({_id:req.params.id},(err,review)=>{
+        if(err)console.log(err)
+        console.log('deleted review : ',review)
+        User.findOneAndUpdate({_id:review.user_id},{
+            $pull: {'logReview':{_id:review._id}}
+        },{new:true},(err,user)=>{
+            if(err)console.log(err)
+            console.log('user log review ',user.logReview)
+            res.json(user)
+        })
     });
     console.log('Delete review');
 });
+
 
 module.exports = reviewRoute;

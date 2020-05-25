@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
+
+
+input.cateName , input[type='text'].cateName {
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: 0 4px 2px -2px none;
+    border-color: #B9D253;
+    margin-bottom:10px; 
+    margin-top:5px;
+    font-size: 2.5vmin;
+    padding: 10px;
+}
+
+label.cateName{
+    font-size: 3vmin;
+} 
+
+.iconCate {
+    width:10em;
+    margin-top:10px;
+    text-align: left;
+
+}
+
+button.close > span {
+    font-size: 6vmin;
+    vertical-align: middle;
+}
+
+button.close:hover > span {
+    color: red;
+    text-shadow: 1px 1px 3px black;
+}
+
+input:focus {
+    outline: none;
+}
+
+label.inputName {
+    font-size: 3vmin;
+    text-align: left;
+    margin-bottom: 10px;
+    margin-top: 0;
+    width: 100%;
+}
+
+input.inputIcon {
+    text-align: center;
+    font-size: 2vmin;
+}
+
+p.popUpTopic{
+    font-size: 3.5vmin;
+    margin-top: 1vmin;
+    margin-bottom: 0;
+    color:'Black';
+    float: left;
+    vertical-align: middle;
+}
+
+div.modal-footer button.modalBtn {
+    font-size: 3vmin;
+    color: initial;
+}
+
+
+.fade {
+    height: 100%;
+}
+
+.modal-dialog {
+    width: 50%;
+    margin: 13vmax auto;
+}
+
+.modal-backdrop.show {
+height: 100%;
+overflow: visible;
+opacity: 0.7 !important;
+}
+
+div.fade.modal.show {
+    overflow: visible;
+}
+
+Button.success {
+    background-color: #B9D253;
+    border: none;
+}
+
+Button.success:hover {
+    background-color: #9FB444;
+    box-shadow: 1px 1px 3px black;
+}

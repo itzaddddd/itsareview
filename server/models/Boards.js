@@ -10,10 +10,6 @@ let Board = new Schema({
         type: String,
         required: true
     },
-	userID : {
-        type: String,
-        required: true
-    },
 	boardTime : {
         type: Date,
         required: true

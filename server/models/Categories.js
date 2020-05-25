@@ -3,8 +3,7 @@ let Schema = mongoose.Schema;
 
 let Category = new Schema({
     categoryID : {
-        type: String,
-        required: true
+        type: String
     },
 	categoryName : {
         type: String,
@@ -13,12 +12,7 @@ let Category = new Schema({
     categoryIcon : {
         type: String,
         required: true
-    },
-	// categoryContent : Review[],
-	categoryContent_Num : {
-        type: Number,
-        required: true
-    },
+    }
 });
 
 module.exports = mongoose.model('Category',Category);
