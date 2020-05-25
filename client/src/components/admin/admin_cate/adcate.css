@@ -5,6 +5,7 @@ div.adminTable {
     width: 90%;
     text-align: center;
     align-content: center;
+    font-size: 2.3vmin;
 }
 
 Table.adminTable {
@@ -43,3 +44,20 @@ button.addCate {
     border-radius: 15px;
     font-size: 1.2vw;
 }
+
+a.delCategory {
+    color: red;
+    font-size: 1.4vw;
+    cursor: pointer;
+}
+
+a.delCategory:hover,.editCategory:hover {
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.editCategory {
+    font-size: 1.4vw;
+    cursor: pointer;
+}
+
