@@ -54,7 +54,7 @@ class CommentBox extends React.Component {
       return(
         <div className="comment-box">
             {/* <p className="comment-topic">แสดงความคิดเห็นต่อรีวิวนี้</p> */}
-            {this.props.user.user&&this.props.user.user._id?<CommentForm addComment={this.props.addComment}/>:<div><a href="/login">เข้าสู่ระบบ</a>เพื่อแสดงความคิดเห็น</div>}  
+            {this.props.user.user&&this.props.user.user._id?<CommentForm addComment={this.props.addComment}/>:<div className="comment-guest"><a href="/login">เข้าสู่ระบบ</a>เพื่อแสดงความคิดเห็น</div>}  
             <div className="button-show-review">
                <button id="comment-reveal" onClick={this._handleClick.bind(this)}>
                   {buttonText}

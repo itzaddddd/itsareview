@@ -28,9 +28,9 @@ reviewRoute.route('/create').post((req,res)=>{
         const review = new Review({
             user_id: 'บุคคลทั่วไป',
             rvTitle: rvTitle,
-            rvChar: rvChar,
+            // rvChar: rvChar,
             rvContent: rvContent,
-            rvImage: rvImageUrl,
+            // rvImage: rvImageUrl,
             rvType: rvType,
             rvTag: rvTag,
             rvStatus: rvStatus,
@@ -52,9 +52,9 @@ reviewRoute.route('/create').post((req,res)=>{
             const review = new Review({
                 user_id: user_id,
                 rvTitle: rvTitle,
-                rvChar: rvChar,
+                // rvChar: rvChar,
                 rvContent: rvContent,
-                rvImage: rvImageUrl,
+                // rvImage: rvImageUrl,
                 rvType: rvType,
                 rvTag: rvTag,
                 rvStatus: rvStatus,
@@ -149,7 +149,7 @@ reviewRoute.route('/:id/edit').put((req,res)=>{
             rvTitle: req.body.rvTitle,
             rvType: req.body.rvType,
             rvTag: req.body.rvTag,
-            rvChar: req.body.rvChar,
+            // rvChar: req.body.rvChar,
             rvContent: req.body.rvContent,
             rvStatus: req.body.rvStatus,
             rvSource: req.body.rvSource
