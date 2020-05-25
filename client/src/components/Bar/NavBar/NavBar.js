@@ -17,8 +17,8 @@ class NavBar extends Component {
         const memberLinks = (
             <span>
                 <span>
-                    <a href={`/user/${user ? user._id:null}`} id="username"   className="navbarButton"><strong>{ user ? user.userName : 'ชื่อสมาชิก'}</strong></a>
-                </span>
+                    <a href={`/user/${user ? user._id:null}`} id="username"   className="navbarButton"><i className="fas fa-user"></i> <strong>{ user ? user.userName : 'ชื่อสมาชิก'}</strong></a>
+                </span>  
                 <Logout />                
             </span>
         );

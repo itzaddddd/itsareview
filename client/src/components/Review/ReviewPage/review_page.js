@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import './review_page.css';
 import Rating from '../Rating/rating';
 import CommentBox from '../Comment/Comment'
-//import './Tag.css';
-//import Tag from '../Tag/Tag'
 import NavBar from '../../Bar/NavBar/NavBar'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -11,6 +9,7 @@ import { getReview, getCategory, getUserById } from '../../../Redux/Actions/revi
 import { addReadLater, deleteReadLater } from '../../../Redux/Actions/readlaterAction'
 import dateFormat from 'dateformat'
 import axios from 'axios'
+import { WaveLoading } from 'react-loadingg'
 const mapStateToProps = state =>{
     return {
         user: state.user,
@@ -95,6 +94,7 @@ class ReviewPage extends Component{
     render(){
         let review = this.props.review.review
         if(this.state.isLoading)return ''
+        if(review._id){
         return(
             <div>
                 <NavBar/>
@@ -106,7 +106,7 @@ class ReviewPage extends Component{
                             <div className="reviewBy">รีวิวโดย<p className="reviewer">{this.state.name}</p></div>
                             <div className = "date"><i style={{color:"9FB444"}} className="far fa-clock"></i><p className="date">{dateFormat(review.rvTime, 'dd/mm/yyyy')}</p></div>
                             <div className = "view"><i style={{color:"9FB444"}} className="fas fa-eye"></i><p className="view">{review.rvView_Num}</p></div>
-                            <div className="rating-niyay">คะแนนนิยาย</div>
+                            {/*<div className="rating-niyay">คะแนนนิยาย</div>*/}
                             <div className="reviewBy2">ที่มา <p className="novel-source">{review.rvSource}</p></div>
                             <div className = "reviewBy2">หมวดหมู่นิยาย 
                                 {review.rvType?review.rvType.map((type,i)=>
@@ -126,29 +126,30 @@ class ReviewPage extends Component{
                                 </span>   
                             ):''}
                             </div>
-                            <div className = "reviewBy2 reviewBy5">รีวิวตัวละคร</div>
-                            <div className = "boxContent">{review.rvChar}</div>
+                            {/*<div className = "reviewBy2 reviewBy5">รีวิวตัวละคร</div>
+                            <div className = "boxContent">{review.rvChar}</div>*/}
                             <div className = "reviewBy2 reviewBy5">รีวิวเนื้อเรื่อง</div>
                             <div className = "boxContent">{review.rvContent}</div>
-                            <div className = "reviewBy2 reviewBy5">รูปภาพ</div>
-                            <div className = "boxContent">
-                            {review.rvImage?
+                            {/*<div className = "reviewBy2 reviewBy5">รูปภาพ</div>*/}
+                            {/*<div className = "boxContent">*/}
+                            {/*review.rvImage?
                                 review.rvImage.forEach(image=>{
                                     return <img src={image} width="35%" height="auto" alt="image" />
                                 })
                             :
-                            ''}
-                            </div>
-                            <div className = "reviewBy4">ให้คะแนนรีวิวนี้
+                            ''*/}
+                            {/*</div>*/}
+                            {/*<div className = "reviewBy4">ให้คะแนนรีวิวนี้
                                 <Rating/>
-                            </div>
+                            </div>*/}
                             <hr className="new4"></hr>
                         </div>
                     </div>
                     <CommentBox />
                 </div>
             </div>
-        )}
+            )}else{return <WaveLoading color="#B9D253"/>}
+        }
 }
 
 export default connect(mapStateToProps,{ getReview, getCategory, getUserById, addReadLater, deleteReadLater })(ReviewPage);

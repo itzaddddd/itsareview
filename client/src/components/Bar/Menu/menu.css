@@ -1,4 +1,4 @@
-@media(max-width : 430px) {
+@media(max-width : 427px) {
 
     a.menuButton , a.menuButton + a#login , a.menuButton + a#username {
         text-decoration: none;
