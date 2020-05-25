@@ -42,15 +42,42 @@ div.choosetypepopup a:hover {
 
 .icon{
     font-size: 3vmax;
+    margin-top: 0.4vmin;
+    margin-bottom: 0.2vmin;
 }
 
 p.typeNameIcon {
     font-size: 1.3vmax;
     margin: 0;
+    margin-bottom: 0.5vmin;
 }
 
 
-
+/* smallscreen */
+@media(max-width: 600px){
+    div.choosetypepopup{
+        background-color: #B9D253;
+        overflow-x: scroll;
+        white-space: nowrap;
+        line-height: 1.1vmax;
+        width: 3px 3px;
+        height: 1%;
+        font-size: 12px;
+        overflow-y: hidden;
+        /* height: 6.5vmin; */
+    }
+    .icon{
+        font-size: 7vmin;
+        margin-bottom: 0.8vmin;
+        margin-top: 0.4vmin;
+    }
+    
+    p.typeNameIcon {
+        font-size: 3.2vmin;
+        margin: 0;
+        margin-bottom: 0.8vmin;
+    }
+}
 
 /* @media(min-width: 768px) {
 

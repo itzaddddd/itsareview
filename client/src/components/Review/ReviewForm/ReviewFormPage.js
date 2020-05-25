@@ -16,7 +16,7 @@ import { addReview } from '../../../Redux/Actions/reviewAction'
 
 import firebase from 'firebase'
 import axios from 'axios'
-
+import { WaveLoading } from 'react-loadingg'
 /* define form validation */
 const ReviewSchema = yup.object().shape({
     rvTitle: yup.string()
@@ -421,7 +421,7 @@ class ReviewFormPage extends Component {
                 </Formik>
             </div>
             
-        )}else{return ''}
+        )}else{return <WaveLoading color="#9FB444" />}
     }
 }
 
