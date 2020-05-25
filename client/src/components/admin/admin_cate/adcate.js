@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './adcate.css';
 import Table from 'react-bootstrap/Table';
 import PopUpAddCategory from './popUpAddcate';
-import popUpEditCategory from './popUpEditCategory';
 import Navbar from "../admin_navbar/navbar";
 import axios from 'axios';
 import { connect } from 'react-redux'
@@ -21,9 +20,8 @@ class Admin_cate extends Component {
 
         this.deleteCategory = this.deleteCategory.bind(this);
 
-        this.state = {categories: [{}], PopUpAddCategory : false, popUpEditCategory : false, show : false}
+        this.state = {categories: [{}], PopUpAddCategory : false, show : false}
 
-        this.popUpEditCategory=  this.setState({popUpEditCategory:true})
     }
 
     /* redirect to home if not admin */
@@ -31,6 +29,7 @@ class Admin_cate extends Component {
         axios.get('http://localhost:4000/admin/categories/')
         .then(response => {
             this.setState({ categories: response.data })
+            console.log(response.data);
         })
         .catch((error) => {
             console.log(error);
@@ -46,7 +45,6 @@ class Admin_cate extends Component {
     }
 
     deleteCategory(id) {
-
         axios.delete('http://localhost:4000/admin/categories/'+id)
                 .then(response => { console.log(response.data)});
         
@@ -64,7 +62,7 @@ class Admin_cate extends Component {
     }
 
     render() {
-        this.PopUpClose = () => this.setState({PopUpAddCategory:false}, {popUpEditCategory:false});
+        this.PopUpClose = () => this.setState({PopUpAddCategory:false});
         
         
         if(this.props.user.user){
@@ -72,7 +70,6 @@ class Admin_cate extends Component {
                 <div>
 
                     <Navbar/>
-                    <popUpEditCategory />
 
                     <div className='topicPage'>
                         <p className="topicName">จัดการหมวดหมู่</p>
@@ -111,12 +108,11 @@ const Category = props => (
         <td>{props.category.categoryName}</td>
         <td>{props.category.categoryIcon}</td>
         <td>
-            <button className="addCate" onClick={()=> this.popUpEditCategory}>แก้ไขหมวดหมู่</button>
+            {/* <button className="addCate" onClick={()=> this.popUpEditCategory}>แก้ไขหมวดหมู่</button> */}
             {/* <popUpEditCategory show={this.state.popUpEditCategory} onHide={this.PopUpClose()}/> */}
         
-        {/* <Link to={"/admin/categories/update/"+props.category._id}>แก้ไข</Link>  */}
-        
-        | <button onClick={() => { props.deleteCategory(props.category._id) }}>ลบ</button>
+        <Link className="editCategory" to={"/admin/categories/update/"+props.category._id} categoryName={props.category.categoryName} categoryIcon={props.category.categoryIcon}>แก้ไข </Link>
+         | <a className="delCategory" onClick={() => { if(window.confirm('คุณต้องการลบหมวดหมู่ ' + props.category.categoryName)){props.deleteCategory(props.category._id)};}}>ลบ</a>
         </td>
     </tr>
 )
