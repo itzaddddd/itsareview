@@ -29,7 +29,7 @@ class Nav extends Component {
                         <li><Link className="ad" to="/admin/reviews">ข้อมูลรีวิว <i className="fas fa-edit"></i></Link></li>
                         {/* <li><Link className="ad" to="/admin/boards">ข้อมูลกระทู้ <i className="fas fa-comments"></i></Link></li> */}
                         <li><Link className="ad" to="/admin/categories">จัดการหมวดหมู่ <i className="fas fa-clipboard-list"></i></Link></li>
-                        <li><Link className="ad" to="/admin/banners">จัดการโฆษณา <i className="fas fa-bullhorn"></i></Link></li>
+                        {/* <li><Link className="ad" to="/admin/banners">จัดการโฆษณา <i className="fas fa-bullhorn"></i></Link></li> */}
                         <li><Link className="ad" to="/">กลับสู่อิสรีวิว</Link></li>
                     </ul>
                     <ul className="container1 right">

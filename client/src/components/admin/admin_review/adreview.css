@@ -7,7 +7,7 @@ div.adminTableReview {
     border-collapse: collapse;
     border-bottom: 1px solid #ddd;
     font-size: 1.1vw;
-    margin-left: 3vw;
+    margin: auto;
 }
 
 .adminTableReview tr th {

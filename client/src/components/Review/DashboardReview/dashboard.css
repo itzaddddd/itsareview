@@ -66,17 +66,14 @@ button.dark{
     
 }
 
-div.re{
-    
+div.re {
     margin: 2%;
     text-align: left;
     font-size: 4vmin;
-    font-weight: bolder;
-    
-       
+    font-weight: bolder; 
 }
 
-center.more{
+center.more {
     padding: 5px;
 }
 
@@ -87,6 +84,23 @@ button.btn{
 div.item{
     width: auto;
     height: 50vw;
+}
+
+.reviewList {
+    padding-left: auto;
+    padding-right: auto;
+}
+
+.reviewList:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.container-dashboard {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .pagination {

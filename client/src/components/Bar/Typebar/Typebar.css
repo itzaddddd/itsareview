@@ -11,7 +11,7 @@ div.choosetypepopup{
 /*---------------scroll bar-------------------------*/
 /* Hide scrollbar for Chrome, Safari and Opera */
 div.choosetypepopup::-webkit-scrollbar {
-    height: 5px;
+    height: 1.5vmin;
 }
 
 div.choosetypepopup::-webkit-scrollbar-track {
