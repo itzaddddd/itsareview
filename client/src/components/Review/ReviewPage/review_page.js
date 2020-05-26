@@ -100,7 +100,7 @@ class ReviewPage extends Component{
                 <NavBar/>
                 <div className="containerReview">
                     <div className="row">
-                        <div className="col-sm">
+                        <div className="col-sm22">
                             <div className="reviewName">{review.rvTitle}<div className="heart-fav1">{this.state.heart}</div></div>
                             <hr className="new5"></hr>
                             <div className="reviewBy">รีวิวโดย<p className="reviewer">{this.state.name}</p></div>

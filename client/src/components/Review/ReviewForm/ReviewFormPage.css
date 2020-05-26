@@ -8,6 +8,14 @@ h3 {
   margin: 13% auto 0;
 }
 
+hr.underline2 {
+  border: 0.1px solid;
+  border-radius: 1vmin;
+  color: #95a5a6;
+  width: 0%;
+  margin: 3% 10% 0 ;
+}
+
 h3 > a {
   color: black;
   font-weight: bolder;
@@ -23,6 +31,13 @@ h3 > a:hover {
 
 hr {
   width: 90%;
+}
+hr.underline2 {
+  border: 0.1px solid;
+  border-radius: 1vmin;
+  color: #95a5a6;
+  width: 80%;
+  margin: 3% 10% 0 ;
 }
 
 h4.h4promote {
@@ -54,6 +69,7 @@ span.status{
   padding-left: 0;
 }
 
+
 input[type='text'], input[type='password'], input[type='email']{
   color:black;
   width: 87%;
@@ -69,12 +85,11 @@ input[type='text'], input[type='password'], input[type='email']{
   padding: 12px 20px;
 }
 
-#story{
+#story2{
   color:black;
-  min-width: 87%;
-  max-width: 87%;
+  width: 80%;
   min-height: 20vh;
-  margin: 6% 6% 0%;
+  margin: 6% 10% 0%;
   transition: box-shadow 100ms;
   border-radius: 3px;
   border: 0px;
@@ -95,6 +110,7 @@ input[type='text']#rvTag {
   margin: 3% 6% 0%;
   width: 50%;
 }
+
 
 input[type='button']#add_tag:hover , input[type='button']#add_type:hover {
   box-shadow: 1px 1px 3px black;
@@ -121,6 +137,7 @@ input[type='button']#add_tag:hover , input[type='button']#add_type:hover {
 .wrap {
   margin: 20px 50px 0;
 }
+
 
 input#add_type , input#add_tag{
   width: 15%;
@@ -181,7 +198,7 @@ input[type = button]{
 
 .invalid-feedback{
   font-size: 2vmin;
-  margin-left: 6%;
+  margin-left: 10%;
   color: red;
   /* font-weight: bolder; */
 }
@@ -189,10 +206,10 @@ input[type = button]{
 
 input[type=submit] {
   width: 30%;
-  padding: 10px;
+  padding: 10px 20px ;
   background-color: #9FB444;
   color: black;
-  margin: 20% 35% 10%;
+  
   border: none;
   border-radius: 10px;
   text-align: center;
@@ -201,16 +218,32 @@ input[type=submit] {
 
 input[type=submit]:hover {
   box-shadow: 1px 1px 3px black;
+ 
 }
 
 
 /* ------------------------------------------------------------------------------------------------- */
 @media(min-width: 768px) {
+
+  div.col-sm.review-content{
+    margin-top: 5vmax;
+    border-radius: 10px;
+  }
+  
+  hr.underline2 {
+  border: 0.1px solid;
+  border-radius: 1vmin;
+  color: #95a5a6;
+  width: 80%;
+  margin: 3% 10% 0 ;
+}
+
   h3 {
     color: black;
     width: fit-content;
     margin: 10% auto 0;
     font-size: 5vmin;
+    padding: 3% 0% 0%;
   }
   
   h3 > a {
@@ -258,11 +291,11 @@ input[type=submit]:hover {
     width: 69%;
   }
 
-  #story{
+  #story2{
     color:black;
-    width: 87%;
+    width: 80%;
     min-height: 20vw;
-    margin: 3% 6% 0%;
+    margin: 3% 10% 0%;
     transition: box-shadow 100ms;
     border-radius: 3px;;
     border: 0px;
@@ -344,7 +377,7 @@ input[type=submit]:hover {
   
 
   .invalid-feedback{
-    margin-left:  70px;
+    margin-left:  10%;
     font-size: 2.4vmin;
     display: inline-block;
     /* font-weight: bolder; */

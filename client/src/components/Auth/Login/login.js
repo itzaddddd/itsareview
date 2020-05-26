@@ -127,16 +127,13 @@ class Login extends Component {
                     }}
                 >
                     {({ touched, errors, isSubmitting }) => (
-                        <div style={{ paddingTop: '10%' }}>
-                            <Container>
+                        <div style={{ paddingTop: '7%', marginBottom: '10%' }}>
+                            <Container  className = "cont-login" >
                                 <Row>
-                                    <Col
-                                        lg={6}
-                                        sm={12}
-                                        xs={12}
-                                        className="bg-login"
-                                    ></Col>
-                                    <Col lg={6} sm={12} xs={12}>
+                                    <Col lg={6} sm={12} xs={12} style={{padding:0}}>
+                                        <img className="book-login" src="https://www.img.in.th/images/9d7e2b6ec5308eb0858401a85617e73a.png" alt="9d7e2b6ec5308eb0858401a85617e73a.png" border="0" />
+                                    </Col>
+                                    <Col lg={6} sm={12} xs={12} style={{paddingLeft:0,paddingRight:0,paddingTop:90}}>
                                         <Form
                                             className="LoginForm"
                                             id="login-form"

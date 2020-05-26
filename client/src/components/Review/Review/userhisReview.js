@@ -97,21 +97,6 @@ class UserHisReview extends Component{
     //className="show-box userHis"
     render(){
         return(
-<<<<<<< HEAD
-            <div className="show-box userHis">
-                <div className="show-review">
-                    <div className={this.props.isDashboard?"show-dashboard":"in-box"}>
-                        <div>
-                            <Link key={this.props.review?this.props.review._id:''} to={`/review/${this.props.review?this.props.review._id:''}`}>
-                                <div className="novel-name bold">{this.props.review?this.props.review.rvTitle:''}</div>
-                            </Link>
-                            <div className="date">
-                                {this.props.review?dateFormat(this.props.review.rvTime, 'dd/mm/yyyy'):''}
-                                    
-                                {!this.props.isReadLater?
-                                    <div className="heart-fav">{this.state.heart}</div>:''
-                                }
-=======
             <div className={this.props.isDashboard?"show-dashboard-each":"show-review"}>
                 <div className="in-box">
                     <div>
@@ -120,7 +105,6 @@ class UserHisReview extends Component{
                         </Link>
                         <div className="date">
                             {this.props.review?dateFormat(this.props.review.rvTime, 'dd/mm/yyyy'):''}
->>>>>>> 192fc12b65eca965743f9cfab195d102b6ffff1c
                                 
                             {!this.props.isReadLater?
                                 <div className="heart-fav">{this.state.heart}</div>:''

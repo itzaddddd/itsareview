@@ -16,7 +16,7 @@ import { addReview } from '../../../Redux/Actions/reviewAction'
 
 import firebase from 'firebase'
 import axios from 'axios'
-import { WaveLoading } from 'react-loadingg'
+
 /* define form validation */
 const ReviewSchema = yup.object().shape({
     rvTitle: yup.string()
@@ -225,6 +225,7 @@ class ReviewFormPage extends Component {
                                 <div className="col-sm review-content">
                                     <h3>เขียนรีวิวนิยาย</h3>
                                     <h4 className="h4promote">มาเขียนรีวิวนิยายที่คุณชอบกันเถอะ</h4>
+                                    <hr className="underline2"></hr>
                                     <div className="title">ชื่อเรื่อง</div>
                                         <Field  
                                             type="text" 
@@ -252,7 +253,7 @@ class ReviewFormPage extends Component {
                                     <div className="title">รีวิวเนื้อเรื่อง</div>
                                         <Field 
                                             component="textarea" 
-                                            id="story" 
+                                            id="story2" 
                                             name="rvContent" 
                                             placeholder="เขียนรีวิวแบ่งปันเรื่องราวให้คนอื่นกันเลย!"
                                             className={`${touched.rvContent && errors.rvContent ? "is-invalid":""}`}
@@ -369,20 +370,20 @@ class ReviewFormPage extends Component {
                                         })}
                                     </div>
                                     <div className="title">สถานะนิยาย</div>
-                                        <div className="wrap"> 
-                                                <div>
-                                                    <Field 
+                                        
+                                    <label className="wrap">จบแล้ว
+                                                    <input 
+                                                        
                                                         id="first" 
                                                         type="radio" 
                                                         name="rvStatus" 
                                                         ng-model="content" 
                                                         value="true"
-                                                        checked
                                                     />
-                                                        <span className="status">จบแล้ว</span>
-                                                </div>
-                                                <div>
-                                                    <Field 
+                                                        <span className="status"></span>
+                                                </label>
+                                                <label className="wrap">ยังไม่จบ
+                                                    <input 
                                                         id="other" 
                                                         type="radio" 
                                                         name="rvStatus" 
@@ -390,10 +391,20 @@ class ReviewFormPage extends Component {
                                                         value="false"
                                                     />
                                                     
-                                                        <span className="status">ยังไม่จบ</span>
+                                                        <span className="status"></span>
+                                                </label>
+                                                <label className="wrap">ทั้งหมด
+                                                    <input 
+                                                        id="all" 
+                                                        type="radio" 
+                                                        name="rvStatus" 
+                                                        ng-model="content" 
+                                                        value=""
+                                                    />
                                                     
-                                                </div> 
-                                        </div>
+                                                        <span className="status"></span>
+                                                    
+                                                </label>   
                                     <div className="title">แหล่งที่มาของนิยาย</div>
                                     <div className = "dropbox">
                                         <Field 
@@ -421,7 +432,7 @@ class ReviewFormPage extends Component {
                 </Formik>
             </div>
             
-        )}else{return <WaveLoading color="#9FB444" />}
+        )}else{return ''}
     }
 }
 

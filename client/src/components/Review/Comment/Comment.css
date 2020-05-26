@@ -8,6 +8,7 @@
   border-radius: 1vmin;
   margin-bottom: 2rem;
   padding: 2vmin;  
+  margin: 5% 0%;
 }
 
 .comment-form-fields {
@@ -22,6 +23,8 @@ i#icon-comment{
   margin-right: 2vmin;
   display: inline;
 }
+
+
 
 .comment-form-actions {
   text-align: right;
@@ -99,6 +102,7 @@ textarea.input-comment {
   font-size: 2.5vmin;
   padding: 1.3vmin;
   margin-bottom: 1vmin;
+  margin:auto;
 }
 
 textarea.input-comment:focus {

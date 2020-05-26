@@ -235,7 +235,9 @@ class EditReviewForm extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-sm">
-                                    <h3>แก้ไขรีวิวนิยาย</h3>
+                                    <div className="headRe">แก้ไขรีวิวนิยาย</div>
+                                    <h4 className="h4head">แก้ไขรีวิวนิยายของคุณที่นี่</h4>
+                                    <hr className="underline2"></hr>
                                     <div className="title">ชื่อเรื่อง</div>
                                         <Field  
                                             type="text" 
@@ -365,7 +367,7 @@ class EditReviewForm extends Component {
                                     <div className="show_add_tag">
                                         {this.state.add_tag?this.state.add_tag.map((tag,index)=>{
                                             return ( 
-                                                <span className="sub_tag" key={index}><strong>{tag}</strong>
+                                                <span className="e-sub_tag" key={index}><strong>{tag}</strong>
                                                     <span onClick={()=>{
                                                         this.setState({
                                                             add_tag: this.state.add_tag.filter(t => t != tag)}
@@ -378,34 +380,40 @@ class EditReviewForm extends Component {
                                         }):''}
                                     </div>
                                     <div className="title">สถานะนิยาย</div>
-                                        <div className="wrap"> 
-                                                <div>
-                                                    <Field 
+                                    <label className="wrap">จบแล้ว
+                                                    <input 
+                                                        
                                                         id="first" 
                                                         type="radio" 
                                                         name="rvStatus" 
                                                         ng-model="content" 
                                                         value="true"
-                                                        checked={values.status}
-                                            
                                                     />
-                                                        <span className="status">จบแล้ว</span>
-                                                </div>
-                                                <div>
-                                                    <Field 
+                                                        <span className="status"></span>
+                                                </label>
+                                                <label className="wrap">ยังไม่จบ
+                                                    <input 
                                                         id="other" 
                                                         type="radio" 
                                                         name="rvStatus" 
                                                         ng-model="content" 
                                                         value="false"
-                                                        checked={!values.status}
-                                                        onChange={handleChange}                                          
                                                     />
                                                     
-                                                        <span className="status">ยังไม่จบ</span>
+                                                        <span className="status"></span>
+                                                </label>
+                                                <label className="wrap">ทั้งหมด
+                                                    <input 
+                                                        id="all" 
+                                                        type="radio" 
+                                                        name="rvStatus" 
+                                                        ng-model="content" 
+                                                        value=""
+                                                    />
                                                     
-                                                </div> 
-                                        </div>
+                                                        <span className="status"></span>
+                                                    
+                                                </label>
                                     <div className="title">แหล่งที่มาของนิยาย</div>
                                     <div className = "dropbox">
                                         <Field 
