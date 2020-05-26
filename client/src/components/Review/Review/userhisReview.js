@@ -94,9 +94,10 @@ class UserHisReview extends Component{
             
         }
     }
-    
+    //className="show-box userHis"
     render(){
         return(
+<<<<<<< HEAD
             <div className="show-box userHis">
                 <div className="show-review">
                     <div className={this.props.isDashboard?"show-dashboard":"in-box"}>
@@ -110,60 +111,73 @@ class UserHisReview extends Component{
                                 {!this.props.isReadLater?
                                     <div className="heart-fav">{this.state.heart}</div>:''
                                 }
+=======
+            <div className={this.props.isDashboard?"show-dashboard-each":"show-review"}>
+                <div className="in-box">
+                    <div>
+                        <Link key={this.props.review?this.props.review._id:''} to={`/review/${this.props.review?this.props.review._id:''}`}>
+                            <div className={this.props.isDashboard?"d-novel-name":"novel-name bold"}>{this.props.review?this.props.review.rvTitle:''}</div>
+                        </Link>
+                        <div className="date">
+                            {this.props.review?dateFormat(this.props.review.rvTime, 'dd/mm/yyyy'):''}
+>>>>>>> 192fc12b65eca965743f9cfab195d102b6ffff1c
                                 
-                            </div>
+                            {!this.props.isReadLater?
+                                <div className="heart-fav">{this.state.heart}</div>:''
+                            }
+                            
                         </div>
-                        {this.props.isUserReview?'':
-                        <div>
-                            <div className="review-name bold">รีวิวโดย</div>
-                            <div className="review-name">   {this.state.name}</div>
-                        </div>
-                        }
-                        <div>
-                            <div className="type bold">หมวดหมู่
-                                {this.props.review?this.props.review.rvType.map((type,i) => 
-                                    <Link key={i} to={`/review/category?category=${type}`} >
-                                       <span className="subtype" key={i}>{type}</span>
-                                    </Link>
-                                    )
-                                    :''
-                                }
-                            </div>
-                        </div>
-                        <div>
-                            <div className="tag bold">แท็ก
-                            {this.props.review?this.props.review.rvTag.map((tag,i) => 
-                                <Link key={i} to={`/review/tag?tag=${encodeURIComponent(tag)}`}>
-                                     <span className="subtag" key={i}>{tag}</span>
+                    </div>
+                    {this.props.isUserReview?'':
+                    <div>
+                        <div className={this.props.isDashboard?"d-review-name bold":"review-name bold"}>รีวิวโดย</div>
+                        <div className={this.props.isDashboard?"d-review-name":"review-name"}>{this.state.name}</div>
+                    </div>
+                    }
+                    <div>
+                        <div className={this.props.isDashboard?"d-type bold":"type bold"}>หมวดหมู่
+                            {this.props.review?this.props.review.rvType.map((type,i) => 
+                                <Link key={i} to={`/review/category?category=${type}`} >
+                                    <span className="subtype" key={i}>{type}</span>
                                 </Link>
                                 )
                                 :''
                             }
-                            </div>
                         </div>
+                    </div>
+                    <div>
+                        <div className={this.props.isDashboard?"d-tag bold":"tag bold"}>แท็ก
+                        {this.props.review?this.props.review.rvTag.map((tag,i) => 
+                            <Link key={i} to={`/review/tag?tag=${encodeURIComponent(tag)}`}>
+                                    <span className="subtag" key={i}>{tag}</span>
+                            </Link>
+                            )
+                            :''
+                        }
+                        </div>
+                    </div>
+                    <div>
                         <div>
-                            <div>
-                                <div className="story">{this.props.review?this.props.review.rvContent:''}</div>
+                            <div className={this.props.isDashboard?"d-story":"story"}>{this.props.review?this.props.review.rvContent:''}</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div className="num-com">
+                        <div className="num-of-read"><i id="icon-b" className="fas fa-eye"></i>{this.props.review?this.props.review.rvView_Num:''}</div>
+                        <div className="comment2"><i id="icon-b" className="far fa-comment-dots"></i>{this.props.review?this.props.review.rvComment.length:0}</div>
+                        {this.props.isUserReview?
+                            <div className="edit">
+                                <a href={`/review/${this.props.review?this.props.review._id:''}/edit`}><span>แก้ไข</span></a>
+                                <span className="delete-review" onClick={()=>this.props.deleteReview(this.props.review._id)}>
+                                    ลบ
+                                </span>
                             </div>
-                        </div>
-                        <div>
-                            <div className="num-com">
-                            <div className="num-of-read"><i id="icon-b" className="fas fa-eye"></i>{this.props.review?this.props.review.rvView_Num:''}</div>
-                            <div className="comment2"><i id="icon-b" className="far fa-comment-dots"></i>{this.props.review?this.props.review.rvComment.length:0}</div>
-                            {this.props.isUserReview?
-                                <div className="edit">
-                                    <a href={`/review/${this.props.review?this.props.review._id:''}/edit`}><span>แก้ไข</span></a>
-                                    <span className="delete-review" onClick={()=>this.props.deleteReview(this.props.review._id)}>
-                                        ลบ
-                                    </span>
-                                </div>
-                                :''
-                            }
-                        </div>
-                        </div>                        
-                    </div>               
-                </div>          
-            </div>
+                            :''
+                        }
+                    </div>
+                    </div>                        
+                </div>               
+            </div>          
         )
     }
 }

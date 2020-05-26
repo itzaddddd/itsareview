@@ -17,7 +17,7 @@ export default class Dashboard extends Component {
             offset: 0,
             reviews:[],
             reviewsSize: 0,
-            perPage: 5,
+            perPage: 10,
             currentPage: 0
         }
     }
@@ -31,7 +31,7 @@ export default class Dashboard extends Component {
                 this.state.offset+this.state.perPage
             )
             const postData = slice.map(review => 
-                <Review review={review} key={review._id} />
+                <Review review={review} key={review._id} isDashboard/>
             )
 
             this.setState({
@@ -112,7 +112,7 @@ export default class Dashboard extends Component {
                         <Typebar/>
                     </div>
                 </div>
-                <div className="container">
+                <div className="container-dashboard">
                     <div className="row">
                     <div className="col-sm">
                         <div className="all-reviews">
