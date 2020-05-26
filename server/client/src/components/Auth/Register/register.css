@@ -1,0 +1,97 @@
+form.RegisterForm {
+    /* background: rgb(89,88,106);
+    background: linear-gradient(0deg, rgba(89,88,106,1) 0%, rgba(185,210,83,1) 62%); */
+    width:100%; 
+    height: 100%;
+    position: relative;
+    /* margin-top: 100px; */
+
+}
+
+#regis-button {
+    background-color: #B9D253; 
+    width: 50%;
+    margin-top: 5%;
+    margin-left: 25%;
+    margin-right: 25%;
+    border: none;
+    color:black;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 3vmin;
+}
+
+#regis-button:hover {
+    box-shadow: 1px 1px 3px black;
+}
+
+div#regis-title {
+    font-size: 5vmin;
+    font-weight:bold;
+    text-align: center;
+    color: #737e3d;
+    margin-top:20px;
+}
+
+input[type='text'].form-control input[type='password'].form-control {
+    margin: 6% 6% 0%;
+    padding: 12px 20px;
+}
+
+div#regis-form{
+    width: 100%;
+}
+
+.error-message{
+    width: 87%;
+    background-color: #fbecec;
+    margin-top: 1%;
+    color: #d4554a;
+    margin-left: 6%;
+    font-size: 2vmin;
+    border: 1px solid;
+    border-color: #f5cfcb;
+    border-radius: 0.3vw;
+    padding: 0.5% 2% 0.5% ;
+}
+.alert-box{
+    width: 87%;
+    background-color: #d55846;
+    margin-top: 5%;
+    color: white;
+    margin-left: 6%;
+    font-size: 2vmin;
+    border: 1px solid;
+    border-color: #f5cfcb;
+    border-radius: 0.3vw;
+    padding: 1.5% 2% 1.5% ;
+}
+
+div .for-admin-code {
+    font-size: 3vmin;
+    color: #B9D253;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 5vmin;
+}
+
+@media(max-width : 768px) /*for medium device*/ {
+    div#regis-form{
+        width: 80%;
+    }
+}
+
+@media(max-width : 426px) /*for small device*/ {
+    div#regis-form{
+        width: 90%;
+    }    
+}
+
+.bg-register{
+    /* background-image: url('../../../../public/book.png'); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}

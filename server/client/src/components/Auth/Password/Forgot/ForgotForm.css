@@ -1,0 +1,42 @@
+.user1-forgot-pass {
+    display: inline-block;
+    padding: 0;
+    width: 100%;
+}
+
+.topic-message-forgot-pass {
+    margin: 5vmin auto 0;
+    font-size: 3.7vmin;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.topic-forgot-pass {
+    font-size: 3vmin;
+    font-weight: normal;
+}
+
+/* .topic-forgot-pass i {
+    vertical-align: middle;
+} */
+
+.envelope-forgot-pass {
+    color: #B9D253;
+    display: inline;
+    font-size: 3vmin;
+}
+
+input[type='text'].forgot-form-control {
+    margin: 6% 1% 0;
+    padding: 2vmin;
+    font-weight: normal;
+}
+
+/* .error-message.error-forgot-pass {} */
+
+@media(max-width: 425px) {
+    input[type='text'].forgot-form-control {
+        margin: 4% auto 0;
+        padding: 1vmin;
+    }
+}

@@ -99,7 +99,7 @@ class UserHisReview extends Component{
         return(
             <div className="show-box userHis">
                 <div className="show-review">
-                    <div className="in-box">
+                    <div className={this.props.isDashboard?"show-dashboard":"in-box"}>
                         <div>
                             <Link key={this.props.review?this.props.review._id:''} to={`/review/${this.props.review?this.props.review._id:''}`}>
                                 <div className="novel-name bold">{this.props.review?this.props.review.rvTitle:''}</div>

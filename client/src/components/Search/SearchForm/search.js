@@ -128,10 +128,10 @@ class ReviewFormPage extends Component {
                 >
                     {({ values, touched, errors, isSubmitting, setFieldValue}) =>(   
                     <Form>
-                        <div className="container">
+                        <div className="container search-frame">
                             <div className="row">
                                 <div className="col-sm">
-                                    <h3>ค้นหารีวิวนิยาย</h3>
+                                    <div className="headsearch">ค้นหารีวิวนิยาย</div>
                                     <div className="title">หาจากชื่อเรื่อง</div>
                                         <Field  
                                             type="text" 
@@ -245,20 +245,21 @@ class ReviewFormPage extends Component {
                                         })}
                                     </div>
                                     <div className="title">จบหรือยัง</div>
-                                        <div className="wrap">
+                                        
                                             
-                                                <div>
-                                                    <Field 
+                                                <label className="wrap">จบแล้ว
+                                                    <input 
+                                                        
                                                         id="first" 
                                                         type="radio" 
                                                         name="rvStatus" 
                                                         ng-model="content" 
                                                         value="true"
                                                     />
-                                                        <span className="status">จบแล้ว</span>
-                                                </div>
-                                                <div>
-                                                    <Field 
+                                                        <span className="status"></span>
+                                                </label>
+                                                <label className="wrap">ยังไม่จบ
+                                                    <input 
                                                         id="other" 
                                                         type="radio" 
                                                         name="rvStatus" 
@@ -266,10 +267,10 @@ class ReviewFormPage extends Component {
                                                         value="false"
                                                     />
                                                     
-                                                        <span className="status">ยังไม่จบ</span>
-                                                </div>
-                                                <div>
-                                                    <Field 
+                                                        <span className="status"></span>
+                                                </label>
+                                                <label className="wrap">ทั้งหมด
+                                                    <input 
                                                         id="all" 
                                                         type="radio" 
                                                         name="rvStatus" 
@@ -277,10 +278,9 @@ class ReviewFormPage extends Component {
                                                         value=""
                                                     />
                                                     
-                                                        <span className="status">ทั้งหมด</span>
+                                                        <span className="status"></span>
                                                     
-                                                </div>   
-                                        </div>
+                                                </label> 
                                     <div className="title">หาจากที่มาของนิยาย</div>
                                     <div className = "dropbox">
                                         <Field 

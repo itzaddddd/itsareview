@@ -1,4 +1,64 @@
-/* div.reviewName {
+div.search-frame{
+  margin-bottom: 15%;
+}
+
+div.headsearch{
+  color: #C5E057 ;
+  background-color: #4C4F3E;
+  border-radius : 5px;
+  padding: 5px 3em ;
+  margin: 20% 10% 0%;
+  font-size: 6vmin;
+  text-align: center;
+}
+
+ div.title{
+  font-size: 5vmin;
+  font-weight: 20;
+  margin: 0 5% 3%;
+}
+    
+  input[type=text]{
+     padding: 5px 10px;
+     margin: 2% 10% 3%;
+     width: 76%;
+   }
+   input#add_tag {
+    font-size: 4vmin;
+    width: 15%;
+    border-radius: 15px;
+    
+   }
+
+   input#add_type{
+    font-size: 4vmin;
+    width: 15%;
+    border-radius: 15px;
+    
+   }
+
+   input[type='text']#rvTag{
+    padding: 5px 10px;
+    margin: 2% 10% 3%;
+    width: 45%
+   }
+
+   #select{
+    padding: 5px 10px;
+    margin: 2% 10% 3%;
+    width: 45%
+   }
+   select{
+    padding: 5px 10px;
+    margin: 2% 10% 3%;
+    width: 76%
+   }
+
+   .submit{
+     margin-bottom: 15vmin;
+   }
+
+   div.reviewName {
     text-align: left;
     color: black;
     font-size: 7vmin;
@@ -87,8 +147,105 @@
     font-size: 4.5vmin;
   }
   
+  input[type=submit] {
+    margin: 8% 35% 5%;
+    font-size: 3vmin;
+  }
+
+  /*radio buttom*/
+  .wrap {
+    display: block;
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 4vmin;
+    font-weight: normal;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default radio button */
+  .wrap input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .status {
+    position: absolute;
+    top: 0px;
+    left: 2vmin;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .wrap:hover input ~ .status {
+    background-color: #ccc;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .wrap input:checked ~ .status {
+    background-color: #9FB443;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .status:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .wrap input:checked ~ .status:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .wrap .status:after {
+     top: 9px;
+    left: 8px;
+    width: 1vmin;
+    height: 1vmin;
+    border-radius: 50%;
+    background: white;
+  }
+
+  /*done radio buttom*/
+
   @media(min-width: 768px) {
   
+    div.headsearch{
+      color: #C5E057 ;
+      background-color: #4C4F3E;
+      border-radius : 5px;
+      padding: 15px 13.55em  ;
+      margin: 10% 0% 0%;
+      font-size: 3.5vmin;
+      
+    }
+    
+    div.col-sm{
+      background-color: #F8F8F8;
+      
+    }
+    div.title{
+      font-weight: 100;
+      font-size: 4vmin;
+      margin: 2% 8%;
+    }
+
+    input[type=text]{
+      padding: 5px 10px;
+      margin: 2% 10% 3%;
+      width: 80%;
+    }
     
     
     div.reviewName {
@@ -177,10 +334,107 @@
       font-size: 3vmin;
     }
   
+    input[type=submit] {
+      margin: 8% 33% 5%;
+ 
+    }
+
+    input#add_tag {
+      font-size: 3vmin;
+      width: 10%;
+      border-radius: 15px;
+      
+     }
+
+     
+
+    /*radio buttom*/
+    .wrap {
+      display: block;
+      position: relative;
+      padding-left: 150px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      font-size: 22px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    
+    /* Hide the browser's default radio button */
+    .wrap input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+    
+    /* Create a custom radio button */
+    .status {
+      position: absolute;
+      top: 5px;
+      left: 100px;
+      height: 25px;
+      width: 25px;
+      background-color: #eee;
+      border-radius: 50%;
+    }
+    
+    /* On mouse-over, add a grey background color */
+    .wrap:hover input ~ .status {
+      background-color: #ccc;
+    }
+    
+    /* When the radio button is checked, add a blue background */
+    .wrap input:checked ~ .status {
+      background-color: #9FB443;
+    }
+    
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .status:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+    
+    /* Show the indicator (dot/circle) when checked */
+    .wrap input:checked ~ .status:after {
+      display: block;
+    }
+    
+    /* Style the indicator (dot/circle) */
+    .wrap .status:after {
+       top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+    }
+
+    /*done radio buttom*/
+
+    input[type='text']#rvTag{
+      padding: 5px 10px;
+      margin: 2% 10% 0%;
+      width: 60%
+     }
+    
+     input#add_type{
+      font-size: 3vmin;
+      width: 10%;
+      border-radius: 15px;
+     }
+
+     #select{
+      padding: 5px 10px;
+      margin: 2% 10% 3%;
+      width: 60%
+     }
+
   }
-  
   #score{
       font-size: 15px;
       margin: 50px;
   }
-   */
+   
