@@ -151,7 +151,7 @@ class UserHisReview extends Component{
                         <div className="comment2"><i id="icon-b" className="far fa-comment-dots"></i>{this.props.review?this.props.review.rvComment.length:0}</div>
                         {this.props.isUserReview?
                             <div className="edit">
-                                <a href={`/review/${this.props.review?this.props.review._id:''}/edit`}><span>แก้ไข</span></a>
+                                <a className="h-edit" href={`/review/${this.props.review?this.props.review._id:''}/edit`}><span>แก้ไข</span></a>
                                 <span className="delete-review" onClick={()=>this.props.deleteReview(this.props.review._id)}>
                                     ลบ
                                 </span>

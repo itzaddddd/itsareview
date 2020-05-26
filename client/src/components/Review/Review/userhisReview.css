@@ -99,6 +99,10 @@ div.d-story {
     margin:2vmin;
 }
 
+.h-edit {
+    font-size: 3vmin;
+}
+
 span.subtype , span.subtag {
     font-weight: normal;
     margin: 1%;
@@ -247,7 +251,7 @@ span.subtype , span.subtag {
         padding: 0 1vw;
     }
 
-    .edit:hover a , span.delete-review:hover {
+    .edit:hover a:hover , span.delete-review:hover {
         text-decoration: none;
         font-size: 3vmin;
     }

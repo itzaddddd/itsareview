@@ -25,7 +25,7 @@ div.heart-fav1 {
   vertical-align: middle;
 }
 
-div.reviewBy p.reviewer {
+div.r-reviewBy p.reviewer {
   margin-left: 10px;
 }
 
@@ -42,7 +42,7 @@ div.containerReview{
   padding-bottom: 10%;
 }
 
-div.reviewBy {
+div.r-reviewBy {
   font-size: 3.5vmin;
   font-weight: bolder;
   margin: 0.2% 5%;
@@ -55,7 +55,7 @@ div.rating-niyay , div.source {
   margin: 0.2% 7%;
 }
 
-div.reviewBy2 {
+div.r-reviewBy2 {
   font-weight: bold;
   font-size: 3.5vmin;
   margin: 0.2% 5%;
@@ -82,7 +82,7 @@ div.reviewBy5 {
   margin-bottom: 2%;
 }
 
-hr.new5 {
+hr.r-new5 {
   border: 1.5px solid #9fb444;
   border-radius: 10vmin;
   color: black;
@@ -90,7 +90,7 @@ hr.new5 {
   margin: 1% 0 3%;
 }
 
-hr.new4 {
+hr.r-new4 {
   border-top: 0.3vmin solid #9FB444;
   color: black;
   width: 90%;
@@ -98,14 +98,14 @@ hr.new4 {
   text-align: center;
 }
 
-div.view{
+div.r-view{
   font-size: 3vmin;
   margin: 0.2% 7% ;
   color: black;
 }
 
 
-p.date , p.view {
+p.date , p.r-view {
   padding-left: 1vmin;
   display: inline;
 }
@@ -183,7 +183,7 @@ hr.line{
     vertical-align: middle;
   }
   
-  div.reviewBy p.reviewer {
+  div.r-reviewBy p.reviewer {
     margin-left: 10px;
   }
   
@@ -200,7 +200,7 @@ hr.line{
     padding-bottom: 10%;
   }
   
-  div.reviewBy {
+  div.r-reviewBy {
     font-size: 4vmin;
     font-weight: bolder;
     margin: 0.2% 5%;
@@ -213,7 +213,7 @@ hr.line{
     margin: 0.2% 7%;
   }
   
-  div.reviewBy2 {
+  div.r-reviewBy2 {
     font-weight: bold;
     font-size: 4vmin;
     margin: 0.2% 5%;
@@ -240,7 +240,7 @@ hr.line{
     margin-bottom: 2%;
   }
   
-  hr.new5 {
+  hr.r-new5 {
     border: 1.5px solid #9fb444;
     border-radius: 10vmin;
     color: black;
@@ -283,7 +283,7 @@ hr.line{
     height: 100%;
     margin:1% 5% 5%;
     padding: 1% 2% 2%;
-    font-size: 4vmin;
+    font-size: 3vmin;
     min-height: max-content;
     
   }  

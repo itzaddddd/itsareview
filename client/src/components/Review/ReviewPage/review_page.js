@@ -102,13 +102,13 @@ class ReviewPage extends Component{
                     <div className="row">
                         <div className="col-sm22">
                             <div className="reviewName">{review.rvTitle}<div className="heart-fav1">{this.state.heart}</div></div>
-                            <hr className="new5"></hr>
-                            <div className="reviewBy">รีวิวโดย<p className="reviewer">{this.state.name}</p></div>
+                            <hr className="r-new5"></hr>
+                            <div className="r-reviewBy">รีวิวโดย<p className="reviewer">{this.state.name}</p></div>
                             <div className = "date"><i style={{color:"9FB444"}} className="far fa-clock"></i><p className="date">{dateFormat(review.rvTime, 'dd/mm/yyyy')}</p></div>
-                            <div className = "view"><i style={{color:"9FB444"}} className="fas fa-eye"></i><p className="view">{review.rvView_Num}</p></div>
+                            <div className = "r-view"><i style={{color:"9FB444"}} className="fas fa-eye"></i><p className="r-view">{review.rvView_Num}</p></div>
                             {/*<div className="rating-niyay">คะแนนนิยาย</div>*/}
-                            <div className="reviewBy2">ที่มา <p className="novel-source">{review.rvSource}</p></div>
-                            <div className = "reviewBy2">หมวดหมู่นิยาย 
+                            <div className="r-reviewBy2">ที่มา <p className="novel-source">{review.rvSource}</p></div>
+                            <div className = "r-reviewBy2">หมวดหมู่นิยาย 
                                 {review.rvType?review.rvType.map((type,i)=>
                                     (<span className="subtype">
                                         <Link key={i} to={`/review/category?category=${type}`} >
@@ -117,7 +117,7 @@ class ReviewPage extends Component{
                                     </span>)    
                                 ):''}
                             </div>
-                            <div className = "reviewBy2">แท็ก
+                            <div className = "r-reviewBy2">แท็ก
                             {review.rvTag?review.rvTag.map((tag,i)=>
                                 <span className="subtag">
                                     <Link key={i} to={`/review/tag?tag=${encodeURIComponent(tag)}`} >
@@ -126,11 +126,11 @@ class ReviewPage extends Component{
                                 </span>   
                             ):''}
                             </div>
-                            {/*<div className = "reviewBy2 reviewBy5">รีวิวตัวละคร</div>
+                            {/*<div className = "r-reviewBy2 reviewBy5">รีวิวตัวละคร</div>
                             <div className = "boxContent">{review.rvChar}</div>*/}
-                            <div className = "reviewBy2 reviewBy5">รีวิวเนื้อเรื่อง</div>
+                            <div className = "r-reviewBy2 reviewBy5">รีวิวเนื้อเรื่อง</div>
                             <div className = "boxContent">{review.rvContent}</div>
-                            {/*<div className = "reviewBy2 reviewBy5">รูปภาพ</div>*/}
+                            {/*<div className = "r-reviewBy2 reviewBy5">รูปภาพ</div>*/}
                             {/*<div className = "boxContent">*/}
                             {/*review.rvImage?
                                 review.rvImage.forEach(image=>{
@@ -142,7 +142,7 @@ class ReviewPage extends Component{
                             {/*<div className = "reviewBy4">ให้คะแนนรีวิวนี้
                                 <Rating/>
                             </div>*/}
-                            <hr className="new4"></hr>
+                            <hr className="r-new4"></hr>
                         </div>
                     </div>
                     <CommentBox />
