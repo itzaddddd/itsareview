@@ -127,7 +127,7 @@ class Login extends Component {
                     }}
                 >
                     {({ touched, errors, isSubmitting }) => (
-                        <div style={{ paddingTop: '7%', marginBottom: '10%' }}>
+                        <div style={{ paddingTop: '7%', marginBottom: '5%' }}>
                             <Container  className = "cont-login" >
                                 <Row>
                                     <Col lg={6} sm={12} xs={12} style={{padding:0}}>

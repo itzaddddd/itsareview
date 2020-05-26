@@ -124,8 +124,8 @@ class Register extends Component {
                     }}
                 >
                     {({ touched, errors, isSubmitting }) => (
-                        <div style={{ paddingTop: '10%' }}>
-                            <Container>
+                        <div style={{ paddingTop: '7.5%', marginBottom:'5%' }}>
+                            <Container className="cont-login">
                                 <Row>
                                     <Col lg={6} sm={12} sm={12}>
                                         <Form className="RegisterForm">
@@ -306,12 +306,9 @@ class Register extends Component {
                                             </div>
                                         </Form>
                                     </Col>
-                                    <Col
-                                        lg={6}
-                                        sm={12}
-                                        sm={12}
-                                        className="bg-register"
-                                    ></Col>
+                                    <Col lg={6} sm={12} xs={12} style={{padding:0}}>
+                                        <img className="book-login" src="https://www.img.in.th/images/9d7e2b6ec5308eb0858401a85617e73a.png" alt="9d7e2b6ec5308eb0858401a85617e73a.png" border="0" />
+                                    </Col>
                                 </Row>
                             </Container>
                         </div>

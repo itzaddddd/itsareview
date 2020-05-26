@@ -33,6 +33,7 @@ div#regis-title {
     text-align: center;
     color: #737e3d;
     margin-top:20px;
+    padding-top: 5.5vmax;
 }
 
 input[type='text'].form-control input[type='password'].form-control {
@@ -70,11 +71,11 @@ div#regis-form{
 }
 
 div .for-admin-code {
-    font-size: 3vmin;
+    font-size: 2vmin;
     color: #B9D253;
     cursor: pointer;
     text-align: center;
-    margin-top: 5vmin;
+    margin-top: 2vmin;
 }
 
 @media(max-width : 768px) /*for medium device*/ {
