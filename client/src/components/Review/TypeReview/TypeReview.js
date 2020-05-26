@@ -86,8 +86,8 @@ class TypeReview extends Component{
                 <NavBar/>
                 <div className="row">
                     <div className="col-sm containerReview">
-                        <div className="reviewName">{type}</div>
-                        <hr className="new5"></hr>
+                        <div className="reviewName" style={{fontSize:'5.5vmin'}}>หมวดหมู่ {type}</div>
+                        <hr className="new5" style={{marginBottom:10, width:'100%', height:2}}></hr>
                         {this.state.postData}
                         {this.state.postData?
                             <Pagination

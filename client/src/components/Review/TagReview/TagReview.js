@@ -85,7 +85,7 @@ class TagReview extends Component{
                 <div className="row">
                     <div className="col-sm containerReview">
                         <div className="reviewName">{title}</div>
-                        <hr className="new5"></hr>
+                        <hr className="new5" style={{marginBottom:10, width:'100%', height:2}}></hr>
                         {this.state.postData}
                         {this.state.postData?
                             <Pagination
